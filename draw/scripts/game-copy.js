@@ -19713,6 +19713,12 @@
                     e.decreaseZoom(),
                     this.stateChanged();
                     break;
+                case "export": // New case for exporting
+                    this.command("dialog", "export");
+                    break;
+                case "import": // New case for exporting
+                    this.command("dialog", "import");
+                    break;
                 case "fullscreen":
                     this.toggleFullscreen(),
                     this.stateChanged()
@@ -20112,6 +20118,9 @@
                         break;
                     case "zoom_decrease":
                         e.decreaseZoom();
+                        break;
+                    case "export": // New case for exporting
+                        this.command("dialog", "export");
                         break;
                     case "fullscreen":
                         this.toggleFullscreen()

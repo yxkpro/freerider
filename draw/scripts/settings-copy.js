@@ -113,6 +113,8 @@ var GameSettings = {
         "straightline": 81,
         "pause": 32,
         "change_vehicle": 86,
+        "export": 187,
+        "import": 189,
         "enter": 13
     },
     "keysToRecord": ["up", "down", "left", "right", "enter", "backspace", "z"],

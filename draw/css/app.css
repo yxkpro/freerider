@@ -2427,7 +2427,7 @@ html.fullscreen #main_page {
 }
 
 .buttomMenuChrome .promoCard {
-    height: 100%;
+    height: 0%;
     float: left;
     width: 25%;
     padding-left: 17px;

@@ -259,3 +259,304 @@ canvas {
     float: left;
     width: 0%;
 }
+
+.editorDialog {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: rgba(255,255,255,.7);
+    z-index: 2
+}
+
+.editorDialog-close {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    line-height: 30px;
+    width: 30px;
+    font-size: 1.5em
+}
+
+.editorDialog-close:hover {
+    color: #3899DC
+}
+
+.editorDialog-content {
+    width: 600px;
+    background: #FFF;
+    border: 1px solid #C2C2C2;
+    margin: -190px auto auto;
+    top: 60%;
+    position: fixed;
+    box-shadow: 0 0 1px #DDD
+}
+
+.editorDialog-titleBar {
+    line-height: 38px;
+    padding: 0 13px;
+    border-bottom: 1px solid #C2C2C2;
+    color: #2D2D2D
+}
+
+.editorDialog-bottomBar {
+    background: #F8F8F8;
+    padding: 12px
+}
+
+.editorDialog-bottomBar.error {
+    color: #E5302F;
+    background: #F4D0D0;
+    border: 1px solid #E5302F
+}
+
+.editorDialog-content-title {
+    font-size: 1em;
+    font-weight: 400;
+    margin: 10px
+
+}
+
+.editorDialog-content_clearDialog {
+    width: 400px
+}
+
+.editorDialog-content_clearDialog .editorDialog-centerContent {
+    padding: 10px
+}
+
+.editorDialog-content_clearDialog .editorDialog-bottomBar {
+    border-top: 1px solid #CCC
+}
+
+.exportDialog-code,.importDialog-code {
+    border: 1px solid #CCC;
+    border-radius: 6px;
+    padding: 10px;
+    height: 100px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    z-index: 2;
+    resize: none;
+    font-size: .9em
+}
+
+.editorDialog-codeContainer,.importDialog-codeContainer {
+    position: relative;
+    padding: 18px;
+    border-bottom: 1px solid #CCC
+}
+
+.importDialog-button {
+    float: right
+}
+
+.importDialog-dropFile {
+    display: none;
+    position: absolute;
+    top: 110px;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    color: #3899DC
+}
+
+input,textarea {
+    border: none;
+    padding: .4em .8em;
+    margin: 0;
+    display: block;
+    background: 0 0;
+    outline: 0!important;
+    min-height: 1.4em;
+    line-height: 1.4em;
+    font-size: 1em;
+    width: 100%;
+    -webkit-appearance: none
+}
+
+.importDialog-placeholder {
+    font-size: 14px;
+    padding: 14px;
+    position: absolute;
+    width: 486px
+}
+
+.exportDialog-saveAsFile,.importDialog-openFile {
+    color: #3B99FC;
+    font-size: .7em;
+    padding: 10px;
+    cursor: pointer
+}
+
+.importDialog-openFile {
+    position: absolute;
+    z-index: 3;
+    right: 60px;
+    top: 2px
+}
+
+.editorDialog-content-dragActive .importDialog-code {
+    background: #FFF;
+    border: 2px dashed #000
+}
+
+.ud-uploading-cost {
+    width: 260px;
+    float: left;
+    font-size: .9em
+}
+
+.ud-uploading-cost .core_icons {
+    vertical-align: middle;
+    position: relative;
+    bottom: 2px;
+    margin-left: 2px;
+    margin-right: 5px
+}
+
+.ud-uploading-cost .num {
+    font-family: roboto_bold,Arial,Helvetica,sans-serif;
+    font-weight: 700
+}
+
+.ud-form-input>.title,.ud-upload-complete-balance>.balance,.ud-upload-complete-message>.track-title,.ud-upload-complete-share>.title {
+    font-family: roboto_medium,Arial,Helvetica,sans-serif
+}
+
+.ud-form {
+    padding: 18px;
+    border-bottom: 1px solid #C2C2C2;
+    position: relative
+}
+
+.ud-form-input {
+    margin: 5px 0
+}
+
+.ud-form-input>.title {
+    font-size: .9em;
+    margin-bottom: 5px
+}
+
+.ud-form-input>.char-left,.ud-form-input>.input-desc {
+    color: #595959;
+    font-size: .8em
+}
+
+.ud-form-text-input {
+    border: 1px solid #C2C2C2;
+    border-radius: 11px
+}
+
+.ud-form-vehicles>.ud-form-input {
+    width: 50%
+}
+
+.ud-form-checkbox {
+    margin: 5px 0;
+    cursor: pointer
+}
+
+.ud-form-checkbox>.checkbox {
+    background: #FFF;
+    border-radius: 50%;
+    text-align: center;
+    width: 24px;
+    height: 24px;
+    color: #FFF;
+    line-height: 18px;
+    border: 1px solid #000;
+    display: inline-block
+}
+
+.ud-form-checkbox.checked>.checkbox {
+    background: #1F80C3
+}
+
+.ud-form-checkbox>.name {
+    padding-left: 5px;
+    font-size: .9em
+}
+
+.ud-form-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #FFF;
+    opacity: .7
+}
+
+.ud-bottom-message {
+    font-size: .8em;
+    width: 270px;
+    display: inline-block
+}
+
+.ud-exporting-track {
+    padding: 18px;
+    border-bottom: 1px solid #C2C2C2;
+    font-size: .9em
+}
+
+.ud-exporting-track>.warning {
+    font-size: .9em
+}
+
+.ud-uploading-message {
+    display: inline-block;
+    position: relative;
+    top: 12px
+}
+
+.ud-uploading-message>.loading-hourglass {
+    position: absolute;
+    top: -5px;
+    left: 0
+}
+
+.ud-uploading-message>.text {
+    padding-left: 34px;
+    font-size: .9em
+}
+
+.ud-upload-complete {
+    padding: 18px;
+    border-bottom: 1px solid #C2C2C2
+}
+
+.ud-upload-complete-share>.title {
+    margin-bottom: 10px
+}
+
+.ud-upload-complete-share .share_icons {
+    margin-right: 15px
+}
+
+.ud-upload-complete-link-input {
+    border: 1px solid #C2C2C2;
+    border-radius: 11px
+}
+
+.editorDialog-content_helpDialog {
+    width: 600px
+}
+
+.editorDialog-content_helpDialog .hotkeys {
+    padding: 10px;
+    clear: both
+}
+
+.editorDialog-content_helpDialog .hotkey {
+    margin: 5px 0
+}
+
+.editorDialog-content_helpDialog .hotkeys-title {
+    font-size: 13px;
+    margin: 10px 0 5px;
+    font-family: roboto_condensed_bold,Arial,Helvetica,sans-serif;
+    text-transform: uppercase;
+    color: #595959
+}
