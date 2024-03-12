@@ -154,6 +154,7 @@ img {
 
 iframe {
     border-radius: 3px;
+    max-width: 100%;
 }
 
 
