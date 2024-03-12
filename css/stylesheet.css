@@ -17,22 +17,22 @@ body {
 
 #home {
     color: white;
-    background-color: lightgray;
+    background-color: #aaa;
     text-decoration: None;
     padding: .3em;
 }
 
 #home:hover {
-    background-color: #cceedd;
+    background-color: #1884cf;
 }
 
 a {
-    color: #000088;
-    background-color: #efefff;
+    color: #1884cf;
+
 }
 
 a:hover {
-    color: #0000ff;
+    color: #1884cf;
 }
 
 
