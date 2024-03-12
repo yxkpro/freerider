@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<div id="game-container"></div>
+    <script src="/draw/scripts/manifest-copy.js"></script>
+    <script src="/draw/scripts/settings-copy.js"></script>
+    <script src="/draw/scripts/offlineeditor-copy.js"></script>
 <html>
     <head>
 	<meta name="generator" content="Hugo 0.68.3" />
@@ -40,6 +44,21 @@
     h2 {
         margin-top: 2em;
     }
+    
+    .game-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+    a {
+            position: relative;
+            z-index: 2;
+        }
+
+    iframe {
+            position: relative;
+            z-index: 2;
+        }
 </style>
 
 <p>
