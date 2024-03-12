@@ -144,6 +144,9 @@ footer  {
 .everything {
     opacity: 0.5;
     font-size: 10pt;
+        position: fixed;
+    }
+    
 }
 
 img {
@@ -172,16 +175,15 @@ iframe {
 }
 
 canvas {
-    display: inherit;
-    position: relative;
-    top: -20px;
-    right: 280px;
+    display: inside;
+    float: left;
+    height: 10%;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-    user-select: none;
-    margin: 0 auto; /* Centers the canvas horizontally */
+    user-select: none
 }
+
 
 blockquote 
 {
