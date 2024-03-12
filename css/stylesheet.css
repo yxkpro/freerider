@@ -157,31 +157,6 @@ iframe {
     max-width: 100%;
 }
 
-.game {
-    background: #FFF;
-    border: 1px solid #000;
-    height: 420px
-}
-
-.game-fullscreen {
-    position: relative;
-    top: 0;
-    bottom: 0;
-    border: none;
-    z-index: 30000
-}
-
-canvas {
-    display: inherit;
-    position: relative;
-    top: -20px;
-    right: 280px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    margin: 0 auto; /* Centers the canvas horizontally */
-}
 
 blockquote 
 {
