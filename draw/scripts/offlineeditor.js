@@ -1413,39 +1413,39 @@
                 }, n.createElement("table", null, n.createElement("tr", null, n.createElement("td", null, n.createElement("span", {
                     className: "keyboard_keys keyboard_keys-accelerate_key_small"
                 }), n.createElement("span", {
-                    className: "keyname"
+                    className: "helpDialog-hotkey-name"
                 }, "Accelerate")), n.createElement("td", null, n.createElement("span", {
                     className: "keyboard_keys keyboard_keys-left_key_small"
                 }), n.createElement("span", {
-                    className: "keyname"
-                }, "Lean left")), n.createElement("td", null, n.createElement("span", {
+                    className: "helpDialog-hotkey-name"
+                }, "Lean Left")), n.createElement("td", null, n.createElement("span", {
                     className: "keyboard_keys keyboard_keys-change_direction_key_small"
                 }), n.createElement("span", {
-                    className: "keyname"
+                    className: "helpDialog-hotkey-name"
                 }, "Turn Around"))), n.createElement("tr", null, n.createElement("td", null, n.createElement("span", {
                     className: "keyboard_keys keyboard_keys-brake_key_small"
                 }), n.createElement("span", {
-                    className: "keyname"
+                    className: "helpDialog-hotkey-name"
                 }, "Brake")), n.createElement("td", null, n.createElement("span", {
                     className: "keyboard_keys keyboard_keys-right_key_small"
                 }), n.createElement("span", {
-                    className: "keyname"
+                    className: "helpDialog-hotkey-name"
                 }, "Lean Right")), n.createElement("td", null, n.createElement("span", {
                     className: "keyboard_keys keyboard_keys-restart_key_small"
                 }), n.createElement("span", {
-                    className: "keyname"
+                    className: "helpDialog-hotkey-name"
                 }, "Restart"))), n.createElement("tr", null, n.createElement("td", null, n.createElement("span", {
                     className: "keyboard_keys keyboard_keys-enter_key_small"
                 }), n.createElement("span", {
-                    className: "keyname"
+                    className: "helpDialog-hotkey-name"
                 }, "Back to Checkpoint")), n.createElement("td", null, n.createElement("span", {
                     className: "keyboard_keys keyboard_keys-cancel_checkpoint_key_small"
                 }), n.createElement("span", {
-                    className: "keyname"
+                    className: "helpDialog-hotkey-name"
                 }, "Remove Checkpoint")), n.createElement("td", null, n.createElement("span", {
                     className: "keyboard_keys keyboard_keys-pause_key_small"
                 }), n.createElement("span", {
-                    className: "keyname"
+                    className: "helpDialog-hotkey-name"
                 }, "Pause")))))))
             }
         });
@@ -3934,6 +3934,34 @@
     , {
         react: 230
     }],
+    666: [function(e, t) {
+        var n = e("react")
+  , r = n.createClass({
+    displayName: "returntoapp",
+    redirectToWebsite: function() {
+        var confirmLeave = window.confirm("Are you sure you want to leave this website?");
+        if (confirmLeave) {
+            window.location.href = "/";
+        }
+    },
+    render: function() {
+        var e = "topMenu-button topMenu-button-right"
+        , t = "editorgui_icons editorgui_icons-icon_bmx";
+        
+        return n.createElement("div", {
+            className: e,
+            onClick: this.redirectToWebsite,
+            title: "Return to freerider.app"
+        }, n.createElement("span", {
+            className: "text"
+        }, "return to freerider.app"));
+    }
+});
+t.exports = r
+    }
+    , {
+        react: 230
+    }],
     67: [function(e, t) {
         var n = e("react")
           , r = n.createClass({
@@ -3960,6 +3988,7 @@
     , {
         react: 230
     }],
+    
     68: [function(e, t) {
         var n = e("react")
           , r = n.createClass({
@@ -3989,6 +4018,7 @@
           , o = e("./importtrack")
           , i = e("./exporttrack")
           , h = e("./uploadtrack")
+          , x = e("./returntoapp")
           , a = e("./help")
           , s = e("./controls")
           , c = e("./reducezoom")
@@ -4001,9 +4031,9 @@
             render: function() {
                 return n.createElement("div", {
                     className: "topMenu unselectable"
-                }, n.createElement(r, null), n.createElement(o, null), n.createElement(i, null), n.createElement(a, null), this.showHelp(), this.showControls(), this.showOfflineEditorIcon(), this.showFullscreen(), n.createElement(u, null), n.createElement(d, {
+                }, n.createElement(r, null), n.createElement(o, null), n.createElement(i, null), n.createElement(a, null), this.showHelp(), this.showFullscreen(), n.createElement(u, null), n.createElement(d, {
                     percent: this.props.data.zoomPercentage
-                }), n.createElement(c, null))
+                }), n.createElement(c, null), n.createElement(x, null))
             },
             showOfflineEditorIcon: function() {
                 var e = !1
@@ -4014,11 +4044,6 @@
             showHelp: function() {
                 var e = !1;
                 return GameSettings.mobile === !1 && (e = n.createElement(s, null)),
-                e
-            },
-            showControls: function() {
-                var e = !1;
-                return GameSettings.mobile === !1 && (e = n.createElement(l, null)),
                 e
             },
             showFullscreen: function() {
@@ -4038,6 +4063,7 @@
         "./importtrack": 65,
         "./increasezoom": 66,
         "./offlineeditor": 67,
+        "./returntoapp": 666,
         "./reducezoom": 68,
         "./uploadtrack": 70,
         "./zoomlevel": 71,

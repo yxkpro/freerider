@@ -1575,6 +1575,13 @@ html.fullscreen #main_page {
     float: right
 }
 
+.topMenu-button_return {
+    position: fixed;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
 .topMenu-button_zoom {
     width: 50px;
     text-align: center
@@ -2156,7 +2163,7 @@ html.fullscreen #main_page {
 
 .editorDialog-content_controlsDialog table .keyname {
     padding-left: 5px;
-    font-family: helsinki,Arial,Helvetica,sans-serif
+    font-family: Helvetica,sans-serif
 }
 
 .offlineeditorpromo-dialog {
