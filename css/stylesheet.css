@@ -230,3 +230,32 @@ div.circle img {
     padding: 0px;
     margin: 0px;
 }
+
+canvas {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -70%);
+}
+
+.topMenu {
+    position: relative;
+    top: -500px;
+    height: 0px;
+    width: 0px;
+    opacity: 1
+}
+
+.bottomMenu {
+    position: relative;
+    top: -500px;
+    height: 0;
+    width: 0;
+    opacity: 1
+}
+
+.buttomMenuChrome .promoCard {
+    height: 0%;
+    float: left;
+    width: 0%;
+}
