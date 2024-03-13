@@ -1,5 +1,10 @@
 <!DOCTYPE html>
+<div id="game-container" style="position: relative; z-index: 0;"></div>
+    <script src="/draw/scripts/manifest-default.js"></script>
+    <script src="/draw/scripts/settings-copy.js"></script>
+    <script src="/draw/scripts/offlineeditor-copy.js"></script>
 <html>
+    
     <head>
 	<meta name="generator" content="Hugo 0.68.3" />
         <meta charset="utf-8">
@@ -28,7 +33,6 @@
         padding-left: 0px;
         list-style-type: none;
     }
-
     li {
         display: inline-block;
         border: 1px solid #dee2e6;
@@ -40,6 +44,16 @@
     h2 {
         margin-top: 2em;
     }
+
+    .game-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+    a {
+            position: relative;
+            z-index: 2;
+        }
 </style>
 
 <p>
@@ -53,6 +67,10 @@
 
 <p>race soon.</p>
 
+
+
+
+    
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>

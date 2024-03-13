@@ -14060,7 +14060,7 @@
             }
         }
         const Lt = Et.prototype;
-        Lt.vehicleName = "Pete",
+        Lt.vehicleName = "BMX",
         Lt.masses = null,
         Lt.springs = null,
         Lt.cosmetics = null,
@@ -19293,19 +19293,11 @@
                 , e = t.p1
                 , s = t.p2
                 , ee = t.p3
-                , ss = t.p4
-                , ae = t.p5
-                , as = t.p6
-                , aee = t.p7
-                , ass = t.p8;
+                , ss = t.p4;
               this.addPhysicsLine(e.x, e.y, s.x, s.y),
               this.addPhysicsLine(s.x, s.y, ee.x, ee.y),
               this.addPhysicsLine(ee.x, ee.y, ss.x, ss.y),
-              this.addPhysicsLine(ss.x, ss.y, e.x, e.y),
-              this.addPhysicsLine(ae.x, ae.y, as.x, as.y),
-              this.addPhysicsLine(as.x, as.y, aee.x, aee.y),
-              this.addPhysicsLine(aee.x, aee.y, ass.x, ass.y),
-              this.addPhysicsLine(ass.x, ass.y, ae.x, ae.y);
+              this.addPhysicsLine(ss.x, ss.y, e.x, e.y);
             }
             addDefaultTrack(){}
             erase(t, s, i) {
@@ -19417,14 +19409,10 @@
             }
         }
         an.prototype.defaultLine = {
-            p1: new t.Z(-93,663),
-            p2: new t.Z(-93,277),
-            p3: new t.Z(1089,277),
-            p4: new t.Z(1089,663),
-            p5: new t.Z(-93,50),
-            p6: new t.Z(91,50),
-            p7: new t.Z(91,103),
-            p8: new t.Z(-93,103)
+            p1: new t.Z(-93,50),
+            p2: new t.Z(91,50),
+            p3: new t.Z(91,103),
+            p4: new t.Z(-93,103)
         },
         an.prototype.defaultTrack = {}
         an.prototype.game = null,

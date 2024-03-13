@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<div id="game-container"></div>
+<div id="game-container" style="position: relative; z-index: 0;"></div>
     <script src="/draw/scripts/manifest-copy.js"></script>
     <script src="/draw/scripts/settings-copy.js"></script>
     <script src="/draw/scripts/offlineeditor-copy.js"></script>
 <html>
+    
     <head>
 	<meta name="generator" content="Hugo 0.68.3" />
         <meta charset="utf-8">
@@ -13,7 +14,7 @@
         <link rel="icon" href="/assets/favicon.ico" type="image/png">
 
         <title>
-            free rider - play
+            freerider.app
         </title>
 
         <link rel="stylesheet" href="/css/stylesheet.css">
@@ -32,7 +33,6 @@
         padding-left: 0px;
         list-style-type: none;
     }
-
     li {
         display: inline-block;
         border: 1px solid #dee2e6;
@@ -44,7 +44,7 @@
     h2 {
         margin-top: 2em;
     }
-    
+
     .game-container {
             position: relative;
             z-index: 1;
@@ -54,11 +54,9 @@
             position: relative;
             z-index: 2;
         }
-
-    iframe {
-            position: relative;
-            z-index: 2;
-        }
+    .container-fluid a {
+        z-index: 1
+    }
 </style>
 
 <p>

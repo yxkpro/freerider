@@ -1,11 +1,23 @@
+html {
+    width: 900px; /* or a specific width value like 800px */
+    height: 600px; /* or a specific height value like 600px */
+}
+
 body {
     font-family: 'FreeSans', sans-serif;
     margin: 40px auto;
     padding: 0 10px;
     max-width: 640px;
+    max-height: 640px;
     font-size: 11pt;
+    overflow-x: hidden;
 }
 
+center {
+    position: fixed;
+    top: 50%;
+    right: 50%;
+}
 #page-title {
     text-align: center;
 }
@@ -112,6 +124,7 @@ code {
   white-space: pre;
   overflow-x: auto;
   color: #aa3300;
+  z-index: 2;
 }
 
 pre {
@@ -232,10 +245,10 @@ div.circle img {
 }
 
 canvas {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -70%);
+    position: absolute;
+    top: -1571px;
+    right: -1041px;
+    z-index: -1;
 }
 
 .topMenu {
@@ -559,4 +572,13 @@ input,textarea {
     font-family: roboto_condensed_bold,Arial,Helvetica,sans-serif;
     text-transform: uppercase;
     color: #595959
+}
+
+.link,a {
+    color: #1F80C3;
+    text-decoration: none
+}
+
+.link:hover,a:hover {
+    color: #3899DC
 }
