@@ -1,13 +1,13 @@
-html {
-    width: 900px; /* or a specific width value like 800px */
-    height: 600px; /* or a specific height value like 600px */
-}
+/* html {
+    width: 900px;
+    height: 600px;
+} */
 
 body {
     font-family: 'FreeSans', sans-serif;
     margin: 40px auto;
     padding: 0 10px;
-    max-width: 640px;
+    max-width: 900px;
     max-height: 640px;
     font-size: 11pt;
     overflow-x: hidden;
@@ -39,8 +39,7 @@ center {
 }
 
 a {
-    color: #1884cf;
-
+    color: #aaa;
 }
 
 a:hover {
@@ -246,14 +245,12 @@ div.circle img {
 
 canvas {
     position: absolute;
-    top: -1571px;
-    right: -1041px;
     z-index: -1;
 }
 
 .topMenu {
     position: relative;
-    top: -500px;
+    top: -5000px;
     height: 0px;
     width: 0px;
     opacity: 1
@@ -261,7 +258,7 @@ canvas {
 
 .bottomMenu {
     position: relative;
-    top: -500px;
+    top: -5000px;
     height: 0;
     width: 0;
     opacity: 1
@@ -271,15 +268,17 @@ canvas {
     height: 0%;
     float: left;
     width: 0%;
+    top: -5000px
 }
 
 .editorDialog {
+    font-family: 'Ubuntu Mono', monospace;
     width: 100%;
     height: 100%;
     position: absolute;
     top: 0;
     background: rgba(255,255,255,.7);
-    z-index: 2
+    z-index: 4;
 }
 
 .editorDialog-close {
@@ -296,12 +295,13 @@ canvas {
 }
 
 .editorDialog-content {
-    width: 600px;
+    width: 300px;
+    height: 0px;
     background: #FFF;
     border: 1px solid #C2C2C2;
-    margin: -190px auto auto;
-    top: 60%;
-    position: fixed;
+    top: -30px;
+    left: 306px;
+    position: absolute;
     box-shadow: 0 0 1px #DDD
 }
 
@@ -343,21 +343,24 @@ canvas {
 }
 
 .exportDialog-code,.importDialog-code {
-    border: 1px solid #CCC;
-    border-radius: 6px;
-    padding: 10px;
-    height: 100px;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    z-index: 2;
-    resize: none;
-    font-size: .9em
+    font-family: 'Ubuntu Mono', monospace;
+    overflow-x: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: 1px solid lighten(#111, 90);
+    background-color: #efefef;
+    font-size: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    border-radius: 3px;
+    margin-top: 8px;
+    margin-bottom: 5px;
 }
 
 .editorDialog-codeContainer,.importDialog-codeContainer {
     position: relative;
-    padding: 18px;
-    border-bottom: 1px solid #CCC
+    left: 560px;
+    width: 300px;
 }
 
 .importDialog-button {
@@ -392,7 +395,8 @@ input,textarea {
     font-size: 14px;
     padding: 14px;
     position: absolute;
-    width: 486px
+    width: 486px;
+    z-index: -1
 }
 
 .exportDialog-saveAsFile,.importDialog-openFile {
@@ -575,10 +579,28 @@ input,textarea {
 }
 
 .link,a {
-    color: #1F80C3;
+    /*color: #1F80C3;*/
     text-decoration: none
 }
 
 .link:hover,a:hover {
     color: #3899DC
+}
+
+.primary-button {
+    margin-left: 2px;
+    color: white;
+    background-color: #aaa;
+    text-decoration: None;
+    padding: .3em;
+    font-family: 'FreeSans', sans-serif;
+    font-size: 11pt;
+    border: none;
+    outline: none
+}
+
+.primary-button:hover {
+    background-color: #1884cf;
+    border: none;
+    outline: none
 }

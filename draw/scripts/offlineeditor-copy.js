@@ -1602,23 +1602,14 @@
             },
             render: function() {
                 var e = this.props.options
-                  , t = "Generating track code... this may take a minute"
+                  , t = "generating track code... this may take a minute"
                   , r = "";
                 return e && e.code && (t = e.code,
                 this.fileSaverSupport && (r = n.createElement("button", {
                     className: "primary-button primary-button-blue float-right",
                     onClick: this.createSaveFile
-                }, "Save as File"))),
+                }, "save as file"))),
                 n.createElement("div", {
-                    className: "editorDialog-content editorDialog-content_exportDialog"
-                }, n.createElement("div", {
-                    className: "editorDialog-titleBar"
-                }, n.createElement("span", {
-                    className: "editorDialog-close",
-                    onClick: this.closeDialog
-                }, "×"), n.createElement("h1", {
-                    className: "editorDialog-content-title"
-                }, "EXPORT TRACK")), n.createElement("div", {
                     className: "editorDialog-codeContainer"
                 }, n.createElement("textarea", {
                     ref: "code",
@@ -1628,15 +1619,13 @@
                     spellCheck: "false",
                     value: t,
                     onClick: this.selectAllText
-                })), n.createElement("div", {
-                    className: "editorDialog-bottomBar clearfix"
-                }, n.createElement("button", {
+                }), n.createElement("button", {
                     className: "primary-button primary-button-black float-right margin-0-5",
                     onClick: this.closeDialog
-                }, "Close"), r))
+                }, "close"), r)
             }
         });
-        t.exports = i
+        t.exports = i;
     }
     , {
         "../utils/blob": 72,
@@ -1965,6 +1954,27 @@
             closeDialog: function() {
                 "undefined" != typeof GameManager && GameManager.command("dialog", !1)
             },
+            componentDidMount: function() {
+                // Load the default text from a .txt file
+                this.loadDefaultTextFromFile();
+            },
+        
+            loadDefaultTextFromFile: function() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'track.txt', true);
+                xhr.onreadystatechange = function() {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        // Set the default text to the content of the .txt file
+                        var defaultText = xhr.responseText;
+                        console.log("Loaded text from file:", defaultText);
+            
+                        // Update the state to trigger a re-render with the default text
+                        this.setState({ defaultText: defaultText });
+                    }
+                }.bind(this);
+                xhr.send();
+            },
+            
             getInitialState: function() {
                 return {
                     isDragActive: !1
@@ -2045,68 +2055,58 @@
                   , t = this.refs.placeholder.getDOMNode();
                 t.style.display = e.length > 0 ? "none" : "block"
             },
+            onTextareaChange: function(event) {
+                this.setState({ defaultText: event.target.value });
+            },
             render: function() {
-                var e = this.state.isDragActive
-                  , t = "editorDialog-content editorDialog-content_importDialog";
-                e && (t += " editorDialog-content-dragActive");
-                var r = "";
-                this.hasFileAPI && (r = n.createElement("span", null, ",or ", n.createElement("span", {
-                    className: "link",
-                    onClick: this.openFileDialog
-                }, "select a file")));
-                var o = n.createElement("span", {
+                var placeholder = n.createElement("span", {
                     className: "importDialog-placeholder",
                     ref: "placeholder",
                     "data-ignoredragleave": "true"
-                }, "Paste track code, drag and drop text files here ", r, " to import");
+                }, "Paste track code here to import");
+                var e = this.state.isDragActive
+                , t = "editorDialog-content editorDialog-content_importDialog";
+              e && (t += " editorDialog-content-dragActive");
                 return n.createElement("div", {
-                    className: t
-                }, n.createElement("div", {
-                    className: "editorDialog-titleBar"
-                }, n.createElement("span", {
-                    className: "editorDialog-close",
-                    onClick: this.closeDialog
-                }, "×"), n.createElement("h1", {
-                    className: "editorDialog-content-title"
-                }, "IMPORT TRACK")), n.createElement("div", {
                     className: "importDialog-codeContainer",
+                    onPaste: this.onPaste,
+                    onFocus: this.onFocusInput,
+                    onBlur: this.onBlurInput,
                     onDragLeave: this.onDragLeave,
                     onDragOver: this.onDragOver,
                     onDrop: this.onDrop
-                }, o, n.createElement("span", {
+                }, r, n.createElement("span", {
                     className: "importDialog-dropFile",
                     ref: "dropFile",
                     "data-ignoredragleave": "true"
-                }, "Drop file to import"), n.createElement("textarea", {
+                },), placeholder, r, n.createElement("textarea", {
                     ref: "code",
                     className: "importDialog-code",
                     "data-ignoredragleave": "true",
                     autoComplete: "false",
                     spellCheck: "false",
-                    onPaste: this.onPaste,
-                    onChange: this.onInput,
-                    onFocus: this.onFocusInput,
-                    onBlur: this.onBlurInput
-                }), n.createElement("input", {
-                    style: {
-                        display: "none"
-                    },
+                    value: this.state.defaultText || "", // Use state to set textarea value
+                    onChange: this.onTextareaChange // Add onChange handler
+                }), n.createElement("button", {
+                    className: "primary-button primary-button-blue float-right margin-0-5",
+                    onClick: this.closeDialog
+                }, "close"), n.createElement("button", {
+                    className: "primary-button primary-button-blue float-right margin-0-5",
+                    onClick: this.importTrack
+                }, "import"), n.createElement("input", {
+                    type: "file",
+                    style: { display: "none" },
                     type: "file",
                     ref: "fileInput",
                     accept: "text/plain",
                     onChange: this.onDrop
-                })), n.createElement("div", {
-                    className: "editorDialog-bottomBar clearfix"
-                }, n.createElement("button", {
+                }), n.createElement("button", {
                     className: "primary-button primary-button-blue float-right margin-0-5",
-                    onClick: this.importTrack
-                }, "Import"), n.createElement("button", {
-                    className: "primary-button primary-button-black float-right margin-0-5",
-                    onClick: this.closeDialog
-                }, "Cancel")))
+                    onClick: this.openFileDialog
+                }, "select file"))
             }
         });
-        t.exports = r
+        t.exports = r;
     }
     , {
         react: 230

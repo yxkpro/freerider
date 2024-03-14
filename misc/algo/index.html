@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+        <div id="game-container" style="position: relative; z-index: 0;"></div>
+
+<html>
+
+    <head>
+	    <meta name="generator" content="Hugo 0.68.3" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/stylesheet.css">
+        <link rel="icon" href="/assets/favicon.ico" type="image/png">
+
+        <script src="/draw/scripts/manifest-default.js"></script>
+        <script src="/draw/scripts/settings-copy.js"></script>
+        <script src="/draw/scripts/offlineeditor-copy.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+        <title>
+            freerider.app
+        </title>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="mb-4">
+                <a href="/" id=home class="">freerider.app</a>
+                <a href="/" id=home class=""><img id="free-rider" src="/assets/favicon.png" alt="Description of the image" width="24" height="16"></a>
+            </div>
+
+        <style>
+            h2 {
+                margin-top: 2em;
+            }
+
+            a {
+                position: relative;
+                z-index: 2;
+            }
+
+            iframe {
+                position: relative;
+                z-index: 2;
+            }
+
+            code {
+                position: relative;
+                z-index: 2;
+            }
+
+            canvas {
+                top: -1571px;
+                right: -781px;
+            }
+
+            .link,a {
+                /*change to "color: #aaa" if you want scenery gray*/
+                color: #1F80C3;
+            }
+        </style>
+
+        <p>
+            <a href="/">home</a> /
+            <a href="/draw">draw</a> /
+	        <a href="/play">play</a> /
+	        <a href="/news">news</a>
+        </p>
+
+        <!-- Content below: -->
+
+        <div class="text-center mb-3 bg-light" id="container" style="position: relative; z-index: -1">
+        </div>
+        <script>
+            window.RufflePlayer = window.RufflePlayer || {};
+            window.addEventListener("load", (event) => {
+                const ruffle = window.RufflePlayer.newest();
+                const player = ruffle.createPlayer();
+                player.config.autoplay = "on";
+                player.config.unmuteOverlay = "hidden";
+                player.config.unmuteOverlay = "hidden";
+                player.config.splashScreen = false;
+                const container = document.getElementById("container");
+                container.appendChild(player);
+                player.style.width = "100%"; 
+                player.style.height = container.offsetWidth * (4/5) + "px";
+                player.load("ga.swf");
+            });
+        </script>
+        <script src="https://unpkg.com/@ruffle-rs/ruffle"></script>
+        <p>This program uses a <a href="http://en.wikipedia.org/wiki/Genetic_algorithm">genetic algorithm</a> to design a two-dimensional car that is &ldquo;optimal&rdquo; for a particular terrain. The rules of the problem are as follows:</p>
+        <ul>
+        <li>The car must have two wheels (blue circles) and two loads (red circles).</li>
+        <li>The initial positions and radii of these four masses can be freely chosen by the algorithm.</li>
+        <li>The masses are connected by springs whose length, damping constant and spring constant can be freely chosen by the algorithm.</li>
+        <li>The loads must never touch the ground.</li>
+        </ul>
+        <p>The optimality of a particular candidate solution (the <a href="http://en.wikipedia.org/wiki/Fitness_function">fitness function</a>) is determined by how far it travels before <em>a)</em> a mass touches the ground or <em>b)</em> time runs out.</p>
+        <p>Note that at the beginning, the algorithm doesn&rsquo;t even know that wheels belong on the bottom. It is sometimes possible to see distinct species emerge and die - for instance, &ldquo;unicycles&rdquo; are often quite successful in the early stages of the algorithm&rsquo;s progress.</p>
+        <p>The graph shows mean and maximum fitness values as a function of generation number.</p>
+        <p>This demo inspired <a href="http://boxcar2d.com/">Boxcar2D</a>.  Big shout out to <a href="https://ruffle.rs/">Ruffle</a> which is the mechanism by which this can run in your browser in 2023, nearly two decades after the code was originally written.</p>
+        <p>The GA could converge much faster than it does here. In choosing the fitness cutoff, population size etc. I have aimed for an interesting/fun simulation rather than a fast, useful optimization.</p>
+        <p>The timeout is fixed but arbitrary. It was a quick hack to remove solutions which get stuck without crashing.</p>
+        
+
+        <!-- Closing lines, leave these alone! -->
+    </body>
+</html>
+
