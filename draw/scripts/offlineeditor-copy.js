@@ -1964,16 +1964,29 @@
                 xhr.open('GET', 'track.txt', true);
                 xhr.onreadystatechange = function() {
                     if (xhr.readyState === 4 && xhr.status === 200) {
-                        // Set the default text to the content of the .txt file
-                        var defaultText = xhr.responseText;
-                        console.log("Loaded text from file:", defaultText);
+                        // Get the text from the file
+                        var text = xhr.responseText;
+                        console.log("Loaded text from file:", text);
+                        
+                        // Extract code using regular expression
+                        var codeMatch = text.match(/"code":"(.+?)"/);
+                        var defaultCode = codeMatch ? codeMatch[1] : null;
             
-                        // Update the state to trigger a re-render with the default text
-                        this.setState({ defaultText: defaultText });
+                        if (defaultCode) {
+                            console.log("Extracted code:", defaultCode);
+                            
+                            // Update the state with the extracted code
+                            this.setState({ defaultText: defaultCode });
+                        } else {
+                            console.error("No code found, using entire contents of the file.");
+            
+                            // Update the state with the entire contents of the file
+                            this.setState({ defaultText: text });
+                        }
                     }
                 }.bind(this);
                 xhr.send();
-            },
+            },         
             
             getInitialState: function() {
                 return {

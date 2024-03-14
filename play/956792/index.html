@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+        <div id="game-container" style="position: relative; z-index: 0;"></div>
+
+<html>
+
+    <head>
+	    <meta name="generator" content="Hugo 0.68.3" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="/css/bootstrap.css">
+        <link rel="stylesheet" href="/css/stylesheet.css">
+        <link rel="icon" href="/assets/favicon.ico" type="image/png">
+
+        <script src="/scripts/manifest.js"></script>
+        <script src="/scripts/settings.js"></script>
+        <script src="/scripts/offlineeditor.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+        <script src="draw\scripts\settings-copy.js"></script>
+        <script>
+        // modify the zoom level of the canvas
+        GameSettings.cameraZoomMin = 0.15;
+        GameSettings.cameraZoomMax = 0.15;
+        GameSettings.cameraStartZoom = 0.15;
+        </script>
+
+        <script>
+        function addTextFromFileToHTML() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'track.txt', true);
+        xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+        // Get the text from the file
+        var text = xhr.responseText;
+        console.log("Loaded text from file:", text);
+            
+        // Extract title and author using regular expressions
+        var titleMatch = text.match(/"title":"(.+?)"/);
+        var authorMatch = text.match(/"author":"(.+?)"/);
+        var descrMatch = text.match(/"descr":"(.+?)"/)
+        var title = titleMatch ? titleMatch[1] : "No title found";
+        var author = authorMatch ? authorMatch[1] : "No author found";
+        var descr = descrMatch ? descrMatch[1] : "No description found";
+
+            // Add title and author to HTML page
+        document.getElementById("title").innerText = title;
+        document.getElementById("author").innerText = author;
+        document.getElementById("descr").innerText = descr;
+        }
+        };
+        xhr.send();}
+        addTextFromFileToHTML();
+        </script>
+
+        <title>
+            freerider.app
+        </title>
+    </head>
+
+    <body>
+        <div class="container-fluid">
+            <div class="mb-4">
+                <a href="/" id=home class="">freerider.app</a>
+                <a href="/" id=home class=""><img id="free-rider" src="/assets/favicon.png" alt="Description of the image" width="24" height="16"></a>
+            </div>
+
+        <style>
+            ul {
+                margin-left: 0px;
+                padding-left: 0px;
+                list-style-type: none;
+            }
+
+            li {
+                display: inline-block;
+                border: 1px solid #dee2e6;
+                background-color: #f9f9f9;
+                padding: .1em .3em;
+                margin: .1em;
+            }
+
+            h2 {
+                margin-top: 2em;
+            }
+
+            a {
+                position: relative;
+                z-index: 2;
+            }
+
+            iframe {
+                position: relative;
+                z-index: 2;
+            }
+
+            text {
+                z-index: 2;
+            }
+
+            code {
+                position: relative;
+                z-index: 2;
+            }
+
+            canvas {
+                top: -1000px;
+                right: -1200px;
+            }
+
+            body {
+                overflow: hidden;
+            }
+
+            .link,a {
+                /*change to "color: #aaa" if you want scenery gray*/
+                color: #1F80C3;
+            }
+
+            #title {
+                color: white;
+                background-color: #aaa;
+                text-decoration: None;
+                padding: .3em;
+            }
+
+            #title:hover {
+                background-color: #1884cf;
+            }
+
+            #author {
+                color: white;
+                background-color: #aaa;
+                text-decoration: None;
+                padding: .3em;
+            }
+
+            #author:hover {
+                background-color: #1884cf;
+            }
+        </style>
+        <!-- Content below: -->
+
+        <code id="title"></code> <code id="author"></code><br> 
+        <p id="descr"></p>
+
+        <!-- Closing lines, leave these alone! -->
+    </body>
+</html>
+
