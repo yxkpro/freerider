@@ -111,7 +111,7 @@ export default class ImportUI extends UIView {
         // for importing from a frhd track id
         // note: requires some method of getting cors
         else if (type == 'number') {
-            fetch('https://cors-anywhere.herokuapp.com/https://www.freeriderhd.com/t/${importInput.value}"?ajax=!0')
+            fetch(`https://cors-anywhere.herokuapp.com/https://cdn.freeriderhd.com/free_rider_hd/tracks/prd/${importInput.value}/track-data-v1.js`)
                 .then((i) => i.text())
                 .then((i) => {
                     let code = i.match(/"code":"(.+?)"/)?.[1];
