@@ -91,9 +91,11 @@ var GameSettings = {
         "SegmentLengthSensitivity": 0.1
     },
     "bikes": {
-        "wheelSize": ["Small", "Medium", "Large"],
+        "wheelSizerear": ["Mini", "Small", "Medium", "Large"],
+        "wheelSizefront": ["Mini", "Small", "Medium", "Large"],
         "frameType": ["BMX", "MTB", "Trial"],
-        "rideStyle": ["Maxime", "Pete", "Char", "Stig"]
+        "rideStyle": ["Maxime", "Pete", "Char", "Stig"],
+        "frameSize": ["Mini", "Small", "Medium", "Large"]
     },
     "playHotkeys": {
         "up": [38, 87],

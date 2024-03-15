@@ -11990,20 +11990,24 @@
             }
             createMasses(e, s) {
                 this.masses = [];
-                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
-                , wS = wheelSize[GameSettings.wheelSize]
+                , wSf = wheelSizefront[GameSettings.wheelSizefront]
+                , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
-                , rS = rideStyle[GameSettings.rideStyle];
+                , rS = rideStyle[GameSettings.rideStyle]
+                , fS = frameSize[GameSettings.frameSize];
                 const i = new A
-                  , n = new X(new t.Z(e.x + 21,e.y + 3),this)
-                  , r = new X(new t.Z(e.x + -21,e.y + 3),this);
-                i.init(new t.Z(e.x,e.y - 36), this),
+                  , n = new X(new t.Z(e.x + 21 * wSf,e.y + 3),this)
+                  , r = new X(new t.Z(e.x + -21 * wSr,e.y + 3),this);
+                i.init(new t.Z(e.x,e.y - 36 * fS), this),
                 i.drive = this.createRagdoll.bind(this),
-                r.radius = 11.7 * wS,
-                n.radius = 11.7 * wS,
-                i.radius = 14,
+                r.radius = 11.7 * wSr,
+                n.radius = 11.7 * wSf,
+                i.radius = 14 * fS,
                 i.vel.equ(s),
                 r.vel.equ(s),
                 n.vel.equ(s),
@@ -12014,25 +12018,29 @@
             }
             createSprings() {
                 this.springs = [];
-                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
-                , wS = wheelSize[GameSettings.wheelSize]
+                , wSf = wheelSizefront[GameSettings.wheelSizefront]
+                , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
-                , rS = rideStyle[GameSettings.rideStyle];
+                , rS = rideStyle[GameSettings.rideStyle]
+                , fS = frameSize[GameSettings.frameSize];
                 const t = new N(this.head,this.rearWheel,this)
                   , e = new N(this.rearWheel,this.frontWheel,this)
                   , s = new N(this.frontWheel,this.head,this);
-                e.lrest = 42,
-                e.leff = 42,
+                e.lrest = 42 * fS,
+                e.leff = 42 * fS,
                 e.springConstant = .35,
                 e.dampConstant = .3,
-                t.lrest = 45,
-                t.leff = 45,
+                t.lrest = 45 * fS,
+                t.leff = 45 * fS,
                 t.springConstant = .35,
                 t.dampConstant = .3,
-                s.lrest = 45,
-                s.leff = 45,
+                s.lrest = 45 * fS,
+                s.leff = 45 * fS,
                 s.springConstant = .35,
                 s.dampConstant = .3,
                 this.springs.push(t, e, s),
@@ -12075,12 +12083,16 @@
                 this.focalPoint = this.ragdoll ? this.ragdoll.head : this.head
             }
             getStickMan() {
-                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
-                , wS = wheelSize[GameSettings.wheelSize]
+                , wSf = wheelSizefront[GameSettings.wheelSizefront]
+                , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
-                , rS = rideStyle[GameSettings.rideStyle];
+                , rS = rideStyle[GameSettings.rideStyle]
+                , fS = frameSize[GameSettings.frameSize];
                 const e = this.dir
                   , s = this.head
                   , i = this.frontWheel
@@ -12149,12 +12161,16 @@
                 this.frontSpring.leff = t
             }
             control() {
-                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
-                , rideStyle = {"Pete": 1, "Maxime": 0.75, "Char": 1.5}
-                , wS = wheelSize[GameSettings.wheelSize]
+                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 1.5}
+                , wSf = wheelSizefront[GameSettings.wheelSizefront]
+                , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
-                , rS = rideStyle[GameSettings.rideStyle];
+                , rS = rideStyle[GameSettings.rideStyle]
+                , fS = frameSize[GameSettings.frameSize];
                 const t = this.gamepad
                 , e = t.isButtonDown("up")
                 , s = t.isButtonDown("down")
@@ -12204,12 +12220,16 @@
             drawBikeFrame() {
                   const e = this.scene;
 
-                  const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                  const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                  , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                  , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                   , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                   , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
-                  , wS = wheelSize[GameSettings.wheelSize]
+                  , wSf = wheelSizefront[GameSettings.wheelSizefront]
+                  , wSr = wheelSizerear[GameSettings.wheelSizerear]
                   , fT = frameType[GameSettings.frameType]
                   , rS = rideStyle[GameSettings.rideStyle]
+                  , fS = frameSize[GameSettings.frameSize]
 
                   , s = e.game.mod.getVar("crBmx")
                   , i = e.game.mod.getVar("crHead")
@@ -12233,7 +12253,8 @@
                   , v = e.camera.zoom
                   , y = e.game.canvas.getContext("2d")
                   , w = 3.5
-                  , x = 10 * wS
+                  , xr = 10 * wSr
+                  , xf = 10 * wSf
                 y.globalAlpha = c,
                 y.strokeStyle = "rgba(0,0,0,1)",
                 y.lineWidth = w * v,
@@ -12241,9 +12262,9 @@
                 y.lineJoin = "round",
                 y.fillStyle = "#e4000f",
                 y.beginPath(),
-                y.arc(h.x, h.y, x * v, 0, 2 * Math.PI, !1),
-                y.moveTo(a.x + x * v, a.y),
-                y.arc(a.x, a.y, x * v, 0, 2 * Math.PI, !1),
+                y.arc(h.x, h.y, xf * v, 0, 2 * Math.PI, !1),
+                y.moveTo(a.x + xr * v, a.y),
+                y.arc(a.x, a.y, xr * v, 0, 2 * Math.PI, !1),
                 s || y.fill(),
                 y.stroke();
                 y.globalAlpha = c,
@@ -12253,9 +12274,9 @@
                 y.lineJoin = "round",
                 y.fillStyle = wc,
                 y.beginPath(),
-                y.arc(h.x, h.y, x * v, 0, 2 * Math.PI, !1),
-                y.moveTo(a.x + x * v, a.y),
-                y.arc(a.x, a.y, x * v, 0, 2 * Math.PI, !1),
+                y.arc(h.x, h.y, xf * v, 0, 2 * Math.PI, !1),
+                y.moveTo(a.x + xr * v, a.y),
+                y.arc(a.x, a.y, xr * v, 0, 2 * Math.PI, !1),
                 s || y.fill(),
                 y.stroke();
                 const b = p.transform(.3, .25)
@@ -13524,20 +13545,24 @@
                 }
             createMasses(e, s) {
                 this.masses = [];
-                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
-                , wS = wheelSize[GameSettings.wheelSize]
+                , wSf = wheelSizefront[GameSettings.wheelSizefront]
+                , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
-                , rS = rideStyle[GameSettings.rideStyle];
+                , rS = rideStyle[GameSettings.rideStyle]
+                , fS = frameSize[GameSettings.frameSize];
                 const i = new A
-                  , n = new X(new t.Z(e.x + 23,e.y),this)
-                  , r = new X(new t.Z(e.x + -23,e.y),this);
-                i.init(new t.Z(e.x + 2,e.y + -38), this),
+                  , n = new X(new t.Z(e.x + 23 * wSf,e.y),this)
+                  , r = new X(new t.Z(e.x + -23 * wSr,e.y),this);
+                i.init(new t.Z(e.x + 2,e.y + -38 * fS), this),
                 i.drive = this.createRagdoll.bind(this),
-                r.radius = 14 * wS,
-                n.radius = 14 * wS,
-                i.radius = 14,
+                r.radius = 14 * wSr,
+                n.radius = 14 * wSf,
+                i.radius = 14 * fS,
                 i.vel.equ(s),
                 r.vel.equ(s),
                 n.vel.equ(s),
@@ -13550,25 +13575,29 @@
             }
             createSprings() {
                 this.springs = [];
-                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
-                , wS = wheelSize[GameSettings.wheelSize]
+                , wSf = wheelSizefront[GameSettings.wheelSizefront]
+                , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
-                , rS = rideStyle[GameSettings.rideStyle];
+                , rS = rideStyle[GameSettings.rideStyle]
+                , fS = frameSize[GameSettings.frameSize];
                 const t = new N(this.head,this.rearWheel,this)
                   , e = new N(this.rearWheel,this.frontWheel,this)
                   , s = new N(this.frontWheel,this.head,this);
-                e.lrest = 45,
-                e.leff = 45,
+                e.lrest = 45 * fS,
+                e.leff = 45 * fS,
                 e.springConstant = .2,
                 e.dampConstant = .3,
-                t.lrest = 47,
-                t.leff = 47,
+                t.lrest = 47 * fS,
+                t.leff = 47 * fS,
                 t.springConstant = .2,
                 t.dampConstant = .3,
-                s.lrest = 45,
-                s.leff = 45,
+                s.lrest = 45 * fS,
+                s.leff = 45 * fS,
                 s.springConstant = .2,
                 s.dampConstant = .3,
                 this.springs.push(t),
@@ -13608,12 +13637,16 @@
             }
             getStickMan() {
                 const e = this.dir;
-                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
-                , wS = wheelSize[GameSettings.wheelSize]
+                , wSf = wheelSizefront[GameSettings.wheelSizefront]
+                , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
                 , rS = rideStyle[GameSettings.rideStyle]
+                , fS = frameSize[GameSettings.frameSize]
                   , s = this.head
                   , i = this.frontWheel
                   , n = this.rearWheel
@@ -13691,12 +13724,16 @@
                 this.frontSpring.leff = t
             }
             control() {
-                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
-                , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
-                , wS = wheelSize[GameSettings.wheelSize]
+                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , wSf = wheelSizefront[GameSettings.wheelSizefront]
+                , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
-                , rS = rideStyle[GameSettings.rideStyle];
+                , rS = rideStyle[GameSettings.rideStyle]
+                , fS = frameSize[GameSettings.frameSize];
                 const t = this.gamepad
                   , e = t.isButtonDown("up")
                   , s = t.isButtonDown("down")
@@ -13739,12 +13776,16 @@
                 }
             }
             drawBikeFrame() {
-                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
+                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
-                , wS = wheelSize[GameSettings.wheelSize]
+                , wSf = wheelSizefront[GameSettings.wheelSizefront]
+                , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
-                , rS = rideStyle[GameSettings.rideStyle];
+                , rS = rideStyle[GameSettings.rideStyle]
+                , fS = frameSize[GameSettings.frameSize];
                 const e = this.scene
                   , s = e.game.mod.getVar("crMtb")
                   , i = e.game.mod.getVar("crHead")
@@ -13815,24 +13856,24 @@
                 u.lineJoin = "round",
                 u.beginPath(),
                 u.fillStyle = "rgba(200,200,200,0.2)",
-                u.arc(a.x, a.y, wS * 12.5 * c, 0, 2 * Math.PI, !1),
+                u.arc(a.x, a.y, wSr * 12.5 * c, 0, 2 * Math.PI, !1),
                 s || u.fill(),
                 u.stroke(),
                 u.beginPath(),
-                u.arc(h.x, h.y, wS * 12.5 * c, 0, 2 * Math.PI, !1),
+                u.arc(h.x, h.y, wSf * 12.5 * c, 0, 2 * Math.PI, !1),
                 s || u.fill(),
                 u.stroke(),
                 u.beginPath(),
                 u.strokeStyle = wc,
-                u.lineWidth = w * c * 0.5,
-                u.arc(h.x, h.y, wS * 12.5 * c, 0, 2 * Math.PI, !1),
+                u.lineWidth = w * c * 0.5 * wSf,
+                u.arc(h.x, h.y, wSf * 12.5 * c, 0, 2 * Math.PI, !1),
                 s || u.fill(),
                 u.stroke(),
 
                 u.beginPath(),
                 u.strokeStyle = wc,
-                u.lineWidth = w * c * 0.5,
-                u.arc(a.x, a.y, wS * 12.5 * c, 0, 2 * Math.PI, !1),
+                u.lineWidth = w * c * 0.5 * wSr,
+                u.arc(a.x, a.y, wSr * 12.5 * c, 0, 2 * Math.PI, !1),
                 s || u.fill(),
                 u.stroke(),
 
