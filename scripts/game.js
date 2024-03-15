@@ -10947,17 +10947,26 @@
                       , e = this.position
                       , v = this.scene;
                     let s = 3;
-                    if (v.game.mod.getVar("blackHat")){
-                    f(g(t.pos.x - e.x, 2) + g(t.pos.y - e.y, 2)) > 1500 && (s = 1),
-                    e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s,
-                    e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;}
-                    else {
-                    f(g(t.pos.x - e.x, 2) + g(t.pos.y - e.y, 2)) > 1500 && (s = 1),
-                    e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s,
-                    e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;
+
+                    f(g(t.pos.x - e.x, 2) + g(t.pos.y - e.y, 2)) > 1500 && (s = 1);
+
+                    if (this.settings.cameraMovementHorizontal) {
+                        e.x += (t.pos.x - e.x) / s;
+                    } else {
+                        e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s;
                     }
+
+                    if (this.settings.cameraMovementVertical) {
+                        e.y += (t.pos.y - e.y) / s;
+                    } else {
+                        e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;
+                    }
+
+                    
+                    
                 }
             }
+            
             updateZoom() {
                 this.zoom !== this.desiredZoom && (this.scene.loading = !0,
                 this._performZoom(),
@@ -11968,109 +11977,32 @@
           , rt = Math.floor
           , ot = Math.random
           , at = Math.min;
-        class ht extends q {
-            vehicleName = "BMX";
+          class ht extends q {
             constructor(t, e, s, i) {
                 super(),
                 super.init(t),
-                this.settings = GameSettings; // Use GameSettings as the settings object
-        this.options = {
-            wheelSize: GameSettings.bikes.wheelSize,
-            frameType: GameSettings.bikes.frameType,
-            rideStyle: GameSettings.bikes.rideStyle
-        };
-        this.setwheelSize(this.options.wheelSize[1]);
-        this.setframeType(this.options.frameType[0]);
-        this.setrideStyle(this.options.rideStyle[1]);
+                this.settings = GameSettings;
                 this.createMasses(e, i),
                 this.createSprings(),
                 this.updateCameraFocalPoint(),
-                this.stopSounds();
+                this.stopSounds(),
                 -1 === s && this.swap()
             }
-            setwheelSize(size) {
-                // Update bike attributes based on the selected wheel size
-                switch (size) {
-                    case "Small":
-                        // Adjust bike attributes for Small wheel size
-                        this.options.wheelSize = 0.9;
-                        // ... other adjustments
-                        break;
-        
-                    case "Medium":
-                        // Adjust bike attributes for Medium wheel size
-                        this.options.wheelSize = 1;
-                        // ... other adjustments
-                        break;
-        
-                    case "Large":
-                        // Adjust bike attributes for Large wheel size
-                        this.options.wheelSize = 1.1;
-                        // ... other adjustments
-                        break;
-        
-                    // Add more cases for other wheel sizes if needed
-        
-                    default:
-                        break;
-                }}
-            setframeType(type) {
-                // Update bike attributes based on the selected wheel size
-                switch (type) {
-                    case "BMX":
-                        // Adjust bike attributes for Small wheel size
-                        this.options.frameType = "BMX";
-                        // ... other adjustments
-                        break;
-        
-                    case "MTB":
-                        // Adjust bike attributes for Medium wheel size
-                        this.options.frameType = "MTB";
-                        // ... other adjustments
-                        break;
-        
-                    case "Trials":
-                        // Adjust bike attributes for Large wheel size
-                        this.options.frameType = "TRIALS";
-                        // ... other adjustments
-                        break;
-        
-                    // Add more cases for other wheel sizes if needed
-        
-                    default:
-                        break;
-                }}
-            setrideStyle(style) {
-                switch (style) {
-                    case "Maxime":
-                        this.options.rideStyle = 0.8;
-                        break;
-        
-                    case "Pete":
-                        this.options.rideStyle = 1;
-                        break;
-        
-                    case "Char":
-                        this.options.rideStyle = 1.25;
-                        break;
-        
-                    default:
-                        break;
-                }}
-                
             createMasses(e, s) {
                 this.masses = [];
-
+                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
+                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , wS = wheelSize[GameSettings.wheelSize]
+                , fT = frameType[GameSettings.frameType]
+                , rS = rideStyle[GameSettings.rideStyle];
                 const i = new A
-                  , wS = this.options.wheelSize
-                  , fT = this.options.frameType
-                  , rS = this.options.rideStyle
                   , n = new X(new t.Z(e.x + 21,e.y + 3),this)
                   , r = new X(new t.Z(e.x + -21,e.y + 3),this);
                 i.init(new t.Z(e.x,e.y - 36), this),
                 i.drive = this.createRagdoll.bind(this),
-                r.radius = 11.5 * wS,
-                n.radius = 11.5 * wS,
+                r.radius = 11.7 * wS,
+                n.radius = 11.7 * wS,
                 i.radius = 14,
                 i.vel.equ(s),
                 r.vel.equ(s),
@@ -12082,12 +12014,15 @@
             }
             createSprings() {
                 this.springs = [];
+                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
+                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , wS = wheelSize[GameSettings.wheelSize]
+                , fT = frameType[GameSettings.frameType]
+                , rS = rideStyle[GameSettings.rideStyle];
                 const t = new N(this.head,this.rearWheel,this)
                   , e = new N(this.rearWheel,this.frontWheel,this)
-                  , s = new N(this.frontWheel,this.head,this)
-                  , wS = this.options.wheelSize
-                  , fT = this.options.frameType
-                  , rS = this.options.rideStyle;
+                  , s = new N(this.frontWheel,this.head,this);
                 e.lrest = 42,
                 e.leff = 42,
                 e.springConstant = .35,
@@ -12105,7 +12040,6 @@
                 this.chasse = e,
                 this.frontSpring = s
             }
-            
             createRagdoll() {
                 this.ragdoll = new it(this.getStickMan(),this),
                 this.ragdoll.zero(this.head.vel, this.rearWheel.vel),
@@ -12141,10 +12075,13 @@
                 this.focalPoint = this.ragdoll ? this.ragdoll.head : this.head
             }
             getStickMan() {
+                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
+                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , wS = wheelSize[GameSettings.wheelSize]
+                , fT = frameType[GameSettings.frameType]
+                , rS = rideStyle[GameSettings.rideStyle];
                 const e = this.dir
-                  , wS = this.options.wheelSize
-                  , fT = this.options.frameType
-                  , rS = this.options.rideStyle
                   , s = this.head
                   , i = this.frontWheel
                   , n = this.rearWheel
@@ -12212,18 +12149,21 @@
                 this.frontSpring.leff = t
             }
             control() {
+                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
+                , rideStyle = {"Pete": 1, "Maxime": 0.75, "Char": 1.5}
+                , wS = wheelSize[GameSettings.wheelSize]
+                , fT = frameType[GameSettings.frameType]
+                , rS = rideStyle[GameSettings.rideStyle];
                 const t = this.gamepad
-                  , e = t.isButtonDown("up")
-                  , s = t.isButtonDown("down")
-                  , i = t.isButtonDown("left")
-                  , n = t.isButtonDown("right")
-                  , r = t.isButtonDown("z")
-                  , x = t.isButtonDown("x")
-                  , o = e ? 1 : 0
-                  , a = this.rearWheel
-                  , wS = this.options.wheelSize
-                  , fT = this.options.frameType
-                  , rS = this.options.rideStyle;
+                , e = t.isButtonDown("up")
+                , s = t.isButtonDown("down")
+                , i = t.isButtonDown("left")
+                , n = t.isButtonDown("right")
+                , r = t.isButtonDown("z")
+                , x = t.isButtonDown("x")
+                , o = e ? 1 : 0
+                , a = this.rearWheel;
                 a.motor += (o - a.motor) / 10,
                 r && !this.swapped && (this.swap(),
                 this.swapped = !0),
@@ -12262,13 +12202,22 @@
                 this.drawHeadAngle = -(nt(t.x, t.y) - Math.PI / 2)
             }
             drawBikeFrame() {
-                const e = this.scene
-                  , wS = this.options.wheelSize
-                  , fT = this.options.frameType
-                  , rS = this.options.rideStyle
+                  const e = this.scene;
+
+                  const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                  , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
+                  , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                  , wS = wheelSize[GameSettings.wheelSize]
+                  , fT = frameType[GameSettings.frameType]
+                  , rS = rideStyle[GameSettings.rideStyle]
+
                   , s = e.game.mod.getVar("crBmx")
                   , i = e.game.mod.getVar("crHead")
                   , n = e.game.mod.getVar("customColors")
+                  , hc = GameSettings.hatColor // Use hatColor from GameSettings
+                  , fc1 = GameSettings.frameColor1
+                  , fc2 = GameSettings.frameColor2
+                  , wc = GameSettings.wheelColor
                   , r = n ? Q(e.game.mod.getVar("vehicleColor")) : "#000"
                   , o = e.game.mod.getVar("blackHat")
                   , a = this.rearWheel.pos.toScreen(e)
@@ -12290,7 +12239,19 @@
                 y.lineWidth = w * v,
                 y.lineCap = "round",
                 y.lineJoin = "round",
-                y.fillStyle = "rgba(200,200, 200, 0.2)",
+                y.fillStyle = "#e4000f",
+                y.beginPath(),
+                y.arc(h.x, h.y, x * v, 0, 2 * Math.PI, !1),
+                y.moveTo(a.x + x * v, a.y),
+                y.arc(a.x, a.y, x * v, 0, 2 * Math.PI, !1),
+                s || y.fill(),
+                y.stroke();
+                y.globalAlpha = c,
+                y.strokeStyle = wc,
+                y.lineWidth = w * v * 0.25,
+                y.lineCap = "round",
+                y.lineJoin = "round",
+                y.fillStyle = wc,
                 y.beginPath(),
                 y.arc(h.x, h.y, x * v, 0, 2 * Math.PI, !1),
                 y.moveTo(a.x + x * v, a.y),
@@ -12329,6 +12290,7 @@
                 y.moveTo(A.x, A.y),
                 y.lineTo(z.x, z.y),
                 y.stroke())),
+
                 y.beginPath(),
                 y.strokeStyle = r || "#000000",
                 y.lineWidth = 3 * v,
@@ -12347,6 +12309,27 @@
                 y.moveTo(S.x, S.y),
                 y.lineTo(A.x, A.y),
                 y.stroke();
+
+                y.beginPath(),
+                y.strokeStyle = fc1,
+                y.lineWidth = 1 * v,
+                y.moveTo(T.x, T.y),
+                y.lineTo(b.x, b.y),
+                y.lineTo(a.x, a.y),
+                y.lineTo(_.x, _.y),
+                y.lineTo(C.x, C.y),
+                y.stroke(),
+                s || (y.beginPath(),
+                y.lineWidth = Math.max(1 * v, .5),
+                y.arc(_.x, _.y, 3 * v, 0, 2 * Math.PI, !1),
+                y.stroke()),
+                y.beginPath(),
+                y.strokeStyle = "#000",
+                y.lineWidth = s ? 1 * v : Math.max(1 * v, .5),
+                y.moveTo(S.x, S.y),
+                y.lineTo(A.x, A.y),
+                y.stroke();
+
                 const O = p.transform(.25, .4)
                   , F = p.transform(.17, .38)
                   , j = p.transform(.3, .45)
@@ -12356,7 +12339,22 @@
                   , N = p.transform(.82, .65)
                   , Z = p.transform(.78, .67);
                 if (y.beginPath(),
+                y.strokeStyle = "#000",
                 y.lineWidth = 3 * v,
+                y.moveTo(F.x, F.y),
+                y.lineTo(j.x, j.y),
+                y.moveTo(_.x, _.y),
+                y.lineTo(O.x, O.y),
+                y.moveTo(h.x, h.y),
+                y.lineTo(R.x, R.y),
+                y.lineTo(V.x, V.y),
+                y.lineTo(H.x, H.y),
+                y.lineTo(N.x, N.y),
+                y.lineTo(Z.x, Z.y),
+                y.stroke(),
+                y.beginPath(),
+                y.strokeStyle = fc2,
+                y.lineWidth = 1 * v,
                 y.moveTo(F.x, F.y),
                 y.lineTo(j.x, j.y),
                 y.moveTo(_.x, _.y),
@@ -12425,7 +12423,8 @@
                   y.fill();}}
                   else
                   {const t=P.transform(.35,1.15),e=P.transform(-.05,1.1),s=P.transform(.25,1.13),i=P.transform(.05,1.11),n=P.transform(.25,1.35),r=P.transform(-.03,1.3), xx = this.drawHeadAngle, qq = this.dir, tt = this.waist;y.strokeStyle = "#000000";
-                  y.fillStyle = "rgba(0,0,0,0)";
+                  //bmx hat color hatcolor
+                  y.fillStyle = hc;
                   y.lineWidth = 2 * v;
                   y.beginPath();
                 y.moveTo(a.x + 5 * v, a.y);
@@ -12686,6 +12685,8 @@
                   , s = e.game.mod.getVar("crBmx")
                   , i = e.game.mod.getVar("crHead")
                   , n = e.game.mod.getVar("customColors")
+                  , hc = GameSettings.hatColor // Use hatColor from GameSettings
+                  , bc = GameSettings.bikeColor
                   , r = n ? Q(e.game.mod.getVar("vehicleColor")) : "#000"
                   , o = e.game.mod.getVar("blackHat")
                   , a = this.rearWheel.pos.toScreen(e)
@@ -12842,7 +12843,7 @@
                   y.fill();}}
                   else
                   {const t=P.transform(.35,1.15),e=P.transform(-.05,1.1),s=P.transform(.25,1.13),i=P.transform(.05,1.11),n=P.transform(.25,1.35),r=P.transform(-.03,1.3), xx = this.drawHeadAngle, qq = this.dir, tt = this.waist;y.strokeStyle = "#000000";
-                  y.fillStyle = "rgba(0,0,0,0)";
+                  y.fillStyle = "#e4000f";
                   y.lineWidth = 2 * v;
                   y.beginPath();
                 y.moveTo(a.x + 5 * v, a.y);
@@ -13515,86 +13516,21 @@
                     this.color = "rgba(0,0,0,1)",
                     super.init(t),
                     this.settings = GameSettings; // Use GameSettings as the settings object
-            this.options = {
-                wheelSize: GameSettings.bikes.wheelSize,
-                frameType: GameSettings.bikes.frameType,
-                rideStyle: GameSettings.bikes.rideStyle
-            };
-            this.setwheelSize(this.options.wheelSize[1]);
-            this.setframeType(this.options.frameType[1]);
-            this.setrideStyle(this.options.rideStyle[1]);
                     this.createMasses(e, i),
                     this.createSprings(),
                     this.updateCameraFocalPoint(),
                     this.stopSounds();
                     -1 === s && this.swap()
                 }
-                setwheelSize(size) {
-                    // Update bike attributes based on the selected wheel size
-                    switch (size) {
-                        case "Small":
-                            // Adjust bike attributes for Small wheel size
-                            this.options.wheelSize = 0.8;
-                            // ... other adjustments
-                            break;
-            
-                        case "Medium":
-                            // Adjust bike attributes for Medium wheel size
-                            this.options.wheelSize = 1;
-                            // ... other adjustments
-                            break;
-            
-                        case "Large":
-                            // Adjust bike attributes for Large wheel size
-                            this.options.wheelSize = 1.25;
-                            // ... other adjustments
-                            break;
-            
-                        // Add more cases for other wheel sizes if needed
-            
-                        default:
-                            break;
-                    }}
-                setframeType(type) {
-                    switch (type) {
-                        case "BMX":
-                            this.options.frameType = "BMX";
-                            break;
-            
-                        case "MTB":
-                            this.options.frameType = "MTB";
-                            break;
-            
-                        case "Trials":
-                            this.options.frameType = "TRIALS";
-                            break;
-            
-                        default:
-                            break;
-                    }}
-                setrideStyle(style) {
-                    switch (style) {
-                        case "Maxime":
-                            this.options.rideStyle = 0.6;
-                            break;
-            
-                        case "Pete":
-                            this.options.rideStyle = 1;
-                            break;
-            
-                        case "Char":
-                            this.options.rideStyle = 1.25;
-                            break;
-            
-                        default:
-                            break;
-                    }}
             createMasses(e, s) {
                 this.masses = [];
+                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
+                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , wS = wheelSize[GameSettings.wheelSize]
+                , fT = frameType[GameSettings.frameType]
+                , rS = rideStyle[GameSettings.rideStyle];
                 const i = new A
-                , wS = this.options.wheelSize
-                , fT = this.options.frameType
-                , rS = this.options.rideStyle
                   , n = new X(new t.Z(e.x + 23,e.y),this)
                   , r = new X(new t.Z(e.x + -23,e.y),this);
                 i.init(new t.Z(e.x + 2,e.y + -38), this),
@@ -13614,12 +13550,15 @@
             }
             createSprings() {
                 this.springs = [];
+                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
+                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , wS = wheelSize[GameSettings.wheelSize]
+                , fT = frameType[GameSettings.frameType]
+                , rS = rideStyle[GameSettings.rideStyle];
                 const t = new N(this.head,this.rearWheel,this)
                   , e = new N(this.rearWheel,this.frontWheel,this)
-                  , s = new N(this.frontWheel,this.head,this)
-                  , wS = this.options.wheelSize
-                  , fT = this.options.frameType
-                  , rS = this.options.rideStyle;
+                  , s = new N(this.frontWheel,this.head,this);
                 e.lrest = 45,
                 e.leff = 45,
                 e.springConstant = .2,
@@ -13668,10 +13607,13 @@
                 this.focalPoint = this.ragdoll ? this.ragdoll.head : this.head
             }
             getStickMan() {
-                const e = this.dir
-                  , wS = this.options.wheelSize
-                  , fT = this.options.frameType
-                  , rS = this.options.rideStyle
+                const e = this.dir;
+                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
+                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , wS = wheelSize[GameSettings.wheelSize]
+                , fT = frameType[GameSettings.frameType]
+                , rS = rideStyle[GameSettings.rideStyle]
                   , s = this.head
                   , i = this.frontWheel
                   , n = this.rearWheel
@@ -13749,10 +13691,13 @@
                 this.frontSpring.leff = t
             }
             control() {
+                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
+                , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
+                , wS = wheelSize[GameSettings.wheelSize]
+                , fT = frameType[GameSettings.frameType]
+                , rS = rideStyle[GameSettings.rideStyle];
                 const t = this.gamepad
-                  , wS = this.options.wheelSize
-                  , fT = this.options.frameType
-                  , rS = this.options.rideStyle
                   , e = t.isButtonDown("up")
                   , s = t.isButtonDown("down")
                   , i = t.isButtonDown("left")
@@ -13794,13 +13739,20 @@
                 }
             }
             drawBikeFrame() {
+                const wheelSize = {"Small": 0.9,"Medium": 1,"Large": 1.1}
+                , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
+                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , wS = wheelSize[GameSettings.wheelSize]
+                , fT = frameType[GameSettings.frameType]
+                , rS = rideStyle[GameSettings.rideStyle];
                 const e = this.scene
-                  , wS = this.options.wheelSize
-                  , fT = this.options.frameType
-                  , rS = this.options.rideStyle
                   , s = e.game.mod.getVar("crMtb")
                   , i = e.game.mod.getVar("crHead")
                   , n = e.game.mod.getVar("customColors")
+                  , hc = GameSettings.hatColor // Use hatColor from GameSettings
+                  , fc1 = GameSettings.frameColor1
+                  , fc2 = GameSettings.frameColor2
+                  , wc = GameSettings.wheelColor
                   , r = n ? Q(e.game.mod.getVar("vehicleColor")) : "#000"
                   , o = e.game.mod.getVar("blackHat")
                   , a = this.frontWheel.pos.toScreen(e)
@@ -13845,6 +13797,7 @@
                 const R = k.add(O.factor(.3)).add(j.factor(80 / F));
                 if (this.crashed || (u.strokeStyle = n ? tt([...e.game.mod.getVar("riderColor"), .5 * d]) : "rgba(0,0,0," + .5 * d + ")",
                 u.lineWidth = 6 * c,
+                u.fillStyle = "#fff",
                 u.beginPath(),
                 u.moveTo(C.x, C.y),
                 u.lineTo(D.x, D.y),
@@ -13861,22 +13814,42 @@
                 u.lineCap = "round",
                 u.lineJoin = "round",
                 u.beginPath(),
-                
                 u.fillStyle = "rgba(200,200,200,0.2)",
                 u.arc(a.x, a.y, wS * 12.5 * c, 0, 2 * Math.PI, !1),
-                
                 s || u.fill(),
                 u.stroke(),
                 u.beginPath(),
                 u.arc(h.x, h.y, wS * 12.5 * c, 0, 2 * Math.PI, !1),
                 s || u.fill(),
                 u.stroke(),
-                s ? (u.fillStyle = "rgb(128, 128, 128)",
+                u.beginPath(),
+                u.strokeStyle = wc,
+                u.lineWidth = w * c * 0.5,
+                u.arc(h.x, h.y, wS * 12.5 * c, 0, 2 * Math.PI, !1),
+                s || u.fill(),
+                u.stroke(),
+
+                u.beginPath(),
+                u.strokeStyle = wc,
+                u.lineWidth = w * c * 0.5,
+                u.arc(a.x, a.y, wS * 12.5 * c, 0, 2 * Math.PI, !1),
+                s || u.fill(),
+                u.stroke(),
+
+            
+                
+                s ? (u.fillStyle = "black",
                 u.globalCompositeOperation = "destination-over",
                 u.beginPath(),
                 u.arc(h.x, h.y, 5 * c, 0, 2 * Math.PI),
                 u.moveTo(a.x, a.y),
                 u.arc(a.x, a.y, 4 * c, 0, 2 * Math.PI),
+                u.fill(),
+                u.beginPath(),    
+                u.fillStyle = fc2,
+                u.arc(h.x, h.y, 4 * c, 0, 2 * Math.PI),
+                u.moveTo(a.x, a.y),
+                u.arc(a.x, a.y, 3 * c, 0, 2 * Math.PI),
                 u.globalCompositeOperation = "source-over",
                 u.fill()) : (u.strokeStyle = "rgba(153, 153, 153,1)",
                 u.fillStyle = "rgba(204, 204, 204,1)",
@@ -13928,6 +13901,49 @@
                 u.moveTo(...x.add(b).toArray()),
                 u.lineTo(...x.sub(b).toArray()),
                 u.stroke(),
+
+                u.beginPath(),
+                u.strokeStyle = fc1,
+                u.lineWidth = 3 * c,
+                u.moveTo(h.x, h.y),
+                u.lineTo(...y.transform(.4, .05).toArray()),
+                u.moveTo(...v.transform(.72, .64).toArray()),
+                u.lineTo(...v.transform(.46, .4).toArray()),
+                u.lineTo(...y.transform(.4, .05).toArray()),
+                u.stroke(),
+                u.beginPath(),
+                u.lineWidth = 2 * c,
+                u.strokeStyle = "#000000",
+                u.moveTo(...v.transform(.72, .64).toArray()),
+                u.lineTo(...y.transform(.43, .05).toArray()),
+                u.stroke(),
+                u.beginPath(),
+                u.lineWidth = 1 * c,
+                u.moveTo(...v.transform(.46, .4).toArray()),
+                u.lineTo(...v.transform(.28, .5).toArray()),
+                u.stroke(),
+                u.beginPath(),
+                u.lineWidth = 2 * c,
+                u.moveTo(...v.transform(.45, .3).toArray()),
+                u.lineTo(...v.transform(.3, .4).toArray()),
+                u.lineTo(...v.transform(.25, .6).toArray()),
+                u.moveTo(...v.transform(.17, .6).toArray()),
+                u.lineTo(...v.transform(.3, .6).toArray()),
+                u.stroke(),
+                u.beginPath(),
+                u.lineWidth = 3 * c,
+                u.moveTo(a.x, a.y),
+                u.lineTo(...v.transform(.71, .73).toArray()),
+                u.lineTo(...v.transform(.73, .77).toArray()),
+                u.lineTo(...v.transform(.7, .8).toArray()),
+                u.stroke(),
+                u.beginPath(),
+                u.lineWidth = (s ? 2 : 1) * c,
+                u.moveTo(...x.add(b).toArray()),
+                u.lineTo(...x.sub(b).toArray()),
+                u.stroke(),
+
+
                 this.crashed)
                     this.ragdoll && this.ragdoll.draw();
                 else {
@@ -13963,7 +13979,7 @@
                               qq = this.dir
                     
                         u.strokeStyle = "#000000";
-                        u.fillStyle = "rgba(0,0,0,0)";
+                        u.fillStyle = "#e4000f";
                         u.lineWidth = 2 * c;
                     
                         u.beginPath();
@@ -13991,7 +14007,8 @@
                               qq = this.dir
                     
                         u.strokeStyle = "#000000";
-                        u.fillStyle = "rgba(0,0,0,0)";
+                        //mtb hat color hatcolor
+                        u.fillStyle = hc;
                         u.lineWidth = 2 * c;
                     
                         u.beginPath();
@@ -14002,11 +14019,11 @@
                         u.closePath();
                         if (this.dir < 0 ) {
                           u.beginPath();
-                          u.arc(z.x, z.y, 4 * c, a + Math.PI + 15 * Math.PI / 180 + Math.PI, a + 15 * Math.PI / 180 + Math.PI);
+                          u.arc(z.x, z.y, 4.2 * c, a + Math.PI + 18 * Math.PI / 180 + Math.PI, a + 13 * Math.PI / 180 + Math.PI);
                           u.fill();}
                         
                           else { u.beginPath();
-                            u.arc(z.x, z.y, 4 * c, a + Math.PI - 15 * Math.PI / 180, a - 15 * Math.PI / 180);
+                            u.arc(z.x, z.y, 4.2 * c, a + Math.PI - 13 * Math.PI / 180, a - 18 * Math.PI / 180);
                             u.fill();
                             
                         u.beginPath();}
@@ -14020,7 +14037,7 @@
                               qq = this.dir
                     
                         u.strokeStyle = "#000000";
-                        u.fillStyle = "##48ad16";
+                        u.fillStyle = "#48ad16";
                         u.lineWidth = 2 * c;
                     
                         u.beginPath();

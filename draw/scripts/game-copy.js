@@ -14020,7 +14020,7 @@
                               qq = this.dir
                     
                         u.strokeStyle = "#000000";
-                        u.fillStyle = "##48ad16";
+                        u.fillStyle = "#48ad16";
                         u.lineWidth = 2 * c;
                     
                         u.beginPath();

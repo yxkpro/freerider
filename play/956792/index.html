@@ -20,13 +20,23 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-        <script src="draw\scripts\settings-copy.js"></script>
         <script>
-        // modify the zoom level of the canvas
-        GameSettings.cameraZoomMin = 0.15;
-        GameSettings.cameraZoomMax = 0.15;
-        GameSettings.cameraStartZoom = 0.15;
-        </script>
+            // modify the zoom level of the canvas
+            GameSettings.cameraZoomMin = 0.15;
+            GameSettings.cameraZoomMax = 0.15;
+            GameSettings.cameraStartZoom = 0.15;
+            GameSettings.cameraMovementHorizontal = false;
+            GameSettings.cameraMovementVertical = false;
+    
+            GameSettings.hatColor = "rgba(0,0,0,0)";
+            GameSettings.frameColor1 = "black";
+            GameSettings.frameColor2 = "black";
+            GameSettings.wheelColor = "black";
+    
+            GameSettings.wheelSize = "Medium";
+            GameSettings.frameType = "BMX";
+            GameSettings.rideStyle = "Pete";
+            </script>
 
         <script>
         function addTextFromFileToHTML() {
