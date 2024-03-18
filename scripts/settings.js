@@ -14,6 +14,7 @@ var GameSettings = {
     "width": 900,
     "height": 500,
     "fullscreen": false,
+    "defaultTrack": "track.txt",
     "drawSectorSize": 1000,
     "physicsSectorSize": 100,
     "startVehicle": "BMX",

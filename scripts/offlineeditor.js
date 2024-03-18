@@ -1948,6 +1948,7 @@
     }],
     25: [function(e, t) {
         var n = e("react")
+          , x = GameSettings.defaultTrack
           , r = n.createClass({
             displayName: "ImportDialog",
             hasFileAPI: !!(window.File && window.FileList && window.FileReader),
@@ -1960,21 +1961,18 @@
             },
         
             loadDefaultTextFromFile: function() {
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'track.txt', true);
-                xhr.onreadystatechange = function() {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        // Get the text from the file
-                        var text = xhr.responseText;
+                fetch(GameSettings.defaultTrack)
+                    .then(response => response.text())
+                    .then(text => {
                         console.log("Loaded text from file:", text);
-                        
+            
                         // Extract code using regular expression
                         var codeMatch = text.match(/"code":"(.+?)"/);
                         var defaultCode = codeMatch ? codeMatch[1] : null;
             
                         if (defaultCode) {
                             console.log("Extracted code:", defaultCode);
-                            
+            
                             // Update the state with the extracted code
                             this.setState({ defaultText: defaultCode });
                         } else {
@@ -1983,10 +1981,11 @@
                             // Update the state with the entire contents of the file
                             this.setState({ defaultText: text });
                         }
-                    }
-                }.bind(this);
-                xhr.send();
-            },         
+                    })
+                    .catch(error => {
+                        console.error("Error loading text from file:", error);
+                    });
+            },
             
             getInitialState: function() {
                 return {
