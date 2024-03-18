@@ -93,7 +93,6 @@ var GameSettings = {
     "bikes": {
         "wheelSizerear": ["Mini", "Small", "Medium", "Large"],
         "wheelSizefront": ["Mini", "Small", "Medium", "Large"],
-        "frameType": ["BMX", "MTB", "Trial"],
         "rideStyle": ["Maxime", "Pete", "Char", "Stig"],
         "frameSize": ["Mini", "Small", "Medium", "Large"]
     },
@@ -106,7 +105,8 @@ var GameSettings = {
         "enter": 13,
         "z": 90,
         "x": 88,
-        "change_vehicle": 86
+        "change_vehicle": 86,
+        "backspace": 8
     },
     "editorHotkeys": {
         "up": 38,
@@ -123,7 +123,8 @@ var GameSettings = {
         "change_vehicle": 86,
         "export": 187,
         "import": 189,
-        "enter": 13
+        "enter": 13,
+        "backspace": 8
     },
     "keysToRecord": ["up", "down", "left", "right", "enter", "backspace", "z"],
     "user": {

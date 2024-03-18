@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 
-        <div id="game-container" style="position: relative; z-index: 0;"></div>
+<div id="game-container" style="position: relative; z-index: 0;"></div>
 
 <html>
-
     <head>
 	    <meta name="generator" content="Hugo 0.68.3" />
         <meta charset="utf-8">
@@ -11,111 +10,62 @@
 
         <link rel="stylesheet" href="/css/bootstrap.css">
         <link rel="stylesheet" href="/css/stylesheet.css">
-        <link rel="icon" href="/assets/favicon.ico" type="image/png">
+        <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
 
         <script src="/scripts/manifest.js"></script>
         <script src="/scripts/settings.js"></script>
         <script src="/scripts/offlineeditor.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
-        <script>
-            // modify the zoom level of the canvas
-            GameSettings.cameraZoomMin = 0.5;
-            GameSettings.cameraZoomMax = 0.5;
-            GameSettings.cameraStartZoom = 0.5;
-            GameSettings.cameraMovementHorizontal = false;
-            GameSettings.cameraMovementVertical = false;
-
-            GameSettings.hatColor = "#236AB9";
-            GameSettings.frameColor1 = "#D4E4F7";
-            GameSettings.frameColor2 = "#FC7307";
-            GameSettings.wheelColor = "#236AB9";
-
-            GameSettings.wheelSizefront = "Medium";
-            GameSettings.wheelSizerear = "Medium";
-            GameSettings.frameType = "BMX";
-            GameSettings.frameSize = "Medium";
-            GameSettings.rideStyle = "Maxime";
-        </script>
-    
-        <title>
-            freerider.app
-        </title>
+        <title>freerider.app</title>
     </head>
 
     <body>
         <div class="container-fluid">
-            <div class="mb-4">
+            <p>
                 <a href="/" id=home class="">freerider.app</a>
-                <a href="/" id=home class=""><img id="free-rider" src="/assets/favicon.png" alt="Description of the image" width="24" height="16"></a>
-            </div>
+                <a href="/" id=home class=""><img id="free-rider" src="/assets/favicon.png" width="24" height="16"></a>
+            </p>
 
-        <style>
-            ul {
-                margin-left: 0px;
-                padding-left: 0px;
-                list-style-type: none;
-            }
+            <p>
+                <a href="/">home</a> /
+                <a href="/draw">draw</a> /
+                <a href="/play">play</a> /
+                <a href="/news">news</a>
+            </p>      
 
-            li {
-                display: inline-block;
-                border: 1px solid #dee2e6;
-                background-color: #f9f9f9;
-                padding: .1em .3em;
-                margin: .1em;
-            }
+            <style>
+                canvas {
+                    top: -1571px;
+                    right: -781px;
+                }
+            </style>
 
-            h2 {
-                margin-top: 2em;
-            }
+            <script>
+                GameSettings.cameraZoomMin = 0.5;
+                GameSettings.cameraZoomMax = 0.5;
+                GameSettings.cameraStartZoom = 0.5;
 
-            a {
-                position: relative;
-                z-index: 2;
-            }
+                GameSettings.cameraMovementHorizontal = false;
+                GameSettings.cameraMovementVertical = false;
+        
+                GameSettings.hatColor = "rgba(0,0,0,0)";
+                GameSettings.frameColor1 = "black";
+                GameSettings.frameColor2 = "black";
+                GameSettings.wheelColor = "black";
+        
+                GameSettings.wheelSizefront = "Medium";     // options are "Mini", "Small", "Medium", "Large"
+                GameSettings.wheelSizerear = "Medium";
+                GameSettings.frameSize = "Medium";
 
-            iframe {
-                position: relative;
-                z-index: 2;
-            }
+                GameSettings.rideStyle = "Pete";            // options are "Pete", "Maxime", "Char"
+            </script>
 
-            code {
-                position: relative;
-                z-index: 2;
-            }
+            <p>
+                freerider.app is a collaborative project.<br>
+                on any page, press "-" to import a code, and "+" to export. have fun!
+            </p>
 
-            canvas {
-                top: -1571px;
-                right: -781px;
-            }
-
-            body {
-                overflow: hidden;
-            }
-
-            .link,a {
-                /*change to "color: #aaa" if you want scenery gray*/
-                color: #1F80C3;
-            }
-        </style>
-
-        <p>
-            <a href="/">home</a> /
-            <a href="/draw">draw</a> /
-	        <a href="/play">play</a> /
-	        <a href="/news">news</a>
-        </p>
-
-        <!-- Content below: -->
-
-<p>
-    freerider.app is a community-driven fan project.<br>
-    on any page, press "-" to import a code, and "+" to export. have fun!
-</p>
-
-        <!-- Closing lines, leave these alone! -->
+        </div>
     </body>
 </html>
 

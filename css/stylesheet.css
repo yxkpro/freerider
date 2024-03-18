@@ -10,7 +10,7 @@ body {
     max-width: 900px;
     max-height: 640px;
     font-size: 11pt;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 center {
@@ -40,6 +40,8 @@ center {
 
 a {
     color: #aaa;
+    position: relative;
+    z-index: 2;
 }
 
 a:hover {
@@ -67,6 +69,8 @@ a:hover {
 
 iframe {
     border: none;
+    position: relative;
+    z-index: 2;
 }
 
 .blog-post-content {
@@ -123,6 +127,7 @@ code {
   white-space: pre;
   overflow-x: auto;
   color: #aa3300;
+  position: relative;
   z-index: 2;
 }
 
@@ -579,7 +584,7 @@ input,textarea {
 }
 
 .link,a {
-    /*color: #1F80C3;*/
+    color: #1F80C3;
     text-decoration: none
 }
 
@@ -603,4 +608,34 @@ input,textarea {
     background-color: #1884cf;
     border: none;
     outline: none
+}
+
+#slideshow {
+    width: 590px;
+}
+
+#title {
+    color: white;
+    background-color: #aaa;
+    text-decoration: None;
+    padding: .3em;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 1rem;
+}
+
+#title:hover {
+    background-color: #1884cf;
+}
+
+#author {
+    color: white;
+    background-color: #aaa;
+    text-decoration: None;
+    padding: .3em;
+    font-family: 'Ubuntu Mono', monospace;
+    font-size: 1rem;
+}
+
+#author:hover {
+    background-color: #1884cf;
 }

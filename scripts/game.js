@@ -11994,7 +11994,7 @@
                 , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
                 , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
-                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
                 , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
@@ -12022,7 +12022,7 @@
                 , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
                 , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
-                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
                 , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
@@ -12087,7 +12087,7 @@
                 , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
                 , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
-                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
                 , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
@@ -12165,7 +12165,7 @@
                 , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
                 , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
-                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 1.5}
+                , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
                 , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
@@ -12224,7 +12224,7 @@
                   , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
                   , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                   , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
-                  , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                  , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                   , wSf = wheelSizefront[GameSettings.wheelSizefront]
                   , wSr = wheelSizerear[GameSettings.wheelSizerear]
                   , fT = frameType[GameSettings.frameType]
@@ -13549,7 +13549,7 @@
                 , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
                 , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
-                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
                 , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
@@ -13579,7 +13579,7 @@
                 , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
                 , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
-                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
                 , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
@@ -13641,7 +13641,7 @@
                 , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
                 , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
-                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
                 , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
@@ -13728,7 +13728,7 @@
                 , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
                 , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
-                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
                 , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]
@@ -13780,7 +13780,7 @@
                 , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
                 , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
-                , rideStyle = {"Pete": 0.5, "Maxime": 1, "Char": 2}
+                , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
                 , wSr = wheelSizerear[GameSettings.wheelSizerear]
                 , fT = frameType[GameSettings.frameType]

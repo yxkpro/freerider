@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 
-        <div id="game-container" style="position: relative; z-index: 0;"></div>
+<div id="game-container" style="position: relative; z-index: 0;"></div>
 
 <html>
 
-    <head>
-	    <meta name="generator" content="Hugo 0.68.3" />
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<head>
+    <meta name="generator" content="Hugo 0.68.3" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <link rel="stylesheet" href="/css/bootstrap.css">
-        <link rel="stylesheet" href="/css/stylesheet.css">
-        <link rel="icon" href="/assets/favicon.ico" type="image/png">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/stylesheet.css">
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
 
-        <script src="/scripts/manifest.js"></script>
-        <script src="/scripts/settings.js"></script>
-        <script src="/scripts/offlineeditor.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="/scripts/manifest.js"></script>
+    <script src="/scripts/settings.js"></script>
+    <script src="/scripts/offlineeditor.js"></script>
+
+    <title>freerider.app</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <p>
+            <a href="/" id=home class="">freerider.app</a>
+            <a href="/" id=home class=""><img id="free-rider" src="/assets/favicon.png" width="24" height="16"></a>
+        </p>
+
+        <p>
+            <a href="/">home</a> /
+            <a href="/draw">draw</a> /
+            <a href="/play">play</a> /
+            <a href="/news">news</a>
+        </p>
+
+        <style>
+            canvas {
+                top: -1571px;
+                right: -781px;
+            }
+
+            body {
+                overflow-y: visible;
+            }
+        </style>
 
         <script>
-            // modify the zoom level of the canvas
             GameSettings.cameraZoomMin = 0.5;
             GameSettings.cameraZoomMax = 0.5;
             GameSettings.cameraStartZoom = 0.5;
+
             GameSettings.cameraMovementHorizontal = false;
             GameSettings.cameraMovementVertical = false;
 
@@ -33,263 +58,204 @@
             GameSettings.frameColor2 = "black";
             GameSettings.wheelColor = "black";
 
-            GameSettings.wheelSize = "Medium";
-            GameSettings.frameType = "BMX";
-            GameSettings.rideStyle = "Pete";
+            GameSettings.wheelSizefront = "Medium";     // options are "Mini", "Small", "Medium", "Large"
+            GameSettings.wheelSizerear = "Medium";
+            GameSettings.frameSize = "Medium";
+
+            GameSettings.rideStyle = "Pete";            // options are "Pete", "Maxime", "Char"
         </script>
-
-        <title>
-            freerider.app
-        </title>
-    </head>
-
-    <body>
-        <div class="container-fluid">
-            <div class="mb-4">
-                <a href="/" id=home class="">freerider.app</a>
-                <a href="/" id=home class=""><img id="free-rider" src="/assets/favicon.png" alt="Description of the image" width="24" height="16"></a>
-            </div>
-          
-        <style>
-            ul {
-                margin-left: 0px;
-                padding-left: 0px;
-                list-style-type: none;
-            }
-
-            li {
-                display: inline-block;
-                border: 1px solid #dee2e6;
-                background-color: #f9f9f9;
-                padding: .1em .3em;
-                margin: .1em;
-            }
-
-            h2 {
-                margin-top: 2em;
-            }
-
-            a {
-                position: relative;
-                z-index: 2;
-            }
-
-            iframe {
-                position: relative;
-                z-index: 2;
-            }
-
-            code {
-                position: relative;
-                z-index: 2;
-            }
-
-            canvas {
-                top: -1571px;
-                right: -781px;
-            }
-
-            #slideshow {
-                width: 590px;
-            }
-
-            .link,a {
-                /*change to "color: #aaa" if you want scenery gray*/
-                color: #1F80C3;
-            }
-        </style>
-
-    <p>
-        <a href="/">home</a> /
-        <a href="/draw">draw</a> /
-        <a href="/play">play</a> /
-        <a href="/news">news</a>
-    </p>
 
         <!-- Content below: -->
 
-<div id="slideshow">
-    <a id="link" href="https://www.freeriderhd.com/t/161980">
-        <img id="thumbnail" src="https://www.freeriderhd.com/t/161980/pic/768x250" alt="" style="width:100%;margin-bottom:-5px;"/>
-        <img id="next_thumbnail" src="https://www.freeriderhd.com/t/161980/pic/768x250" style="display:none;" alt="" />
-    </a>
-</div>
+        <div id="slideshow">
+            <a id="link" href="https://www.freeriderhd.com/t/161980">
+                <img id="thumbnail" src="https://www.freeriderhd.com/t/161980/pic/768x250" alt=""
+                    style="width:100%;margin-bottom:-5px;" />
+                <img id="next_thumbnail" src="https://www.freeriderhd.com/t/161980/pic/768x250" style="display:none;"
+                    alt="" />
+            </a>
+        </div>
 
-<script type="text/javascript">
-    var slideshow = [
-        "161980", "191253", "828584", "923803", "835249", 
-        "128626", "161980", "727034", "259634", "768733", 
-        "409462", "538346", "263698", "164323", "374537", 
-        "517429", "273754", "57072", "866629", "127165", 
-        "275122", "917456", "927503", "657481", "285906", 
-        "737010", "680227", "659234", "254429", "735496", 
-        "653562", "294683", "726656", "228974", "456878", 
-        "725866", "878989", "725944", "486253", "223859", 
-        "646153", "608078", "680828", "872769", "682672", 
-        "512321", "768079", "726656", "228974", "456878", 
-        "725866", "878989", "725944", "486253", "223859", 
-        "646153", "608078", "680828", "872769", "682672", 
-        "512321", "768079", "94801", "53080", "461867", 
-        "223397", "365006", "757002", "392808", "351329", 
-        "573939", "667230", "675208", "861460", "654028", 
-        "725622", "602609", "706471", "729954", "906266", 
-        "84565", "283232", "861490", "777257", "755617", "933124", "934030", "959258", "956792", "933124", "950004", "938064", "933124"
-    ];
+        <script type="text/javascript">
+            var slideshow = [
+                "161980", "191253", "828584", "923803", "835249",
+                "128626", "161980", "727034", "259634", "768733",
+                "409462", "538346", "263698", "164323", "374537",
+                "517429", "273754", "57072", "866629", "127165",
+                "275122", "917456", "927503", "657481", "285906",
+                "737010", "680227", "659234", "254429", "735496",
+                "653562", "294683", "726656", "228974", "456878",
+                "725866", "878989", "725944", "486253", "223859",
+                "646153", "608078", "680828", "872769", "682672",
+                "512321", "768079", "726656", "228974", "456878",
+                "725866", "878989", "725944", "486253", "223859",
+                "646153", "608078", "680828", "872769", "682672",
+                "512321", "768079", "94801", "53080", "461867",
+                "223397", "365006", "757002", "392808", "351329",
+                "573939", "667230", "675208", "861460", "654028",
+                "725622", "602609", "706471", "729954", "906266",
+                "84565", "283232", "861490", "777257", "755617", "933124", "934030", "959258", "956792", "933124", "950004", "938064", "933124"
+            ];
 
-    var interval;
-    var opacity = 0;
-    var next = slideshow[Math.round(Math.random() * (slideshow.length - 1))];
-    fadeOut();
+            var interval;
+            var opacity = 0;
+            var next = slideshow[Math.round(Math.random() * (slideshow.length - 1))];
+            fadeOut();
 
-    function fadeIn() {
-        opacity += 0.1;
-        document.getElementById("thumbnail").style.opacity = opacity;
-        if (opacity > 1) {
-            clearInterval(interval);
-            interval = setInterval(wait, 3000);
-        }
-    }
+            function fadeIn() {
+                opacity += 0.1;
+                document.getElementById("thumbnail").style.opacity = opacity;
+                if (opacity > 1) {
+                    clearInterval(interval);
+                    interval = setInterval(wait, 3000);
+                }
+            }
 
-    function wait() { clearInterval(interval); interval = setInterval(fadeOut, 100); }
+            function wait() { clearInterval(interval); interval = setInterval(fadeOut, 100); }
 
-    function fadeOut() {
-        opacity -= 0.1;
-        document.getElementById("thumbnail").style.opacity = opacity;
-        if (opacity < 0) {
-            clearInterval(interval);
-            document.getElementById("thumbnail").src = "https://www.freeriderhd.com/t/" + next + "/pic/768x250";
-            document.getElementById("link").href = "https://www.freeriderhd.com/t/" + next;
-            next = slideshow[Math.round(Math.random() * (slideshow.length - 1))];
-            document.getElementById("next_thumbnail").src = "https://www.freeriderhd.com/t/" + next + "/pic/768x250";
-            interval = setInterval(fadeIn, 100);
-        }
-    }
-</script>
+            function fadeOut() {
+                opacity -= 0.1;
+                document.getElementById("thumbnail").style.opacity = opacity;
+                if (opacity < 0) {
+                    clearInterval(interval);
+                    document.getElementById("thumbnail").src = "https://www.freeriderhd.com/t/" + next + "/pic/768x250";
+                    document.getElementById("link").href = "https://www.freeriderhd.com/t/" + next;
+                    next = slideshow[Math.round(Math.random() * (slideshow.length - 1))];
+                    document.getElementById("next_thumbnail").src = "https://www.freeriderhd.com/t/" + next + "/pic/768x250";
+                    interval = setInterval(fadeIn, 100);
+                }
+            }
+        </script>
 
 
 
-<h2>tracks</h2>
-<table class="table table-sm">
+        <h2>tracks</h2>
+        <table class="table table-sm">
 
-        <tr>
-            <td>
-                <a href="https://freeriderhd.com/t/933124">Dry Grove Sanctuary</a>
-            </td>
-            <td class="text-right">
-                Maple
-            </td>
-        </tr>
-            
-        <tr>
-            <td>
-                <a href="https://freeriderhd.com/t/934030">Opulignum Mk2</a>
-            </td>
-            <td class="text-right">
-                Albatross
-            </td>
-        </tr>
-      
-  
-      
-        <tr>
-            <td>
-                <a href="https://freeriderhd.com/t/959258">AMBITION</a>
-            </td>
-            <td class="text-right">
-                Volund
-            </td>
-        </tr>
-      
-  
-      
-        <tr>
-            <td>
-                <a href="https://freeriderhd.com/t/956792">Poseidon's Dock</a> + <a href="956792">app</a>
-            </td>
-            <td class="text-right">
-                dantexpress
-            </td>
-        </tr>
-      
-  
-      
-        <tr>
-            <td>
-                <a href="https://freeriderhd.com/t/933124">1—4</a>
-            </td>
-            <td class="text-right">
-                Seasnails
-            </td>
-        </tr>
-      
-  
-      
-        <tr>
-            <td>
-                <a href="https://freeriderhd.com/t/950004">Steady Going Numb</a> + 
-                <a href="950004">app</a>
-            </td>
-            <td class="text-right">
-                malishya
-            </td>
-        </tr>
-      
-  
-      
-        <tr>
-            <td>
-                <a href="https://freeriderhd.com/t/938064">The Ultracave</a>
-            </td>
-            <td class="text-right">
-                loge_0
-            </td>
-        </tr>
-      
-  
-      
-        <tr>
-            <td>
-                <a href="https://freeriderhd.com/t/933124">Story of the Artist</a>
-            </td>
-            <td class="text-right">
-                alexander
-            </td>
-        </tr>
-      
-  
-</table>
+            <tr>
+                <td>
+                    <a href="https://freeriderhd.com/t/933124">Dry Grove Sanctuary</a> + <a href="933124">app</a>
+                </td>
+                <td class="text-right">
+                    Maple
+                </td>
+            </tr>
 
-<h2 id="code">artists</h2>
-<table class="table table-sm">
-    <tr>
-        <td><a href="https://freeriderhd.com/u/Ness">Ness</a></td>
-        <td></td>
-        <td class="text-right">dream machine</td>
-    </tr>
-    <tr>
-        <td><a href="https://freeriderhd.com/u/dantexpress">dantexpress</a><td/>
-        <td class="text-right">All aboard the dantexpress!!</td>
-    </tr>
-    <tr>
-        <td><a href="https://freeriderhd.com/u/Volund">Volund</a><td/>
-        <td class="text-right">ambition // vip author // 1.0M+ plays across fourty two tracks
-    </tr>
-    <tr>
-        <td><a href="https://freeriderhd.com/u/Nitrogeneric">Nitrogeneric</a></td>
-        <td></td>
-        <td class="text-right">ㅤㅤㅤㅤㅤㅤ</td>
-    </tr>
-    <tr>
-        <td><a href="https://freeriderhd.com/u/Coated_Badger">Coated_Badger</a><td/>
-        <td class="text-right">Coager
-    </tr>
-    <tr>
-        <td><a href="https://freeriderhd.com/u/THEend">THEend</a><td/>
-        <td class="text-right">five. five. five. five. five.
-    </tr>
-</table>
+            <tr>
+                <td>
+                    <a href="https://freeriderhd.com/t/934030">Opulignum Mk2</a>
+                </td>
+                <td class="text-right">
+                    Albatross
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    <a href="https://freeriderhd.com/t/959258">AMBITION</a>
+                </td>
+                <td class="text-right">
+                    Volund
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    <a href="https://freeriderhd.com/t/956792">Poseidon's Dock</a>
+                </td>
+                <td class="text-right">
+                    dantexpress
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    <a href="https://freeriderhd.com/t/933124">1—4</a>
+                </td>
+                <td class="text-right">
+                    Seasnails
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    <a href="https://freeriderhd.com/t/950004">Steady Going Numb</a> +
+                    <a href="950004">app</a>
+                </td>
+                <td class="text-right">
+                    malishya
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    <a href="https://freeriderhd.com/t/938064">The Ultracave</a>
+                </td>
+                <td class="text-right">
+                    loge_0
+                </td>
+            </tr>
+
+
+
+            <tr>
+                <td>
+                    <a href="https://freeriderhd.com/t/933124">Story of the Artist</a>
+                </td>
+                <td class="text-right">
+                    alexander
+                </td>
+            </tr>
+
+
+        </table>
+
+        <h2 id="code">artists</h2>
+        <table class="table table-sm">
+            <tr>
+                <td><a href="https://freeriderhd.com/u/Ness">Ness</a></td>
+                <td></td>
+                <td class="text-right">dream machine</td>
+            </tr>
+            <tr>
+                <td><a href="https://freeriderhd.com/u/dantexpress">dantexpress</a>
+                    <td />
+                <td class="text-right">All aboard the dantexpress!!</td>
+            </tr>
+            <tr>
+                <td><a href="https://freeriderhd.com/u/Volund">Volund</a>
+                    <td />
+                <td class="text-right">ambition // vip author // 1.0M+ plays across fourty two tracks
+            </tr>
+            <tr>
+                <td><a href="https://freeriderhd.com/u/Nitrogeneric">Nitrogeneric</a></td>
+                <td></td>
+                <td class="text-right">ㅤㅤㅤㅤㅤㅤ</td>
+            </tr>
+            <tr>
+                <td><a href="https://freeriderhd.com/u/Coated_Badger">Coated_Badger</a>
+                    <td />
+                <td class="text-right">Coager
+            </tr>
+            <tr>
+                <td><a href="https://freeriderhd.com/u/THEend">THEend</a>
+                    <td />
+                <td class="text-right">five. five. five. five. five.
+            </tr>
+        </table>
 
 
         <!-- Closing lines, leave these alone! -->
-    </body>
+</body>
+
 </html>
