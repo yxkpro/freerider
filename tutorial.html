@@ -1,94 +1,41 @@
 <!DOCTYPE html>
 
-        <div id="game-container" style="position: relative; z-index: 0;"></div>
+<div id="game-container" style="position: relative; z-index: 0;"></div>
 
 <html>
 
-    <head>
-	    <meta name="generator" content="Hugo 0.68.3" />
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<head>
+    <meta name="generator" content="Hugo 0.68.3" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <link rel="stylesheet" href="/css/bootstrap.css">
-        <link rel="stylesheet" href="/css/stylesheet.css">
-        <link rel="icon" href="/assets/favicon.ico" type="image/png">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/stylesheet.css">
+    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
 
-        <script src="/scripts/manifest.js"></script>
-        <script src="/scripts/settings.js"></script>
-        <script src="/scripts/offlineeditor.js"></script>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script src="/scripts/manifest.js"></script>
+    <script src="/scripts/settings.js"></script>
+    <script src="/scripts/offlineeditor.js"></script>
 
-        <script>
-            // modify the zoom level of the canvas
-            GameSettings.cameraZoomMin = 0.5;
-            GameSettings.cameraZoomMax = 0.5;
-            GameSettings.cameraStartZoom = 0.5;
-            GameSettings.cameraMovementHorizontal = false;
-            GameSettings.cameraMovementVertical = false;
+    <title>freerider.app</title>
+</head>
 
-            GameSettings.hatColor = "rgba(0,0,0,0)";
-            GameSettings.frameColor1 = "black";
-            GameSettings.frameColor2 = "black";
-            GameSettings.wheelColor = "black";
+<body>
+    <div class="container-fluid">
+        <p>
+            <a href="/" id=home class="">freerider.app</a>
+            <a href="/" id=home class=""><img id="free-rider" src="/assets/favicon.png" width="24" height="16"></a>
+        </p>
 
-            GameSettings.wheelSize = "Medium";
-            GameSettings.frameType = "BMX";
-            GameSettings.rideStyle = "Pete";
-        </script>
-
-        <title>
-            freerider.app
-        </title>
-    </head>
-
-    <body>
-        <div class="container-fluid">
-            <div class="mb-4">
-                <a href="/" id=home class="">freerider.app</a>
-                <a href="/" id=home class=""><img id="free-rider" src="/assets/favicon.png" alt="Description of the image" width="24" height="16"></a>
-            </div>
+        <p>
+            <a href="/">home</a> /
+            <a href="/draw">draw</a> /
+            <a href="/play">play</a> /
+            <a href="/news">news</a>
+        </p>
 
         <style>
-            ul {
-                margin-left: 0px;
-                padding-left: 0px;
-                list-style-type: none;
-            }
-
-            li {
-                display: inline-block;
-                border: 1px solid #dee2e6;
-                background-color: #f9f9f9;
-                padding: .1em .3em;
-                margin: .1em;
-            }
-
-            h2 {
-                margin-top: 2em;
-            }
-
-            a {
-                position: relative;
-                z-index: 2;
-            }
-
-            iframe {
-                position: relative;
-                z-index: 2;
-            }
-
-            code {
-                position: relative;
-                z-index: 2;
-            }
-
-            body {
-                overflow: hidden;
-            }
-
-            /*
+            /* 
             "canvas" changes the starting position of the rider (and therefore the rest of the track on the screen).
             by default, it is set to the top of the "freerider.app" logo like most pages.
             you can use these other options or play with the values to move it around.
@@ -122,67 +69,69 @@
                 top: -1571px;
                 right: -781px;
             }
-
-            /*this changes link color. change to "color: #aaa" if you want scenery-line gray*/
-            .link,a {
-                color: #1F80C3;
-            }
         </style>
 
-        <p>
-            <a href="/">home</a> /
-            <a href="/draw">draw</a> /
-	        <a href="/play">play</a> /
-	        <a href="/news">news</a>
-        </p>
+        <script>
+            GameSettings.cameraZoomMin = 0.5;
+            GameSettings.cameraZoomMax = 0.5;
+            GameSettings.cameraStartZoom = 0.5;
+
+            GameSettings.cameraMovementHorizontal = false;  // true or false, does the camera move left to right with the rider?
+            GameSettings.cameraMovementVertical = false;    // how about up or down?
+
+            GameSettings.hatColor = "#236AB9";              // you can use hex values, rgb, or color names like "red"
+            GameSettings.frameColor1 = "#D4E4F7";
+            GameSettings.frameColor2 = "#FC7307";
+            GameSettings.wheelColor = "#236AB9";
+
+            GameSettings.wheelSizefront = "Medium";         // options are "Mini", "Small", "Medium", "Large"
+            GameSettings.wheelSizerear = "Medium";
+            GameSettings.frameSize = "Medium";
+
+            GameSettings.rideStyle = "Pete";                // options are "Pete", "Maxime", "Char"
+        </script>
 
         <!-- content below. add to your heart's content! -->
 
-    <!-- normal text does not need any tags. -->
-    this is normal text.
+        <!-- normal text does not need any tags. -->
+        this is normal text.
 
-    <!-- the br element represents a line break. -->
-    <br>this is a line break.<br>
+        <!-- the br element represents a line break. -->
+        <br>this is a line break.<br>
 
-    <!-- an img element represents an image. -->
-    <img src="/assets/thisisapicture.png" width="50" height="30">
+        <!-- an img element represents an image. -->
+        <img src="/assets/thisisapicture.png" width="50" height="30">
 
-    <!-- the "p" element represents a paragraph. -->
-    <p>this is a paragraph. notice the space </p>
+        <!-- the "p" element represents a paragraph. -->
+        <p>this is a paragraph. notice the space </p>
 
-    <!-- if the "a" element has an href attribute, then it represents a hyperlink. -->
-    <a href="https://freeriderhd.com/u/Volund">this is a link.</a>
+        <!-- if the "a" element has an href attribute, then it represents a hyperlink. -->
+        <a href="https://freeriderhd.com/u/Volund">this is a link.</a>
 
-    <!-- the h2 element represents a section heading. -->
-    <h2>this is a header</h2>
+        <!-- the h2 element represents a section heading. -->
+        <h2>this is a header</h2>
 
-    <!-- the "pre" element is for preformatted text, the "code" element allows users to select the text -->
-    <pre><code>this is a code</code></pre>
+        <!-- the "pre" element is for preformatted text, the "code" element allows users to select the text -->
+        <pre><code>this is a code</code></pre>
 
-    <!-- the table element represents data with more than one dimension, in the form of a table. -->
-    <!-- the tr element represents a row of cells in a table, the td element represents a data cell in a table.-->
-    <table class="table table-sm">
-        <tr>
-            <td>this is the first cell of a table</td>
-            <td>and a second</td>
-            <td class="text-right">and this is a cell on the right side</td>
-        </tr>
-        <tr>
-            <td>this is another row</td>
-            <td></td>
-            <td class="text-right">and this is the right side</td>
-        </tr>
-    </table>
-
-    <video width="100%" poster="thumb.png" style="background-color: black !important">
-        <source src="/media/radio.mp4" type="video/mp4">
-    </video>
-
-    
-
+        <!-- the table element represents data with more than one dimension, in the form of a table. -->
+        <!-- the tr element represents a row of cells in a table, the td element represents a data cell in a table.-->
+        <table class="table table-sm">
+            <tr>
+                <td>this is the first cell of a table</td>
+                <td>and a second</td>
+                <td class="text-right">and this is a cell on the right side</td>
+            </tr>
+            <tr>
+                <td>this is another row</td>
+                <td></td>
+                <td class="text-right">and this is the right side</td>
+            </tr>
+        </table>
 
         <!-- that's the end of the tutorial. experiment and have fun, ask Ness if you have any questions. -->
         <!-- closing lines, leave these alone! -->
-    </body>
-</html>
+    </div>
+</body>
 
+</html>
