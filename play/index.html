@@ -11,11 +11,19 @@
 
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/stylesheet.css">
-    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
 
     <script src="/scripts/manifest.js"></script>
     <script src="/scripts/settings.js"></script>
     <script src="/scripts/offlineeditor.js"></script>
+
+    <script>
+        function openBikeSettingsDialog() {
+            if (typeof GameManager !== 'undefined') {
+                GameManager.command('dialog', 'bikesettings');
+            }
+        }
+    </script>
 
     <title>freerider.app</title>
 </head>
@@ -24,46 +32,15 @@
     <div class="container-fluid">
         <p>
             <a href="/" id=home class="">freerider.app</a>
-            <a href="/" id=home class=""><img id="free-rider" src="/assets/favicon.png" width="24" height="16"></a>
+            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png" width="24" height="16"></a>
         </p>
 
         <p>
-            <a href="/">home</a> /
+            <a href="/home">home</a> /
             <a href="/draw">draw</a> /
             <a href="/play">play</a> /
             <a href="/news">news</a>
         </p>
-
-        <style>
-            canvas {
-                top: -1571px;
-                right: -781px;
-            }
-
-            body {
-                overflow-y: visible;
-            }
-        </style>
-
-        <script>
-            GameSettings.cameraZoomMin = 0.5;
-            GameSettings.cameraZoomMax = 0.5;
-            GameSettings.cameraStartZoom = 0.5;
-
-            GameSettings.cameraMovementHorizontal = false;
-            GameSettings.cameraMovementVertical = false;
-
-            GameSettings.hatColor = "rgba(0,0,0,0)";
-            GameSettings.frameColor1 = "black";
-            GameSettings.frameColor2 = "black";
-            GameSettings.wheelColor = "black";
-
-            GameSettings.wheelSizefront = "Medium";     // options are "Mini", "Small", "Medium", "Large"
-            GameSettings.wheelSizerear = "Medium";
-            GameSettings.frameSize = "Medium";
-
-            GameSettings.rideStyle = "Pete";            // options are "Pete", "Maxime", "Char"
-        </script>
 
         <!-- Content below: -->
 
@@ -137,7 +114,7 @@
                     <a href="https://freeriderhd.com/t/933124">Dry Grove Sanctuary</a> + <a href="933124">app</a>
                 </td>
                 <td class="text-right">
-                    Maple
+                    <a href="https://freeriderhd.com/u/Maple">Maple</a>
                 </td>
             </tr>
 
@@ -146,7 +123,7 @@
                     <a href="https://freeriderhd.com/t/934030">Opulignum Mk2</a>
                 </td>
                 <td class="text-right">
-                    Albatross
+                    <a href="https://freeriderhd.com/u/Albatross">Albatross</a>
                 </td>
             </tr>
 
@@ -157,7 +134,7 @@
                     <a href="https://freeriderhd.com/t/959258">AMBITION</a>
                 </td>
                 <td class="text-right">
-                    Volund
+                    <a href="https://freeriderhd.com/u/Volund">Volund</a> (<a href="/user/Volund">gallery</a>)
                 </td>
             </tr>
 
@@ -168,7 +145,7 @@
                     <a href="https://freeriderhd.com/t/956792">Poseidon's Dock</a>
                 </td>
                 <td class="text-right">
-                    dantexpress
+                    <a href="https://freeriderhd.com/u/dantexpress">dantexpress</a>
                 </td>
             </tr>
 
@@ -176,10 +153,10 @@
 
             <tr>
                 <td>
-                    <a href="https://freeriderhd.com/t/933124">1—4</a>
+                    <a href="https://freeriderhd.com/t/955926">1-4</a> + <a href="955926">app</a>
                 </td>
                 <td class="text-right">
-                    Seasnails
+                    <a href="https://freeriderhd.com/u/Seasnails">Seasnails</a>
                 </td>
             </tr>
 
@@ -191,7 +168,7 @@
                     <a href="950004">app</a>
                 </td>
                 <td class="text-right">
-                    malishya
+                    <a href="https://freeriderhd.com/u/malishya">malishya</a>
                 </td>
             </tr>
 
@@ -202,7 +179,7 @@
                     <a href="https://freeriderhd.com/t/938064">The Ultracave</a>
                 </td>
                 <td class="text-right">
-                    loge_0
+                    <a href="https://freeriderhd.com/u/loge_0">loge_0</a>
                 </td>
             </tr>
 
@@ -210,52 +187,18 @@
 
             <tr>
                 <td>
-                    <a href="https://freeriderhd.com/t/933124">Story of the Artist</a>
+                    <a href="https://freeriderhd.com/t/971508">Story of the Artist</a>
                 </td>
                 <td class="text-right">
-                    alexander
+                    <a href="https://freeriderhd.com/u/alexander">alexander</a>
                 </td>
             </tr>
 
 
         </table>
 
-        <h2 id="code">artists</h2>
-        <table class="table table-sm">
-            <tr>
-                <td><a href="https://freeriderhd.com/u/Ness">Ness</a></td>
-                <td></td>
-                <td class="text-right">dream machine</td>
-            </tr>
-            <tr>
-                <td><a href="https://freeriderhd.com/u/dantexpress">dantexpress</a>
-                    <td />
-                <td class="text-right">All aboard the dantexpress!!</td>
-            </tr>
-            <tr>
-                <td><a href="https://freeriderhd.com/u/Volund">Volund</a>
-                    <td />
-                <td class="text-right">ambition // vip author // 1.0M+ plays across fourty two tracks
-            </tr>
-            <tr>
-                <td><a href="https://freeriderhd.com/u/Nitrogeneric">Nitrogeneric</a></td>
-                <td></td>
-                <td class="text-right">ㅤㅤㅤㅤㅤㅤ</td>
-            </tr>
-            <tr>
-                <td><a href="https://freeriderhd.com/u/Coated_Badger">Coated_Badger</a>
-                    <td />
-                <td class="text-right">Coager
-            </tr>
-            <tr>
-                <td><a href="https://freeriderhd.com/u/THEend">THEend</a>
-                    <td />
-                <td class="text-right">five. five. five. five. five.
-            </tr>
-        </table>
-
-
-        <!-- Closing lines, leave these alone! -->
+               <!-- Closing lines, leave these alone! -->
+               </div>
 </body>
 
 </html>

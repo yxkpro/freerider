@@ -34,6 +34,12 @@ center {
     padding: .3em;
 }
 
+#page {
+    padding-left: 4px;
+    padding-right: 4px;
+    float: right;
+}
+
 #home:hover {
     background-color: #1884cf;
 }
@@ -207,8 +213,21 @@ blockquote p {
 }
 
 table {
-    border-bottom: 1px solid #dee2e6;
+    width: 100%;
 }
+
+tr{
+    width: 200px;
+}
+
+td.settingInput {
+    text-align: right;
+}
+
+td.settingTitle {
+    text-align: left;
+}
+
 
 
 video {
@@ -251,6 +270,8 @@ div.circle img {
 canvas {
     position: absolute;
     z-index: -1;
+    top: -1571px;
+    right: -781px;
 }
 
 .topMenu {
@@ -362,10 +383,25 @@ canvas {
     margin-bottom: 5px;
 }
 
+.gameSettingsDialog-code {
+    font-family: 'Ubuntu Mono', monospace;
+    overflow-x: auto;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: 1px solid lighten(#111, 90);
+    background-color: #efefef;
+    font-size: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    border-radius: 3px;
+    margin-top: 8px;
+    margin-bottom: 5px;
+}
+
 .editorDialog-codeContainer,.importDialog-codeContainer {
     position: relative;
-    left: 560px;
-    width: 300px;
+    left: 610px;
+    width: 250px;
 }
 
 .importDialog-button {
@@ -384,7 +420,7 @@ canvas {
 
 input,textarea {
     border: none;
-    padding: .4em .8em;
+    padding: .2em .2em;
     margin: 0;
     display: block;
     background: 0 0;
@@ -394,6 +430,25 @@ input,textarea {
     font-size: 1em;
     width: 100%;
     -webkit-appearance: none
+} 
+
+input,textarea#color {
+    appearance: auto;
+    box-sizing: border-box;
+    align-items: center;
+    -webkit-rtl-ordering: logical;
+    color: fieldtext;
+    background-color: field;
+    cursor: default;
+    white-space: pre;
+    border-width: 1px;
+    border-style: solid;
+    border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+    border-radius: 0px;
+    width: 100px;
+    height: 21px;
+    font-size: 11pt;
 }
 
 .importDialog-placeholder {

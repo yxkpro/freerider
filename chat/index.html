@@ -3,77 +3,49 @@
 <div id="game-container" style="position: relative; z-index: 0;"></div>
 
 <html>
-    <head>
-	    <meta name="generator" content="Hugo 0.68.3" />
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <link rel="stylesheet" href="/css/bootstrap.css">
-        <link rel="stylesheet" href="/css/stylesheet.css">
-        <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+<head>
+    <meta name="generator" content="Hugo 0.68.3" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
-        <script src="/scripts/manifest.js"></script>
-        <script src="/scripts/settings.js"></script>
-        <script src="/scripts/offlineeditor.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/stylesheet.css">
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
 
-        <title>freerider.app</title>
-    </head>
+    <script src="/scripts/manifest.js"></script>
+    <script src="/scripts/settings.js"></script>
+    <script src="/scripts/offlineeditor.js"></script>
 
-    <body>
-        <div class="container-fluid">
-            <p>
-                <a href="/" id=home class="">freerider.app</a>
-                <a href="/" id=home class=""><img id="free-rider" src="/assets/favicon.png" width="24" height="16"></a>
-            </p>
+    <script>
+        function openBikeSettingsDialog() {
+            if (typeof GameManager !== 'undefined') {
+                GameManager.command('dialog', 'bikesettings');
+            }
+        }
+    </script>
 
-            <p>
-                <a href="/">home</a> /
-                <a href="/draw">draw</a> /
-                <a href="/play">play</a> /
-                <a href="/news">news</a>
-            </p>      
+    <title>freerider.app</title>
+</head>
 
-            <style>
-                canvas {
-                    top: -1571px;
-                    right: -781px;
-                }
-            </style>
-
-            <script>
-                GameSettings.cameraZoomMin = 0.5;
-                GameSettings.cameraZoomMax = 0.5;
-                GameSettings.cameraStartZoom = 0.5;
-
-                GameSettings.cameraMovementHorizontal = false;
-                GameSettings.cameraMovementVertical = false;
-        
-                GameSettings.hatColor = "rgba(0,0,0,0)";
-                GameSettings.frameColor1 = "black";
-                GameSettings.frameColor2 = "black";
-                GameSettings.wheelColor = "black";
-        
-                GameSettings.wheelSizefront = "Medium";     // options are "Mini", "Small", "Medium", "Large"
-                GameSettings.wheelSizerear = "Medium";
-                GameSettings.frameSize = "Medium";
-
-                GameSettings.rideStyle = "Pete";            // options are "Pete", "Maxime", "Char"
-            </script>
-
-        <!-- Content below: -->
+<body>
+    <div class="container-fluid">
+        <p>
+            <a href="/" id=home class="">freerider.app</a>
+            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png" width="24" height="16"></a>
+        </p>
 
         <p>
-            <a href="/">home</a> /
+            <a href="/home">home</a> /
             <a href="/draw">draw</a> /
-	        <a href="/play">play</a> /
-            <a href="/race">race</a> /
-	        <a href="/chat">chat</a> /
-	        <a href="/news">news</a>
+            <a href="/play">play</a> /
+            <a href="/news">news</a>
         </p>
 
 <p>chat soon.</p>
 
         <!-- Closing lines, leave these alone! -->
+    </div>
     </body>
 </html>
 

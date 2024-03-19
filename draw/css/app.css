@@ -230,7 +230,7 @@ body,html {
 
 input,textarea {
     border: none;
-    padding: .4em .8em;
+    padding: .2em .2em;
     margin: 0;
     display: block;
     background: 0 0;
@@ -240,6 +240,25 @@ input,textarea {
     font-size: 1em;
     width: 100%;
     -webkit-appearance: none
+} 
+
+input,textarea#color {
+    appearance: auto;
+    box-sizing: border-box;
+    align-items: center;
+    -webkit-rtl-ordering: logical;
+    color: fieldtext;
+    background-color: field;
+    cursor: default;
+    white-space: pre;
+    border-width: 1px;
+    border-style: solid;
+    border-color: light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    border-image: initial;
+    border-radius: 0px;
+    width: 100px;
+    height: 21px;
+    font-size: 11pt;
 }
 
 .coin_icons,.core_icons,.keyboard_keys,.mobile_rotate,.points_icons,.share_icons {
@@ -924,6 +943,13 @@ html.fullscreen #main_page {
 .primary-button {
     border-radius: 30px;
     padding: 10px 15px;
+    border: 2px solid #000;
+    color: #FFF;
+    text-shadow: 1px 1px 0 #000;
+    cursor: pointer
+}
+
+.primary-button-bike {
     border: 2px solid #000;
     color: #FFF;
     text-shadow: 1px 1px 0 #000;
@@ -1768,8 +1794,18 @@ html.fullscreen #main_page {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0;
-    background: rgba(255,255,255,.7);
+    top: 5%;
+    background: rgba(0,0,0,0);
+    z-index: 2
+}
+
+.editorDialog-bike {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 25%;
+    right: -65%;
+    background: rgba(0,0,0,0);
     z-index: 2
 }
 
@@ -1847,7 +1883,6 @@ html.fullscreen #main_page {
 .editorDialog-codeContainer,.importDialog-codeContainer {
     position: relative;
     padding: 18px;
-    border-bottom: 1px solid #CCC
 }
 
 .importDialog-button {

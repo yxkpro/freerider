@@ -11990,9 +11990,9 @@
             }
             createMasses(e, s) {
                 this.masses = [];
-                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
+                const wheelSizefront = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , wheelSizerear = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , frameSize = {"mini": 0.7, "small": 0.85, "medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
@@ -12018,9 +12018,9 @@
             }
             createSprings() {
                 this.springs = [];
-                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
+                const wheelSizefront = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , wheelSizerear = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , frameSize = {"mini": 0.7, "small": 0.85, "medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
@@ -12083,9 +12083,9 @@
                 this.focalPoint = this.ragdoll ? this.ragdoll.head : this.head
             }
             getStickMan() {
-                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
+                const wheelSizefront = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , wheelSizerear = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , frameSize = {"mini": 0.7, "small": 0.85, "medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
@@ -12161,9 +12161,9 @@
                 this.frontSpring.leff = t
             }
             control() {
-                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
+                const wheelSizefront = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , wheelSizerear = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , frameSize = {"mini": 0.7, "small": 0.85, "medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
@@ -12220,9 +12220,9 @@
             drawBikeFrame() {
                   const e = this.scene;
 
-                  const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                  , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                  , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
+                  const wheelSizefront = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                  , wheelSizerear = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                  , frameSize = {"mini": 0.7, "small": 0.85, "medium": 1}
                   , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                   , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                   , wSf = wheelSizefront[GameSettings.wheelSizefront]
@@ -13545,9 +13545,9 @@
                 }
             createMasses(e, s) {
                 this.masses = [];
-                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
+                const wheelSizefront = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , wheelSizerear = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , frameSize = {"mini": 0.7, "small": 0.85, "medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
@@ -13575,9 +13575,9 @@
             }
             createSprings() {
                 this.springs = [];
-                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
+                const wheelSizefront = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , wheelSizerear = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , frameSize = {"mini": 0.7, "small": 0.85, "medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
@@ -13637,9 +13637,9 @@
             }
             getStickMan() {
                 const e = this.dir;
-                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
+                const wheelSizefront = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , wheelSizerear = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , frameSize = {"mini": 0.7, "small": 0.85, "medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
@@ -13724,9 +13724,9 @@
                 this.frontSpring.leff = t
             }
             control() {
-                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
+                const wheelSizefront = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , wheelSizerear = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , frameSize = {"mini": 0.7, "small": 0.85, "medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
@@ -13776,9 +13776,9 @@
                 }
             }
             drawBikeFrame() {
-                const wheelSizefront = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , wheelSizerear = {"Mini": 0.6, "Small": 0.8, "Medium": 1, "Large": 1.2}
-                , frameSize = {"Mini": 0.7, "Small": 0.85, "Medium": 1}
+                const wheelSizefront = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , wheelSizerear = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
+                , frameSize = {"mini": 0.7, "small": 0.85, "medium": 1}
                 , frameType = {"BMX": 0.5, "MTB": 1, "Trial": 2}
                 , rideStyle = {"Pete": 1, "Maxime": 0.5, "Char": 2}
                 , wSf = wheelSizefront[GameSettings.wheelSizefront]
@@ -13856,24 +13856,24 @@
                 u.lineJoin = "round",
                 u.beginPath(),
                 u.fillStyle = "rgba(200,200,200,0.2)",
-                u.arc(a.x, a.y, wSr * 12.5 * c, 0, 2 * Math.PI, !1),
+                u.arc(a.x, a.y, wSf * 12.5 * c, 0, 2 * Math.PI, !1),
                 s || u.fill(),
                 u.stroke(),
                 u.beginPath(),
-                u.arc(h.x, h.y, wSf * 12.5 * c, 0, 2 * Math.PI, !1),
+                u.arc(h.x, h.y, wSr * 12.5 * c, 0, 2 * Math.PI, !1),
                 s || u.fill(),
                 u.stroke(),
                 u.beginPath(),
                 u.strokeStyle = wc,
                 u.lineWidth = w * c * 0.5 * wSf,
-                u.arc(h.x, h.y, wSf * 12.5 * c, 0, 2 * Math.PI, !1),
+                u.arc(h.x, h.y, wSr * 12.5 * c, 0, 2 * Math.PI, !1),
                 s || u.fill(),
                 u.stroke(),
 
                 u.beginPath(),
                 u.strokeStyle = wc,
                 u.lineWidth = w * c * 0.5 * wSr,
-                u.arc(a.x, a.y, wSr * 12.5 * c, 0, 2 * Math.PI, !1),
+                u.arc(a.x, a.y, wSf * 12.5 * c, 0, 2 * Math.PI, !1),
                 s || u.fill(),
                 u.stroke(),
 
@@ -19787,8 +19787,11 @@
                 case "export": // New case for exporting
                     this.command("dialog", "export");
                     break;
-                case "import": // New case for exporting
+                case "import": // New case for importing
                     this.command("dialog", "import");
+                    break;
+                case "bikesettings": // New case for bikesettings
+                    this.command("dialog", "bikesettings");
                     break;
                 case "fullscreen":
                     this.toggleFullscreen(),
@@ -19901,7 +19904,8 @@
                     setTimeout(this.getTrackCode.bind(this), 750);
                     break;
                 case "upload":
-                    "undefined" == typeof isChromeApp && setTimeout(this.getTrackCode.bind(this), 750)
+                    setTimeout(this.getTrackCode.bind(this), 750);
+                    break;
                 }
                 this.state.playing = !1,
                 this.state.showDialog = t
@@ -19973,6 +19977,9 @@
                         this.openDialog(e);
                         break
                     }
+                case "bikeSettings": 
+                    this.restartTrack = !0;
+                    break;
                 case "focused":
                     !0 === t[0] ? (this.state.inFocus = !0,
                     this.state.showDialog || this.listen()) : (this.state.inFocus = !1,
@@ -20438,6 +20445,9 @@
                         this.openDialog(e);
                         break
                     }
+                case "bikeSettings": 
+                    this.restartTrack = !0;
+                    break;
                 case "focused":
                     !0 === t[0] ? (this.state.inFocus = !0,
                     this.state.showDialog || this.listen()) : (this.state.inFocus = !1,

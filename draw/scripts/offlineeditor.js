@@ -1231,75 +1231,216 @@
     , {
         react: 230
     }],
-    18: [function(e, t) {
+    18: [function (e, t) {
         var n = e("react")
-          , r = n.createClass({
-            displayName: "ChomeappUploadDialog",
-            closeDialog: function() {
-                "undefined" != typeof GameManager && GameManager.command("dialog", !1)
-            },
-            componentWillMount: function() {},
-            showExportDialog: function() {
-                "undefined" != typeof GameManager && GameManager.command("dialog", "export")
-            },
-            render: function() {
-                var e = (this.props.options,
-                !1)
-                  , t = !1
-                  , r = GameSettings.portal;
-                return r && "kong" !== r || (e = n.createElement("a", {
-                    href: "http://www.freeriderhd.com/?t_1=cws&t_2=editor",
-                    target: "_blank",
-                    className: "promoButton left"
-                }, n.createElement("div", {
-                    className: "wrap"
-                }, n.createElement("span", {
-                    className: "part chromeapp_icons chromeapp_icons-web_btn_icon"
-                }), n.createElement("span", {
-                    className: "part text"
-                }, "FreeRiderHD.com"))),
-                console.log("hit")),
-                r && "facebook" !== r || (t = n.createElement("a", {
-                    href: "https://apps.facebook.com/freeriderhd/?t_1=cws&t_2=editor",
-                    target: "_blank",
-                    className: "promoButton right"
-                }, n.createElement("div", {
-                    className: "wrap"
-                }, n.createElement("span", {
-                    className: "part chromeapp_icons chromeapp_icons-fb_btn_icon"
-                }), n.createElement("span", {
-                    className: "part text"
-                }, "Facebook App")))),
-                n.createElement("div", {
-                    className: "editorDialog-content chromeUpload-dialog"
-                }, n.createElement("div", {
-                    className: "editorDialog-titleBar"
-                }, n.createElement("span", {
-                    className: "editorDialog-close",
-                    onClick: this.closeDialog
-                }, "×"), n.createElement("h1", {
-                    className: "editorDialog-content-title"
-                }, "PUBLISH TRACK")), n.createElement("div", {
-                    className: "middle"
-                }, n.createElement("p", {
-                    className: "blurb"
-                }, "Publishing tracks is currently only available online at FreeRiderHD.com and Free Rider HD on Facebook. Export your track code and upload to the options below.     "), n.createElement("div", {
-                    className: "buttons"
-                }, e, t)), n.createElement("div", {
-                    className: "bottom"
-                }, n.createElement("p", {
-                    className: "text"
-                }, "Export your track code to publish online!"), n.createElement("div", {
-                    className: "exportButton"
-                }, n.createElement("span", {
-                    className: "primary-button primary-button-blue",
-                    onClick: this.showExportDialog
-                }, "EXPORT TRACK CODE"))))
-            }
-        });
+            , r = n.createClass({
+                displayName: "BikeSettings",
+                getInitialState: function () {
+                    return {
+                        frameSize: GameSettings.frameSize,
+                        wheelSizerear: GameSettings.wheelSizerear,
+                        wheelSizefront: GameSettings.wheelSizefront,
+                        rideStyle: GameSettings.rideStyle,
+                        hatColor: GameSettings.hatColor,
+                        frameColor1: GameSettings.frameColor1,
+                        frameColor2: GameSettings.frameColor2,
+                        wheelColor: GameSettings.wheelColor
+
+                    }
+                },
+                closeDialog: function () {
+                    "undefined" != typeof GameManager && GameManager.command("dialog", !1)
+                },
+                changeFrameSize: function (e) {
+                    var frameSize = e.target.value;
+                    GameSettings.frameSize = frameSize;
+                    "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1)
+                },
+                changeWheelSizeRear: function (e) {
+                    var wheelSizerear = e.target.value;
+                    GameSettings.wheelSizerear = wheelSizerear;
+                    "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1)
+                },
+                changeWheelSizeFront: function (e) {
+                    var wheelSizefront = e.target.value;
+                    GameSettings.wheelSizefront = wheelSizefront;
+                    "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1)
+                },
+                changeRideStyle: function (e) {
+                    var rideStyle = e.target.value;
+                    GameSettings.rideStyle = rideStyle;
+                    "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1)
+                },
+                changeHatColor: function (e) {
+                    var hatColor = e.target.value;
+                    GameSettings.hatColor = hatColor;
+                    "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1);
+                },
+                changeFrameColor1: function (e) {
+                    var frameColor1 = e.target.value;
+                    GameSettings.frameColor1 = frameColor1;
+                    "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1);
+                },
+                changeFrameColor2: function (e) {
+                    var frameColor2 = e.target.value;
+                    GameSettings.frameColor2 = frameColor2;
+                    "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1);
+                },
+                changeWheelColor: function (e) {
+                    var wheelColor = e.target.value;
+                    GameSettings.wheelColor = wheelColor;
+                    "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1);
+                },
+                renderFrameSizeSelect: function () {
+                    var e = GameSettings.frameSize;
+                    var t = ["mini", "small", "medium"];
+                    return React.createElement("select", {
+                        ref: "frameSize",
+                        defaultValue: e,
+                        onChange: this.changeFrameSize
+                    }, t.map(function (e) {
+                        return React.createElement("option", {
+                            value: e
+                        }, e);
+                    }));
+                },
+                renderWheelSizeRearSelect: function () {
+                    var e = GameSettings.wheelSizerear;
+                    var t = ["mini", "small", "medium", "large"];
+                    return React.createElement("select", {
+                        ref: "wheelSizerear",
+                        defaultValue: e,
+                        onChange: this.changeWheelSizeRear
+                    }, t.map(function (e) {
+                        return React.createElement("option", {
+                            value: e
+                        }, e);
+                    }));
+                },
+                renderWheelSizeFrontSelect: function () {
+                    var e = GameSettings.wheelSizefront;
+                    var t = ["mini", "small", "medium", "large"];
+                    return React.createElement("select", {
+                        ref: "wheelSizefront",
+                        defaultValue: e,
+                        onChange: this.changeWheelSizeFront
+                    }, t.map(function (e) {
+                        return React.createElement("option", {
+                            value: e
+                        }, e);
+                    }));
+                },
+                renderRideStyleSelect: function () {
+                    var e = GameSettings.rideStyle;
+                    var t = ["Pete", "Maxime", "Char"];
+                    return React.createElement("select", {
+                        ref: "rideStyle",
+                        defaultValue: e,
+                        onChange: this.changeRideStyle // Corrected function name
+                    }, t.map(function (e) {
+                        return React.createElement("option", {
+                            value: e
+                        }, e);
+                    }));
+                },
+                renderHatColorInput: function () {
+                    var e = GameSettings.hatColor;
+                    return React.createElement("input", {
+                        type: "text",
+                        defaultValue: e,
+                        onChange: this.changeHatColor
+                    });
+                },
+                renderFrameColor1Input: function () {
+                    var e = GameSettings.frameColor1;
+                    return React.createElement("input", {
+                        type: "text",
+                        defaultValue: e,
+                        onChange: this.changeFrameColor1
+                    });
+                },
+                renderFrameColor2Input: function () {
+                    var e = GameSettings.frameColor2;
+                    return React.createElement("input", {
+                        type: "text",
+                        defaultValue: e,
+                        onChange: this.changeFrameColor2
+                    });
+                },
+                renderWheelColorInput: function () {
+                    var e = GameSettings.wheelColor;
+                    return React.createElement("input", {
+                        type: "text",
+                        defaultValue: e,
+                        onChange: this.changeWheelColor
+                    });
+                },
+                render: function () {
+                    var e = GameSettings,
+                        fs = e.frameSize,
+                        wSr = e.wheelSizerear,
+                        wSf = e.wheelSizefront,
+                        rS = e.rideStyle,
+                        hC = e.hatColor,
+                        fc1 = e.frameColor1,
+                        fc2 = e.frameColor2,
+                        wC = e.wheelColor;
+                    return e,
+                        n.createElement("div", {
+                            className: "editorDialog-bike"
+                        }, n.createElement("table", null, n.createElement("tr", null,
+                            n.createElement("td", { className: "settingTitle" },
+                                n.createElement("span", { className: "name" }, "frame size")
+                            ),
+                            n.createElement("td", { className: "settingInput" }, this.renderFrameSizeSelect())
+                        ), n.createElement("tr", null,
+                            n.createElement("td", { className: "settingTitle" },
+                                n.createElement("span", { className: "name" }, "wheel size - rear")
+                            ),
+                            n.createElement("td", { className: "settingInput" }, this.renderWheelSizeRearSelect())
+                        ), n.createElement("tr", null,
+                            n.createElement("td", { className: "settingTitle" },
+                                n.createElement("span", { className: "name" }, "wheel size - front")
+                            ),
+                            n.createElement("td", { className: "settingInput" }, this.renderWheelSizeFrontSelect())
+                        ), n.createElement("tr", null,
+                            n.createElement("td", { className: "settingTitle" },
+                                n.createElement("span", { className: "name" }, "ride style")
+                            ),
+                            n.createElement("td", { className: "settingInput" }, this.renderRideStyleSelect())
+                        ), n.createElement("tr", null,
+                            n.createElement("td", { className: "settingTitle" },
+                                n.createElement("span", { className: "name" }, "hat color")
+                            ),
+                            n.createElement("td", { className: "settingInput" }, this.renderHatColorInput())
+                        ), n.createElement("tr", null,
+                            n.createElement("td", { className: "settingTitle" },
+                                n.createElement("span", { className: "name" }, "frame color 1")
+                            ),
+                            n.createElement("td", { className: "settingInput" }, this.renderFrameColor1Input())
+                        ), n.createElement("tr", null,
+                            n.createElement("td", { className: "settingTitle" },
+                                n.createElement("span", { className: "name" }, "frame color 2")
+                            ),
+                            n.createElement("td", { className: "settingInput" }, this.renderFrameColor2Input())
+                        ), n.createElement("tr", null,
+                            n.createElement("td", { className: "settingTitle" },
+                                n.createElement("span", { className: "name" }, "wheel color")
+                            ),
+                            n.createElement("td", { className: "settingInput" }, this.renderWheelColorInput())
+                        ), n.createElement("tr", null,
+                            n.createElement("td", { colSpan: "2" },
+                                n.createElement("button", {
+                                    className: "primary-button-bike primary-button-black float-right margin-0-5",
+                                    onClick: this.closeDialog
+                                }, "close")
+                            )
+                        )))
+                }
+            });
         t.exports = r
     }
-    , {
+        , {
         react: 230
     }],
     19: [function(e, t) {
@@ -1485,6 +1626,9 @@
                     f = n.createElement(o, {
                         options: t
                     });
+                    break;
+                    case "bikesettings":
+                    f = n.createElement(u, null);
                     break;
                 case "help":
                     f = n.createElement(i, null);

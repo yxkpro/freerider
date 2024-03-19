@@ -11,11 +11,19 @@
 
     <link rel="stylesheet" href="/css/bootstrap.css">
     <link rel="stylesheet" href="/css/stylesheet.css">
-    <link rel="icon" href="/assets/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
 
     <script src="/scripts/manifest.js"></script>
     <script src="/scripts/settings.js"></script>
     <script src="/scripts/offlineeditor.js"></script>
+
+    <script>
+        function openBikeSettingsDialog() {
+            if (typeof GameManager !== 'undefined') {
+                GameManager.command('dialog', 'bikesettings');
+            }
+        }
+    </script>
 
     <title>freerider.app</title>
 </head>
@@ -24,7 +32,7 @@
     <div class="container-fluid">
         <p>
             <a href="/" id=home class="">freerider.app</a>
-            <a href="/" id=home class=""><img id="free-rider" src="/assets/favicon.png" width="24" height="16"></a>
+            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png" width="24" height="16"></a>
         </p>
 
         <style>

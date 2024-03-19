@@ -26,8 +26,8 @@ var GameSettings = {
     "cameraZoomMin": 0.5,
     "cameraZoomMax": 0.5,
     "cameraSensitivity": 0.0,
-    "cameraMovementVertical": true,
-    "cameraMovementHorizontal": true,
+    "cameraMovementVertical": false,
+    "cameraMovementHorizontal": false,
     "lowQualityMode": false,
     "device": "desktop",
     "mobile": false,
@@ -40,10 +40,14 @@ var GameSettings = {
     "physicsLineColor": "#000",
     "sceneryLineColor": "#AAA",
     "foregroundLineColor": "AAA",
-    "hatColor": "rgb (0,0,0,0)",
-    "frameColor1": "rgb (0,0,0,0)",
-    "frameColor2": "rgb (0,0,0,0)",
-    "wheelColor": "#e4000f",
+    "hatColor": "rgba(0,0,0,0)",
+    "frameColor1": "black",
+    "frameColor2": "black",
+    "wheelColor": "black",
+    "wheelSizerear": ["medium"],
+    "wheelSizefront": ["medium"],
+    "rideStyle": ["Pete"],
+    "frameSize": ["medium"],
     "raceColors": ["rgba(57,185,117,1)", "rgba(0,152,189,1)", "rgba(151,95,162,1)", "rgba(253,85,91,1)", "rgba(245,126,64,1)", "rgba(247,212,62,1)", "rgba(170,221,114,1)", "rgba(72,217,207,1)", "rgba(0,124,212,1)", "rgba(226,108,216,1)"],
     "toolHandler": {
         "snap": false,
@@ -91,12 +95,6 @@ var GameSettings = {
         "minSegmentLength": 0.1,
         "SegmentLengthSensitivity": 0.1
     },
-    "bikes": {
-        "wheelSizerear": ["Mini", "Small", "Medium", "Large"],
-        "wheelSizefront": ["Mini", "Small", "Medium", "Large"],
-        "rideStyle": ["Maxime", "Pete", "Char", "Stig"],
-        "frameSize": ["Mini", "Small", "Medium", "Large"]
-    },
     "playHotkeys": {
         "up": [38, 87],
         "down": [40, 83],
@@ -124,6 +122,7 @@ var GameSettings = {
         "change_vehicle": 86,
         "export": 187,
         "import": 189,
+        "bikesettings": 191,
         "enter": 13,
         "backspace": 8
     },

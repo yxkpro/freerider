@@ -25,6 +25,8 @@ var GameSettings = {
     "cameraZoomMin": 0.1,
     "cameraZoomMax": 4,
     "cameraSensitivity": 0.2,
+    "cameraMovementVertical": true,
+    "cameraMovementHorizontal": true,
     "lowQualityMode": false,
     "device": "desktop",
     "mobile": false,
@@ -37,6 +39,14 @@ var GameSettings = {
     "physicsLineColor": "#000",
     "sceneryLineColor": "#AAA",
     "foregroundLineColor": "AAA",
+    "hatColor": "rgba(0,0,0,0)",
+    "frameColor1": "black",
+    "frameColor2": "black",
+    "wheelColor": "black",
+    "wheelSizerear": ["medium"],
+    "wheelSizefront": ["medium"],
+    "rideStyle": ["Pete"],
+    "frameSize": ["medium"],
     "raceColors": ["rgba(57,185,117,1)", "rgba(0,152,189,1)", "rgba(151,95,162,1)", "rgba(253,85,91,1)", "rgba(245,126,64,1)", "rgba(247,212,62,1)", "rgba(170,221,114,1)", "rgba(72,217,207,1)", "rgba(0,124,212,1)", "rgba(226,108,216,1)"],
     "toolHandler": {
         "snap": false,
@@ -144,7 +154,8 @@ var GameSettings = {
         "zoom_increase": 187,
         "zoom_decrease": 189,
         "zoom_100": 48,
-        "fullscreen": 70
+        "fullscreen": 70,
+        "bikesettings": 191,
     },
     "keysToRecord": ["up", "down", "left", "right", "enter", "backspace", "z"],
     "user": {
