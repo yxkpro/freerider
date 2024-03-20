@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<div id="game-container" style="position: relative; z-index: 0;"></div>
+
+<html>
+
+<head>
+    <meta name="generator" content="Hugo 0.68.3" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/stylesheet.css">
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
+
+    <script src="/scripts/manifest.js"></script>
+    <script src="/scripts/settings.js"></script>
+    <script src="/scripts/offlineeditor.js"></script>
+
+    <script>
+        function openBikeSettingsDialog() {
+            if (typeof GameManager !== 'undefined') {
+                GameManager.command('dialog', 'bikesettings');
+            }
+        }
+    </script>
+
+    <title>freerider.app</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <p>
+            <a href="/" id=home class="">freerider.app</a>
+            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png" width="24" height="16"></a>
+        </p>
+
+        <p>
+            <a href="/">home</a> /
+            <a href="/draw">draw</a> /
+            <a href="/play">play</a> /
+            <a href="/news">news</a> /
+            <a href="/misc">misc</a>
+        </p>
+
+        <style>
+            body {
+                overflow-y: visible;
+            }
+        </style>
+
+        <script>
+            GameSettings.defaultTrack = "https://pastebin.com/raw/UznJFbax";
+        </script>
+
+        <script>
+            fetch('https://pastebin.com/raw/e6jB1Z4Y')
+                .then(response => response.json())
+                .then(data => {
+                    Object.assign(GameSettings, data);
+                });
+        </script>
+
+        <div id="content">loading...</div>
+
+        <script>
+            fetch('https://pastebin.com/raw/TT2z7Mit')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('content').innerHTML = data;
+                });
+        </script>
+
+    </div>
+</body>
+
+
+</html>
