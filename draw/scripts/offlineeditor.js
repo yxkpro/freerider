@@ -4078,32 +4078,79 @@
     , {
         react: 230
     }],
-    666: [function(e, t) {
+    666: [function (e, t) {
         var n = e("react")
-  , r = n.createClass({
-    displayName: "returntoapp",
-    redirectToWebsite: function() {
-        var confirmLeave = window.confirm("Are you sure you want to leave this website?");
-        if (confirmLeave) {
-            window.location.href = "/";
-        }
-    },
-    render: function() {
-        var e = "topMenu-button topMenu-button-right"
-        , t = "editorgui_icons editorgui_icons-icon_bmx";
-        
-        return n.createElement("div", {
-            className: e,
-            onClick: this.redirectToWebsite,
-            title: "Return to freerider.app"
-        }, n.createElement("span", {
-            className: "text"
-        }, "return to freerider.app"));
+            , r = n.createClass({
+                displayName: "returntoapp",
+                redirectToWebsite: function () {
+                    var confirmLeave = window.confirm("Are you sure you want to leave this website?");
+                    if (confirmLeave) {
+                        window.location.href = "/";
+                    }
+                },
+                openBikeSettingsDialog: function () {
+                    if (typeof GameManager !== 'undefined') {
+                        GameManager.command('dialog', 'bikesettings');
+                    }
+                },
+                render: function () {
+                    var e = "topMenu-button topMenu-button-right"
+                        , t = "editorgui_icons editorgui_icons-icon_bmx"
+                        , x = "assets/favicon.ico"
+    
+                        return n.createElement("div", {
+                            className: e,
+                            title: "return to freerider.app"
+                        }, [
+                            n.createElement("span", {
+                                key: "text",
+                                className: "text",
+                                onClick: this.redirectToWebsite // Added onClick event to the text element
+                            }, "return to freerider.app")]);
+                    }
+                    
+            });
+        t.exports = r
     }
-});
-t.exports = r
+        , {
+        react: 230
+    }],
+    667: [function (e, t) {
+        var n = e("react")
+            , r = n.createClass({
+                displayName: "bikesettings",
+                redirectToWebsite: function () {
+                    var confirmLeave = window.confirm("Are you sure you want to leave this website?");
+                    if (confirmLeave) {
+                        window.location.href = "/";
+                    }
+                },
+                openBikeSettingsDialog: function () {
+                    if (typeof GameManager !== 'undefined') {
+                        GameManager.command('dialog', 'bikesettings');
+                    }
+                },
+                render: function () {
+                    var e = "topMenu-button topMenu-button-right"
+                        , t = "editorgui_icons editorgui_icons-icon_bmx"
+                        , x = "assets/favicon.ico"
+    
+                        return n.createElement("div", {
+                                className: e,
+                                title: "change bike settings"
+                            }, [
+                            n.createElement("img", {
+                                key: "image",
+                                className: t,
+                                onClick: this.openBikeSettingsDialog // Added onClick event to the image element
+                            })
+                        ]);
+                    }
+                    
+            });
+        t.exports = r
     }
-    , {
+        , {
         react: 230
     }],
     67: [function(e, t) {
@@ -4163,6 +4210,7 @@ t.exports = r
           , i = e("./exporttrack")
           , h = e("./uploadtrack")
           , x = e("./returntoapp")
+          , xx = e("./bikesettings")
           , a = e("./help")
           , s = e("./controls")
           , c = e("./reducezoom")
@@ -4177,7 +4225,7 @@ t.exports = r
                     className: "topMenu unselectable"
                 }, n.createElement(r, null), n.createElement(o, null), n.createElement(i, null), n.createElement(a, null), this.showHelp(), this.showFullscreen(), n.createElement(u, null), n.createElement(d, {
                     percent: this.props.data.zoomPercentage
-                }), n.createElement(c, null), n.createElement(x, null))
+                }), n.createElement(c, null), n.createElement(xx, null), n.createElement(x, null))
             },
             showOfflineEditorIcon: function() {
                 var e = !1
@@ -4208,6 +4256,7 @@ t.exports = r
         "./increasezoom": 66,
         "./offlineeditor": 67,
         "./returntoapp": 666,
+        "./bikesettings": 667,
         "./reducezoom": 68,
         "./uploadtrack": 70,
         "./zoomlevel": 71,

@@ -30,51 +30,39 @@
                 <a href="/">home</a> /
                 <a href="/draw">draw</a> /
                 <a href="/play">play</a> /
-                <a href="/news">news</a>
-            </p>      
+                <a href="/news">news</a> /
+                <a href="/misc">misc</a>
+            </p>
 
             <style>
                 canvas {
-                    top: -1571px;
+                    top: -1555px;
                     right: -781px;
-                }
-
-                body {
-                overflow-y: visible;
                 }
             </style>
 
             <script>
-                GameSettings.cameraZoomMin = 0.5;
-                GameSettings.cameraZoomMax = 0.5;
-                GameSettings.cameraStartZoom = 0.5;
-
-                GameSettings.cameraMovementHorizontal = false;
-                GameSettings.cameraMovementVertical = false;
-        
-                GameSettings.hatColor = "rgba(0,0,0,0)";
-                GameSettings.frameColor1 = "black";
-                GameSettings.frameColor2 = "black";
-                GameSettings.wheelColor = "black";
-        
-                GameSettings.wheelSizefront = "Medium";     // options are "Mini", "Small", "Medium", "Large"
-                GameSettings.wheelSizerear = "Medium";
-                GameSettings.frameSize = "Medium";
-
-                GameSettings.rideStyle = "Pete";            // options are "Pete", "Maxime", "Char"
+                GameSettings.cameraZoomMin = 0.2;
+                GameSettings.cameraZoomMax = 0.2;
+                GameSettings.cameraStartZoom = 0.2;
             </script>
-
-        <!-- Content below: -->
-        
-<h2>mar 11 2024</h2>
-<table class="table table-sm">
-    <tr>
-        <td>
-            <a href="/index.html">freerider.app</a> launched
-        </td>
-    </tr>
-</table>
-
-        <!-- Closing lines, leave these alone! -->
-    </body>
-</html>
+            
+            <!-- Content below: -->
+            
+            <h2>mar 11 2024</h2>
+            <table class="table table-sm">
+                <tr>
+                    <td>
+                        <a href="/index.html">freerider.app</a> launched
+                    </td>
+                </tr>
+            </table>
+            
+            <p><a id="prevPage" href="/news/1">older</a> /
+                <a id="nextPage" href="/news/3">newer</a>
+            </p>
+            
+            <!-- Closing lines, leave these alone! -->
+            </body>
+            
+            </html>

@@ -2160,7 +2160,12 @@
                 // Load the default text from a .txt file
                 this.loadDefaultTextFromFile();
             },
-        
+            selectAllText: function() {
+                console.log("select all text");
+                var e = this.refs.code.getDOMNode();
+                e.focus(),
+                e.select()
+            },
             loadDefaultTextFromFile: function() {
                 fetch(GameSettings.defaultTrack)
                     .then(response => response.text())
@@ -2299,7 +2304,8 @@
                     autoComplete: "false",
                     spellCheck: "false",
                     value: this.state.defaultText || "", // Use state to set textarea value
-                    onChange: this.onTextareaChange // Add onChange handler
+                    onChange: this.onTextareaChange,
+                    onClick: this.selectAllText // Add onChange handler
                 }), n.createElement("button", {
                     className: "primary-button primary-button-blue float-right margin-0-5",
                     onClick: this.closeDialog
@@ -2906,9 +2912,9 @@
                     active: "brush" === e
                 }), 
                 
-                //n.createElement(iii, {
-                //active: "elle" === e
-                //}), 
+                n.createElement(iii, {
+                active: "elle" === e
+                }), 
                 
                 n.createElement(a, {
                     active: "eraser" === e
