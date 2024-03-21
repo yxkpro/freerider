@@ -2850,9 +2850,9 @@
                     active: "brush" === e
                 }), 
                 
-                //n.createElement(iii, {
-                //active: "elle" === e
-                //}), 
+                n.createElement(iii, {
+                active: "elle" === e
+                }), 
                 
                 n.createElement(a, {
                     active: "eraser" === e

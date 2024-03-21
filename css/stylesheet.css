@@ -253,8 +253,8 @@ figcaption {
 div.circle {
     border-radius: 50%; 
     overflow:hidden; 
-    width: min(80vw, 80vh); 
-    height: min(80vw, 80vh);
+    width: 584.8px; 
+    height: 584.8px;
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 100px;

@@ -114,7 +114,6 @@ var GameSettings = {
         "zoom_increase": 187,
         "zoom_decrease": 189,
         "zoom_100": 48,
-        "fullscreen": 70,
         "change_vehicle": 86,
         "exit_fullscreen": 27,
         "settings": 220
@@ -134,7 +133,7 @@ var GameSettings = {
         "brush": 65,
         "curve": 87,
         "grid": 71,
-        //"elle": 70,
+        "elle": 70,
         "camera": 67,
         "pause": 32,
         "change_vehicle": 86,

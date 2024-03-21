@@ -13880,7 +13880,6 @@
             
                 
                 s ? (u.fillStyle = "black",
-                u.globalCompositeOperation = "destination-over",
                 u.beginPath(),
                 u.arc(h.x, h.y, 5 * c, 0, 2 * Math.PI),
                 u.moveTo(a.x, a.y),
@@ -13891,7 +13890,6 @@
                 u.arc(h.x, h.y, 4 * c, 0, 2 * Math.PI),
                 u.moveTo(a.x, a.y),
                 u.arc(a.x, a.y, 3 * c, 0, 2 * Math.PI),
-                u.globalCompositeOperation = "source-over",
                 u.fill()) : (u.strokeStyle = "rgba(153, 153, 153,1)",
                 u.fillStyle = "rgba(204, 204, 204,1)",
                 u.lineWidth = 1,

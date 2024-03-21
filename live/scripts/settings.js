@@ -134,7 +134,7 @@ var GameSettings = {
         "brush": 65,
         "curve": 87,
         "grid": 71,
-        //"elle": 70,
+        "elle": 70,
         "camera": 67,
         "pause": 32,
         "change_vehicle": 86,
