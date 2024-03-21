@@ -18528,44 +18528,30 @@
                 this.powerupCanvasDrawn = !1
             }
             erase(t, e, s) {
-                const erasedShapes = [];
-            
-                // Iterate through each type of line
-                if (s.physics) {
-                    for (const line of this.physicsLines) {
-                        if (line.erase(t, e)) {
-                            erasedShapes.push(...this.removeFilledShapes(line));
-                        }
-                    }
-                }
-                if (s.scenery) {
-                    for (const line of this.sceneryLines) {
-                        if (line.erase(t, e)) {
-                            erasedShapes.push(...this.removeFilledShapes(line));
-                        }
-                    }
-                }
+                const i = [];
+                if (s.physics)
+                    for (const s of this.physicsLines)
+                        s.erase(t, e) && i.push(s);
+                if (s.scenery)
+                    for (const s of this.sceneryLines)
+                        s.erase(t, e) && i.push(s);
                 if (s.foreground) {
                     for (const line of this.foregroundLines) {
                         if (line.erase(t, e)) {
-                            erasedShapes.push(...this.removeFilledShapes(line));
+                            i.push(...this.removeFilledShapes(line));
                         }
                     }
                 }
-                if (s.powerups) {
-                    for (const powerup of this.powerups.all) {
-                        const erasedPowerups = powerup.erase(t, e);
-                        if (erasedPowerups) {
-                            erasedShapes.push(...erasedPowerups);
-                        }
+                if (s.powerups)
+                    for (const s of this.powerups.all) {
+                        const n = s.erase(t, e);
+                        n && i.push(...n)
                     }
-                }
-            
-                return erasedShapes;
+                return i
             }
             
             removeFilledShapes(line) {
-                const erasedShapes = [];
+                const i = [];
             
                 // Find and remove filled shapes associated with the erased line
                 const index = this.foregroundLines.indexOf(line);
@@ -18578,7 +18564,7 @@
                     }
                 }
             
-                return erasedShapes;
+                return i;
             }
             
             cleanSector() {
