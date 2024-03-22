@@ -18732,7 +18732,7 @@
             
             fillForegroundLines(foregroundLines, zoom, context) {
                 context.globalCompositeOperation = "source-over";
-                context.fillStyle = "rgba(255, 255, 255, 1)"; // Opaque white color
+                context.fillStyle = "rgba(0, 84, 119, 0.3)"; // Opaque white color
             
                 // Helper function to check if a shape is closed
                 function isClosedShape(lines) {
