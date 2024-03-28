@@ -32,7 +32,8 @@
     <div class="container-fluid">
         <p>
             <a href="/" id=home class="">freerider.app</a>
-            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png" width="24" height="16"></a>
+            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png"
+                    width="24" height="16"></a>
         </p>
 
         <p>
@@ -42,33 +43,31 @@
             <a href="/news">news</a> /
             <a href="/misc">misc</a>
         </p>
-<style>
-    body {
-        overflow-y: visible;
-    }
-    
-    canvas {
-                top: -1141px;
-                right: -1152px;
-            }
-    </style>
-    
-    <script>
-        GameSettings.cameraZoomMin = 0.765;
-            GameSettings.cameraZoomMax = 0.765;
-            GameSettings.cameraStartZoom = 0.765;
-    </script>
-    
-    <div class="circle">
-        <img src="/assets/weem2.png"/>
-    </div>
 
-    <p>
-        <a id="prevPage" href="/news/3">older</a> /
-        <a id="nextPage" href="/news/5">newer</a>
-    </p>
+        <style>
+            body {
+                overflow-y: visible;
+            }
+        </style>
+
+        <style>
+            canvas {
+                top: -1571px;
+                right: -781px;
+            }
+        </style>
+
+        <script>
+            GameSettings.cameraZoomMin = 0.5;
+            GameSettings.cameraZoomMax = 0.5;
+            GameSettings.cameraStartZoom = 0.5;
+
+            GameSettings.cameraMovementHorizontal = true;  // true or false, does the camera move left to right with the rider?
+            GameSettings.cameraMovementVertical = false;    // how about up or down?
+        </script>
+
+        <h2>n gallery</h2>
 
     </div>
 </body>
-
 </html>

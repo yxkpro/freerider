@@ -1288,8 +1288,9 @@
                         hatColor: GameSettings.hatColor,
                         frameColor1: GameSettings.frameColor1,
                         frameColor2: GameSettings.frameColor2,
-                        wheelColor: GameSettings.wheelColor
-
+                        wheelColor: GameSettings.wheelColor,
+                        windspeed: GameSettings.windspeed,
+                        balloonpower: GameSettings.balloonpower
                     }
                 },
                 closeDialog: function () {
@@ -1333,6 +1334,16 @@
                 changeWheelColor: function (e) {
                     var wheelColor = e.target.value;
                     GameSettings.wheelColor = wheelColor;
+                    "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1);
+                },
+                changeWindspeed: function (e) {
+                    var windspeed = e.target.value;
+                    GameSettings.windspeed = windspeed;
+                    "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1);
+                },
+                changeBalloonpower: function (e) {
+                    var balloonpower = e.target.value;
+                    GameSettings.balloonpower = balloonpower;
                     "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1);
                 },
                 renderFrameSizeSelect: function () {
@@ -1419,6 +1430,22 @@
                         onChange: this.changeWheelColor
                     });
                 },
+                renderWindspeedInput: function () {
+                    var e = GameSettings.windspeed;
+                    return React.createElement("input", {
+                        type: "text",
+                        defaultValue: e,
+                        onChange: this.changeWindspeed
+                    });
+                },
+                renderBalloonpowerInput: function () {
+                    var e = GameSettings.balloonpower;
+                    return React.createElement("input", {
+                        type: "text",
+                        defaultValue: e,
+                        onChange: this.changeBalloonpower
+                    });
+                },
                 render: function () {
                     var e = GameSettings,
                         fs = e.frameSize,
@@ -1428,7 +1455,9 @@
                         hC = e.hatColor,
                         fc1 = e.frameColor1,
                         fc2 = e.frameColor2,
-                        wC = e.wheelColor;
+                        wC = e.wheelColor,
+                        windspeed = e.windspeed,
+                        balloonpower = e.balloonpower;
                     return e,
                         n.createElement("div", {
                             className: "editorDialog-codeContainer"
@@ -1473,6 +1502,16 @@
                             ),
                             n.createElement("td", { className: "settingInput" }, this.renderWheelColorInput())
                         ), n.createElement("tr", null,
+                        n.createElement("td", { className: "settingTitle" },
+                            n.createElement("span", { className: "name" }, "windspeed")
+                        ),
+                        n.createElement("td", { className: "settingInput" }, this.renderWindspeedInput())
+                    ), n.createElement("tr", null,
+                    n.createElement("td", { className: "settingTitle" },
+                        n.createElement("span", { className: "name" }, "balloonpower")
+                    ),
+                    n.createElement("td", { className: "settingInput" }, this.renderBalloonpowerInput())
+                ),n.createElement("tr", null,
                             n.createElement("td", { colSpan: "2" },
                                 n.createElement("button", {
                                     className: "primary-button primary-button-black float-right margin-0-5",

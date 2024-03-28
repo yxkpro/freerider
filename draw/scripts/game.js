@@ -11698,7 +11698,7 @@
             }
             drive(t, e) {
                 const s = this.pos
-                  , i = this.motor * this.parent.dir
+                  , i = this.motor * this.parent.dir // speed of bike
                   , n = i * t
                   , r = i * e;
                 if (s.x += n,
@@ -12504,11 +12504,12 @@
         ct.ragdoll = null;
         const ut = ht;
 
-        class uni extends q {
-            vehicleName = "UNI";
+        class plane extends q {
+            vehicleName = "PLANE";
             constructor(t, e, s, i) {
                 super(),
                 super.init(t),
+                this.settings = GameSettings;
                 this.createMasses(e, i),
                 this.createSprings(),
                 this.updateCameraFocalPoint(),
@@ -12518,12 +12519,12 @@
             createMasses(e, s) {
                 this.masses = [];
                 const i = new A
-                  , n = new X(new t.Z(e.x + 0,e.y + 3),this)
-                  , r = new X(new t.Z(e.x + 0,e.y + 3),this);
+                  , n = new X(new t.Z(e.x + 12.6,e.y + 3),this)
+                  , r = new X(new t.Z(e.x + -16.8,e.y + 3),this);
                 i.init(new t.Z(e.x,e.y - 36), this),
                 i.drive = this.createRagdoll.bind(this),
-                r.radius = 11.7,
-                n.radius = 11.7,
+                r.radius = 7,
+                n.radius = 9.4,
                 i.radius = 14,
                 i.vel.equ(s),
                 r.vel.equ(s),
@@ -12531,7 +12532,9 @@
                 this.masses.push(i, r, n),
                 this.head = i,
                 this.frontWheel = n,
-                this.rearWheel = n
+                this.rearWheel = r,
+                this.rotor = 0,
+                this.rotor2 = 0
             }
             createSprings() {
                 this.springs = [];
@@ -12659,29 +12662,36 @@
             }
             control() {
                 const t = this.gamepad
-                  , e = t.isButtonDown("left")
-                  , s = t.isButtonDown("down")
-                  , i = t.isButtonDown("up")
-                  , ee = t.isButtonDown("right")
-                  , r = t.isButtonDown("z")
-                  , x = t.isButtonDown("x")
-                  , o = e ? 1 : 0
-                  , a = this.rearWheel
-                    a.motor = 0;
-                  if (ee) {
-                    a.motor = -0.5;
-                } else if (e) {
-                    a.motor = 0.5;
-                }
-
+                , e = t.isButtonDown("up")
+                , s = t.isButtonDown("down")
+                , i = t.isButtonDown("left")
+                , n = t.isButtonDown("right")
+                , r = t.isButtonDown("z")
+                , x = t.isButtonDown("x")
+                , o = e ? 0 : 0
+                , a = this.rearWheel
+                , b = this.frontWheel
+                , head = this.head
+                , masses = this.masses
+                , springs = this.springs;
+                a.motor += (o - a.motor) / 10,
                 r && !this.swapped && (this.swap(),
                 this.swapped = !0),
                 r || (this.swapped = !1),
+                //e && (this.pedala += this.rearWheel.speed / 5),
+                a.brake = s
+                s && this.frontSpring.contract(-10, 10),
+                1 === this.dir && n && s || -1 === this.dir && i && s ? this.frontWheel.brake = !0 : this.frontWheel.brake = !1;
+                let c = i ? 1 : 0;
+                c += n ? -1 : 0,
+                //this is the left and right rotation ability, 4-6 are playable
+                this.rearSpring.contract(5 * c * this.dir, 5),
+                this.frontSpring.contract(5 * -c * this.dir, 5),
+                this.chasse.rotate(c / 6),
+                !c && !x && e && (this.rearSpring.contract(-7, 5),
+                this.frontSpring.contract(7, 5)),
                 x && (this.rearSpring.contract(-25, -20),
-                this.frontSpring.contract(-25, -20)),
-                !x && (this.rearSpring = (0,0), this.frontSpring = (0,0))
-                // x && (this.rearSpring.contract(-30, -20),
-                //this.frontSpring.contract(-30 * h * this.dir, -20))
+                this.frontSpring.contract(-25, -20))
             }
             draw() {
                 if (this.explosion)
@@ -12703,192 +12713,184 @@
             }
             drawBikeFrame() {
                 const e = this.scene
-                  , s = e.game.mod.getVar("crBmx")
-                  , i = e.game.mod.getVar("crHead")
-                  , n = e.game.mod.getVar("customColors")
-                  , hc = GameSettings.hatColor // Use hatColor from GameSettings
-                  , bc = GameSettings.bikeColor
-                  , r = n ? Q(e.game.mod.getVar("vehicleColor")) : "#000"
-                  , o = e.game.mod.getVar("blackHat")
-                  , a = this.rearWheel.pos.toScreen(e)
-                  , h = this.frontWheel.pos.toScreen(e)
-                  , l = this.head.pos.toScreen(e)
-                  , c = this.player._opacity;
+                    , s = e.game.mod.getVar("crBmx")
+                    , i = e.game.mod.getVar("crHead")
+                    , n = e.game.mod.getVar("customColors")
+                    , r = n ? Q(e.game.mod.getVar("vehicleColor")) : "#000"
+                    , o = e.game.mod.getVar("blackHat")
+                    , a = this.rearWheel.pos.toScreen(e)
+                    , h = this.frontWheel.pos.toScreen(e)
+                    , l = this.head.pos.toScreen(e)
+                    , c = this.player._opacity;
                 let u = h.sub(a)
-                  , d = new t.Z(u.y * this.dir,-u.x * this.dir);
-                const p = new W(a,u,d)
-                  , f = this.pedala
-                  , g = Math.atan2(u.y, u.x)
-                  , m = this.dir
-                  , v = e.camera.zoom
-                  , y = e.game.canvas.getContext("2d")
-                  , w = s ? 3.5 : 3
-                  , x = s ? 10 : 10.5;
+                    , d = new t.Z(u.y * this.dir, -u.x * this.dir);
+                const p = new W(a, u, d)
+                    , f = this.pedala
+                    , g = Math.atan2(u.y, u.x)
+                    , m = this.dir
+                    , v = e.camera.zoom
+                    , y = e.game.canvas.getContext("2d")
+                    , w = 3
+                    , xr = 6
+                    , xf = 8
                 y.globalAlpha = c,
-                y.strokeStyle = "rgba(0,0,0,1)",
-                y.lineWidth = w * v,
-                y.lineCap = "round",
-                y.lineJoin = "round",
-                y.fillStyle = "rgba(200,200, 200, 0.2)",
-                y.beginPath(),
-                y.arc(h.x, h.y, x * v, 0, 2 * Math.PI, !1),
-                y.moveTo(a.x + x * v, a.y),
-                y.arc(a.x, a.y, x * v, 0, 2 * Math.PI, !1),
-                s || y.fill(),
-                y.stroke();
+                    y.strokeStyle = "rgba(0,0,0,1)",
+                    y.lineWidth = w * v,
+                    y.lineCap = "round",
+                    y.lineJoin = "round",
+                    y.fillStyle = "rgba(200,200, 200, 0.2)",
+                    y.beginPath(),
+                    y.arc(h.x, h.y, xf * v, 0, 2 * Math.PI, !1),
+                    y.moveTo(a.x + xr * v, a.y),
+                    y.arc(a.x, a.y, xr * v, 0, 2 * Math.PI, !1),
+                    s || y.fill(),
+                    y.stroke();
                 const b = p.transform(.3, .25)
-                  , _ = p.transform(.4, .05)
-                  , T = p.transform(.84, .42)
-                  , C = p.transform(.84, .37)
-                  , k = new t.Z(6 * Math.cos(f + g) * v,6 * Math.sin(f + g) * v)
-                  , S = _.add(k)
-                  , A = _.sub(k);
+                    , _ = p.transform(.4, .05)
+                    , T = p.transform(.84, .42)
+                    , C = p.transform(.84, .37)
+                    , k = new t.Z(6 * Math.cos(f + g) * v, 6 * Math.sin(f + g) * v)
+                    , S = _.add(k)
+                    , A = _.sub(k);
                 d = l.sub(a.add(u.factor(.5)));
-                const P = new W(b,u,d)
-                  , M = P.transform(-.1, .3);
+                const P = new W(b, u, d)
+                    , M = P.transform(-.1, .3);
                 let I = S.sub(M)
-                  , B = new t.Z(I.y * m,-I.x * m);
+                    , B = new t.Z(I.y * m, -I.x * m);
                 B = B.factor(v * v);
                 const D = M.add(I.factor(.5)).add(B.factor(200 / I.lenSqr()))
-                  , E = S.add(I.factor(.12)).add(B.factor(50 / I.lenSqr()));
+                    , E = S.add(I.factor(.12)).add(B.factor(50 / I.lenSqr()));
                 I = A.sub(M),
-                B = new t.Z(I.y * m,-I.x * m),
-                B = B.factor(v * v);
+                    B = new t.Z(I.y * m, -I.x * m),
+                    B = B.factor(v * v);
                 const L = M.add(I.factor(.5)).add(B.factor(200 / I.lenSqr()))
-                  , z = A.add(I.factor(.12)).add(B.factor(50 / I.lenSqr()));
-                this.crashed || (y.strokeStyle = n ? tt([...e.game.mod.getVar("riderColor"), .5]) : "rgba(0,0,0,0.5)",
-                y.lineWidth = 6 * v,
-                y.beginPath(),
-                y.moveTo(A.x, A.y),
-                y.lineTo(L.x, L.y),
-                y.lineTo(M.x, M.y),
-                y.stroke(),
-                s || (y.lineWidth = 4 * v,
-                y.beginPath(),
-                y.moveTo(A.x, A.y),
-                y.lineTo(z.x, z.y),
-                y.stroke())),
-                y.beginPath(),
-                y.strokeStyle = r || "#000000",
-                y.lineWidth = 3 * v,
-                y.moveTo(T.x, T.y),
-                y.lineTo(b.x, b.y),
-                y.lineTo(a.x, a.y),
-                y.lineTo(_.x, _.y),
-                y.lineTo(C.x, C.y),
-                y.stroke(),
-                s || (y.beginPath(),
-                y.lineWidth = Math.max(1 * v, .5),
-                y.arc(_.x, _.y, 3 * v, 0, 2 * Math.PI, !1),
-                y.stroke()),
-                y.beginPath(),
-                y.lineWidth = s ? 3 * v : Math.max(1 * v, .5),
-                y.moveTo(S.x, S.y),
-                y.lineTo(A.x, A.y),
-                y.stroke();
+                    , z = A.add(I.factor(.12)).add(B.factor(50 / I.lenSqr()));
+                this.crashed || (y.strokeStyle = "rgba(0,0,0,0.5)",
+                    y.lineWidth = 6 * v,
+                    y.beginPath(),
+                    y.moveTo(A.x, A.y),
+                    y.lineTo(L.x, L.y),
+                    y.lineTo(M.x, M.y),
+                    y.stroke(),
+                    s || (y.lineWidth = 4 * v,
+                        y.beginPath(),
+                        y.moveTo(A.x, A.y),
+                        y.lineTo(z.x, z.y),
+                        y.stroke())),
+                    y.beginPath(),
+                    y.strokeStyle = r || "#000000",
+                    y.lineWidth = 3 * v,
+                    y.moveTo(T.x, T.y),
+                    y.lineTo(b.x, b.y),
+                    y.lineTo(a.x, a.y), //FRAME LINES
+                    y.lineTo(_.x, _.y),
+                    y.lineTo(C.x, C.y),
+                    y.stroke(),
+                    s || (y.beginPath(),
+                        y.lineWidth = Math.max(1 * v, .5),
+                        y.arc(_.x, _.y, 3 * v, 0, 2 * Math.PI, !1),
+                        y.stroke()),
+                    y.beginPath(),
+                    y.lineWidth = s ? 3 * v : Math.max(1 * v, .5),
+                    y.moveTo(S.x, S.y),
+                    y.lineTo(A.x, A.y),
+                    y.stroke();
                 const O = p.transform(.25, .4)
-                  , F = p.transform(.17, .38)
-                  , j = p.transform(.3, .45)
-                  , R = p.transform(.97, 0)
-                  , V = p.transform(.8, .48)
-                  , H = p.transform(.86, .5)
-                  , N = p.transform(.82, .65)
-                  , Z = p.transform(.78, .67);
+                    , F = p.transform(.17, .38)
+                    , j = p.transform(.3, .45)
+                    , R = p.transform(.97, 0)
+                    , V = p.transform(.8, .48)
+                    , H = p.transform(.86, .5)
+                    , N = p.transform(.82, .65)
+                    , Z = p.transform(.78, .67);
                 if (y.beginPath(),
-                y.lineWidth = 3 * v,
-                y.moveTo(F.x, F.y),
-                y.lineTo(j.x, j.y),
-                y.moveTo(_.x, _.y),
-                y.lineTo(O.x, O.y),
-                y.moveTo(h.x, h.y),
-                y.lineTo(R.x, R.y),
-                y.lineTo(V.x, V.y),
-                y.lineTo(H.x, H.y),
-                y.lineTo(N.x, N.y),
-                y.lineTo(Z.x, Z.y),
-                y.stroke(),
-                this.crashed && this.ragdoll)
+                    y.lineWidth = 3 * v,
+                    y.moveTo(F.x, F.y),
+                    y.lineTo(j.x, j.y),
+                    y.moveTo(_.x, _.y),
+                    y.lineTo(O.x, O.y),
+                    y.moveTo(h.x, h.y),
+                    y.lineTo(R.x, R.y),
+                    y.lineTo(V.x, V.y),
+                    y.lineTo(H.x, H.y),
+                    y.lineTo(N.x, N.y),
+                    y.lineTo(Z.x, Z.y),
+                    y.stroke(),
+                    this.crashed && this.ragdoll)
                     this.ragdoll.draw();
                 else {
                     y.lineWidth = 6 * v,
-                    y.strokeStyle = n ? Q(e.game.mod.getVar("riderColor")) : "#000",
-                    y.beginPath(),
-                    y.moveTo(S.x, S.y),
-                    y.lineTo(D.x, D.y),
-                    y.lineTo(M.x, M.y),
-                    y.stroke(),
-                    s || (y.beginPath(),
-                    y.moveTo(S.x, S.y),
-                    y.lineTo(E.x, E.y),
-                    y.stroke());
+                        y.strokeStyle = n ? Q(e.game.mod.getVar("riderColor")) : "#000",
+                        y.beginPath(),
+                        y.moveTo(S.x, S.y),
+                        y.lineTo(D.x, D.y),
+                        y.lineTo(M.x, M.y),
+                        y.stroke(),
+                        s || (y.beginPath(),
+                            y.moveTo(S.x, S.y),
+                            y.lineTo(E.x, E.y),
+                            y.stroke());
                     const r = P.transform(.05, .9);
                     y.lineWidth = 8 * v,
-                    y.beginPath(),
-                    y.moveTo(M.x, M.y),
-                    y.lineTo(r.x, r.y),
-                    y.stroke();
+                        y.beginPath(),
+                        y.moveTo(M.x, M.y),
+                        y.lineTo(r.x, r.y),
+                        y.stroke();
                     const a = P.transform(.15, 1.05)
-                      , h = P.transform(.4, 1.1)
-                      , l = P.transform(.05, 1.05);
+                        , h = P.transform(.4, 1.1)
+                        , l = P.transform(.05, 1.05);
                     u = r.sub(Z),
-                    d = new t.Z(u.y * m,-u.x * m),
-                    d = d.factor(v * v);
+                        d = new t.Z(u.y * m, -u.x * m),
+                        d = d.factor(v * v);
                     const c = Z.add(u.factor(.4)).add(d.factor(130 / u.lenSqr()));
                     if (y.lineWidth = 5 * v,
-                    y.beginPath(),
-                    y.moveTo(r.x, r.y),
-                    y.lineTo(c.x, c.y),
-                    y.lineTo(Z.x, Z.y),
-                    y.stroke(),
-                    i || o)
-                    if(o){const t=P.transform(.35,1.15),e=P.transform(-.05,1.1),s=P.transform(.25,1.13),i=P.transform(.05,1.11),n=P.transform(.25,1.35),r=P.transform(-.03,1.3), xx = this.drawHeadAngle, qq = this.dir, tt = this.waist;y.strokeStyle = "#000000";
-                    y.fillStyle = "rgba(0,0,0,0)";
-                    y.lineWidth = 2 * v;
-                    y.beginPath();
-                  y.moveTo(a.x + 5 * v, a.y);
-                  y.arc(a.x, a.y, 5 * v, 0, 2 * Math.PI);
-                  y.stroke();
-                  y.closePath();
-                
-                  y.beginPath();
-                  y.moveTo(h.x, h.y);
-                  y.lineTo(l.x, l.y);
-                  y.stroke();
-                if (this.dir < 0 ) {
-                  y.beginPath();
-                  y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI + 8 * Math.PI / 180 + Math.PI, xx - 8 * Math.PI / 180 + Math.PI);;
-                  y.fill();}
-                
-                  else {y.beginPath();
-                  y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI - 8 * Math.PI / 180, xx - 24 * Math.PI / 180);
-                  y.fill();}}
-                  else
-                  {const t=P.transform(.35,1.15),e=P.transform(-.05,1.1),s=P.transform(.25,1.13),i=P.transform(.05,1.11),n=P.transform(.25,1.35),r=P.transform(-.03,1.3), xx = this.drawHeadAngle, qq = this.dir, tt = this.waist;y.strokeStyle = "#000000";
-                  y.fillStyle = "#e4000f";
-                  y.lineWidth = 2 * v;
-                  y.beginPath();
-                y.moveTo(a.x + 5 * v, a.y);
-                y.arc(a.x, a.y, 5 * v, 0, 2 * Math.PI);
-                y.stroke();
-                y.closePath();
-              
-                y.beginPath();
-                y.moveTo(h.x, h.y);
-                y.lineTo(l.x, l.y);
-                y.stroke();
-              if (this.dir < 0 ) {
-                y.beginPath();
-                y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI + 8 * Math.PI / 180 + Math.PI, xx - 8 * Math.PI / 180 + Math.PI);;
-                y.fill();}
-              
-                else {y.beginPath();
-                y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI - 8 * Math.PI / 180, xx - 24 * Math.PI / 180);
-                y.fill();
-                y.globalCompositeOperation = "source-over"}}
+                        y.beginPath(),
+                        y.moveTo(r.x, r.y),
+                        y.lineTo(c.x, c.y),
+                        y.lineTo(Z.x, Z.y),
+                        y.stroke(),
+                        i || o)
+                        if (o) {
+                            const t = P.transform(.35, 1.15), e = P.transform(-.05, 1.1), s = P.transform(.25, 1.13), i = P.transform(.05, 1.11), n = P.transform(.25, 1.35), r = P.transform(-.03, 1.3), xx = this.drawHeadAngle, qq = this.dir, tt = this.waist; y.strokeStyle = "#000000";
+                            y.fillStyle = "#e4000f";
+                            y.lineWidth = 2 * v;
+                            y.beginPath();
+                            y.moveTo(a.x + 5 * v, a.y);
+                            y.arc(a.x, a.y, 5 * v, 0, 2 * Math.PI);
+                            y.stroke();
+                            y.closePath();
+
+                            y.beginPath();
+                            y.moveTo(h.x, h.y);
+                            y.lineTo(l.x, l.y);
+                            y.stroke();
+                            if (this.dir < 0) {
+                                y.beginPath();
+                                y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI + 8 * Math.PI / 180 + Math.PI, xx - 8 * Math.PI / 180 + Math.PI);;
+                                y.fill();
+                            }
+
+                            else {
+                                y.beginPath();
+                                y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI - 8 * Math.PI / 180, xx - 24 * Math.PI / 180);
+                                y.fill();
+                            }
+                        }
+                        else
+                            y.beginPath(),
+                                y.moveTo(a.x + 5 * v, a.y),
+                                y.arc(a.x, a.y, 5 * v, 0, 2 * Math.PI),
+                                y.moveTo(h.x, h.y),
+                                y.lineTo(l.x, l.y),
+                                y.lineWidth = 2 * v,
+                                y.stroke();
+                    else
+                        GameInventoryManager.getItem(this.cosmetics.head).draw(y, a.x, a.y, this.drawHeadAngle, v, this.dir);
+                    y.globalAlpha = 1
                 }
             }
             clone() {
-                const e = new uni(this.player,new t.Z(0,0),1,new t.Z(0,0));
+                const e = new ht(this.player,new t.Z(0,0),1,new t.Z(0,0));
                 return e.frontWheel.pos.equ(this.frontWheel.pos),
                 e.frontWheel.vel.equ(this.frontWheel.vel),
                 e.frontWheel.old.equ(this.frontWheel.old),
@@ -12902,26 +12904,26 @@
                 e
             }
         }
-        const unilt = {
+        const planelt = {
             BIKE_GROUND: "bike_ground",
             BIKE_AIR: "bike_air",
             BIKE_FALL_1: "bike_fall_1",
             BIKE_FALL_2: "bike_fall_2",
             BIKE_FALL_3: "bike_fall_3"
         }
-          , unict = uni.prototype;
-        unict.vehicleName = "UNI",
-        unict.masses = null,
-        unict.springs = null,
-        unict.cosmetics = null,
-        unict.slow = !1,
-        unict.pedala = 0,
-        unict.cosmeticHead = null,
-        unict.cosmeticRearWheel = null,
-        unict.cosmeticFrontWheel = null,
-        unict.swapped = !1,
-        unict.ragdoll = null;
-        const uniut = uni;
+          , planect = plane.prototype;
+        planect.vehicleName = "PLANE",
+        planect.masses = null,
+        planect.springs = null,
+        planect.cosmetics = null,
+        planect.slow = !1,
+        planect.pedala = 0,
+        planect.cosmeticHead = null,
+        planect.cosmeticRearWheel = null,
+        planect.cosmeticFrontWheel = null,
+        planect.swapped = !1,
+        planect.ragdoll = null;
+        const planeut = plane;
 
         class dt extends A {
             constructor(e, s) {
@@ -13132,6 +13134,8 @@
                 o[0].angle.equ(h);
                 const l = e ? 1 : 0;
                 o[0].motor += (l - o[0].motor) / 10;
+
+                
                 let c = i ? 1 : 0;
                 c += n ? -1 : 0,
                 a[2].rotate(c / 6),
@@ -13159,7 +13163,7 @@
                     s.globalAlpha = this.player._opacity;
                     const i = this.masses
                       , n = this.dir;
-                    let r = this.rotor
+                    let r = this.rotor // top rotor
                       , o = this.rotor2;
                     const a = this.scene
                       , h = a.camera.zoom
@@ -13169,6 +13173,7 @@
                     let d = i[1].pos.add(i[2].pos).factor(.5);
                     d = i[0].pos.sub(d).factor(h);
                     let p = new t.Z(-d.y * n,d.x * n);
+                    //propeller
                     const f = i[0].pos.toScreen(a);
                     r += .5 * i[0].motor + .05,
                     r > 6.2831 && (r -= 6.2831),
@@ -13182,13 +13187,13 @@
                     s.lineJoin = s.lineCap = "round",
                     s.beginPath(),
                     s.moveTo(...g.transform(0, .5).toArray()),
-                    s.lineTo(...g.transform(0, e ? 1 : .8).toArray()),
+                    s.lineTo(...g.transform(0, 1).toArray()), // length of propeller intersector
                     s.stroke(),
                     s.lineWidth = 3 * h,
                     s.beginPath();
                     const m = (e ? .7 : .9) * Math.cos(r);
-                    s.moveTo(...g.transform(m, e ? .9 : .8).toArray()),
-                    s.lineTo(...g.transform(-m, e ? .9 : .8).toArray()),
+                    s.moveTo(...g.transform(m, .9).toArray()),
+                    s.lineTo(...g.transform(-m, .9).toArray()),
                     s.stroke(),
                     s.lineWidth = 4 * h,
                     s.strokeStyle = e ? "#666666" : "#000",
@@ -14139,9 +14144,13 @@
                 this.init(new t.Z(e,s), i),
                 this.radius = 10,
                 this.collide = !0,
-                this.wind = !0
+                this.wind = !0,
+                this.settings = GameSettings;
+
             }
             update() {
+                const windspeed = GameSettings.windspeed
+                const balloonpower = GameSettings.balloonpower
                 const t = this.vel
                   , e = this.pos
                   , s = this.old
@@ -14152,11 +14161,11 @@
                   , a = n.isButtonDown("right");
                 0 === i.x && 0 === i.y || (t.x = .9 * t.x,
                 t.y = .99 * t.y),
-                o && (e.x += -.05),
-                a && (e.x += .05),
+                o && (e.x += -.05 * balloonpower),
+                a && (e.x += .05 * balloonpower),
                 0 === i.x && 0 === i.y || (e.y += -.1),
                 r && (e.y += -.5),
-                this.wind && (e.x += .3),
+                this.wind && (e.x += .3 * windspeed),
                 e.x += t.x,
                 e.y += t.y,
                 this.collide && this.scene.track.collide(this),
@@ -14166,6 +14175,7 @@
                 s.y = e.y
             }
         }
+        
         ;
         class jt extends q {
             constructor(t, e) {
@@ -14483,7 +14493,7 @@
           , Xt = {};
         Xt.BMX = ut,
         Xt.MTB = Ot,
-        Xt.UNI = uniut,
+        Xt.PLANE = planeut,
         Xt.HELI = xt,
         Xt.TRUCK = Pt,
         Xt.HELI = xt,

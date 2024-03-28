@@ -14141,9 +14141,13 @@
                 this.init(new t.Z(e,s), i),
                 this.radius = 10,
                 this.collide = !0,
-                this.wind = !0
+                this.wind = !0,
+                this.settings = GameSettings;
+
             }
             update() {
+                const windspeed = GameSettings.windspeed
+                const balloonpower = GameSettings.balloonpower
                 const t = this.vel
                   , e = this.pos
                   , s = this.old
@@ -14154,11 +14158,11 @@
                   , a = n.isButtonDown("right");
                 0 === i.x && 0 === i.y || (t.x = .9 * t.x,
                 t.y = .99 * t.y),
-                o && (e.x += -.05),
-                a && (e.x += .05),
+                o && (e.x += -.05 * balloonpower),
+                a && (e.x += .05 * balloonpower),
                 0 === i.x && 0 === i.y || (e.y += -.1),
                 r && (e.y += -.5),
-                this.wind && (e.x += .3),
+                this.wind && (e.x += .3 * windspeed),
                 e.x += t.x,
                 e.y += t.y,
                 this.collide && this.scene.track.collide(this),

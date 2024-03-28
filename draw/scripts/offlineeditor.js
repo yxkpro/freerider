@@ -1244,8 +1244,9 @@
                         hatColor: GameSettings.hatColor,
                         frameColor1: GameSettings.frameColor1,
                         frameColor2: GameSettings.frameColor2,
-                        wheelColor: GameSettings.wheelColor
-
+                        wheelColor: GameSettings.wheelColor,
+                        windspeed: GameSettings.windspeed,
+                        balloonpower: GameSettings.balloonpower
                     }
                 },
                 closeDialog: function () {
@@ -1289,6 +1290,16 @@
                 changeWheelColor: function (e) {
                     var wheelColor = e.target.value;
                     GameSettings.wheelColor = wheelColor;
+                    "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1);
+                },
+                changeWindspeed: function (e) {
+                    var windspeed = e.target.value;
+                    GameSettings.windspeed = windspeed;
+                    "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1);
+                },
+                changeBalloonpower: function (e) {
+                    var balloonpower = e.target.value;
+                    GameSettings.balloonpower = balloonpower;
                     "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1);
                 },
                 renderFrameSizeSelect: function () {
@@ -1375,6 +1386,22 @@
                         onChange: this.changeWheelColor
                     });
                 },
+                renderWindspeedInput: function () {
+                    var e = GameSettings.windspeed;
+                    return React.createElement("input", {
+                        type: "text",
+                        defaultValue: e,
+                        onChange: this.changeWindspeed
+                    });
+                },
+                renderBalloonpowerInput: function () {
+                    var e = GameSettings.balloonpower;
+                    return React.createElement("input", {
+                        type: "text",
+                        defaultValue: e,
+                        onChange: this.changeBalloonpower
+                    });
+                },
                 render: function () {
                     var e = GameSettings,
                         fs = e.frameSize,
@@ -1384,7 +1411,9 @@
                         hC = e.hatColor,
                         fc1 = e.frameColor1,
                         fc2 = e.frameColor2,
-                        wC = e.wheelColor;
+                        wC = e.wheelColor,
+                        windspeed = e.windspeed,
+                        balloonpower = e.balloonpower;
                     return e,
                         n.createElement("div", {
                             className: "editorDialog-bike"
@@ -1429,6 +1458,16 @@
                             ),
                             n.createElement("td", { className: "settingInput" }, this.renderWheelColorInput())
                         ), n.createElement("tr", null,
+                        n.createElement("td", { className: "settingTitle" },
+                            n.createElement("span", { className: "name" }, "windspeed")
+                        ),
+                        n.createElement("td", { className: "settingInput" }, this.renderWindspeedInput())
+                    ), n.createElement("tr", null,
+                    n.createElement("td", { className: "settingTitle" },
+                        n.createElement("span", { className: "name" }, "balloonpower")
+                    ),
+                    n.createElement("td", { className: "settingInput" }, this.renderBalloonpowerInput())
+                ), n.createElement("tr", null,
                             n.createElement("td", { colSpan: "2" },
                                 n.createElement("button", {
                                     className: "primary-button-bike primary-button-black float-right margin-0-5",
@@ -2358,7 +2397,7 @@
                     vehiclesAllowed: {
                         mtb: !0,
                         bmx: !0,
-                        uni: !0
+                        plane: !0
                     },
                     uploadingEnabled: !1,
                     canClose: !0,
@@ -2403,7 +2442,7 @@
                   , i = e.trackDesc.getDOMNode()
                   , a = t.vehiclesAllowed.mtb
                   , s = t.vehiclesAllowed.bmx
-                  , aa = t.vehiclesAllowed.uni
+                  , aa = t.vehiclesAllowed.plane
                   , l = o.value
                   , c = i.value
                   , u = !0
@@ -2452,7 +2491,7 @@
                       , i = e.defaultVehicle
                       , a = e.vehiclesAllowed.mtb
                       , s = e.vehiclesAllowed.bmx
-                      , aa = e.vehcilesAllowed.uni
+                      , aa = e.vehcilesAllowed.plane
                       , l = this.props.options
                       , c = l.code
                       , u = {
@@ -2462,7 +2501,7 @@
                         allowed_vehicles: {
                             MTB: a,
                             BMX: s,
-                            UNI: aa
+                            PLANE: aa
                         },
                         code: c
                     };
@@ -2520,7 +2559,7 @@
                   , i = e.defaultVehicle.toLowerCase();
                 e.vehiclesAllowed.mtb && (o = "checked"),
                 e.vehiclesAllowed.bmx && (r = "checked"),
-                e.vehicldsAllowed.uni && (oo = "checked")
+                e.vehicldsAllowed.plane && (oo = "checked")
                 "mtb" === i ? o += " disabled" : r += " disabled";
                 var a = "";
                 return e.uploading && (a = n.createElement("div", {
