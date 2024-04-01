@@ -43,29 +43,43 @@
             <a href="/misc">misc</a>
         </p>
 <style>
-    body {
-        overflow-y: visible;
-    }
-    
     canvas {
-                top: -1141px;
-                right: -1152px;
-            }
-    </style>
+        top: -1211px;
+        right: -1152px;
+    }
+
+    .fixed-image {
+        position: fixed;
+        top: 482px;
+    }
+</style>
     
     <script>
-        GameSettings.cameraZoomMin = 0.765;
+            GameSettings.cameraZoomMin = 0.765;
             GameSettings.cameraZoomMax = 0.765;
             GameSettings.cameraStartZoom = 0.765;
+
+            GameSettings.cameraMovementHorizontal = true;
+            GameSettings.cameraMovementVertical = false;
+
+            GameSettings.windspeed = 2;
+            GameSettings.balloonpower = 5
     </script>
-    
-    <div class="circle">
-        <img src="/assets/weem2.png"/>
-    </div>
+
+<h2>mar 27 2024</h2>
+
+<table class="table table-sm">
+    <tr>
+        <td>
+            <p>added windspeed & balloonpower to bike settings</p>
+            <img class="fixed-image" src="https://media.tenor.com/mQIeFKwl_IIAAAAi/8bit-mario-runing.gif" height="40">
+        </td>
+    </tr>
+</table>
 
     <p>
         <a id="prevPage" href="/news/3">older</a> /
-        <a id="nextPage" href="/news/5">newer</a>
+        newer
     </p>
 
     </div>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>free rider - dream machine</title>
+	<link rel="stylesheet" href="assets/style.css">
+	<link rel="stylesheet" href="style.css">
+    <meta name="description" property="og:description" content="A program that uses the Canvas API to create an image of your creation.">
+    <meta name="image" property="og:image" content="/assets/icons/favicon.png">
+	<meta name="viewport" content="minimal-ui,width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+</head>
+<body>
+    <main id="container" oncontextmenu="event.preventDefault()">
+		<canvas id="view"></canvas>
+		<!-- Left nav with object options, dropdown with level select, export and import button all on left nav -->
+		<div class="user-interface">
+			<section class="left top">
+				<select id="level" style="border-radius: 0;display: inline-block;" onchange="canvas.loadLevel(this.value)">
+					<option value="plain" disabled selected>Select a level</option>
+					<option value="custom">Custom</option>
+				</select>
+			</section>
+			<section class="right top">
+				<label class="button ripple" style="display: inline-grid;">Import<input type="file" accept="text/plain" style="display: none;" onchange="this.files.length > 0 && this.files[0].text().then(text => canvas.import(text));"></label>
+				<button onclick="Object.assign(document.createElement('a'), {download: 'dream_machine_' + new Date().toISOString().split(/t/i).join('_').replace(/\..+/, '').replace(/:/g, '-'), href: window.URL.createObjectURL(new Blob([canvas.toString()], { type: 'text/plain' }))}).click();">Export</button>
+			</section>
+			<section class="left middle" id="objects">
+				<label class="button option ripple"><input type="radio" name="tool" style="display: none;" onchange="canvas.tools.select('custom')">Custom</label>
+				<label class="button option ripple"><input type="radio" name="tool" style="display: none;" onchange="canvas.tools.select('eraser')">Eraser</label>
+			</section>
+		</div>
+	</main>
+    <script type="module" src="bootstrap.js"></script>
+</body>
+</html>

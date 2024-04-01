@@ -44,6 +44,17 @@ center {
     background-color: #1884cf;
 }
 
+#track {
+    color: white;
+    background-color: #aaa;
+    text-decoration: None;
+    padding: .3em;
+}
+
+#track:hover {
+    background-color: #1884cf;
+}
+
 a {
     color: #aaa;
     position: relative;
@@ -213,7 +224,7 @@ blockquote p {
 }
 
 table {
-    width: 100%;
+    width: 100%
 }
 
 tr{
