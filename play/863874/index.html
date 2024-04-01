@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<div id="game-container" style="position: relative; z-index: 0;"></div>
+
+<html>
+
+<head>
+    <meta name="generator" content="Hugo 0.68.3" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/stylesheet.css">
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
+
+    <script src="/scripts/manifest.js"></script>
+    <script src="/scripts/settings.js"></script>
+    <script src="/scripts/offlineeditor.js"></script>
+
+    <script>
+        function openBikeSettingsDialog() {
+            if (typeof GameManager !== 'undefined') {
+                GameManager.command('dialog', 'bikesettings');
+            }
+        }
+    </script>
+
+    <title>freerider.app</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <p>
+            <a href="/" id=home class="">freerider.app</a>
+            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png" width="24" height="16"></a>
+        </p>
+
+        <style>
+            canvas {
+                top: -1450px;
+                right: -1150px;
+            }
+        </style>
+
+        <script>
+            GameSettings.cameraZoomMin = 0.5;
+            GameSettings.cameraZoomMax = 0.5;
+            GameSettings.cameraStartZoom = 0.5;
+
+            GameSettings.cameraMovementHorizontal = true;
+            GameSettings.cameraMovementVertical = false;
+
+            GameSettings.startVehicle = "MTB";
+        </script>
+
+        <script>
+            function addTextFromFileToHTML() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'track.txt', true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var text = xhr.responseText
+                        var authorMatch = text.match(/"author":"(.+?)"/)
+                        var descrMatch = text.match(/"descr":"(.+?)"/)
+                        var author = authorMatch[1]
+                        var descr = descrMatch[1];
+
+                        document.getElementById("author").innerText = author;
+                        document.getElementById("descr").innerText = descr;
+                    }
+                };
+                xhr.send();
+            }
+            addTextFromFileToHTML();
+        </script>
+
+        <a id="title" href="https://freeriderhd.com/t/863874">Taiga</a> <a id="author" href="https://freeriderhd.com/u/Albatross"></a>
+
+    </div>
+</body>
+
+</html>
