@@ -114,7 +114,8 @@ var Hangman = function(elem, mode) {
 { word: "wellebelly", wordid: "wellebelly" },
 { word: "dantexpress", wordid: "dantexpress" },
 { word: "alexander", wordid: "alexander" },
-{ word: "loge_0", wordid: "loge_0" },
+{ word: "logeton", wordid: "loge_0" },
+{ word: "i cat tall the dark 16", wordid: "loge_0"},
 { word: "malishya", wordid: "malishya" },
 { word: "rationalities", wordid: "rationalities" },
 { word: "goatosaur", wordid: "goatosaur" },
@@ -122,7 +123,7 @@ var Hangman = function(elem, mode) {
 { word: "tplacella", wordid: "tplacella" },
 { word: "zycerak", wordid: "zycerak" },
 { word: "bladee", wordid: "bladee" },
-{ word: "deadrising2", wordid: "deadrising2" },
+{ word: "elibloodthirst", wordid: "elibloodthirst" },
 { word: "nitrogeneric", wordid: "nitrogeneric" },
 { word: "skijumping", wordid: "skijumping" },
 { word: "albatross", wordid: "albatross" },
@@ -168,7 +169,7 @@ var Hangman = function(elem, mode) {
 { word: "moose_man", wordid: "moose_man" },
 { word: "hawnks", wordid: "hawnks" },
 { word: "drmanbearpig", wordid: "drmanbearpig" },
-{ word: "wolfram", wordid: "wolfram" },
+{ word: "wolfram", wordid: "wolfram" }
             // More players...
         ],
         word_list = mode === 'track' ? word_list_track : word_list_player,
