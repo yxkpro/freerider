@@ -102,6 +102,13 @@
             .displayed-word {
                 font-size: 1.5em;
                 margin: 25px 5px 25px 5px;
+                white-space: normal;
+                word-break: keep-all;
+            }
+
+            .displayed-word span {
+                display: inline-block; /* Treats each word as a block, preventing breaks within */
+                margin-right: 4px; /* Optional: adds a small space between words */
             }
 
             .lives-left {

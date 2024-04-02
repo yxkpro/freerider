@@ -11,6 +11,7 @@ body {
     max-height: 640px;
     font-size: 11pt;
     overflow: hidden;
+    text-transform: lowercase;
 }
 
 center {
@@ -32,6 +33,10 @@ center {
     background-color: #aaa;
     text-decoration: None;
     padding: .3em;
+}
+
+#title,#author {
+    text-transform: lowercase;
 }
 
 #page {
