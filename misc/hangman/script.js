@@ -107,6 +107,7 @@ var Hangman = function(elem, mode) {
 { word: "black magic", wordid: "127165" }
             // More tracks...
         ],
+        //note
         word_list_player = [
             { word: "ness", wordid: "ness" },
 { word: "volund", wordid: "volund" },
