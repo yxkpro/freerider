@@ -9342,6 +9342,8 @@
             const a = o
         }
         ,
+
+        //select
         580: (t,e,s)=>{
             var i = s(430).Z
               , n = s(348).Z
@@ -9515,9 +9517,9 @@
                 this.radius,
                 t.save(),
                 t.fillStyle = "#000000",
-                t.font = 12 * s + "pt arial",
+                t.font = 0 * s + "pt arial",
                 t.fillText(e, 10 * s, 20 * s),
-                t.font = 8 * s + "pt arial"
+                t.font = 0 * s + "pt arial"
             }
             ,
             d.close = function() {

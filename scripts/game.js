@@ -11862,73 +11862,112 @@
             }
             draw() {
                 this.hat && this.hat.draw();
-                const e = this.parent.scene.game.mod.getVar("crRagdoll")
-                  , s = this.parent.scene.game.mod.getVar("crHead")
-                  , i = this.parent.scene.game.mod.getVar("customColors")
-                  , n = this.head
-                  , r = this.waist
-                  , o = this.lElbow
-                  , a = this.rElbow
-                  , h = this.rHand
-                  , l = this.lHand
-                  , c = this.lKnee
-                  , u = this.rKnee
-                  , d = this.lFoot
-                  , p = this.rFoot
-                  , f = this.parent.scene
-                  , g = f.camera.zoom
-                  , m = f.game.canvas.getContext("2d")
-                  , v = e ? 1 : 2
-                  , y = n.pos.toScreen(f)
-                  , w = r.pos.toScreen(f)
-                  , x = a.pos.toScreen(f)
-                  , b = h.pos.toScreen(f)
-                  , _ = u.pos.toScreen(f)
-                  , T = p.pos.toScreen(f)
-                  , C = o.pos.toScreen(f)
-                  , k = l.pos.toScreen(f)
-                  , S = c.pos.toScreen(f)
-                  , A = d.pos.toScreen(f);
-                if (m.strokeStyle = "rgba(0,0,0," + .5 * v + ")",
-                m.beginPath(),
-                m.moveTo(y.x, y.y),
-                m.lineTo(x.x, x.y),
-                m.lineTo(b.x, b.y),
-                m.strokeStyle = i ? tt([...f.game.mod.getVar("riderColor"), .5 * v]) : "rgba(0,0,0," + .5 * v + ")",
-                m.lineWidth = 5 * g,
-                m.moveTo(w.x, w.y),
-                m.lineTo(_.x, _.y),
-                m.lineTo(T.x, T.y),
-                !e) {
-                    let t = u.pos.sub(r.pos).normalize();
-                    t = t.factor(4).add(p.pos);
-                    const e = t.toScreen(f);
-                    m.lineTo(e.x, e.y)
-                }
-                if (m.stroke(),
+                const hangman = GameSettings.hangman;
+                const e = this.parent.scene.game.mod.getVar("crRagdoll");
+                const s = this.parent.scene.game.mod.getVar("crHead");
+                const f = this.parent.scene;
+                const g = f.camera.zoom;
+                const m = f.game.canvas.getContext("2d");
+            
+                const n = this.head;
+                const r = this.waist;
+                const o = this.lElbow;
+                const a = this.rElbow;
+                const h = this.rHand;
+                const l = this.lHand;
+                const c = this.lKnee;
+                const u = this.rKnee;
+                const d = this.lFoot;
+                const p = this.rFoot;
+            
+                const y = n.pos.toScreen(f);
+                const w = r.pos.toScreen(f);
+                const x = a.pos.toScreen(f);
+                const b = h.pos.toScreen(f);
+                const _ = u.pos.toScreen(f);
+                const T = p.pos.toScreen(f);
+                const C = o.pos.toScreen(f);
+                const k = l.pos.toScreen(f);
+                const S = c.pos.toScreen(f);
+                const A = d.pos.toScreen(f);
+            
+                // Draw shin 1
+                m.strokeStyle = `rgba(0,0,0,${hangman < 7 ? 1 : 0})`;
                 m.lineWidth = 5 * g,
                 m.lineCap = "round",
                 m.lineJoin = "round",
-                m.strokeStyle = i ? tt([...f.game.mod.getVar("riderColor"), v]) : "rgba(0,0,0," + v + ")",
-                m.beginPath(),
-                m.moveTo(y.x, y.y),
-                m.lineTo(C.x, C.y),
-                m.lineTo(k.x, k.y),
-                m.lineWidth = 5 * g,
-                m.moveTo(w.x, w.y),
-                m.lineTo(S.x, S.y),
-                m.lineTo(A.x, A.y),
-                !e) {
-                    let t = c.pos.sub(r.pos).normalize();
-                    t = t.factor(4).add(d.pos);
-                    const e = t.toScreen(f);
-                    m.lineTo(e.x, e.y)
-                }
-                if (m.stroke(),
+                m.beginPath();
+                m.moveTo(S.x, S.y);
+                m.lineTo(A.x, A.y);
+                m.stroke();
+            
+                // Draw shin 2
+                m.strokeStyle = `rgba(0,0,0,${hangman < 6 ? 1 : 0})`;
+                m.beginPath();
+                m.moveTo(_.x, _.y);
+                m.lineTo(T.x, T.y);
+                m.stroke();
+            
+                // Draw thigh 1
+                m.strokeStyle = `rgba(0,0,0,${hangman < 7 ? 1 : 0})`;
+                m.beginPath();
+                m.moveTo(w.x, w.y);
+                m.lineTo(S.x, S.y);
+                m.lineTo(A.x, A.y);
+                m.stroke();
+            
+                // Draw thigh 2
+                m.strokeStyle = `rgba(0,0,0,${hangman < 6 ? 1 : 0})`;
+                m.beginPath();
+                m.moveTo(w.x, w.y);
+                m.lineTo(_.x, _.y);
+                m.lineTo(T.x, T.y);
+                m.stroke();
+            
+                // Draw hands 1
+                m.strokeStyle = `rgba(0,0,0,${hangman < 5 ? 1 : 0})`;
+                m.beginPath();
+                m.moveTo(C.x, C.y);
+                m.lineTo(k.x, k.y);
+                m.stroke();
+            
+                // Draw hands 2
+                m.strokeStyle = `rgba(0,0,0,${hangman < 4 ? 1 : 0})`;
+                m.beginPath();
+                m.moveTo(x.x, x.y);
+                m.lineTo(b.x, b.y);
+                m.stroke();
+            
+                // Draw elbows 1
+                m.strokeStyle = `rgba(0,0,0,${hangman < 5 ? 1 : 0})`;
+                m.beginPath();
+                m.moveTo(y.x, y.y);
+                m.lineTo(C.x, C.y);
+                m.lineTo(k.x, k.y);
+                m.stroke();
+            
+                // Draw elbows 2
+                m.strokeStyle = `rgba(0,0,0,${hangman < 4 ? 1 : 0})`;
+                m.beginPath();
+                m.moveTo(y.x, y.y);
+                m.lineTo(x.x, x.y);
+                m.lineTo(b.x, b.y);
+                m.stroke();
+            
+                // Draw waist
+                m.strokeStyle = `rgba(0,0,0,${hangman < 3 ? 1 : 0})`;
+                m.beginPath();
+                m.moveTo(y.x, y.y);
+                m.lineTo(w.x, w.y);
                 m.lineWidth = 8 * g,
+                m.stroke();
+            
+                // Draw head
+                if (m.strokeStyle = `rgba(0,0,0,${hangman < 2 ? 1 : 0})`,
                 m.beginPath(),
                 m.moveTo(y.x, y.y),
                 m.lineTo(w.x, w.y),
+                
                 m.stroke(),
                 y.inc(y.sub(w).factor(.25)),
                 s || this.hat)
@@ -11944,16 +11983,17 @@
                           , n = y.add(s.factor(-.35 * this.dir)).add(e.factor(.15));
                         m.beginPath(),
                         m.arc(y.x, y.y, 5 * g, 0, 1.99999 * Math.PI, !1),
+                        m.lineWidth = 2 * g,
+                        m.stroke()
+                        m.strokeStyle = `rgba(0,0,0,${hangman < 1 ? 1 : 0})`,
+                m.beginPath(),
                         m.moveTo(i.x, i.y),
                         m.lineTo(n.x, n.y),
                         m.lineWidth = 2 * g,
                         m.stroke()
                     }
-                else {
-                    const t = GameInventoryManager.getItem(this.parent.cosmetics.head)
-                      , e = this.drawHeadAngle;
-                    t.draw(m, y.x, y.y, e, g, this.dir, 1)
-                }
+                
+                
             }
             update() {
                 for (let t = this.springs.length - 1; t >= 0; t--)
@@ -12200,17 +12240,31 @@
                 this.frontSpring.contract(-25, -20))
             }
             draw() {
-                if (this.explosion)
-                    this.explosion.draw();
-                else {
-                    const t = this.scene.game.canvas.getContext("2d");
-                    if (t.imageSmoothingEnabled = !0,
-                    t.webkitImageSmoothingEnabled = !0,
-                    t.mozImageSmoothingEnabled = !0,
-                    this.settings.developerMode)
-                        for (const t of this.masses)
-                            t.draw();
-                    this.drawBikeFrame()
+                const hangman = GameSettings.hangman;
+                const ctx = this.scene.game.canvas.getContext("2d");
+            
+                ctx.imageSmoothingEnabled = true;
+                ctx.webkitImageSmoothingEnabled = true;
+                ctx.mozImageSmoothingEnabled = true;
+            
+                // Draw the bike frame only if hangman is 0
+                if (hangman === 0) {
+                    if (this.explosion) {
+                        this.explosion.draw();
+                    } else {
+                        if (this.settings.developerMode) {
+                            for (const mass of this.masses) {
+                                mass.draw();
+                            }
+                        }
+                        this.drawBikeFrame();
+                    }
+                } else {
+                    // Draw the ragdoll if hangman is not 0
+                    if (!this.ragdoll) {
+                        this.createRagdoll();
+                    }
+                    this.ragdoll.draw();
                 }
             }
             updateDrawHeadAngle() {
@@ -12219,7 +12273,7 @@
             }
             drawBikeFrame() {
                   const e = this.scene;
-
+                  const hangman = GameSettings.hangman
                   const wheelSizefront = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
                   , wheelSizerear = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
                   , frameSize = {"mini": 0.7, "small": 0.85, "medium": 1}
@@ -19337,20 +19391,31 @@
                     t.sector.powerupCanvasDrawn = !1)
             }
             addDefaultLine() {
-                const t = this.defaultLine
-                , e = t.p1
-                , s = t.p2
-                , ee = t.p3
-                , ss = t.p4
-                , ae = t.p5
-                , as = t.p6
-                , aee = t.p7
-                , ass = t.p8;
-              this.addPhysicsLine(e.x, e.y, s.x, s.y),
-              this.addPhysicsLine(s.x, s.y, ee.x, ee.y),
-              this.addPhysicsLine(ee.x, ee.y, ss.x, ss.y),
-              this.addPhysicsLine(ss.x, ss.y, e.x, e.y)
-            }
+                fetch('track.txt')
+                .then(response => response.text())
+                .then(text => {
+                    console.log("Loaded text from file:", text);
+        
+                    // Extract code using regular expression
+                    var codeMatch = text.match(/"code":"(.+?)"/);
+                    var defaultCode = codeMatch ? codeMatch[1] : null;
+        
+                    if (defaultCode) {
+                        console.log("Extracted code:", defaultCode);
+        
+                        // Update the state with the extracted code
+                        this.read(defaultCode);
+                    } else {
+                        console.error("No code found, using entire contents of the file.");
+        
+                        // Update the state with the entire contents of the file
+                        this.read(text);
+                    }
+                })
+                .catch(error => {
+                    console.error("Error loading text from file:", error);
+                });
+        }
             addDefaultTrack(){}
             erase(t, s, i) {
                 this.dirty = !0;

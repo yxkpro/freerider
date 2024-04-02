@@ -46,7 +46,15 @@
 
         <!-- Content below: -->
 
+        <script>
+            GameSettings.hangman = 7;
+        </script>
+
         <style>
+            canvas {
+                top: -1350px;
+                right: -1350px;
+            }
             .date {
                 color: #aaa;
 
@@ -88,7 +96,7 @@
                 border: none;
                 width: 90%;
                 margin: 20px auto;
-                background-color: white;
+                background-color: transparent;
             }
 
             .displayed-word {
@@ -113,7 +121,7 @@
             button {
                 border: none;
                 cursor: pointer;
-                background-color: white;
+                background-color: transparent;
             }
 
             button:hover {
@@ -134,7 +142,14 @@
                 color: #dddddd;
             }
 
-            #new-game-button {
+            #new-game-button-track {
+                margin-top: 25px;
+                margin-bottom: 25px;
+                width: 120px;
+                height: 40px;
+            }
+
+            #new-game-button-player {
                 margin-top: 25px;
                 margin-bottom: 25px;
                 width: 120px;
@@ -151,8 +166,7 @@
 
         <div class="container">
             <h2>free rider hangman</h2>
-            <p></p>
-            <button id="new-game-button">new game</button>
+            <button id="new-game-button-track">track</button><button id="new-game-button-player">author</button>
             <div id="hangman"></div>
         </div>
 

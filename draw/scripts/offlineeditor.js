@@ -339,6 +339,7 @@
           , a = e("./Circlebottomtooloptions")
           , aa = e("./brushbottomtooloptions")
           , aaa = e("./ellebottomtooloptions")
+          , aaaa = e("./selectbottomtooloptions")
           , s = e("./eraserbottomtooloptions")
           , l = e("./camerabottomtooloptions")
           , c = e("./straightlinebottomtooloptions")
@@ -378,6 +379,11 @@
                         options: t
                     });
                     break;
+                case "select":
+                        f = n.createElement(aaaa, {
+                            options: t
+                        });
+                        break;
                 case "eraser":
                     f = n.createElement(s, {
                         options: t
@@ -426,6 +432,7 @@
         "./Circlebottomtooloptions": 5,
         "./brushbottomtooloptions": 555,
         "./ellebottomtooloptions": 5555,
+        "./selectbottomtooloptions": 55555,
         "./camerabottomtooloptions": 6,
         "./cameralock": 7,
         "./curvedlinebottomtooloptions": 8,
@@ -625,6 +632,30 @@
         react: 230,
         "react-slider": 75
     }],
+    55555: [function(e, t) {
+        var n = e("react")
+          , r = (e("react-slider"),
+        n.createClass({
+            displayName: "SelectBottomToolOptions",
+            changeZoom: function() {},
+            render: function() {
+                return n.createElement("div", {
+                    className: "bottomToolOptions bottomToolOptions_camera"
+                }, n.createElement("div", {
+                    className: "bottomToolOptions-toolTitle"
+                }, n.createElement("span", {
+                    className: "editorgui_icons editorgui_icons-icon_select"
+                }), n.createElement("span", {
+                    className: "toolName"
+                }, "Select")))
+            }
+        }));
+        t.exports = r
+    }
+    , {
+        react: 230,
+        "react-slider": 75
+    }],
     6: [function(e, t) {
         var n = e("react")
           , r = (e("react-slider"),
@@ -633,7 +664,7 @@
             changeZoom: function() {},
             render: function() {
                 return n.createElement("div", {
-                    className: "bottomToolOptions bottomToolOptions_camera"
+                    className: "bottomToolOptions bottomToolOptions_select"
                 }, n.createElement("div", {
                     className: "bottomToolOptions-toolTitle"
                 }, n.createElement("span", {
@@ -649,6 +680,7 @@
         react: 230,
         "react-slider": 75
     }],
+
     7: [function(e, t) {
         var n = e("react")
           , r = n.createClass({
@@ -2241,6 +2273,11 @@
                   , t = this.refs.placeholder.getDOMNode();
                 t.style.display = e.length > 0 ? "none" : "block"
             },
+            componentDidMount: function() {
+                this.importTrack(); // Automatically import the track when the component mounts
+            },
+
+            
             render: function() {
                 var e = this.state.isDragActive
                   , t = "editorDialog-content editorDialog-content_importDialog";
@@ -2255,6 +2292,11 @@
                     ref: "placeholder",
                     "data-ignoredragleave": "true"
                 }, "Paste track code, drag and drop text files here ", r, " to import");
+
+                if (!this.state.initialImportDone) {
+                    this.importTrack();
+                    this.setState({ initialImportDone: true });
+                }
                 return n.createElement("div", {
                     className: t
                 }, n.createElement("div", {
@@ -2865,8 +2907,8 @@
           , a = e("../tools/erasertool")
           , s = e("../tools/poweruptool")
           , l = e("../tools/vehicletool")
-          , c = (e("../tools/selecttool"),
-        e("../tools/cameratool"))
+          , iiii = e("../tools/selecttool")
+          , c = e("../tools/cameratool")
           , u = n.createClass({
             displayName: "LeftMenu",
             render: function() {
@@ -2899,7 +2941,13 @@
                     active: "powerup" === e
                 }), n.createElement(l, {
                     active: "vehiclepowerup" === e
-                }), n.createElement(c, {
+                }), 
+                
+                //n.createElement(iiii, {
+                //active: "select" === e
+                //}),
+                
+                n.createElement(c, {
                     active: "camera" === e
                 }))
             }
