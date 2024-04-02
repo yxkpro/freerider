@@ -2273,11 +2273,6 @@
                   , t = this.refs.placeholder.getDOMNode();
                 t.style.display = e.length > 0 ? "none" : "block"
             },
-            componentDidMount: function() {
-                this.importTrack(); // Automatically import the track when the component mounts
-            },
-
-            
             render: function() {
                 var e = this.state.isDragActive
                   , t = "editorDialog-content editorDialog-content_importDialog";
@@ -2292,11 +2287,6 @@
                     ref: "placeholder",
                     "data-ignoredragleave": "true"
                 }, "Paste track code, drag and drop text files here ", r, " to import");
-
-                if (!this.state.initialImportDone) {
-                    this.importTrack();
-                    this.setState({ initialImportDone: true });
-                }
                 return n.createElement("div", {
                     className: t
                 }, n.createElement("div", {
