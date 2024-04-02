@@ -19390,6 +19390,7 @@
                     t.hit && !t.remove && (t.hit = !1,
                     t.sector.powerupCanvasDrawn = !1)
             }
+            //note
             addDefaultLine() {
                 fetch('track.txt')
                 .then(response => response.text())
