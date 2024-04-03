@@ -19,7 +19,7 @@ var Hangman = function (elem, mode) {
             { word: "the ultracave", wordid: "938064" },
             { word: "questionable social constructs", wordid: "937269" },
             { word: "kelp me i'm drowining", wordid: "936672" },
-            { word: "demi-goddest, demi-diety", wordid: "936317" },
+            { word: "demi-goddess, demi-diety", wordid: "936317" },
             { word: "smithereens", wordid: "934980" },
             { word: "dead animal juice", wordid: "934728" },
             { word: "well", wordid: "934559" },
@@ -235,6 +235,8 @@ var Hangman = function (elem, mode) {
         while (elem.lastChild) {
             elem.removeChild(elem.firstChild);
         }
+        lives_left = 7; // Reset lives left to 7
+    updateGameSettingsHangman();
     };
 
     function getWord() {
