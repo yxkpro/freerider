@@ -9802,7 +9802,7 @@
                 if (!1 !== e && 0 >= e && (t = !1),
                 this.scene.state.paused && (s = !1,
                 i = !1,
-                t = this.scene.settings.mobile ? "Paused" : "Paused - Press Spacebar to Continue"),
+                t = this.scene.settings.mobile ? "Paused" : ""),
                 !1 === s && (s = "#333333"),
                 t) {
                     var n = this.scene.game
@@ -10018,20 +10018,20 @@
                   , u = new createjs.Bitmap(t.assets.getResult("targets_icon"))
                   , d = e / 2.5;
                 s.mobile && (d = e / 2.5),
-                r.y = 18,
-                r.x = 62,
-                o.y = 3,
-                o.x = 59,
-                a.y = 0,
-                a.x = 0,
-                c.x = 305,
-                c.y = 21,
-                u.x = 240,
-                u.y = 3,
-                h.y = 15,
-                h.x = 460,
-                l.y = 0,
-                l.x = 400,
+                r.y = -100,
+                r.x = -100,
+                o.y = -100,
+                o.x = -100,
+                a.y = -100,
+                a.x = -100,
+                c.x = -1005,
+                c.y = -100,
+                u.x = -100,
+                u.y = -100,
+                h.y = -100,
+                h.x = -100,
+                l.y = -100,
+                l.x = -100,
                 i.addChild(r),
                 //i.addChild(o),
                 i.addChild(a),
@@ -10441,12 +10441,12 @@
                 var t = this.scene.game.pixelRatio
                   , e = new createjs.Container
                   , s = new createjs.Shape;
-                s.graphics.setStrokeStyle(5, "round").beginStroke("rgba(242,144,66,1)").beginFill("rgba(242,144,66,0.5)").drawRoundRect(0, 0, 200, 60, 25);
-                var i = new createjs.Text("00:00","35px helsinki","#000000");
+                s.graphics.setStrokeStyle(0, "round").beginStroke("rgba(0,0,0,0)").beginFill("rgba(0,0,0,0)").drawRoundRect(0, 0, 0, 0, 0);
+                var i = new createjs.Text("","35px helsinki","#000000");
                 i.textAlign = "center",
                 i.textBaseline = "middle",
-                i.x = 100,
-                i.y = 30,
+                i.x = -400,
+                i.y = -400,
                 e.addChild(s),
                 e.addChild(i),
                 e.visible = !1,
@@ -14634,7 +14634,7 @@
                               , e = t.settings
                               , s = t.message;
                             t.state.playerAlive = this.isAlive(),
-                            this._checkpoints.length > 0 ? e.mobile ? s.show("Tap to go to checkpoint!", !1, "#000000", "#FFFFFF") : s.show("Press Enter For Checkpoint", !1, "#000000", "#FFFFFF") : e.mobile ? s.show("Tap to Restart!", !1, "#000000", "#FFFFFF") : s.show("Press Enter To Restart", !1, "#000000", "#FFFFFF")
+                            this._checkpoints.length > 0 ? e.mobile ? s.show("", !1, "#000000", "#FFFFFF") : s.show("", !1, "#000000", "#FFFFFF") : e.mobile ? s.show("Tap to Restart!", !1, "#000000", "#FFFFFF") : s.show("", !1, "#000000", "#FFFFFF")
                         }
                     }
                     setAsGhost() {
@@ -14852,7 +14852,7 @@
                             !t) {
                                 const t = e.settings;
                                 e.state.playerAlive = this.isAlive(),
-                                e.settings.mobile ? e.message.show("Tap to resume", 5, "#826cdc", "#FFFFFF") : e.message.show("Press Backspace To Go Back Further", 5, "#826cdc", "#FFFFFF"),
+                                e.settings.mobile ? e.message.show("", 5, "#826cdc", "#FFFFFF") : e.message.show("", 5, "#826cdc", "#FFFFFF"),
                                 e.track.updatePowerupState(this),
                                 t.waitAtCheckpoints && (e.state.playing = !1),
                                 e.camera.focusOnMainPlayer()
@@ -15161,7 +15161,7 @@
                         s.isGhost() || (this.hit = !0,
                         this.sector.powerupCanvasDrawn = !1,
                         r.sound.play("goal_sound"),
-                        r.message.show(t + " of " + e + " Stars", 50, "#FAE335", "#666666")),
+                        r.message.show("", 50, "#FAE335", "#666666")),
                         t >= e && (s.complete = !0)
                     }
                 }
@@ -16630,7 +16630,7 @@
                   , s = e.player;
                 He(t.pos.x - this.x, 2) + He(t.pos.y - this.y, 2) < 1e3 && e.alive && (e.gravity.x = this.directionX,
                 e.gravity.y = this.directionY,
-                s.isGhost() || e.ignore || (this.scene.message.show("Gravity Changed", 50, "#1F80C3", "#FFFFFF"),
+                s.isGhost() || e.ignore || (this.scene.message.show("", 50, "#1F80C3", "#FFFFFF"),
                 this.scene.sound.play("gravity_down_sound")))
             }
         }
@@ -16887,7 +16887,7 @@
                         t.pos.x += r,
                         t.pos.y += o;
                     s.isGhost() || e.ignore || (this.scene.sound.play("boost_sound"),
-                    this.scene.message.show("Boost Engaged", 50, "#8ac832"))
+                    this.scene.message.show("", 50, "#8ac832"))
                 }
             }
         }
@@ -16940,7 +16940,7 @@
                   , i = ms(vs(t.pos.x - this.x, 2) + vs(t.pos.y - this.y, 2));
                 !this.hit && i < 26 && e.alive && (e.slow = !0,
                 s.isGhost() || e.ignore || (this.scene.sound.play("slowmo_sound"),
-                this.scene.message.show("Slow Motion", 50, "#FFFFFF", "#000000")))
+                this.scene.message.show("", 50, "#FFFFFF", "#000000")))
             }
             drawPowerup(t, e) {
                 (e.save(),
@@ -17092,7 +17092,7 @@
                     s.setCheckpointOnUpdate(),
                     s.isGhost() || (this.hit = !0,
                     this.sector.powerupCanvasDrawn = !1,
-                    this.scene.message.show("Checkpoint Saved", 50, "#826cdc", "#FFFFFF"),
+                    this.scene.message.show("", 50, "#826cdc", "#FFFFFF"),
                     this.scene.sound.play("checkpoint_sound")))
                 }
             }
@@ -17371,7 +17371,7 @@
                 const e = t.parent
                   , s = e.player;
                 js(t.pos.x - this.x, 2) + js(t.pos.y - this.y, 2) < 1e3 && e.alive && (s.isGhost() || e.ignore || (0 === e.gravity.x && 0 === e.gravity.y || this.scene.sound.play("antigravity_sound", .3),
-                this.scene.message.show("Antigravity Engaged", 50, "#08faf3")),
+                this.scene.message.show("", 50, "#08faf3")),
                 e.gravity.x = 0,
                 e.gravity.y = 0)
             }
@@ -17623,7 +17623,7 @@
                     this.sector.powerupCanvasDrawn = !1,
                     this.otherPortal.sector.powerupCanvasDrawn = !1,
                     this.scene.sound.play("teleport_sound", .3),
-                    this.scene.message.show("Teleport Engaged", 50, "#8ac832")))
+                    this.scene.message.show("", 50, "#8ac832")))
                 }
             }
         }
@@ -17896,7 +17896,7 @@
                     r.vehicleTimer.playerAddedTime(s)),
                     s.isGhost() || (this.hit = !0,
                     this.sector.powerupCanvasDrawn = !1,
-                    this.scene.message.show("Helicopter Powerup!", 50, "#F2902E", !1)))
+                    this.scene.message.show("", 50, "#F2902E", !1)))
                 }
             }
         }
@@ -18133,7 +18133,7 @@
                     r.vehicleTimer.playerAddedTime(s)),
                     s.isGhost() || (this.hit = !0,
                     this.sector.powerupCanvasDrawn = !1,
-                    this.scene.message.show("Truck Powerup!", 50, "#94d44e", !1)))
+                    this.scene.message.show("", 50, "#94d44e", !1)))
                 }
             }
         }
@@ -18291,7 +18291,7 @@
                     r.vehicleTimer.playerAddedTime(s)),
                     s.isGhost() || (this.hit = !0,
                     this.sector.powerupCanvasDrawn = !1,
-                    this.scene.message.show("Balloon Powerup!", 50, "#f02728", !1)))
+                    this.scene.message.show("", 50, "#f02728", !1)))
                 }
             }
         }
@@ -18363,7 +18363,7 @@
                     r.vehicleTimer.playerAddedTime(s)),
                     s.isGhost() || (this.hit = !0,
                     this.sector.powerupCanvasDrawn = !1,
-                    this.scene.message.show("Blob Powerup!", 50, "#A784C5", !1)))
+                    this.scene.message.show("", 50, "#A784C5", !1)))
                 }
             }
         }
@@ -19390,9 +19390,9 @@
                     t.hit && !t.remove && (t.hit = !1,
                     t.sector.powerupCanvasDrawn = !1)
             }
-            //note
+            //notee
             addDefaultLine() {
-                fetch('track.txt')
+                fetch(GameSettings.defaultTrack)
                 .then(response => response.text())
                 .then(text => {
                     console.log("Loaded text from file:", text);
@@ -19577,8 +19577,8 @@
                 this.controlData = {
                     "pause_btn-hover": {
                         key: "pause",
-                        top: 60,
-                        right: 70
+                        top: -100,
+                        right: -100
                     }
                 },
                 this.initialize(t)
@@ -19628,13 +19628,13 @@
         bn.controlData = {
             redo: {
                 keys: ["ctrl", "y"],
-                top: 60,
-                right: 160
+                top: -100,
+                right: -100
             },
             undo: {
                 keys: ["ctrl", "z"],
-                top: 60,
-                right: 240
+                top: -100,
+                right: -100
             }
         };
         const _n = xn;
@@ -20383,7 +20383,7 @@
                 this.raceTimes.update()
             }
             restart() {
-                this.settings.mobile ? this.message.show("Press Any Button To Start", 1, "#333333") : this.message.show("Press Any Key To Start", 1, "#333333", "#FFFFFF"),
+                this.settings.mobile ? this.message.show("", 1, "#333333") : this.message.show("", 1, "#333333", "#FFFFFF"),
                 this.track.resetPowerups(),
                 this.restartTrack = !1,
                 this.state.paused = !1,
@@ -21680,8 +21680,8 @@
                 this.stage = t
             }
             setSize() {
-                let t = 3200
-                  , e = 3200;
+                let t = this.settings.height
+                  , e = this.settings.width;
                 if (!this.settings.fullscreen && !this.settings.isStandalone) {
                     const s = this.gameContainer;
                     t = s.clientHeight,
