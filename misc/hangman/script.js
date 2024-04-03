@@ -305,8 +305,8 @@ var Hangman = function (elem, mode) {
                 " (<a target='_blank' href='" + link + wordid + "'>play " + mode + "</a>)";
         }
         if (lives_left <= 0) {
-            game_complete = "sorry, you lose! the correct " + "author" + " was " + word +
-                " (<a target='_blank' href='" + link + wordid + "'>play " +"author" + "</a>)";
+            game_complete = "sorry, you lose! the correct " + mode + " was " + word +
+                " (<a target='_blank' href='" + link + wordid + "'>play " + mode + "</a>)";
         }
     }
 
@@ -367,7 +367,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     new_game_button_player.addEventListener("click", function () {
-        new Hangman(hangman_div, 'player');
+        new Hangman(hangman_div, 'author');
     });
 });
 
