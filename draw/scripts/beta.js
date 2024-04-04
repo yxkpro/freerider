@@ -21793,7 +21793,10 @@
                 this.flipSelected(flipVertically);
             }
             if (event.ctrlKey && event.key === 'c') {
-                this.copySelectedToClipboard();}
+                this.copySelectedToClipboard();
+            }
+            /*if (event.ctrlKey && event.key === 'v') {
+                this.pasteSelected();}*/
         }
 
         rotateSelected(degrees) {
@@ -22141,8 +22144,6 @@
 
                 if (isHoverList) {
                     this.multiHover();
-                } else {
-                    this.singleHover(mousePos);
                 }
             }
             if (force) return;
@@ -22150,81 +22151,7 @@
             this.toolUpdate();
         }
 
-        singleHover(mousePos) {
-            let minDist = 1000,
-                bestLine = undefined,
-                adjustedDist = 2 * HOVER_DIST / this.scene.camera.zoom;
-            // selected doesn't exist on the track, so we have to check it separately
-            if (selected) {
-                let dist = selected.p1 ?
-                    linesdf(mousePos.sub(selectOffset), selected) :
-                pointsdf(mousePos.sub(selectOffset), selected);
-                if (dist < minDist) {
-                    minDist = dist;
-                    bestLine = selected;
-                }
-            }
-
-            let sectorSize = this.scene.settings.drawSectorSize,
-                sectorPos = mousePos.factor(1 / sectorSize);
-            sectorPos.x = Math.floor(sectorPos.x);
-            sectorPos.y = Math.floor(sectorPos.y);
-            let currentSectorData = this.testSectorSingle(sectorPos);
-            if (currentSectorData[0] < minDist) {
-                [minDist, bestLine] = currentSectorData;
-            }
-            // this is all to figure out which sectors we even need to check
-            // i.e. within range to have a line that can possibly be close enough
-            // the position of the sector in track-space
-            let sectorTrackPos = sectorPos.factor(sectorSize),
-                // the position of the mouse within the sector
-                posInSector = mousePos.sub(sectorTrackPos),
-                // a zero vector (for checking the top left)
-                zeroVector = posInSector.factor(0),
-                // a vector of just the sector size (for checking the bottom right)
-                maxPos = zeroVector.add({x: sectorSize, y: sectorSize}),
-                sectorsToCheck = [],
-                positions = [zeroVector, posInSector, maxPos];
-            for (let i = -1; i < 2; i++) {
-                let x = positions[i + 1].x;
-                for (let j = -1; j < 2; j++) {
-                    // we don't need to re-check the current sector
-                    if (!i && !j)
-                        continue;
-                    let y = positions[j + 1].y;
-                    if (pointsdf(mousePos, {x, y}) <= adjustedDist * 1.5) {
-                        sectorsToCheck.push([i, j]);
-                    }
-                }
-            }
-
-            for (let i of sectorsToCheck) {
-                let sectorData = this.testSectorSingle(sectorPos.add(i));
-                if (sectorData[0] < minDist) {
-                    [minDist, bestLine] = sectorData;
-                }
-            }
-            [frameMinDist, frameBestLine] = [minDist, bestLine];
-            if (minDist < adjustedDist) {
-                hovered = bestLine;
-            } else {
-                hovered = undefined;
-                return;
-            }
-            minDist = HOVER_DIST / this.scene.camera.zoom;
-            let minPoint = undefined,
-                isSelected = hovered == selected;
-            if (hovered.p1) {
-                for (let i of [hovered.p1, hovered.p2]) {
-                    let dist = pointsdf(mousePos, i.add(isSelected ? selectOffset : vector()));
-                    if (dist < minDist) {
-                        minDist = dist;
-                        minPoint = i;
-                    }
-                }
-            }
-            hoverPoint = minPoint;
-        }
+        
 
         multiHover() {
             // this logic is very simple: decide which sectors to add, then add everything necessary from them
