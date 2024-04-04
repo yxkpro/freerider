@@ -109,7 +109,6 @@ var GameSettings = {
         "pause": 32,
         "enter": 13,
         "backspace": 8,
-        "restart": 82,
         "z": 90,
         "x": 88,
         "change_camera": 9,
@@ -135,7 +134,6 @@ var GameSettings = {
         "brush": 65,
         "curve": 87,
         "grid": 71,
-        "elle": 70,
         "camera": 67,
         "pause": 32,
         "change_vehicle": 86,
@@ -148,7 +146,6 @@ var GameSettings = {
         "opt5": 53,
         "opt6": 54,
         "enter": 13,
-        "restart": 82,
         "backspace": 8,
         "shift": 16,
         "ctrl": 17,
@@ -157,6 +154,7 @@ var GameSettings = {
         "zoom_decrease": 189,
         "zoom_100": 48,
         "bikesettings": 191,
+        "select" : 84
     },
     "keysToRecord": ["up", "down", "left", "right", "enter", "backspace", "z"],
     "user": {

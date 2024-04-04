@@ -2933,9 +2933,9 @@
                     active: "vehiclepowerup" === e
                 }), 
                 
-                //n.createElement(iiii, {
-                //active: "select" === e
-                //}),
+                n.createElement(iiii, {
+                active: "select" === e
+                }),
                 
                 n.createElement(c, {
                     active: "camera" === e

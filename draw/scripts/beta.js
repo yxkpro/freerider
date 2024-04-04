@@ -21768,6 +21768,7 @@
             this.down = false;
             // make a copy
             this.oldMouse = this.mouse.touch.real.factor(1);
+            document.addEventListener('keydown', this.keydown.bind(this));
         }
 
         get selected() {
@@ -21777,6 +21778,120 @@
         get hovered() {
             return isHoverList ? hoverList : hovered ? [hovered] : [];
         }
+
+        keydown(event) {
+            if (event.key.toLowerCase() === 'r') {
+                const degrees = event.shiftKey ? -5 : 5;
+                this.rotateSelected(degrees);
+            }
+            if (event.key.toLowerCase() === 's') {
+                const scale = event.shiftKey ? 0.8 : 1.25;
+                this.scaleSelected(scale);
+            }
+            if (event.key.toLowerCase() === 'f') {
+                const flipVertically = event.shiftKey;
+                this.flipSelected(flipVertically);
+            }
+            if (event.ctrlKey && event.key === 'c') {
+                this.copySelectedToClipboard();}
+        }
+
+        rotateSelected(degrees) {
+            const radians = degrees * Math.PI / 180;
+        
+            // calculate center
+            let sumX = 0, sumY = 0, numPoints = 0;
+            this.selected.forEach(line => {
+                sumX += line.p1.x + line.p2.x;
+                sumY += line.p1.y + line.p2.y;
+                numPoints += 2;
+            });
+            const centerX = sumX / numPoints;
+            const centerY = sumY / numPoints;
+        
+            // rotate around center
+            this.selected.forEach(line => {
+                [line.p1, line.p2].forEach(point => {
+                    const rotatedPoint = this.rotatePoint(point, centerX, centerY, radians);
+                    point.x = rotatedPoint.x;
+                    point.y = rotatedPoint.y;
+                });
+            });
+        }
+    
+        rotatePoint(point, centerX, centerY, radians) {
+            const x = point.x - centerX;
+            const y = point.y - centerY;
+    
+            return {
+                x: centerX + (x * Math.cos(radians) - y * Math.sin(radians)),
+                y: centerY + (x * Math.sin(radians) + y * Math.cos(radians))
+            };
+        }
+
+        scaleSelected(scaleFactor) {
+            let sumX = 0, sumY = 0, numPoints = 0;
+            this.selected.forEach(line => {
+                sumX += line.p1.x + line.p2.x;
+                sumY += line.p1.y + line.p2.y;
+                numPoints += 2;
+            });
+            const centerX = sumX / numPoints;
+            const centerY = sumY / numPoints;
+        
+            this.selected.forEach(line => {
+                [line.p1, line.p2].forEach(point => {
+                    point.x = centerX + (point.x - centerX) * scaleFactor;
+                    point.y = centerY + (point.y - centerY) * scaleFactor;
+                });
+            });
+        }
+
+        flipSelected(flipVertically) {
+            let sumX = 0, sumY = 0, numPoints = 0;
+            this.selected.forEach(line => {
+                sumX += line.p1.x + line.p2.x;
+                sumY += line.p1.y + line.p2.y;
+                numPoints += 2;
+            });
+            const centerX = sumX / numPoints;
+            const centerY = sumY / numPoints;
+        
+            this.selected.forEach(line => {
+                [line.p1, line.p2].forEach(point => {
+                    if (flipVertically) {
+                        point.y = centerY - (point.y - centerY);
+                    } else {
+                        point.x = centerX - (point.x - centerX);
+                    }
+                });
+            });
+        }
+
+        copySelectedToClipboard() {
+            // Assuming this.selected is an array of lines with p1 and p2 as endpoints
+            const physicsData = this.selected.map(line => [
+                line.p1.x.toString(32),
+                line.p1.y.toString(32),
+                line.p2.x.toString(32),
+                line.p2.y.toString(32)
+            ].join(' ')).join(',');
+        
+            // Assuming scenery and powerups are similar arrays that need to be processed
+            // If they are different, adjust the logic to match their structure
+            // const sceneryData = this.scenery.map(line => [...].join(' ')).join(',');
+            // const powerupsData = this.powerups.map(powerup => [...].join(' ')).join(',');
+        
+            // Combine all data into a single string, separated by '#'
+            // const textToCopy = [physicsData, sceneryData, powerupsData].join('#');
+            const textToCopy = physicsData;  // Use this if only physics data is needed
+        
+            navigator.clipboard.writeText(textToCopy)
+                .then(() => console.log('Copied to clipboard'))
+                .catch(err => console.error('Error copying to clipboard', err));
+        }
+        
+        
 
         press() {
             this.down = true;
@@ -22508,8 +22623,8 @@
                         ctx.stroke();
                     }
                     // the highlight on the line
-                    ctx.lineWidth = Math.max(zoom, 1);
-                    ctx.strokeStyle = selectPoint ? '#1884cf' : 'yellow';
+                    ctx.lineWidth = Math.max(2 * zoom, 1);
+                    ctx.strokeStyle = selectPoint ? '#1884cf' : '#1884cf';
                     ctx.beginPath();
                     ctx.moveTo(rp1.x, rp1.y);
                     ctx.lineTo(rp2.x, rp2.y);
@@ -22534,8 +22649,8 @@
                     rp2 = selected.p2.add(selectOffset).toScreen(scene);
                 for (let i of [rp1, rp2]) {
                     ctx.beginPath();
-                    ctx.strokeStyle = '#2200ff';
-                    ctx.fillStyle = '#00ffff';
+                    ctx.strokeStyle = '#1884cf';
+                    ctx.fillStyle = '#1884cf';
                     ctx.rect(i.x - zoom * 2, i.y - zoom * 2, zoom * 4, zoom * 4);
                     ctx.fill();
                     ctx.stroke();
@@ -22552,7 +22667,7 @@
                         ctx.stroke();
                         // the highlight on the line
                         ctx.lineWidth = Math.max(zoom, 1);
-                        ctx.strokeStyle = selectPoint ? '#1884cf' : 'green';
+                        ctx.strokeStyle = selectPoint ? '#1884cf' : '#1884cf';
                         ctx.beginPath();
                         ctx.moveTo(rp1.x, rp1.y);
                         ctx.lineTo(rp2.x, rp2.y);
@@ -22560,16 +22675,16 @@
                         // the other handle
                         let rsp = connected[connectedPoint == 'p1' ? 'p2' : 'p1'].add(selectOffset).toScreen(scene);
                         ctx.beginPath();
-                        ctx.strokeStyle = 'white';
-                        ctx.fillStyle = '#00ffff';
+                        ctx.strokeStyle = '#1884cf';
+                        ctx.fillStyle = '#1884cf';
                         ctx.rect(rsp.x - zoom * 2, rsp.y - zoom * 2, zoom * 4, zoom * 4);
                         ctx.fill();
                         ctx.stroke();
                     }
                     let rsp = selectPoint.add(selectOffset).toScreen(scene);
                     ctx.beginPath();
-                    ctx.strokeStyle = 'orange';
-                    ctx.fillStyle = '#2200ff';
+                    ctx.strokeStyle = '#1884cf';
+                    ctx.fillStyle = '#1884cf';
                     ctx.rect(rsp.x - zoom * 2, rsp.y - zoom * 2, zoom * 4, zoom * 4);
                     ctx.fill();
                     ctx.stroke();
@@ -22582,8 +22697,8 @@
                 let isSelect = hovered == selected,
                     rsp = hoverPoint.add(isSelect ? selectOffset : vector()).toScreen(scene);
                 ctx.beginPath();
-                ctx.strokeStyle = '#00ddff';
-                ctx.fillStyle = '#22ff00';
+                ctx.strokeStyle = '#1884cf';
+                ctx.fillStyle = '#1884cf';
                 ctx.rect(rsp.x - zoom * 3, rsp.y - zoom * 3, zoom * 6, zoom * 6);
                 ctx.fill();
                 ctx.stroke();
@@ -22591,7 +22706,7 @@
                 for (let hovered of selectTool.hovered) {
                     if (hovered.p1) {
                         ctx.lineWidth = Math.max(2 * zoom, 1);
-                        ctx.strokeStyle = '#ffff00';
+                        ctx.strokeStyle = '#1884cf';
                         ctx.beginPath();
                         let isSelect = hovered == selected,
                             rp1 = hovered.p1.add(isSelect ? selectOffset : vector()).toScreen(scene),
@@ -22621,9 +22736,12 @@
                     //handles
                     for (let i of [rp1, rp2]) {
                         ctx.beginPath();
-                        ctx.strokeStyle = '#22ff00';
-                        ctx.fillStyle = '#00ddff';
-                        ctx.rect(i.x - zoom * 3, i.y - zoom * 3, zoom * 6, zoom * 6);
+                        ctx.strokeStyle = '#1884cf';
+                        ctx.fillStyle = '#1884cf';
+                        // Calculate the radius based on the zoom level
+                        const radius = zoom * 3;
+                        // Draw the circle
+                        ctx.arc(i.x, i.y, radius, 0, Math.PI * 2);
                         ctx.fill();
                         ctx.stroke();
                     }

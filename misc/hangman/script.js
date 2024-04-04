@@ -178,6 +178,7 @@ var Hangman = function (elem, mode) {
             { word: "shelbylowry", wordid: "shelbylowry" },
             { word: "crane", wordid: "crane" },
             { word: "thesouthamericanguy", wordid: "thesouthamericanguy" },
+            { word: "reborn", wordid: "reborn"},
             { word: "pancakes345", wordid: "pancakes345" },
             { word: "gongo999", wordid: "gongo999" },
             { word: "lolz666", wordid: "lolz666" },
