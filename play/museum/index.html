@@ -35,35 +35,85 @@
             <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png" width="24" height="16"></a>
         </p>
 
+        <script>
+            GameSettings.width = 6400;
+            GameSettings.cameraMovementPage = true;
+        </script>
+
         <style>
             canvas {
-                top: 304px;
-                right: 358px;
+                top: -960px;
+                right: -2400px;
+            }
+
+            body {
+                text-transform: none;
+            }
+        
+            #computer {
+                position: absolute;
+                top: 0px;
+                right: 0px;
+            }
+
+            #home {
+                margin: 1em 0em;
+            }
+
+            img {
+                margin: 0px;
+            }
+
+            #start {
+                position: absolute;
+                z-index: -1;
+                width: 400px;
+                right: 320px;
+                top: 200px;
+            }
+
+            #trailer {
+                position: absolute;
+                width: 400px;
+                right: -300px;
+                top: 100px;
+            }
+
+            #firsttrack {
+                position: absolute;
+                z-index: -1;
+                width: 400px;
+                right: -1000px;
             }
         </style>
 
-        <script>
-            GameSettings.width = 162;
-            GameSettings.height = 224;
-            GameSettings.cameraZoomMin = 0.15;
-            GameSettings.cameraZoomMax = 0.15;
-            GameSettings.cameraStartZoom = 0.15;
+        <a id="title" href="https://freeriderhd.com/t/976843">free rider museum</a><br><br>
 
-            GameSettings.cameraMovementHorizontal = true;
-            GameSettings.cameraMovementVertical = true;
-        </script>
+        <span max-width="400" id="fr1">
+            <img width="400" src="/play/museum/assets/fr1.png">
+            <blockquote>in 2006, Pete begins work on the original Free Rider.</blockquote>
+            <blockquote>Free Rider is being developed for OneMoreLevel.com, a flash-game website created by Ira Willey.</blockquote>
+        </span>
 
-        <p>
-            <a href="/">home</a> /
-            <a href="/draw">draw</a> /
-            <a href="/play">play</a> /
-            <a href="/news">news</a> /
-            <a href="/misc">misc</a>
-        </p>
+        <span id="start">
+            <blockquote>in 2006, Pete begins work on the original Free Rider.</blockquote>
+            <blockquote>Free Rider is being developed for OneMoreLevel.com, a flash-game website created by Ira Willey.</blockquote>
+        </span>
 
-        
-        <img src="/play/museum/assets/computer.png">
-        
+        <span id="trailer">
+            <iframe width="600" height="345" src="https://www.youtube.com/embed/0offEL-zkG8" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>
+                <img src="/play/museum/assets/slackor.png">
+            <blockquote>onemorelevel.com forums are opened, and slackor (Ira Willey)</blockquote>
+        </span>
+
+        <span id="firsttrack">
+            <img src="/play/museum/assets/slackor.png">
+            <blockquote>onemorelevel.com forums are opened, and slackor (Ira Willey)</blockquote>
+
+        </span>
 
     </div>
 </body>

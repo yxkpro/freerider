@@ -169,7 +169,21 @@ var Hangman = function (elem, mode) {
             { word: "nasrani", wordid: "nasrani" },
             { word: "hawnks", wordid: "hawnks" },
             { word: "drmanbearpig", wordid: "drmanbearpig" },
-            { word: "wolfram", wordid: "wolfram" }
+            { word: "wolfram", wordid: "wolfram" },
+            { word: "ishu", wordid: "ishu" },
+            { word: "gun", wordid: "gun" },
+            { word: "kazniti", wordid: "kazniti" },
+            { word: "ldprider", wordid: "ldprider" },
+            { word: "plastic pineapple", wordid: "plastic pineapple" },
+            { word: "shelbylowry", wordid: "shelbylowry" },
+            { word: "crane", wordid: "crane" },
+            { word: "thesouthamericanguy", wordid: "thesouthamericanguy" },
+            { word: "pancakes345", wordid: "pancakes345" },
+            { word: "gongo999", wordid: "gongo999" },
+            { word: "lolz666", wordid: "lolz666" },
+            { word: "forlorn333", wordid: "forlorn333" },
+            { word: "jon312", wordid: "jon312" },
+            { word: "bigblu3", wordid: "bigblu3" },
 
             // More players...
         ],

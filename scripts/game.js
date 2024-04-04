@@ -10946,9 +10946,16 @@
                     const t = this.playerFocus.getActiveVehicle().focalPoint
                       , e = this.position
                       , v = this.scene;
-                    let s = 3;
+                    let s = 2;
+                    
 
-                    f(g(t.pos.x - e.x, 2) + g(t.pos.y - e.y, 2)) > 1500 && (s = 1);
+                    if (this.settings.cameraMovementPage) {
+                        e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s;
+                        e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;
+                        window.scrollTo((t.pos.x - e.x) / s, window.scrollY);
+                    }
+
+                    else {
 
                     if (this.settings.cameraMovementHorizontal) {
                         e.x += (t.pos.x - e.x) / s;
@@ -10961,7 +10968,7 @@
                     } else {
                         e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;
                     }
-
+                }
                     
                     
                 }

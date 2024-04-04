@@ -26,6 +26,7 @@ var GameSettings = {
     "cameraZoomMin": 0.5,
     "cameraZoomMax": 0.5,
     "cameraSensitivity": 0.0,
+    "cameraMovementPage": false,
     "cameraMovementVertical": false,
     "cameraMovementHorizontal": false,
     "lowQualityMode": false,

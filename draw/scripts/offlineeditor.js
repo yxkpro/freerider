@@ -2906,7 +2906,7 @@
                   , t = this.props.data.hideMenus
                   , u = 48.6
                   , d = {};
-                return d.marginTop = -(7 * u / 2),
+                return d.marginTop = -(8 * u / 2),
                 t && (d.display = "none"),
                 n.createElement("div", {
                     className: "leftMenu",
