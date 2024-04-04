@@ -61,7 +61,8 @@ var GameSettings = {
         "gridMajorLineColor": "#CCC",
         "lineType": "physics",
         "cameraMoveSpeed": 0.02,
-        "rightClickMove": false
+        "rightClickMove": false,
+        "copy": true
     },
     "vehiclePowerup": {
         "selected": "helicopter",

@@ -21792,11 +21792,6 @@
                 const flipVertically = event.shiftKey;
                 this.flipSelected(flipVertically);
             }
-            if (event.ctrlKey && event.key === 'c') {
-                this.copySelectedToClipboard();
-            }
-            /*if (event.ctrlKey && event.key === 'v') {
-                this.pasteSelected();}*/
         }
 
         rotateSelected(degrees) {
@@ -21869,33 +21864,8 @@
                     }
                 });
             });
-        }
-
-        copySelectedToClipboard() {
-            // Assuming this.selected is an array of lines with p1 and p2 as endpoints
-            const physicsData = this.selected.map(line => [
-                line.p1.x.toString(32),
-                line.p1.y.toString(32),
-                line.p2.x.toString(32),
-                line.p2.y.toString(32)
-            ].join(' ')).join(',');
+        }     
         
-            // Assuming scenery and powerups are similar arrays that need to be processed
-            // If they are different, adjust the logic to match their structure
-            // const sceneryData = this.scenery.map(line => [...].join(' ')).join(',');
-            // const powerupsData = this.powerups.map(powerup => [...].join(' ')).join(',');
-        
-            // Combine all data into a single string, separated by '#'
-            // const textToCopy = [physicsData, sceneryData, powerupsData].join('#');
-            const textToCopy = physicsData;  // Use this if only physics data is needed
-        
-            navigator.clipboard.writeText(textToCopy)
-                .then(() => console.log('Copied to clipboard'))
-                .catch(err => console.error('Error copying to clipboard', err));
-        }
-        
-        
-
         press() {
             this.down = true;
             if (hovered && hovered === tempSelect?.[0]) {
@@ -22183,6 +22153,11 @@
                 hoverList = [];
                 isHoverList = false;
                 selectOffset = vector();
+                if (this.scene.settings.copy == true) {
+                    for (let i of selectList) {
+                        recreate(i);
+                    }
+                }
                 for (let i of selectList) {
                     remove(i);
                 }
