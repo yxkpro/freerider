@@ -49,6 +49,8 @@ var GameSettings = {
     "frameSize": ["medium"],
     "windspeed": 1,
     "balloonpower": 1,
+    "rotateFactor": 15,
+    "scaleFactor": 1.25,
     "raceColors": ["rgba(57,185,117,1)", "rgba(0,152,189,1)", "rgba(151,95,162,1)", "rgba(253,85,91,1)", "rgba(245,126,64,1)", "rgba(247,212,62,1)", "rgba(170,221,114,1)", "rgba(72,217,207,1)", "rgba(0,124,212,1)", "rgba(226,108,216,1)"],
     "toolHandler": {
         "snap": false,
@@ -62,7 +64,8 @@ var GameSettings = {
         "lineType": "physics",
         "cameraMoveSpeed": 0.02,
         "rightClickMove": false,
-        "copy": true
+        "copy": true,
+        "isometricGrid": false
     },
     "vehiclePowerup": {
         "selected": "helicopter",
@@ -146,6 +149,8 @@ var GameSettings = {
         "opt4": 52,
         "opt5": 53,
         "opt6": 54,
+        "opt7" : 55,
+        "opt8" : 56,
         "enter": 13,
         "backspace": 8,
         "shift": 16,
@@ -155,7 +160,8 @@ var GameSettings = {
         "zoom_decrease": 189,
         "zoom_100": 48,
         "bikesettings": 191,
-        "select" : 84
+        "select" : 68,
+        "circle" : 84
     },
     "keysToRecord": ["up", "down", "left", "right", "enter", "backspace", "z"],
     "user": {

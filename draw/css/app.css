@@ -123,10 +123,17 @@ fieldset {
     padding: 0
 }
 
-button,input,select,textarea {
+button,input,textarea {
     font-family: inherit;
     font-size: 100%;
-    margin: 0
+    margin: 0;
+}
+
+select {
+    font-family: inherit;
+    font-size: 100%;
+    margin: 0;
+    margin-left: 2px;
 }
 
 button,input {
@@ -784,7 +791,7 @@ input,textarea#color {
     background-position: -1px -139px
 }
 
-.keyboard_keys-restart_key_small {
+.keyboard_keys-crouch_key_small {
     width: 33px;
     height: 33px;
     background-position: -1px -173px
@@ -1629,6 +1636,12 @@ html.fullscreen #main_page {
     font-weight: 700
 }
 
+.horizontal-slider-label-2 {
+    float: left;
+    font-weight: 700;
+    margin-left: 20px
+}
+
 .horizontal-slider {
     position: relative;
     width: 100px;
@@ -1668,7 +1681,8 @@ html.fullscreen #main_page {
 }
 
 .bottomMenu-button {
-    display: inline-block;
+    display: flex; /* This will ensure the elements are in a row */
+    align-items: center;
     padding: 0 10px;
     cursor: pointer
 }
@@ -2065,7 +2079,7 @@ html.fullscreen #main_page {
 }
 
 .editorDialog-content_helpDialog {
-    width: 600px
+    width: 640px
 }
 
 .editorDialog-content_helpDialog .hotkeys {
@@ -2193,7 +2207,6 @@ html.fullscreen #main_page {
 
 .editorDialog-content_controlsDialog table {
     width: 100%;
-    font-size: .8em
 }
 
 .editorDialog-content_controlsDialog table .keyname {

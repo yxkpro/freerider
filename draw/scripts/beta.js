@@ -15449,7 +15449,7 @@
                 o.width = e,
                 o.height = i;
                 let a = o.getContext("2d");
-                a.fillStyle = this.options.gridMinorLineColor;
+                a.fillStyle = this.options.gridMajorLineColor;
                 for (let width = Math.floor(e / r), l = 0; width >= l; l++)
                     for (let height = Math.floor(i / r), b = 0; height >= b; b += .5) {
                         a.beginPath();
@@ -17725,7 +17725,7 @@
                 t.isButtonDown("opt7") && (e.selected = "antigravity",
                 t.setButtonUp("opt7"),
                 this.scene.stateChanged()),
-                t.isButtonDown("opt8") && Application.User.get("classic") && (e.selected = "teleport",
+                t.isButtonDown("opt8") && (e.selected = "teleport",
                 t.setButtonUp("opt8"),
                 this.scene.stateChanged()),
                 super.update()
@@ -21766,6 +21766,7 @@
             this.dashOffset = 0;
             this.name = 'select';
             this.down = false;
+            this.center = null;
             // make a copy
             this.oldMouse = this.mouse.touch.real.factor(1);
             document.addEventListener('keydown', this.keydown.bind(this));
@@ -21781,11 +21782,11 @@
 
         keydown(event) {
             if (event.key.toLowerCase() === 'r') {
-                const degrees = event.shiftKey ? -5 : 5;
+                const degrees = event.shiftKey ? -1 * GameSettings.rotateFactor : GameSettings.rotateFactor;
                 this.rotateSelected(degrees);
             }
             if (event.key.toLowerCase() === 's') {
-                const scale = event.shiftKey ? 0.8 : 1.25;
+                const scale = event.shiftKey ? 1 / GameSettings.scaleFactor : GameSettings.scaleFactor;
                 this.scaleSelected(scale);
             }
             if (event.key.toLowerCase() === 'f') {
@@ -21794,20 +21795,42 @@
             }
         }
 
+        findCenter() {
+            if (!this.center) {
+                const flatX = [];
+                const flatY = [];
+        
+                this.selected.forEach(line => {
+                    flatX.push(line.p1.x, line.p2.x);
+                    flatY.push(line.p1.y, line.p2.y);
+                });
+        
+                const minX = Math.min(...flatX);
+                const maxX = Math.max(...flatX);
+                const minY = Math.min(...flatY);
+                const maxY = Math.max(...flatY);
+        
+                const width = maxX - minX;
+                const height = maxY - minY;
+        
+                const centerX = minX + width / 2;
+                const centerY = minY + height / 2;
+        
+                this.center = { centerX, centerY, width, height };
+                console.log('Center info:', this.center);
+            }
+        
+            return this.center;
+        }
+        
+        resetCenter() {
+            this.center = null;
+        }
+
         rotateSelected(degrees) {
+            const { centerX, centerY } = this.findCenter();
             const radians = degrees * Math.PI / 180;
-        
-            // calculate center
-            let sumX = 0, sumY = 0, numPoints = 0;
-            this.selected.forEach(line => {
-                sumX += line.p1.x + line.p2.x;
-                sumY += line.p1.y + line.p2.y;
-                numPoints += 2;
-            });
-            const centerX = sumX / numPoints;
-            const centerY = sumY / numPoints;
-        
-            // rotate around center
+
             this.selected.forEach(line => {
                 [line.p1, line.p2].forEach(point => {
                     const rotatedPoint = this.rotatePoint(point, centerX, centerY, radians);
@@ -21816,27 +21839,20 @@
                 });
             });
         }
-    
+        
         rotatePoint(point, centerX, centerY, radians) {
             const x = point.x - centerX;
             const y = point.y - centerY;
-    
+        
             return {
                 x: centerX + (x * Math.cos(radians) - y * Math.sin(radians)),
                 y: centerY + (x * Math.sin(radians) + y * Math.cos(radians))
             };
         }
-
-        scaleSelected(scaleFactor) {
-            let sumX = 0, sumY = 0, numPoints = 0;
-            this.selected.forEach(line => {
-                sumX += line.p1.x + line.p2.x;
-                sumY += line.p1.y + line.p2.y;
-                numPoints += 2;
-            });
-            const centerX = sumX / numPoints;
-            const centerY = sumY / numPoints;
         
+        scaleSelected(scaleFactor) {
+            const { centerX, centerY } = this.findCenter();
+            
             this.selected.forEach(line => {
                 [line.p1, line.p2].forEach(point => {
                     point.x = centerX + (point.x - centerX) * scaleFactor;
@@ -21844,17 +21860,10 @@
                 });
             });
         }
-
-        flipSelected(flipVertically) {
-            let sumX = 0, sumY = 0, numPoints = 0;
-            this.selected.forEach(line => {
-                sumX += line.p1.x + line.p2.x;
-                sumY += line.p1.y + line.p2.y;
-                numPoints += 2;
-            });
-            const centerX = sumX / numPoints;
-            const centerY = sumY / numPoints;
         
+        flipSelected(flipVertically) {
+            const { centerX, centerY } = this.findCenter();
+            
             this.selected.forEach(line => {
                 [line.p1, line.p2].forEach(point => {
                     if (flipVertically) {
@@ -21864,7 +21873,7 @@
                     }
                 });
             });
-        }     
+        }
         
         press() {
             this.down = true;
@@ -22162,6 +22171,8 @@
                     remove(i);
                 }
                 console.log('selected!', selectList);
+                this.findCenter();
+                this.resetCenter();
             }
         }
 

@@ -1643,10 +1643,10 @@
                 }), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
                 }, "Lean Right")), n.createElement("td", null, n.createElement("span", {
-                    className: "keyboard_keys keyboard_keys-restart_key_small"
+                    className: "keyboard_keys keyboard_keys-crouch_key_small"
                 }), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Restart"))), n.createElement("tr", null, n.createElement("td", null, n.createElement("span", {
+                }, "Crouch"))), n.createElement("tr", null, n.createElement("td", null, n.createElement("span", {
                     className: "keyboard_keys keyboard_keys-enter_key_small"
                 }), n.createElement("span", {
                     className: "helpDialog-hotkey-name"

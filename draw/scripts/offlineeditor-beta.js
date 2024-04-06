@@ -633,12 +633,25 @@
         "react-slider": 75
     }],
     55555: [function(e, t) {
-        var n = e("react"),
-            r = n.createClass({
+        var n = e("react")
+          , f = e("react-slider")
+          , r = n.createClass({
                 displayName: "SelectBottomToolOptions",
                 changeZoom: function() {},
                 toggleSelectType: function() {
                     GameSettings.copy = !GameSettings.copy;
+                },
+                getInitialState: function() {
+                    // Initial state for the slider value
+                    return { rotateFactor: 15, scaleFactor: 1.25 };
+                },
+                handleRotateChange: function(rotation) {
+                    this.setState({ rotateFactor: rotation });
+                    GameSettings.rotateFactor = rotation;
+                },
+                handleScaleChange: function(scale) {
+                    this.setState({ scaleFactor: scale });
+                    GameSettings.scaleFactor = scale;
                 },
                 render: function() {
                     var type = GameSettings.copy ? "COPY + PASTE" : "CUT + PASTE";
@@ -654,8 +667,48 @@
                         n.createElement("button", {
                             onClick: this.toggleSelectType
                         }, type))),
+
                         
-                        )
+                        
+                        ), n.createElement("div", {
+                            className: "horizontal-slider-container"
+                        }, n.createElement("span", {
+                            className: "horizontal-slider-label"
+                        }, "Rotation Factor"), n.createElement(f, {
+                            withBars: true,
+                            className: "horizontal-slider Circle-slider_SegmentLength",
+                            onChange: this.handleRotateChange,
+                            defaultValue: GameSettings.rotateFactor || 15, // Fallback to 15 if GameSettings.rotateFactor is undefined
+                            max: 90,
+                            min: 5,
+                            step: 5,
+                            value: GameSettings.rotateFactor || this.state.rotateFactor // Reflect global or local state
+                        })), n.createElement("input", {
+                            type: "text",
+                            className: "bottomToolOptions-input bottomToolOptions-input_vehiclepoweruptime",
+                            value: GameSettings.rotateFactor,
+                            readOnly: true
+                        }),
+
+                        n.createElement("div", {
+                            className: "horizontal-slider-container"
+                        }, n.createElement("span", {
+                            className: "horizontal-slider-label-2"
+                        }, "Scaling Factor"), n.createElement(f, {
+                            withBars: true,
+                            className: "horizontal-slider Circle-slider_SegmentLength",
+                            onChange: this.handleScaleChange,
+                            defaultValue: 1.25,
+                            max: 2,
+                            min: 0.05,
+                            step: 0.05,
+                            value: this.state.scaleFactor
+                        })), n.createElement("input", {
+                            type: "text",
+                            className: "bottomToolOptions-input bottomToolOptions-input_vehiclepoweruptime",
+                            value: this.state.scaleFactor.toFixed(2),
+                            readOnly: true
+                        })
                     );
                 }
             });
@@ -665,26 +718,61 @@
         "react-slider": 75
     }],
     6: [function(e, t) {
-        var n = e("react")
-          , r = (e("react-slider"),
-        n.createClass({
-            displayName: "CameraBottomToolOptions",
-            changeZoom: function() {},
-            render: function() {
-                return n.createElement("div", {
-                    className: "bottomToolOptions bottomToolOptions_select"
-                }, n.createElement("div", {
-                    className: "bottomToolOptions-toolTitle"
-                }, n.createElement("span", {
-                    className: "editorgui_icons editorgui_icons-icon_camera"
-                }), n.createElement("span", {
-                    className: "toolName"
-                }, "Camera")))
-            }
-        }));
-        t.exports = r
-    }
-    , {
+        var n = e("react"),
+            r = n.createClass({
+                displayName: "CameraBottomToolOptions",
+                changeZoom: function() {},
+                toggleCameraType: function() {
+                    var vertical = GameSettings.cameraMovementVertical,
+                        horizontal = GameSettings.cameraMovementHorizontal;
+    
+                    if (vertical && horizontal) {
+                        // from normal to horizontal
+                        GameSettings.cameraMovementVertical = false;
+                    } else if (!vertical && horizontal) {
+                        // from horizontal to vertical
+                        GameSettings.cameraMovementVertical = true;
+                        GameSettings.cameraMovementHorizontal = false;
+                    } else if (vertical && !horizontal) {
+                        // from vertical to none
+                        GameSettings.cameraMovementVertical = false;
+                    } else {
+                        // from none to normal
+                        GameSettings.cameraMovementVertical = true;
+                        GameSettings.cameraMovementHorizontal = true;
+                    }
+                },
+                render: function() {
+                    var type;
+                    if (GameSettings.cameraMovementVertical && GameSettings.cameraMovementHorizontal) {
+                        type = "NORMAL";
+                    } else if (!GameSettings.cameraMovementVertical && GameSettings.cameraMovementHorizontal) {
+                        type = "HORIZONTAL";
+                    } else if (GameSettings.cameraMovementVertical && !GameSettings.cameraMovementHorizontal) {
+                        type = "VERTICAL";
+                    } else {
+                        type = "NONE";
+                    }
+    
+                    return n.createElement("div", {
+                        className: "bottomToolOptions bottomToolOptions_select"
+                    }, n.createElement("div", {
+                        className: "bottomToolOptions-toolTitle"
+                    }, n.createElement("span", {
+                        className: "editorgui_icons editorgui_icons-icon_camera"
+                    }), n.createElement("span", {
+                        className: "toolName"
+                    }, "Camera : ", n.createElement("span", {},
+                        n.createElement("button", {
+                            onClick: this.toggleCameraType
+                        }, type))),
+                        
+                        )
+                    );
+                }
+            });
+        t.exports = r;
+    }, {
         react: 230,
         "react-slider": 75
     }],
@@ -790,62 +878,79 @@
         "react-slider": 75
     }],
     10: [function(e, t) {
-        var n = e("react")
-          , a = n.createClass({
-            displayName: "Grid",
-            setGrid: function(e) {
-                console.log(e),
-                "undefined" != typeof GameManager && GameManager.command("grid")
-            },
-            changeGridSize: function(e) {
-                var t = e.target.value;
-                return GameSettings.toolHandler.gridSize = t,
-                GameManager.command("redraw"),
-                e.preventDefault(),
-                e.stopPropagation(),
-                !1
-            },
-            stopClickPropagation: function(e) {
-                return e.preventDefault(),
-                e.stopPropagation(),
-                !1
-            },
-            renderGridSizeSelect: function() {
-                var e = GameSettings.toolHandler.gridSize
-                  , t = [2, 5, 10, 15, 20, 25, 50, 100];
-                return n.createElement("select", {
-                    ref: "gridSize",
-                    defaultValue: e,
-                    onChange: this.changeGridSize,
-                    onClick: this.stopClickPropagation
-                }, t.map(function(e) {
-                    return n.createElement("option", {
-                        value: e
-                    }, e)
-                }))
-            },
-            render: function() {
-                var e = "bottomMenu-button bottomMenu-button-right bottomMenu-button_grid "
-                  , t = "editorgui_icons editorgui_icons-icon_grid_off"
-                  , a = this.props.active;
-                a && (e += " bottomMenu-button-active",
-                t = "editorgui_icons editorgui_icons-icon_grid_on");
-                var o = a ? "" : "off";
-                return n.createElement("div", {
-                    className: e,
-                    onClick: this.setGrid
-                }, n.createElement("span", {
-                    className: t
-                }), n.createElement("span", {
-                    className: "name"
-                }, "Grid : ", o), a ? this.renderGridSizeSelect() : !1)
-            }
-        });
+        var n = e("react"),
+            a = n.createClass({
+                displayName: "Grid",
+                setGrid: function(e) {
+                    console.log(e),
+                    "undefined" != typeof GameManager && GameManager.command("grid")
+                },
+                changeGridSize: function(e) {
+                    var t = e.target.value;
+                    GameSettings.toolHandler.gridSize = t,
+                    GameManager.command("redraw"),
+                    e.preventDefault(),
+                    e.stopPropagation();
+                    return !1
+                },
+                changeGridType: function() {
+                    GameSettings.toolHandler.isometricGrid = !GameSettings.toolHandler.isometricGrid,
+                    GameManager.command("redraw");
+                },
+                stopClickPropagation: function(e) {
+                    return e.preventDefault(),
+                    e.stopPropagation(),
+                    !1
+                },
+                renderGridSizeSelect: function() {
+                    var e = GameSettings.toolHandler.gridSize,
+                        t = [2, 5, 10, 15, 20, 25, 50, 100];
+                    return n.createElement("select", {
+                        ref: "gridSize",
+                        defaultValue: e,
+                        onChange: this.changeGridSize,
+                        onClick: this.stopClickPropagation
+                    }, t.map(function(e) {
+                        return n.createElement("option", {
+                            value: e
+                        }, e)
+                    }))
+                },
+                renderGridTypeSelect: function() {
+                    var f = GameSettings.toolHandler.isometricGrid,
+                        u = ["STANDARD", "ISOMETRIC"];
+                    return n.createElement("select", {
+                        ref: "gridType",
+                        defaultValue: f ? "Isometric" : "Standard",
+                        onChange: this.changeGridType,
+                        onClick: this.stopClickPropagation
+                    }, u.map(function(f) {
+                        return n.createElement("option", {
+                            value: f
+                        }, f)
+                    }))
+                },
+                render: function() {
+                    var e = "bottomMenu-button bottomMenu-button-right bottomMenu-button_grid ",
+                        t = "editorgui_icons editorgui_icons-icon_grid_off",
+                        a = this.props.active;
+                    a && (e += " bottomMenu-button-active",
+                    t = "editorgui_icons editorgui_icons-icon_grid_on");
+                    var o = a ? "" : "off";
+                    return n.createElement("div", {
+                        className: e,
+                        onClick: this.setGrid
+                    }, n.createElement("span", {
+                        className: t
+                    }), n.createElement("span", {
+                        className: "name"
+                    }, "Grid : ", o), a ? n.createElement("div", {}, this.renderGridSizeSelect(), this.renderGridTypeSelect()) : null)
+                }
+            });
         t.exports = a
-    }
-    , {
+    }, {
         react: 230
-    }],
+    }],    
     11: [function(e, t) {
         var n = e("react")
           , r = n.createClass({
@@ -1651,10 +1756,10 @@
                 }), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
                 }, "Lean Right")), n.createElement("td", null, n.createElement("span", {
-                    className: "keyboard_keys keyboard_keys-restart_key_small"
+                    className: "keyboard_keys keyboard_keys-crouch_key_small"
                 }), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Restart"))), n.createElement("tr", null, n.createElement("td", null, n.createElement("span", {
+                }, "Crouch"))), n.createElement("tr", null, n.createElement("td", null, n.createElement("span", {
                     className: "keyboard_keys keyboard_keys-enter_key_small"
                 }), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
@@ -1893,185 +1998,266 @@
                 if (typeof GameManager !== "undefined") {
                     GameManager.command("dialog", false);}
             },
-            getKeyboardShortcuts: function() {
-                return n.createElement("div", null, n.createElement("div", {
-                    className: "editorDialog-titleBar"
-                }, n.createElement("span", {
-                    className: "editorDialog-close",
-                    onClick: this.closeDialog
-                }, "×"), n.createElement("h1", {
-                    className: "editorDialog-content-title"
-                }, "KEYBOARD SHORTCUTS")), n.createElement("div", {
-                    className: "hotkeys clearfix"
-                }, n.createElement("div", {
-                    className: "hotkeys_tools"
-                }, n.createElement("div", {
-                    className: "hotkeys-title"
-                }, "Tools"), n.createElement("div", {
+              getKeyboardShortcuts: function () {
+                  return n.createElement("div", null, n.createElement("div", {
+                      className: "editorDialog-titleBar"
+                  }, n.createElement("span", {
+                      className: "editorDialog-close",
+                      onClick: this.closeDialog
+                  }, "×"), n.createElement("h1", {
+                      className: "editorDialog-content-title"
+                  }, "KEYBOARD SHORTCUTS")), n.createElement("div", {
+                      className: "hotkeys clearfix"
+                  }, n.createElement("div", {
+                      className: "hotkeys_tools"
+                  }, n.createElement("div", {
+                      className: "hotkeys-title"
+                  }, "Tools"), n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "Q"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Straight Line")),  n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "W"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Curve")), 
+                  
+                  n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "C"), n.createElement("span", {
+                }, "T"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Camera")), n.createElement("div", {
-                    className: "hotkey"
-                }, n.createElement("span", {
-                    className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Q"), n.createElement("span", {
-                    className: "helpDialog-hotkey-name"
-                }, "Straight Line")), n.createElement("div", {
+                }, "Circle")), 
+
+                n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
                 }, "A"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Brush ")), n.createElement("div", {
-                    className: "hotkey"
-                }, n.createElement("span", {
-                    className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "W"), n.createElement("span", {
-                    className: "helpDialog-hotkey-name"
-                }, "Curve")), n.createElement("div", {
-                    className: "hotkey"
-                }, n.createElement("span", {
-                    className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "E"), n.createElement("span", {
-                    className: "helpDialog-hotkey-name"
-                }, "Eraser")), n.createElement("div", {
-                    className: "hotkey"
-                }, n.createElement("span", {
-                    className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "S"), n.createElement("span", {
-                    className: "helpDialog-hotkey-name"
-                }, "Toggle Line Type")), n.createElement("div", {
-                    className: "hotkey"
-                }, n.createElement("span", {
-                    className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Alt"), n.createElement("span", {
-                    className: "helpDialog-hotkey-name"
-                }, "Toggle Snap")), n.createElement("div", {
-                    className: "hotkeys-title"
-                }, "Undo"), n.createElement("div", {
-                    className: "hotkey"
-                }, n.createElement("span", {
-                    className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Ctrl"), "+", n.createElement("span", {
-                    className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Z"), n.createElement("span", {
-                    className: "helpDialog-hotkey-name"
-                }, "Undo"))), n.createElement("div", {
-                    className: "hotkeys_powerups"
-                }, n.createElement("div", {
-                    className: "hotkeys-title"
-                }, "Powerups"), n.createElement("div", {
+                }, "Brush ")),
+                
+                n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "E"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Eraser")), 
+
+                  n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
                 }, "P"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Select Powerup")), n.createElement("div", {
+                }, "Powerups")),
+                  
+                  n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "1"), n.createElement("span", {
+                }, "D"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Goal")), n.createElement("div", {
+                }, "Select")), 
+
+                n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "2"), n.createElement("span", {
+                }, "C"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Boost")), n.createElement("div", {
+                }, "Camera")),
+                
+                n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "S"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Toggle Line Type")), n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "Alt"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Toggle Snap")), ), n.createElement("div", {
+                      className: "hotkeys_powerups"
+                  }, n.createElement("div", {
+                      className: "hotkeys-title"
+                  }, "Powerups"), n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "1"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Goal")), n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "2"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Boost")), n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "3"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Gravity")), n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "4"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Slowmotion")), n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "5"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Bomb")), n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "6"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Checkpoint")), 
+                  
+                  n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "3"), n.createElement("span", {
+                }, "7"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Gravity")), n.createElement("div", {
+                }, "Antigravity")),
+
+                n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "4"), n.createElement("span", {
+                }, "8"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Slowmotion")), n.createElement("div", {
-                    className: "hotkey"
-                }, n.createElement("span", {
-                    className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "5"), n.createElement("span", {
-                    className: "helpDialog-hotkey-name"
-                }, "Bomb")), n.createElement("div", {
-                    className: "hotkey"
-                }, n.createElement("span", {
-                    className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "6"), n.createElement("span", {
-                    className: "helpDialog-hotkey-name"
-                }, "Checkpoint")), n.createElement("div", {
+                }, "Teleport")),
+
+                n.createElement("div", {
                     className: "hotkeys-title"
-                }, "Redo"), n.createElement("div", {
+                }, "Undo / Redo"), n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Ctrl"), "+", n.createElement("span", {
+                }, "Ctrl"), " + ", n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Y"), n.createElement("span", {
+                }, "Z"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Redo"))), n.createElement("div", {
-                    className: "hotkeys_more"
-                }, n.createElement("div", {
+                }, "Undo")),
+                
+                n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "Ctrl"), " + ", n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "Y"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Redo"))), n.createElement("div", {
+                      className: "hotkeys_more"
+                  }, n.createElement("div", {
+                      className: "hotkeys-title"
+                  }, "Settings"), n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "Shift"), " + ", n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "Click"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Move Camera")), n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "G"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Toggle Grid")), n.createElement("div", {
+                      className: "hotkey"
+                  }, n.createElement("span", {
+                      className: "helpDialog-hotkey helpDialog-hotkey_light"
+                  }, "V"), n.createElement("span", {
+                      className: "helpDialog-hotkey-name"
+                  }, "Change Vehicle")), 
+                  
+                
+                  n.createElement("div", {
                     className: "hotkeys-title"
-                }, "Settings"), n.createElement("div", {
+                }, "SELECT"), 
+                
+                n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Shift"), "+", n.createElement("span", {
-                    className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Click"), n.createElement("span", {
+                }, "R"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Move Camera")), n.createElement("div", {
+                }, "Rotate Clockwise")),
+
+                n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "G"), n.createElement("span", {
+                }, "S"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Toggle Grid")), n.createElement("div", {
+                }, "Scale Up")),
+
+                n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "V"), n.createElement("span", {
+                }, "F"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Change Vehicle")), n.createElement("div", {
-                    className: "hotkeys-title"
-                }, "Eraser"), n.createElement("div", {
+                }, "Flip Horizontally")),
+
+                n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Shift"), "+", n.createElement("span", {
+                }, "Shift"), " + ",n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Scroll"), n.createElement("span", {
+                }, "R"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Change Radius")), n.createElement("div", {
-                    className: "hotkeys-title"
-                }, "BRUSH"), n.createElement("div", {
+                }, "Rotate Counterclockwise")), 
+
+                n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Shift"), "+", n.createElement("span", {
+                }, "Shift"), " + ",n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Scroll"), n.createElement("span", {
+                }, "S"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Brush Length")), n.createElement("div", {
+                }, "Scale Down")), 
+                
+                n.createElement("div", {
                     className: "hotkey"
                 }, n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Ctrl"), "+", n.createElement("span", {
+                }, "Shift"), " + ",n.createElement("span", {
                     className: "helpDialog-hotkey helpDialog-hotkey_light"
-                }, "Scroll"), n.createElement("span", {
+                }, "F"), n.createElement("span", {
                     className: "helpDialog-hotkey-name"
-                }, "Trail Speed")))), n.createElement("div", null, n.createElement("span", {
-                    className: "helpDialog-advanced_settings link",
-                    onClick: this.gotoAdvancedSettings
-                }, "Advanced Settings")))
-            },
+                }, "Flip Vertically")), 
+                
+                
+                
+                )), 
+                  
+                  n.createElement("div", null, n.createElement("span", {
+                      className: "helpDialog-advanced_settings link",
+                      onClick: this.gotoAdvancedSettings
+                  }, "Advanced Settings")))
+              },
             getAdvancedSettings: function() {
                 var e = GameSettings,
                     t = e.toolHandler,
@@ -3142,12 +3328,16 @@
                     onClick: this.togglePowerupEraser
                 }, n.createElement("span", {
                     className: "editorgui_icons editorgui_icons-icon_powerups"
-                })), n.createElement("div", {
+                })) 
+                
+                /* n.createElement("div", {
                     className: i,
                     onClick: this.toggleForegroundEraser
                 }, n.createElement("span", {
                     className: "editorgui_icons editorgui_icons-icon_powerups"
-                })))
+                })) */
+            
+            )
             }
         }));
         t.exports = r
