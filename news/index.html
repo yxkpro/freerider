@@ -43,6 +43,11 @@
             <a href="/misc">misc</a>
         </p>
 
+        <script>
+            GameSettings.cameraMovementPage = true;
+            GameSettings.cameraMovementVertical = true;
+        </script>
+
         <!-- Content below: -->
 
         <style>
@@ -54,10 +59,30 @@
                 position: relative;
                 left: -3rem;
             }
+
+            #drowining-1 {
+                position: relative;
+                display: inline-block;
+                top: 790px;
+                left: 370px;
+                transform: rotate(20deg);
+            }
+
+            #drowining-2 {
+                position: relative;
+                display: inline-block;
+                top: 630px;
+                transform: rotate(-15deg);
+            }
         </style>
 
         <h2>on the app</h2>
         <table class="table table-sm">
+            <tr>
+                <td><span class="date">apr 7</span></td>
+                <td class="absolute">in <a href="/play">play</a></td>
+                <td class="text-right"><a href="/play/museum">museum</a></td>
+            </tr>
             <tr>
                 <td><span class="date">apr 2</span></td>
                 <td class="absolute">in <a href="/play">play</a></td>
@@ -81,7 +106,7 @@
             <tr>
                 <td><span class="date">mar 27</span></td>
                 <td></td>
-                <td class="text-right">added <a href="/news/4">windspeed & balloonpower</a> to settings</td>
+                <td class="text-right"><a href="/news/4">windspeed & balloonpower</a></td>
             </tr>
             <tr>
                 <td><span class="date">mar 21</span></td>
@@ -134,6 +159,9 @@
     </tr>
     
 </table>
+
+<span id="drowining-1"><a href="/draw">editor 1.1</a></span>
+<span id="drowining-2" class="date">apr 30</span>
 
         <!-- Closing lines, leave these alone! -->
     </body>

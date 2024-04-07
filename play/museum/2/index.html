@@ -37,14 +37,15 @@
         </p>
 
         <script>
-            GameSettings.width = 6400;
+            GameSettings.width = 7200;
             GameSettings.cameraMovementPage = true;
+            GameSettings.scrollRatio = 2.5;
         </script>
 
         <style>
             canvas {
                 top: -960px;
-                right: -2400px;
+                right: -2800px;
             }
 
             a {
@@ -97,6 +98,7 @@
 
             #start {
                 position: relative;
+                z-index: -1;
                 width: 400px;
                 height: 600px;
                 left: 220px;
@@ -124,18 +126,25 @@
                 top: -945px;
             }
 
-            #firsttrack {
+            #firsttrack-video {
                 position: relative;
                 width: 400px;
                 left: 1675px;
-                top: -1460px;
+                top: -1450px;
+            }
+
+            #firsttrack {
+                position: relative;
+                width: 400px;
+                left: 2095px;
+                top: -1780px;
             }
 
             #track-label {
                 position: relative;
                 width: 400px;
-                left: 2100px;
-                top: -1800px;
+                left: 2525px;
+                top: -2115px;
             }
         </style>
 
@@ -149,14 +158,14 @@
 
             <span id="start">
                 <img width="400" src="/play/museum/assets/2006.png">
-                <blockquote>in 2006, Pete Shadbolt (of Parroe Games) begins work on the original <a href="/misc/fr1">Free Rider</a>.
+                <blockquote>in 2006, Pete Shadbolt (of Parroe Games) begins work on the original Free Rider.
                 </blockquote>
                 <blockquote>Free Rider is being developed for OneMoreLevel.com, a flash-game website created by Ira
                     Willey.</blockquote>
             </span>
 
             <span id="trailer">
-                <video width="100%" autoplay muted>
+                <video width="100%" controls>
                     <source src="/play/museum/assets/freeridertrailer.mp4" type="video/mp4">
                   </video>
                 <!-- <img src="/play/museum/assets/fr1.png"> -->
@@ -164,10 +173,16 @@
 
             <span id="forum">
                 <img src="/play/museum/assets/slackor2.png">
-                <blockquote>in 2007, OneMoreLevel Forums are opened.</blockquote>
+                <blockquote>in 2007, onemorelevel.com forums are opened.</blockquote>
                 <blockquote>slackor (Ira Willey) posts a link to <a
                         href="https://www.youtube.com/watch?v=0offEL-zkG8">Free Rider Trailer</a>.</blockquote>
                 <img id="omlf" src="/play/museum/assets/omlf.gif">
+            </span>
+
+            <span id="firsttrack-video">
+                <video width="100%" controls>
+                    <source src="/play/museum/assets/first-track.mp4" type="video/mp4">
+                  </video>
             </span>
 
             <span id="firsttrack">
@@ -177,7 +192,7 @@
             </span>
 
             <span id="track-label">
-                <p><a href="https://www.freeriderhd.com/t/936152-the-first-free-rider-track" id=home class="https://www.freeriderhd.com/t/936152-the-first-free-rider-track">the first free rider track</a> <span href="/" id=home class="">Pete</span></p>
+                <p><a href="/" id=home class="https://www.freeriderhd.com/t/936152-the-first-free-rider-track">the first free rider track</a> <span href="/" id=home class="">Pete</span></p>
             </span>
 
         </div>

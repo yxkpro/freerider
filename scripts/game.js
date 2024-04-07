@@ -10949,10 +10949,16 @@
                     let s = this.settings.scrollRatio;
                     
 
-                    if (this.settings.cameraMovementPage) {
+                    if (this.settings.cameraMovementPage && !this.settings.cameraMovementVertical) {
                         e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s;
                         e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;
                         window.scrollTo((t.pos.x - e.x) / s, window.scrollY);
+                    }
+
+                    else if (this.settings.cameraMovementPage && this.settings.cameraMovementVertical) {
+                            e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s;
+                            e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;
+                            window.scrollTo(window.scrollX, (t.pos.y - e.y) / s);
                     }
 
                     else {
