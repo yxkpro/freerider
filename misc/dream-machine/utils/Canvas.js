@@ -2,7 +2,7 @@ import MouseHandler from "../handlers/MouseHandler.js";
 import ToolHandler from "../handlers/ToolHandler.js";
 
 const key = 'super-mario-visualizer-settings';
-const LevelDictionary = await fetch('constants/objects.json').then(r => r.json());
+const LevelDictionary = await fetch('constants/levels.json').then(r => r.json());
 export default class {
 	camera = {x: 0,y: 0};
 	mouse = new MouseHandler();

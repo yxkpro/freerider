@@ -12436,6 +12436,7 @@
                   y.moveTo(h.x, h.y);
                   y.lineTo(l.x, l.y);
                   y.stroke();
+                  
                 if (this.dir < 0 ) {
                   y.beginPath();
                   y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI + 8 * Math.PI / 180 + Math.PI, xx - 8 * Math.PI / 180 + Math.PI);;
@@ -22699,8 +22700,8 @@
             object.newVersion = re;
             return re;
         } else {
-            object.x += offset.x;
-            object.y += offset.y;
+            //object.x += offset.x;
+            //object.y += offset.y;
             object.remove = 0;
             object.name == 'goal' && scene.track.addTarget(object);
             scene.track.addPowerup(object);

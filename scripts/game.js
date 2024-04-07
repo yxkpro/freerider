@@ -10946,7 +10946,7 @@
                     const t = this.playerFocus.getActiveVehicle().focalPoint
                       , e = this.position
                       , v = this.scene;
-                    let s = 2;
+                    let s = this.settings.scrollRatio;
                     
 
                     if (this.settings.cameraMovementPage) {

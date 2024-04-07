@@ -32,7 +32,8 @@
     <div class="container-fluid">
         <p>
             <a href="/" id=home class="">freerider.app</a>
-            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png" width="24" height="16"></a>
+            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png"
+                    width="24" height="16"></a>
         </p>
 
         <script>
@@ -46,76 +47,139 @@
                 right: -2400px;
             }
 
+            a {
+                position: relative;
+                z-index: 2;
+            }
+
             body {
                 text-transform: none;
             }
-        
-            #computer {
-                position: absolute;
-                top: 0px;
-                right: 0px;
+
+            img {
+                margin: 0px;
+                z-index: -1;
+            }
+
+            #omlf {
+                margin-top: 100px;
+                z-index: -1;
+                position: relative;
             }
 
             #home {
                 margin: 1em 0em;
             }
 
-            img {
-                margin: 0px;
+            #firsttrack-margin {
+                margin-bottom: 4px;
+            }
+
+            #pete3 {
+                margin-bottom: 10px;
+            }
+
+            .museum {
+                width: 50%;
+                padding-right: 15px;
+                padding-left: 15px;
+                margin-right: auto;
+                margin-left: 185px
+            }
+
+            #fr1 {
+                position: relative;
+                z-index: -1;
+                width: 600px;
+                left: -200px;
+                top: 20px;
             }
 
             #start {
-                position: absolute;
+                position: relative;
                 z-index: -1;
                 width: 400px;
-                right: 320px;
-                top: 200px;
+                height: 600px;
+                left: 220px;
+                top: -300px;
             }
 
             #trailer {
-                position: absolute;
+                position: relative;
+                z-index: 2;
                 width: 400px;
-                right: -300px;
-                top: 100px;
+                left: 740px;
+                top: -630px;
+            }
+
+            video {
+                margin-bottom: -8px;
+            }
+
+            #forum {
+                position: relative;
+                width: 400px;
+                left: 1160px;
+                top: -945px;
             }
 
             #firsttrack {
-                position: absolute;
-                z-index: -1;
+                position: relative;
                 width: 400px;
-                right: -1000px;
+                left: 1675px;
+                top: -1460px;
+            }
+
+            #track-label {
+                position: relative;
+                width: 400px;
+                left: 2100px;
+                top: -1800px;
             }
         </style>
 
         <a id="title" href="https://freeriderhd.com/t/976843">free rider museum</a><br><br>
 
-        <span max-width="400" id="fr1">
-            <img width="400" src="/play/museum/assets/fr1.png">
-            <blockquote>in 2006, Pete begins work on the original Free Rider.</blockquote>
-            <blockquote>Free Rider is being developed for OneMoreLevel.com, a flash-game website created by Ira Willey.</blockquote>
-        </span>
+        <div class="museum">
 
-        <span id="start">
-            <blockquote>in 2006, Pete begins work on the original Free Rider.</blockquote>
-            <blockquote>Free Rider is being developed for OneMoreLevel.com, a flash-game website created by Ira Willey.</blockquote>
-        </span>
+            <span id="fr1">
+                <img src="/play/museum/assets/fr1.png">
+            </span>
 
-        <span id="trailer">
-            <iframe width="600" height="345" src="https://www.youtube.com/embed/0offEL-zkG8" title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-                <img src="/play/museum/assets/slackor.png">
-            <blockquote>onemorelevel.com forums are opened, and slackor (Ira Willey)</blockquote>
-        </span>
+            <span id="start">
+                <img width="400" src="/play/museum/assets/2006.png">
+                <blockquote>in 2006, Pete Shadbolt (of Parroe Games) begins work on the original Free Rider.
+                </blockquote>
+                <blockquote>Free Rider is being developed for OneMoreLevel.com, a flash-game website created by Ira
+                    Willey.</blockquote>
+            </span>
 
-        <span id="firsttrack">
-            <img src="/play/museum/assets/slackor.png">
-            <blockquote>onemorelevel.com forums are opened, and slackor (Ira Willey)</blockquote>
+            <span id="trailer">
+                <video width="100%" controls>
+                    <source src="/play/museum/assets/freeridertrailer.mp4" type="video/mp4">
+                  </video>
+                <!-- <img src="/play/museum/assets/fr1.png"> -->
+            </span>
 
-        </span>
+            <span id="forum">
+                <img src="/play/museum/assets/slackor2.png">
+                <blockquote>in 2007, onemorelevel.com forums are opened.</blockquote>
+                <blockquote>slackor (Ira Willey) posts a link to <a
+                        href="https://www.youtube.com/watch?v=0offEL-zkG8">Free Rider Trailer</a>.</blockquote>
+                <img id="omlf" src="/play/museum/assets/omlf.gif">
+            </span>
 
-    </div>
+            <span id="firsttrack">
+                <blockquote>Pete posts the trackcode and <a href="">shares a video</a> of the first Free Rider track.</blockquote>
+                <img id="pete3" src="/play/museum/assets/pete3.png">
+                <img src="/play/museum/assets/pete2.png">
+            </span>
+
+            <span id="track-label">
+                <p><a href="/" id=home class="https://www.freeriderhd.com/t/936152-the-first-free-rider-track">the first free rider track</a> <span href="/" id=home class="">Pete</span></p>
+            </span>
+
+        </div>
 </body>
 
 </html>
