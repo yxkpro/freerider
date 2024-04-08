@@ -2341,7 +2341,7 @@
             },
 
             toggleScaleLock: function () {
-                var e = this.refs.isometricGrid.getDOMNode().checked;
+                var e = this.refs.scaleLock.getDOMNode().checked;
                 GameSettings.scaleLock = e
             },
             
