@@ -21867,7 +21867,21 @@
         
         scaleSelected(scaleFactor) {
             const { centerX, centerY } = this.findCenter();
-            
+            let scalable = true;
+        
+            this.selected.forEach(line => {
+                const newP1x = centerX + (line.p1.x - centerX) * scaleFactor;
+                const newP1y = centerY + (line.p1.y - centerY) * scaleFactor;
+                const newP2x = centerX + (line.p2.x - centerX) * scaleFactor;
+                const newP2y = centerY + (line.p2.y - centerY) * scaleFactor;
+        
+                const newLength = Math.hypot(newP2x - newP1x, newP2y - newP1y);
+                if (newLength < 2 && GameSettings.scaleLock) {  // Check for minimum length unless copy is enabled
+            scalable = false;
+        }
+            });
+        
+            if (scalable) {
             this.selected.forEach(line => {
                 [line.p1, line.p2].forEach(point => {
                     point.x = centerX + (point.x - centerX) * scaleFactor;
@@ -21885,7 +21899,12 @@
 
             console.log('Adding to timeline:', action);
             this.toolHandler.addActionToTimeline(action);
+            } else {
+                console.log('scaling would cause undefined lines (too short)');
+            }
         }
+        
+        
         
         flipSelected(flipVertically) {
             const { centerX, centerY } = this.findCenter();

@@ -1991,7 +1991,8 @@
             getInitialState: function () {
                 return {
                     advancedSettings: false,
-                    isometricGrid: false, // Initial state for isometric grid option
+                    isometricGrid: false,
+                    scaleLock: true, // Initial state for isometric grid option
                 }
             },
             closeDialog: function () {
@@ -2263,7 +2264,8 @@
                     t = e.toolHandler,
                     r = t.visibleGrid,
                     o = t.rightClickMove,
-                    isometricGrid = t.isometricGrid; // Added isometricGrid variable
+                    isometricGrid = t.isometricGrid,
+                    scaleLock = e.scaleLock; // Added isometricGrid variable
             
                 return n.createElement("div", null, n.createElement("div", {
                     className: "editorDialog-titleBar"
@@ -2294,8 +2296,21 @@
                 }, n.createElement("input", {
                     type: "checkbox",
                     ref: "isometricGrid",
-                    defaultChecked: isometricGrid, // Use the isometricGrid variable here
-                    onChange: this.toggleIsometricGrid // Corrected function name
+                    defaultChecked: isometricGrid,
+                    onChange: this.toggleIsometricGrid
+                }))), 
+
+                n.createElement("tr", null, n.createElement("td", {
+                    className: "settingTitle"
+                }, n.createElement("span", {
+                    className: "name"
+                }, "Scale Lock")), n.createElement("td", {
+                    className: "settingInput"
+                }, n.createElement("input", {
+                    type: "checkbox",
+                    ref: "scaleLock",
+                    defaultChecked: scaleLock,
+                    onChange: this.toggleScaleLock
                 }))), 
                 n.createElement("tr", null, n.createElement("td", {
                     className: "settingTitle"
@@ -2323,6 +2338,11 @@
             toggleIsometricGrid: function () {
                 var e = this.refs.isometricGrid.getDOMNode().checked;
                 GameSettings.toolHandler.isometricGrid = e
+            },
+
+            toggleScaleLock: function () {
+                var e = this.refs.isometricGrid.getDOMNode().checked;
+                GameSettings.scaleLock = e
             },
             
             changeGridSize: function (e) {
