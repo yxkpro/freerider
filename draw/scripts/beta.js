@@ -15154,6 +15154,7 @@
                 this.gamepad = e.playerManager.firstPlayer.getGamepad(),
                 this.tools = {},
                 this.options = e.settings.toolHandler,
+                this.settings = GameSettings;
                 this.snapPoint = new t.Z,
                 this.snapPoint.equ(this.scene.track.defaultLine.p2),
                 this.gridCache = !1,
@@ -21841,6 +21842,17 @@
                     point.y = rotatedPoint.y;
                 });
             });
+
+            const action = {
+                type: 'rotate',
+                objects: this.selected,
+                angle: degrees,
+                center: { x: centerX, y: centerY },
+                applied: true
+            };
+        
+            console.log('Adding to timeline:', action);
+            this.toolHandler.addActionToTimeline(action);
         }
         
         rotatePoint(point, centerX, centerY, radians) {
@@ -21862,20 +21874,42 @@
                     point.y = centerY + (point.y - centerY) * scaleFactor;
                 });
             });
+
+            const action = {
+                type: 'scale',
+                objects: this.selected,
+                scaleFactor: scaleFactor,
+                center: { x: centerX, y: centerY },
+                applied: true
+            };
+
+            console.log('Adding to timeline:', action);
+            this.toolHandler.addActionToTimeline(action);
         }
         
         flipSelected(flipVertically) {
             const { centerX, centerY } = this.findCenter();
-            
+        
             this.selected.forEach(line => {
                 [line.p1, line.p2].forEach(point => {
                     if (flipVertically) {
-                        point.y = centerY - (point.y - centerY);
+                        point.y = centerY * 2 - point.y;
                     } else {
-                        point.x = centerX - (point.x - centerX);
+                        point.x = centerX * 2 - point.x;
                     }
                 });
             });
+        
+            const action = {
+                type: 'flip',
+                objects: this.selected,
+                flipVertically: flipVertically,
+                flipHorizontally: flipHorizontally,
+                applied: true
+            };
+        
+            console.log('Adding to timeline:', action);
+            this.toolHandler.addActionToTimeline(action);
         }
         
         press() {
@@ -22314,48 +22348,73 @@
         let oldPointer = scene.toolHandler.actionTimelinePointer;
         old.apply(scene.toolHandler);
         if (oldPointer == scene.toolHandler.actionTimelinePointer) return;
+    
         let toRevert = scene.toolHandler.actionTimeline[scene.toolHandler.actionTimelinePointer];
-        if (toRevert) toRevert.objects = toRevert.objects.map(i => {while (i.newVersion) i = i.newVersion; return i});
-        if (toRevert && toRevert.type == 'transform' && toRevert.applied) {
+        if (toRevert) toRevert.objects = toRevert.objects.map(i => {while (i.newVersion) i = i.newVersion; return i;});
+    
+        if (toRevert && toRevert.applied) {
             if (toRevert.objects.some(i => i.remove)) {
                 scene.toolHandler.actionTimelinePointer = oldPointer;
                 return;
             }
-            //*//
-            toRevert.objects = toRevert.objects.map(i => {
-                if (i.remove) {
-                    while (i.newVersion)
-                        i = i.newVersion;
-                }
-                remove(i);
-                return recreate(i, {x: -toRevert.move.x, y: -toRevert.move.y});
-            });
-            //*/
-            /*//
-            toRevert.objects.forEach(i => {
-                while (i.newVersion) i = i.newVersion;
-                remove(i);
-            });
-            scene.track.cleanTrack();
-            toRevert.objects.forEach((i, j) => {
-                if (i.p1) {
-                    let {x, y} = toRevert.move,
-                        backwards = {x: -x, y: -y};
-                    if (toRevert.points?.[j]) {
-                        i[toRevert.points[j]].inc(backwards);
-                    } else {
-                        i.p1.inc(backwards);
-                        i.p2.inc(backwards);
+            if (GameSettings.copy) {
+                toRevert.objects = toRevert.objects.map(i => {
+                    if (i.remove) {
+                        while (i.newVersion)
+                            i = i.newVersion;
                     }
-                } else {
-                    i.x -= toRevert.move.x;
-                    i.y -= toRevert.move.y;
-                }
-            });
-            scene.toolHandler.addObjects(toRevert.objects);
-            //*/
+                    remove(i);
+                    return i;
+                });
+            } else if (!GameSettings.copy) {
+            switch (toRevert.type) {
+                case 'transform':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, { x: -toRevert.move.x, y: -toRevert.move.y });
+                    });
+                    break;
+                case 'rotate':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, { angle: -toRevert.angle, center: toRevert.center });
+                    });
+                    break;
+                case 'scale':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, {
+                            scaleFactor: 1 / toRevert.scaleFactor,
+                            center: toRevert.center
+                        });
+                    });
+                    break;
+                case 'flip':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, {
+                            flipVertically: toRevert.flipVertically,
+                            flipHorizontally: toRevert.flipHorizontally,
+                            center: toRevert.center
+                        });
+                    });
+                    break;
+            }
             toRevert.applied = false;
         }
+    }
     })(scene.toolHandler.revertAction);
 
     scene.toolHandler.applyAction = (old => () => {
@@ -22364,43 +22423,57 @@
         if (oldPointer == scene.toolHandler.actionTimelinePointer) return;
         let toRevert = scene.toolHandler.actionTimeline[scene.toolHandler.actionTimelinePointer - 1];
         if (toRevert) toRevert.objects = toRevert.objects.map(i => {while (i.newVersion) i = i.newVersion; return i});
-        if (toRevert && toRevert.type == 'transform' && !toRevert.applied) {
+        if (toRevert && !toRevert.applied) {
             if (toRevert.objects.some(i => i.remove)) {
                 scene.toolHandler.actionTimelinePointer = oldPointer;
                 return;
             }
-            //*//
-            toRevert.objects = toRevert.objects.map(i => {
-                if (i.remove) {
-                    while (i.newVersion)
-                        i = i.newVersion;
-                }
-                remove(i);
-                return recreate(i, {x: toRevert.move.x, y: toRevert.move.y});
-            });
-            //*/
-            /*//
-            toRevert.objects.forEach(i => {
-                while (i.newVersion) i = i.newVersion;
-                remove(i);
-            });
-            scene.track.cleanTrack();
-            toRevert.objects.forEach((i, j) => {
-                if (i.p1) {
-                    if (toRevert.points?.[j]) {
-                        i[toRevert.points[j]].inc(toRevert.move);
-                    } else {
-                        i.p1.inc(toRevert.move);
-                        i.p2.inc(toRevert.move);
-                    }
-                } else {
-                    i.x += toRevert.move.x;
-                    i.y += toRevert.move.y;
-                }
-            });
-            scene.toolHandler.addObjects(toRevert.objects);
-            //*/
-            toRevert.applied = true;
+            switch (toRevert.type) {
+                case 'transform':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, { x: toRevert.move.x, y: toRevert.move.y });
+                    });
+                    break;
+                case 'rotate':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, { angle: toRevert.angle, center: toRevert.center });
+                    });
+                    break;
+                case 'scale':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, {
+                            scaleFactor: toRevert.scaleFactor,
+                            center: toRevert.center
+                        });
+                    });
+                    break;
+                case 'flip':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, {
+                            flipVertically: toRevert.flipVertically,
+                            flipHorizontally: toRevert.flipHorizontally,
+                            center: toRevert.center
+                        });
+                    });
+                    break;
+            }
+            toRevert.applied = false;
         }
     })(scene.toolHandler.applyAction);
 
@@ -22687,18 +22760,47 @@
         }
     }
 
-    function recreate(object, offset = selectOffset) {
+    function recreate(object, transformation = {}) {
         if (!object) return;
-        if ('highlight' in object) {
-            let re = scene.track.addPhysicsLine(object.p1.x + offset.x, object.p1.y + offset.y,
-                                                object.p2.x + offset.x, object.p2.y + offset.y);
-            object.newVersion = re;
-            return re;
-        } else if (object.p1) {
-            let re = scene.track.addSceneryLine(object.p1.x + offset.x, object.p1.y + offset.y,
-                                               object.p2.x + offset.x, object.p2.y + offset.y);
-            object.newVersion = re;
-            return re;
+    
+        let offsetX = transformation.x !== undefined ? transformation.x : selectOffset.x;
+        let offsetY = transformation.y !== undefined ? transformation.y : selectOffset.y;
+        let angle = transformation.angle || 0;
+        let scale = transformation.scaleFactor || 1;
+        let centerX = transformation.center?.x || 0;
+        let centerY = transformation.center?.y || 0;
+        let flipHorizontally = transformation.flipHorizontally || false;
+        let flipVertically = transformation.flipVertically || false;
+    
+        let newObject;
+        if ('highlight' in object || object.p1) {
+            let startX = object.p1.x + offsetX;
+            let startY = object.p1.y + offsetY;
+            let endX = object.p2.x + offsetX;
+            let endY = object.p2.y + offsetY;
+    
+            if (angle !== 0 || scale !== 1) {
+                [startX, startY] = rotateAndScale(startX, startY, centerX, centerY, angle, scale);
+                [endX, endY] = rotateAndScale(endX, endY, centerX, centerY, angle, scale);
+            }
+    
+            if (flipHorizontally) {
+                let midX = (startX + endX) / 2;
+                startX = midX + (midX - startX);
+                endX = midX + (midX - endX);
+            }
+    
+            if (flipVertically) {
+                let midY = (startY + endY) / 2;
+                startY = midY + (midY - startY);
+                endY = midY + (midY - endY);
+            }
+    
+            if ('highlight' in object) {
+                newObject = scene.track.addPhysicsLine(startX, startY, endX, endY);
+            } else {
+                newObject = scene.track.addSceneryLine(startX, startY, endX, endY);
+            }
         } else {
             //object.x += offset.x;
             //object.y += offset.y;
@@ -22707,6 +22809,23 @@
             scene.track.addPowerup(object);
             return object
         }
+    
+        object.newVersion = newObject;
+        return newObject;
+    }
+    
+    function rotateAndScale(x, y, centerX, centerY, angle, scale) {
+        let translatedX = x - centerX;
+        let translatedY = y - centerY;
+    
+        translatedX *= scale;
+        translatedY *= scale;
+    
+        const radians = angle * Math.PI / 180;
+        let rotatedX = translatedX * Math.cos(radians) - translatedY * Math.sin(radians);
+        let rotatedY = translatedX * Math.sin(radians) + translatedY * Math.cos(radians);
+    
+        return [rotatedX + centerX, rotatedY + centerY];
     }
 }
 
