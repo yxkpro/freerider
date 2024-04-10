@@ -21876,7 +21876,7 @@
                 const newP2y = centerY + (line.p2.y - centerY) * scaleFactor;
         
                 const newLength = Math.hypot(newP2x - newP1x, newP2y - newP1y);
-                if (newLength < 2 && GameSettings.scaleLock) {  // Check for minimum length unless copy is enabled
+                if (newLength < 2 && GameSettings.scaleLock) {
             scalable = false;
         }
             });

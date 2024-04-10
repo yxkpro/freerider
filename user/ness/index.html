@@ -36,14 +36,6 @@
                     width="24" height="16"></a>
         </p>
 
-        <p>
-            <a href="/">home</a> /
-            <a href="/draw">draw</a> /
-            <a href="/play">play</a> /
-            <a href="/news">news</a> /
-            <a href="/misc">misc</a>
-        </p>
-
         <style>
             body {
                 overflow-y: visible;
@@ -62,7 +54,8 @@
             GameSettings.cameraZoomMax = 0.5;
             GameSettings.cameraStartZoom = 0.5;
 
-            GameSettings.cameraMovementHorizontal = true;  // true or false, does the camera move left to right with the rider?
+            GameSettings.cameraMovementPage = true;
+            GameSettings.cameraMovementHorizontal = false;  // true or false, does the camera move left to right with the rider?
             GameSettings.cameraMovementVertical = false;    // how about up or down?
         </script>
 

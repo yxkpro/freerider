@@ -334,6 +334,7 @@
         var n = e("react")
           , r = e("./vehicle")
           , rr = e("./vehicleoptions")
+          , rrr = e("./ridestyleoptions")
           , o = e("./grid")
           , i = e("./cameralock")
           , a = e("./Circlebottomtooloptions")
@@ -416,7 +417,9 @@
                     active: this.props.data.cameraLocked
                 }), n.createElement(o, {
                     active: this.props.data.grid
-                }), n.createElement(r, {
+                }), n.createElement(rrr),
+                
+                n.createElement(r, {
                     vehicle: this.props.data.vehicle
                 }), n.createElement(rr, {
                     vehicleoptions: this.props.data.vehicleoptions
@@ -440,6 +443,7 @@
         "./grid": 10,
         "./powerupbottomtooloptions": 11,
         "./straightlinebottomtooloptions": 12,
+        "./ridestyleoptions": 11113,
         "./vehicle": 13,
         "./vehicleoptions": 1113,
         "./vehiclepowerupbottomtooloptions": 14,
@@ -1036,6 +1040,115 @@
         react: 230,
         "react-slider": 75
     }],
+
+    11113: [function(e, t) {
+        var n = e("react")
+          , s = e("react-slider")
+          , r = n.createClass({
+            displayName: "ridestyleoptions",
+            changeRideStyle: function(e) {
+                var t = e.target.value;
+                GameSettings.rideStyle = t;
+                return !1
+            },
+            renderRideStyleSelect: function() {
+                var f = GameSettings.rideStyle,
+                    u = ["Pete", "Maxime", "Char"];
+                return n.createElement("select", {
+                    ref: "rideStyle",
+                    defaultValue: f,
+                    onChange: this.changeRideStyle,
+                }, u.map(function(f) {
+                    return n.createElement("option", {
+                        value: f
+                    }, f)
+                }))
+            },
+            render: function() {
+                var e = "bottomMenu-button bottomMenu-button-right bottomMenu-button_ridestyle "
+                  , t = "editorgui_icons editorgui_icons-icon_mtb"
+                  , r = "MTB"
+                  , ee = this.props.options
+                  , tt = 10
+                  , o = 1
+                  , i = 0
+                  , a = 1;
+                return this.props.vehicle && (r = this.props.vehicle.toLowerCase(),
+                t = "editorgui_icons editorgui_icons-icon_" + r), //add rider icon
+                n.createElement("div", {
+                    className: e,
+                }, 
+                
+                /* n.createElement("span", {
+                    className: t
+                }), */
+            
+                n.createElement("span", {
+                    className: "name"
+                }, "Rider : "), this.renderRideStyleSelect()
+            
+            )
+            }
+        });
+        t.exports = r
+    }
+    , {
+        react: 230,
+        "react-slider": 75
+    }],
+
+    /*
+    11113: [function(e, t) {
+    var n = e("react"),
+        s = e("react-slider"),
+        r = n.createClass({
+            displayName: "ridestyleoptions",
+            getInitialState: function() {
+                return {
+                    currentRideStyleIndex: 0
+                };
+            },
+            componentDidMount: function() {
+                // Initialize with the current setting
+                var u = ["Pete", "Maxime", "Char"];
+                var currentRideStyle = GameSettings.rideStyle;
+                var index = u.indexOf(currentRideStyle);
+                if (index > -1) {
+                    this.setState({ currentRideStyleIndex: index });
+                }
+            },
+            changeRideStyle: function() {
+                var u = ["Pete", "Maxime", "Char"];
+                var currentIndex = this.state.currentRideStyleIndex;
+                var nextIndex = (currentIndex + 1) % u.length;
+                GameSettings.rideStyle = u[nextIndex];
+                this.setState({ currentRideStyleIndex: nextIndex });
+            },
+            render: function() {
+                var e = "bottomMenu-button bottomMenu-button-right bottomMenu-button_ridestyle ",
+                    t = "editorgui_icons editorgui_icons-icon_mtb",
+                    r = "MTB",
+                    u = ["Pete", "Maxime", "Char"],
+                    currentRideStyle = u[this.state.currentRideStyleIndex];
+
+                return this.props.vehicle && (r = this.props.vehicle.toLowerCase(),
+                    t = "editorgui_icons editorgui_icons-icon_" + r),
+                    n.createElement("div", {
+                        className: e,
+                        onClick: this.changeRideStyle // Add click handler to cycle through styles
+                    },
+                        n.createElement("span", {
+                            className: "name"
+                        }, "Rider: " + currentRideStyle)
+                    );
+            }
+        });
+    t.exports = r;
+}, {
+    react: 230,
+    "react-slider": 75
+}];
+    */
     1113: [function(e, t) {
         var n = e("react")
           , s = e("react-slider")
@@ -2287,7 +2400,9 @@
                     ref: "visibleGrid",
                     defaultChecked: r,
                     onChange: this.toggleVisibleGrid
-                }))), n.createElement("tr", null, n.createElement("td", {
+                }))), 
+                
+                /* n.createElement("tr", null, n.createElement("td", {
                     className: "settingTitle"
                 }, n.createElement("span", {
                     className: "name"
@@ -2298,7 +2413,7 @@
                     ref: "isometricGrid",
                     defaultChecked: isometricGrid,
                     onChange: this.toggleIsometricGrid
-                }))), 
+                }))), */
 
                 n.createElement("tr", null, n.createElement("td", {
                     className: "settingTitle"
@@ -2323,13 +2438,20 @@
                     ref: "rightClickMove",
                     defaultChecked: o,
                     onChange: this.toggleRightClickMove
-                }))),n.createElement("tr", null, n.createElement("td", {
+                }))),
+                
+                /* n.createElement("tr", null, n.createElement("td", {
                     className: "settingTitle"
                 }, n.createElement("span", {
                     className: "name"
                 }, "Grid Size")), n.createElement("td", {
                     className: "settingInput"
-                }, this.renderGridSizeSelect())))), n.createElement("div", null, n.createElement("span", {
+                }, this.renderGridSizeSelect()))*/
+                
+                )), 
+                
+                
+                n.createElement("div", null, n.createElement("span", {
                     className: "helpDialog-advanced_settings link",
                     onClick: this.gotoKeyboardShortcuts
                 }, "Back To Keyboard Shortcuts")))

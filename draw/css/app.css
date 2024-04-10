@@ -1714,6 +1714,11 @@ html.fullscreen #main_page {
     float: right
 }
 
+.bottomMenu-button_ridestyle {
+    min-width: 105px;
+    padding: 0 0px,
+}
+
 .bottomMenu-button_grid {
     min-width: 105px
 }
