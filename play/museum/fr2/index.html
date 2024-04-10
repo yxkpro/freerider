@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<div id="game-container" style="position: relative; z-index: 0;"></div>
+
+<html>
+
+<head>
+    <meta name="generator" content="Hugo 0.68.3" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/stylesheet.css">
+    <link rel="icon" type="image/png" href="/favicon.ico">
+
+    <script src="/scripts/manifest.js"></script>
+    <script src="/scripts/settings.js"></script>
+    <script src="/scripts/offlineeditor.js"></script>
+
+    <script>
+        function openBikeSettingsDialog() {
+            if (typeof GameManager !== 'undefined') {
+                GameManager.command('dialog', 'bikesettings');
+            }
+        }
+    </script>
+
+    <title>freerider.app</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <p>
+            <a href="/" id=home class="">freerider.app</a>
+            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png"
+                    width="24" height="16"></a>
+        </p>
+
+        <script>
+            GameSettings.width = 7200;
+            GameSettings.cameraMovementPage = true;
+            GameSettings.scrollRatio = 2.5;
+        </script>
+
+        <style>
+            canvas {
+                top: -960px;
+                right: -2800px;
+            }
+
+            a {
+                position: relative;
+                z-index: 2;
+            }
+
+            body {
+                text-transform: none;
+            }
+
+            img {
+                margin: 0px;
+                z-index: -1;
+            }
+
+            #omlf {
+                margin-top: 100px;
+                z-index: -1;
+                position: relative;
+            }
+
+            #home {
+                margin: 1em 0em;
+            }
+
+            #firsttrack-margin {
+                margin-bottom: 4px;
+            }
+
+            #pete3 {
+                margin-bottom: 10px;
+            }
+
+            .museum {
+                width: 50%;
+                padding-right: 15px;
+                padding-left: 15px;
+                margin-right: auto;
+                margin-left: 185px
+            }
+
+            #fr1 {
+                position: relative;
+                z-index: -1;
+                width: 600px;
+                left: -200px;
+                top: 20px;
+            }
+
+            #fr2 {
+                position: relative;
+                z-index: -1;
+                max-width: 500px;
+            }
+            #start {
+                position: relative;
+                z-index: -1;
+                width: 400px;
+                height: 600px;
+                left: 220px;
+                top: -310px;
+            }
+
+            #frdb {
+                position: relative;
+                z-index: -1;
+                width: 400px;
+                left: 740px;
+                top: -565px;
+            }
+
+            video {
+                min-width: 395px; /* Minimum width to reserve space */
+                min-height: 317px;
+                margin-bottom: -8px;
+            }
+
+            #forum {
+                position: relative;
+                z-index: -1;
+                width: 400px;
+                left: 1165px;
+                top: -943px;
+            }
+
+            #frc {
+                position: relative;
+                width: 380px;
+                left: 5px;
+                margin-bottom: 6px;
+            }
+
+            #moose_man {
+                position: relative;
+                width: 400px;
+                left: 1585px;
+                top: -1435px;
+            }
+
+            #moose_man-link {
+                position: relative;
+                font-size: 12px;
+                text-align: right;
+                top: 360px;
+            }
+
+            #tfm-link {
+                font-size: 12px;
+                text-align: right;
+            }
+
+            #tfm {
+                position: relative;
+                width: 400px;
+                left: 2105px;
+                top: -1175px;
+            }
+
+            #maxi-link {
+                font-size: 12px;
+                text-align: right;
+            }
+
+            #maxi {
+                position: relative;
+                width: 400px;
+                left: 2725px;
+                top: -1225px;
+            }
+
+            .date {
+                color: #aaa;
+            }
+        </style>
+
+        <a id="title" href="https://freeriderhd.com/t/976843">free rider museum</a><br><br>
+
+        <div class="museum">
+
+            <span id="fr1">
+                <img id="fr2" src="/play/museum/fr2/assets/fr2.png">
+            </span>
+
+            <span id="start">
+                <blockquote><span class="date">February 19, 2007</span><br>Free Rider is released on OneMoreLevel.com.
+                </blockquote>
+                <blockquote>key people:<br><br>
+                <b>Pete Shadbolt</b> - developer of Free Rider<br><br>
+                <b>Ira Willey</b> - founder of OneMoreLevel, conceptualized and sponsored Free Rider's creation
+            </blockquote>
+            </span>
+
+            <span id="frdb">
+                <img src="/play/museum/2/assets/frdb.png">
+            </span>
+
+            <span id="forum">
+                <img id="frc" src="/play/museum/2/assets/frc.png">
+                <blockquote><span class="date">June 24, 2007</span><br>Free Rider DB is created by Maxime.</blockquote>
+                <blockquote><span class="date">July 5, 2007</span><br>Freerider Community (FRC) is created.</blockquote>
+                <blockquote>key people:<br><br>
+                    <b>Maxime Simon</b> - creator of the Free Rider DB<br><br>
+                    <b>TheFunkyMonkie</b> - admin of FRC<br><br>
+                    <b>Maxi</b> - moderator of FRC and OneMoreLevel forums</blockquote>
+            </span>
+
+            <span id="moose_man">
+                <p id="moose_man-link"><a href="https://www.freeriderhd.com/t/936221"><b>MTB Underground</b></a> by <a href="https://www.freeriderhd.com/u/moose_man">moose_man</a><br>oct 2007, track 4515 on FRDB</p>
+                <blockquote><span class="date">Dec 3, 2007</span><br>Free Rider becomes the most played game on OneMoreLevel, with nearly 6.5 million plays.
+                </blockquote>
+            </span>
+
+            <span id="tfm">
+                <p id="tfm-link"><a href="https://www.freeriderhd.com/t/936371"><b>Relentless</b></a> by <a href="https://www.freeriderhd.com/u/thefunkymonkie">thefunkymonkie</a><br>nov 2007, track 6337 on FRDB</p>
+            </span>
+
+            <span id="maxi">
+                <p id="maxi-link"><a href="https://www.freeriderhd.com/t/943186"><b>Maxi's Mountain</b></a> by Maxi<br>sept 2007, track 2644 on FRDB</p>
+            </span>
+
+        </div>
+</body>
+
+</html>
