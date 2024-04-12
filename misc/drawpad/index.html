@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FRHD Drawpad</title>
+        <link rel="stylesheet" href="/misc/drawpad/styles/default.css">
+        <link rel="stylesheet" href="/misc/drawpad/style.css">
+        <link rel="manifest" href="/misc/drawpad/manifest.json">
+        <meta name="description" property="og:description" content="A program that uses the Canvas API to create an image of your creation.">
+        <meta name="viewport" content="minimal-ui,width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+        <script type="module" src="/misc/drawpad/bootstrap.js"></script>
+    </head>
+    <body>
+        <main id="container">
+            <canvas id="view" oncontextmenu="event.preventDefault();"></canvas>
+            <div class="user-interface">
+                <section class="left top">
+                    <label for="toolbar" class="button secondary">Toolbar</label>
+                    <div style="display: grid;max-height: 50vmin;overflow: auto;">
+                        <input type="checkbox" id="toolbar" style="display: none;">
+                        <label class="button ripple" onclick="canvas.tools.select('line');">
+                            Line<input type="radio" name="tool" id="line" style="display: none;">
+                        </label>
+                        <label class="button ripple" onclick="canvas.tools.select('brush');">
+                            Brush<input type="radio" name="tool" id="brush" style="display: none;">
+                        </label>
+                        <label class="button ripple" onclick="canvas.tools.select('curve');">
+                            Curve<input type="radio" name="tool" id="curve" style="display: none;">
+                        </label>
+                        <label class="button ripple" onclick="canvas.tools.select('circle');">
+                            Circle<input type="radio" name="tool" id="circle" style="display: none;">
+                        </label>
+                        <label class="button ripple" onclick="canvas.tools.select('rectangle');">
+                            Rectangle<input type="radio" name="tool" id="rectangle" style="display: none;">
+                        </label>
+                        <label class="button ripple" onclick="canvas.tools.select('eraser');">
+                            Eraser<input type="radio" name="tool" id="eraser" style="display: none;">
+                        </label>
+                        <label class="button ripple" onclick="canvas.tools.select('camera');">
+                            Camera<input type="radio" name="tool" id="camera" style="display: none;">
+                        </label>
+                        <label for="advanced-tools" class="button secondary">Advanced</label>
+                        <div style="display: contents;">
+                            <input type="checkbox" id="advanced-tools" style="display: none;" onchange="this.nextElementSibling.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'center' })">
+                            <label class="button ripple" onclick="canvas.tools.select('ellipse');">
+                                Ellipse<input type="radio" name="tool" id="ellipse" style="display: none;">
+                            </label>
+                        </div>
+                    </div>
+                </section>
+                <section class="right top" style="z-index: 50;">
+                    <button class="secondary" onclick="document.querySelector('#settings').style.setProperty('display', 'none'), document.querySelector('#layers').style.setProperty('display', document.querySelector('#layers').style.display === 'flex' ? 'none' : 'flex');">Layers</button>
+                    <button class="secondary" onclick="document.querySelector('#layers').style.setProperty('display', 'none'), document.querySelector('#settings').style.setProperty('display', document.querySelector('#settings').style.display === 'flex' ? 'none' : 'flex');">Settings</button>
+                </section>
+                <section class="bottom left" style="border-radius: 4px;">
+                    <label class="button option ripple" style="border-radius: 0;background-color: rgba(0, 0, 0, 0.25);">
+                        <input type="radio" name="color" onchange="canvas.tools.selected.scenery = 0;" checked>Primary Colour
+                    </label>
+                    <label class="button option ripple" style="border-radius: 0;background-color: rgba(170, 170, 170, 0.25);">
+                        <input type="radio" name="color" onchange="canvas.tools.selected.scenery |= 1;">Secondary Colour
+                    </label>
+                </section>
+            </div>
+            <!-- Layers Overlay -->
+            <div class="overlay" id="layers">
+                <button class="secondary ripple" onclick="canvas.layers.create();">New Layer</button>
+                <div id="layer-container"></div>
+            </div>
+            <!-- Settings Overlay -->
+            <div class="overlay" id="settings" style="display: none;">
+                <input type="file" id="import" accept="text/plain" style="display: none;" onchange="this.classList.add('loading'),this.files[0].text().then(text => (this.classList.remove('loading'),canvas.import(text)));">
+                <label for="import" class="button secondary ripple" style="text-align: center; line-height: 350%; font-size: calc(40px / 3);">Import Canvas</label>
+                <button class="secondary ripple" onclick="
+                Object.assign(document.createElement('a'), {
+                	download: 'frhd_drawpad_track-' + new Intl.DateTimeFormat('en-CA', { dateStyle: 'short', timeStyle: 'medium' }).format().replace(/[/:]/g, '-').replace(/,+\s*/, '_').replace(/\s+.*$/, ''),
+               		href: window.URL.createObjectURL(new Blob([canvas.toString()], { type: 'text/plain' }))
+				}).dispatchEvent(new MouseEvent('click'));
+            ">Export Canvas</button>
+            </div>
+        </main>
+    </body>
+</html>

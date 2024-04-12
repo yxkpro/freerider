@@ -2614,7 +2614,7 @@
                   , t = "editorDialog-content editorDialog-content_importDialog";
                 e && (t += " editorDialog-content-dragActive");
                 var r = "";
-                this.hasFileAPI && (r = n.createElement("span", null, ",or ", n.createElement("span", {
+                this.hasFileAPI && (r = n.createElement("span", null, ", or ", n.createElement("span", {
                     className: "link",
                     onClick: this.openFileDialog
                 }, "select a file")));
@@ -2622,7 +2622,7 @@
                     className: "importDialog-placeholder",
                     ref: "placeholder",
                     "data-ignoredragleave": "true"
-                }, "Paste track code, drag and drop text files here ", r, " to import");
+                }, "Paste track code, drag and drop text files here", r, " to import");
                 return n.createElement("div", {
                     className: t
                 }, n.createElement("div", {

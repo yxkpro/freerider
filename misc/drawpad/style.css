@@ -1,0 +1,235 @@
+:root {
+	--accent-color: #2D2D2D;
+	--background: #1B1B1B;
+	--hard-background: #111111;
+	--text-color: #FBFBFB;
+}
+
+html {
+    color: var(--text-color);
+}
+
+body {
+	margin: 0;
+	overflow: hidden;
+}
+
+body > nav {
+	display: none !important;
+}
+
+canvas#view {
+	-webkit-user-select: none;
+	background-color: var(--background);
+	height: 100vh;
+	touch-action: none;
+	user-select: none;
+	width: 100vw;
+}
+
+:not(label):has(> input:is([type="checkbox"],[type="radio"]):not(:checked)) {
+    display: none !important;
+}
+
+div.content {
+	padding: 0;
+	overflow: hidden;
+}
+
+#container {
+	position: relative;
+}
+
+#container .user-interface > section {
+	margin: 10px;
+	max-width: 50vmin;
+	overflow: hidden;
+	position: fixed;
+	z-index: 0;
+}
+
+#container .user-interface .bottom {
+	bottom: 0;
+}
+
+#container .user-interface .left {
+	left: 0;
+}
+
+#container .user-interface .top {
+	top: 0;
+}
+
+#container .user-interface .right {
+	right: 0;
+	text-align: right;
+}
+
+#container .user-interface :is(button, .button, select) {
+	background-color: transparent;
+}
+
+#container .user-interface select optgroup, #container .user-interface select option {
+	background-color: var(--accent-color);
+}
+
+#container .user-interface section.left.top label[for]::before {
+	content: "Show "
+}
+
+#container .user-interface section.left.top:has(#toolbar:checked) > label[for=toolbar]::before,
+#container .user-interface section.left.top:has(#advanced-tools:checked) label[for=advanced-tools]::before {
+	content: "Hide "
+}
+
+/* #container .user-interface section.left.top :has(> :checked) ~ label[for]::before {
+	content: "Hide "
+} */
+
+label.button {
+	line-height: 3rem;
+}
+
+#container .user-interface section.bottom.left .option {
+	-webkit-user-select: none;
+	display: block;
+	font-size: smaller;
+	height: 3rem;
+	line-height: 3rem;
+	overflow: hidden;
+	padding: 0 1rem;
+	position: relative;
+	text-align: center;
+	user-select: none;
+}
+
+#container .user-interface section.bottom.left .option.disabled {
+	opacity: .5;
+	pointer-events: none;
+}
+
+#container .user-interface section.bottom.left .option input {
+	left: 0;
+	pointer-events: none;
+	position: absolute;
+	top: 0;
+	visibility: hidden;
+}
+
+#container :is(.user-interface, .overlay) button, #container :is(.user-interface, .overlay) .button {
+	background-color: transparent;
+}
+
+#container .overlay {
+	align-items: center;
+	border-radius: 1rem;
+	box-shadow: inset 0px 5px 8px -10px #80808040;
+	inset: 0;
+	overflow: hidden;
+	place-content: center;
+	position: absolute;
+}
+
+#container div#settings {
+	background-color: hsl(0 0% 50% / 10%);
+	backdrop-filter: blur(2em);
+    border-radius: 0;
+	display: none;
+	z-index: 40;
+}
+
+#container div#layers {
+	backdrop-filter: blur(4px);
+	background-color: hsl(0deg 0% 50% / 20%);
+	border-radius: 30px;
+	display: none;
+	flex-flow: column;
+	height: auto;
+	inset: 15%;
+	margin: auto;
+	padding: 1rem;
+	width: auto;
+	z-index: 20;
+}
+
+#container div#layers div#layer-container {
+	display: grid;
+	grid-auto-rows: min-content;
+	grid-gap: 0.5rem;
+	grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+	margin: 1rem;
+	max-height: 80%;
+	overflow: auto;
+	width: -webkit-fill-available;
+}
+
+/* #container div#layers .layer {
+	counter-increment: layer;
+}
+
+#container div#layers .layer > :first-child:after {
+	content: counter(layer);
+} */
+
+#container div#layers .layer {
+	align-items: center;
+	/* backdrop-filter: brightness(0); */
+	border-radius: 10px;
+	display: flex;
+	flex-flow: column wrap;
+	overflow: hidden;
+	padding: 1rem;
+	place-content: center;
+	position: relative;
+}
+
+#container div#layers .layer::before {
+	content: "";
+	opacity: .3;
+	inset: 0;
+	display: flex;
+	overflow: hidden;
+	position: absolute;
+	pointer-events: none;
+	border-radius: inherit;
+	background-color: var(--hard-background);
+	z-index: -1;
+}
+
+#container div#layers .layer:not(.selected):hover::before {
+	opacity: .5;
+	transition: background-color 100ms;
+}
+
+#container div#layers .layer.selected::before {
+	opacity: .9;
+}
+
+#container div#layers .layer input.selector {
+	height: 1rem;
+	padding: 0;
+	width: 2rem;
+}
+
+#container div#layers .layer .option {
+	height: 3rem;
+	display: flex;
+	font-size: small;
+	overflow: hidden;
+	position: relative;
+	align-items: center;
+	justify-content: center;
+}
+
+#container div#layers .layer .option input {
+	margin-right: 8px;
+	pointer-events: none;
+}
+
+
+#container div#layers .layer .options {
+	/*display: none;*/
+	display: flex;
+	flex-direction: column;
+	margin-top: 10px;
+}

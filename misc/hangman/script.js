@@ -71,7 +71,7 @@ var Hangman = function (elem, mode) {
             { word: "computer", wordid: "726859" },
             { word: "sleep paralysis", wordid: "726656" },
             { word: "subterranean sky palace", wordid: "725622" },
-            { word: "mammoth (revival)", wordid: "721816" },
+            { word: "mammoth revival", wordid: "721816" },
             { word: "clandestine", wordid: "719425" },
             { word: "inca", wordid: "713551" },
             { word: "calypso", wordid: "713541" },
@@ -104,7 +104,13 @@ var Hangman = function (elem, mode) {
             { word: "fish bowl", wordid: "275122" },
             { word: "magnum opus", wordid: "191253" },
             { word: "the dreamt place", wordid: "155485" },
-            { word: "black magic", wordid: "127165" }
+            { word: "black magic", wordid: "127165" },
+            { word: "wooden bucket", wordid: "81378" },
+            { word: "double compound", wordid: "229102" },
+            { word: "chillwind woods", wordid: "1009" },
+            { word: "tartarus", wordid: "403228" },
+            { word: "hellirinn", wordid: "294683" }
+
             // More tracks...
         ],
         //note
