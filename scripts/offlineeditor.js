@@ -1481,7 +1481,7 @@
                                 n.createElement("span", { className: "name" }, "ride style")
                             ),
                             n.createElement("td", { className: "settingInput" }, this.renderRideStyleSelect())
-                        ), n.createElement("tr", null,
+                        /*), n.createElement("tr", null,
                             n.createElement("td", { className: "settingTitle" },
                                 n.createElement("span", { className: "name" }, "hat color")
                             ),
@@ -1511,6 +1511,7 @@
                         n.createElement("span", { className: "name" }, "balloonpower")
                     ),
                     n.createElement("td", { className: "settingInput" }, this.renderBalloonpowerInput())
+                    */
                 ),n.createElement("tr", null,
                             n.createElement("td", { colSpan: "2" },
                                 n.createElement("button", {

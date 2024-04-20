@@ -14,7 +14,7 @@
     <link rel="icon" type="image/png" href="assets/favicon.ico">
 
     <script src="/scripts/manifest.js"></script>
-    <script src="/scripts/settings.js"></script>
+    <script src="/scripts/settings-track.js"></script>
     <script src="/scripts/offlineeditor.js"></script>
 
     <script>
@@ -29,29 +29,44 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+    <div class="container-fluid" id="container-fluid">
         <p>
             <a href="/" id=home class="">freerider.app</a>
-            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png" width="24" height="16"></a>
+            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png"
+                    width="24" height="16"></a>
         </p>
 
         <style>
             canvas {
-                top: -1250px;
-                right: -1150px;
+                position: fixed;
+                z-index: 3;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border: black;
+                border-width: 2px;
+                border-style: solid;
+                margin: 0;
+            }
+
+            body {
+                margin-top: 40px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hidden {
+                display: none;
             }
         </style>
 
         <script>
-            GameSettings.cameraZoomMin = 0.8;
-            GameSettings.cameraZoomMax = 0.8;
-            GameSettings.cameraStartZoom = 0.8;
-
+            GameSettings.trackPage = true;
+            GameSettings.cameraStartZoom = 0.5;
             GameSettings.cameraMovementHorizontal = true;
-            GameSettings.cameraMovementVertical = false;
+            GameSettings.cameraMovementVertical = true;
 
-            GameSettings.hatColor = "#e4000f"
-            GameSettings.startVehicle = "MTB";
+            GameSettings.startVehicle = "BMX";
         </script>
 
         <script>
@@ -73,9 +88,24 @@
                 xhr.send();
             }
             addTextFromFileToHTML();
+
+            var container = document.getElementById('container-fluid');
+            var isHidden = false;
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'f') {
+                    if (isHidden) {
+                        container.style.display = 'block'; // or 'flex', 'grid', etc. depending on your layout
+                    } else {
+                        container.style.display = 'none';
+                    }
+                    isHidden = !isHidden;
+                }
+            });
         </script>
 
-        <a id="title" href="https://freeriderhd.com/t/955926">1-4</a> <a id="author" href="https://freeriderhd.com/u/Seasnails">Seasnails</a>
+        <a id="title" href="https://freeriderhd.com/t/863874">jon312: a retrospective</a> <a id="author"
+            href="https://freeriderhd.com/u/Ness">ness</a>
 
     </div>
 </body>

@@ -1,8 +1,8 @@
 :root {
-	--accent-color: #2D2D2D;
-	--background: #1B1B1B;
-	--hard-background: #111111;
-	--text-color: #FBFBFB;
+	--accent-color: grey;
+	--background: white;
+	--hard-background: #aaa;
+	--text-color: black;
 }
 
 html {

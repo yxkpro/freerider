@@ -1053,7 +1053,7 @@
             },
             renderRideStyleSelect: function() {
                 var f = GameSettings.rideStyle,
-                    u = ["Pete", "Maxime", "Char"];
+                    u = ["Pete", "Char"];
                 return n.createElement("select", {
                     ref: "rideStyle",
                     defaultValue: f,
@@ -1601,11 +1601,11 @@
                 },
                 renderRideStyleSelect: function () {
                     var e = GameSettings.rideStyle;
-                    var t = ["Pete", "Maxime", "Char"];
+                    var t = ["Pete", "Char"];
                     return React.createElement("select", {
                         ref: "rideStyle",
                         defaultValue: e,
-                        onChange: this.changeRideStyle // Corrected function name
+                        onChange: this.changeRideStyle
                     }, t.map(function (e) {
                         return React.createElement("option", {
                             value: e
@@ -3242,7 +3242,7 @@
                   , t = this.props.data.hideMenus
                   , u = 48.6
                   , d = {};
-                return d.marginTop = -(8 * u / 2),
+                return d.marginTop = -(9 * u / 2),
                 t && (d.display = "none"),
                 n.createElement("div", {
                     className: "leftMenu",
@@ -3257,9 +3257,9 @@
                     active: "brush" === e
                 }), 
                 
-                //n.createElement(iii, {
-                //active: "elle" === e
-                //}), 
+                n.createElement(iii, {
+                active: "elle" === e
+                }), 
                 
                 n.createElement(a, {
                     active: "eraser" === e
@@ -4642,7 +4642,7 @@
                     className: "topMenu unselectable"
                 }, n.createElement(r, null), n.createElement(o, null), n.createElement(i, null), n.createElement(a, null), this.showHelp(), this.showFullscreen(), n.createElement(u, null), n.createElement(d, {
                     percent: this.props.data.zoomPercentage
-                }), n.createElement(c, null), n.createElement(xx, null), n.createElement(x, null))
+                }), n.createElement(c, null), /*n.createElement(xx, null),*/ n.createElement(x, null))
             },
             showOfflineEditorIcon: function() {
                 var e = !1

@@ -1,0 +1,43 @@
+<body>
+    <h1>Free Rider HD Track Mover</h1>
+    <p>This super duper ultra high quality webpage moves Free Rider HD tracks. Paste the exported track code into the big text box, put the coordinates for how much you want to move the track into the X and Y boxes, and press move.</p>
+    <p>Each number you put in the X and Y boxes is one thenth of a grid unit in the game. Positive X values move the map to the right, and positive Y values move the map up.</p>
+    <p>It works with all powerups now, including vehicle powerups! (It's about time)</p>
+  
+    <style>
+        .control-group {
+  display: table;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: #cccccc;
+}
+    </style>
+    
+    <textarea rows="10" cols="50" id="inputBox" spellcheck="false"></textarea>
+    <div class="control-group">
+      X:
+      <input type="text" id="xMove">
+      <br> Y:
+      <input type="text" id="yMove">
+      <br>
+      <button id="button">Move</button>
+    </div>
+    <div class="control-group">
+      <button id="flip-x-button">Flip Horizontally</button>
+      <button id="flip-y-button">Flip Vertically</button>
+      <br>
+      <button id="rotate-cw">Rotate CW</button>
+      <button id="rotate-ccw">Rotate CCW</button>
+    </div>
+    <div class="control-group">
+      Positive number = counterclockwise
+      <br>
+      <input type="text" id="rotate">
+      <button id="rotate-button">Rotate</button>
+    </div>
+  
+    <script src="script.js"></script>
+  
+  </body>

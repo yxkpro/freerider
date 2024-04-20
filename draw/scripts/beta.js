@@ -13887,18 +13887,22 @@
 
             
                 
-                s ? (u.fillStyle = "black",
+                s ? (u.fillStyle = "grey",
                 u.beginPath(),
                 u.arc(h.x, h.y, 5 * c, 0, 2 * Math.PI),
                 u.moveTo(a.x, a.y),
                 u.arc(a.x, a.y, 4 * c, 0, 2 * Math.PI),
-                u.fill(),
+                u.fill())
+
+                /*
                 u.beginPath(),    
-                u.fillStyle = fc2,
+                u.fillStyle = "grey",
                 u.arc(h.x, h.y, 4 * c, 0, 2 * Math.PI),
                 u.moveTo(a.x, a.y),
                 u.arc(a.x, a.y, 3 * c, 0, 2 * Math.PI),
-                u.fill()) : (u.strokeStyle = "rgba(153, 153, 153,1)",
+                u.fill()) */
+                
+                : (u.strokeStyle = "rgba(153, 153, 153,1)",
                 u.fillStyle = "rgba(204, 204, 204,1)",
                 u.lineWidth = 1,
                 u.beginPath(),
@@ -19801,8 +19805,9 @@
             }
             draw() {
                 this.toolHandler.drawGrid(),
-                this.track.draw(),
+            
                 this.drawPlayers(),
+                this.track.draw(),
                 this.controls && !1 !== this.controls.isVisible() || this.toolHandler.draw(),
                 this.state.loading && this.loadingcircle.draw(),
                 this.message.draw()

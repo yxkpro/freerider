@@ -245,7 +245,6 @@ td.settingTitle {
 }
 
 
-
 video {
     border-radius: 3px;
  animation: fadein 3s;
@@ -690,8 +689,6 @@ input,textarea#color {
     background-color: #aaa;
     text-decoration: None;
     padding: .3em;
-    font-family: 'Ubuntu Mono', monospace;
-    font-size: 1rem;
 }
 
 #title:hover {
@@ -699,12 +696,10 @@ input,textarea#color {
 }
 
 #author {
-    color: white;
+    color: black;
     background-color: #aaa;
     text-decoration: None;
     padding: .3em;
-    font-family: 'Ubuntu Mono', monospace;
-    font-size: 1rem;
 }
 
 #author:hover {

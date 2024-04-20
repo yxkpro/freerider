@@ -73,8 +73,8 @@ export default class extends EventEmitter {
 	setColorScheme({ theme } = this.settings) {
 		if (theme == 'dark') {
 			document.documentElement.attributeStyleMap.clear();
-			this.physicsStyle = '#FFFFFF';
-			this.sceneryStyle = '#999999';
+			this.physicsStyle = 'black';
+			this.sceneryStyle = '#AAA';
 		} else {
 			document.documentElement.style.setProperty('--accent-color', '#D2D2D2');
 			document.documentElement.style.setProperty('--background', '#EBEBEB');
