@@ -19510,7 +19510,7 @@
                 this.sceneryLines = [],
                 this.foregroundLines = [],
                 this.targets = [],
-                this.allowedVehicles = ["MTB", "BMX"],
+                this.allowedVehicles = ["MTB", "BMX", "PLANE"],
                 //this.allowedVehicles = ["Pete", "Maxime", "Char"],
                 this.canvasPool = new $i(t),
                 this.needsCleaning = !1,

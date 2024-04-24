@@ -289,6 +289,14 @@ canvas {
     right: -781px;
 }
 
+#info {
+    position: fixed;
+    z-index: 3;
+    top: 10%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
 .topMenu {
     position: relative;
     top: -5000px;

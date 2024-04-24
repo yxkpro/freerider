@@ -3713,6 +3713,7 @@
     37: [function(e, t) {
         var n = e("react")
           , a = e("../tools/vehicles/helicoptertool")
+          , planea = e("../tools/vehicles/planetool")
           , o = e("../tools/vehicles/balloontool")
           , r = (e("../tools/vehicles/unicycletool"),
         e("../tools/vehicles/trucktool"))
@@ -3729,6 +3730,8 @@
                     options: e
                 }), n.createElement(i, {
                     options: e
+                }), n.createElement(planea, {
+                    options: e
                 }))
             }
         });
@@ -3738,6 +3741,7 @@
         "../tools/vehicles/balloontool": 54,
         "../tools/vehicles/blobtool": 55,
         "../tools/vehicles/helicoptertool": 56,
+        "../tools/vehicles/planetool": 556,
         "../tools/vehicles/trucktool": 57,
         "../tools/vehicles/unicycletool": 58,
         react: 230
@@ -4223,6 +4227,32 @@
           , r = n.createClass({
             displayName: "HelicopterTool",
             name: "helicopter",
+            changePowerup: function() {
+                "undefined" != typeof GameManager && (GameManager.command("change tool", "vehiclepowerup"),
+                GameManager.command("change tool option", "selected", this.name))
+            },
+            render: function() {
+                var e = "sideButton sideButton_powerupTool";
+                return this.props.options.selected === this.name && (e += " active"),
+                n.createElement("div", {
+                    className: e,
+                    onClick: this.changePowerup
+                }, n.createElement("span", {
+                    className: "editorgui_icons editorgui_icons-helicopter"
+                }))
+            }
+        });
+        t.exports = r
+    }
+    , {
+        react: 230
+    }],
+
+    556: [function(e, t) {
+        var n = e("react")
+          , r = n.createClass({
+            displayName: "PlaneTool",
+            name: "plane",
             changePowerup: function() {
                 "undefined" != typeof GameManager && (GameManager.command("change tool", "vehiclepowerup"),
                 GameManager.command("change tool option", "selected", this.name))

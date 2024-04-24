@@ -10008,7 +10008,7 @@
                   , e = t.game.pixelRatio
                   , s = t.settings
                   , i = new createjs.Container
-                  , n = "helsinki"
+                  , n = "Courier New"
                   , r = new createjs.Text("00:00.00","40px " + n,"#000000")
                   , o = new createjs.Text("TIME:","20px " + n,"#999999")
                   , a = this.get_timer_sprite()
@@ -10024,21 +10024,24 @@
                 o.x = -100,
                 a.y = -100,
                 a.x = -100,
-                c.x = -1005,
-                c.y = -100,
-                u.x = -100,
-                u.y = -100,
+                c.x = 80,
+                c.y = 25,
+                u.x = 10,
+                u.y = 10,
                 h.y = -100,
                 h.x = -100,
                 l.y = -100,
                 l.x = -100,
                 i.addChild(r),
                 //i.addChild(o),
-                i.addChild(a),
+                i.addChild(a);
                 //i.addChild(h),
                 //i.addChild(l),
+
+                if (s.visibleUI) {
                 i.addChild(c),
-                i.addChild(u),
+                i.addChild(u);}
+
                 i.scaleX = i.scaleY = d,
                 i.y = (10 + this.offset.y) * d,
                 i.x = 10 * d,
@@ -10949,16 +10952,24 @@
                     let s = this.settings.scrollRatio;
                     
 
-                    if (this.settings.cameraMovementPage && !this.settings.cameraMovementVertical) {
+                    if (this.settings.cameraMovementPage && !this.settings.cameraMovementVertical && !this.settings.cameraMovementDM) {
                         e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s;
                         e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;
                         window.scrollTo((t.pos.x - e.x) / s, window.scrollY);
                     }
 
-                    else if (this.settings.cameraMovementPage && this.settings.cameraMovementVertical) {
+                    else if (this.settings.cameraMovementPage && this.settings.cameraMovementVertical && !this.settings.cameraMovementDM) {
                             e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s;
                             e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;
                             window.scrollTo(window.scrollX, (t.pos.y - e.y) / s);
+                    }
+
+                    else if (this.settings.cameraMovementDM) {
+                        const nearestX = Math.round(t.pos.x / 2000) * 2000;
+                        const nearestY = Math.round(t.pos.y / 2000) * 2000;
+
+                        e.x = nearestX;
+                        e.y = nearestY;
                     }
 
                     else {

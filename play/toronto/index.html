@@ -30,12 +30,6 @@
 
 <body>
     <div class="container-fluid" id="container-fluid">
-        <p>
-            <a href="/" id=home class="">freerider.app</a>
-            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png"
-                    width="24" height="16"></a>
-        </p>
-
         <style>
             canvas {
                 position: fixed;
@@ -50,6 +44,7 @@
             }
 
             body {
+                margin-top: 40px;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -103,10 +98,15 @@
             });
         </script>
 
-        <a id="title" href="https://freeriderhd.com/t/863874">toronto</a> <a id="author"
+<span id="info"><a href="/" id=home class="">freerider.app</a>
+    <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png"
+            width="24" height="16"></a><br>
+
+            <a id="title" href="https://freeriderhd.com/t/863874">toronto</a> <a id="author"
             href="https://freeriderhd.com/u/Ness">ness</a> <a id="author"
             href="https://freeriderhd.com/u/alexander">alexander</a> <a id="author"
             href="https://freeriderhd.com/u/armator">armator</a>
+</span>
 
     </div>
 </body>

@@ -31,8 +31,8 @@
 <body>
     <div class="container-fluid" id="container-fluid">
 
-        <style>
-            canvas {
+<style>
+    canvas {
                 position: fixed;
                 z-index: 3;
                 top: 50%;
@@ -44,45 +44,25 @@
                 margin: 0;
             }
 
-            body {
-                margin-top: 40px;
-                margin-left: auto;
-                margin-right: auto;
-            }
-
-            .hidden {
-                display: none;
-            }
-        </style>
-
-        <script>
-            GameSettings.trackPage = true;
+            div.circle {
+    border-radius: 50%; 
+    overflow:hidden; 
+    width: 374px; 
+    height: 374px;
+    position: fixed;
+                z-index: 3;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -77%);
+    box-shadow: 0px 0px 0px #999;
+}
+    </style>
+    
+    <script>
+        GameSettings.trackPage = true;
             GameSettings.cameraStartZoom = 0.5;
-            GameSettings.cameraMovementHorizontal = true;
-            GameSettings.cameraMovementVertical = true;
-
-            GameSettings.startVehicle = "BMX";
-        </script>
-
-        <script>
-            function addTextFromFileToHTML() {
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'track.txt', true);
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        var text = xhr.responseText
-                        var authorMatch = text.match(/"author":"(.+?)"/)
-                        var descrMatch = text.match(/"descr":"(.+?)"/)
-                        var author = authorMatch[1]
-                        var descr = descrMatch[1];
-
-                        document.getElementById("author").innerText = author;
-                        document.getElementById("descr").innerText = descr;
-                    }
-                };
-                xhr.send();
-            }
-            addTextFromFileToHTML();
+            GameSettings.cameraMovementHorizontal = false;
+            GameSettings.cameraMovementVertical = false;
 
             var container = document.getElementById('container-fluid');
             var isHidden = false;
@@ -97,13 +77,13 @@
                     isHidden = !isHidden;
                 }
             });
-        </script>
+    </script>
 
 <span id="info"><a href="/" id=home class="">freerider.app</a>
     <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png"
             width="24" height="16"></a><br>
 
-    <a id="title" href="https://freeriderhd.com/t/946458">jon312 - a retrospective</a> <a id="author"
+    <a id="title" href="https://freeriderhd.com/t/946458">galaxy</a> <a id="author"
         href="https://freeriderhd.com/u/Ness">ness</a>
 </span>
 
