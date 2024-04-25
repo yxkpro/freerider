@@ -13312,7 +13312,7 @@
                   r = new X(new t.Z(e.x + -21, e.y + 3), this);
                 i.init(new t.Z(e.x, e.y - 36), this),
                   (i.drive = this.createRagdoll.bind(this)),
-                  (r.radius = 11.7), // wheel size factor wsr * 0.5
+                  (r.radius = 0), // wheel size factor wsr * 0.5
                   (n.radius = 11.7),
                   (i.radius = 14),
                   i.vel.equ(s),
@@ -13595,7 +13595,7 @@
                 d = l.sub(a.add(u.factor(0.5)));
 
                 const ff = masses[2].pos.toScreen(e);
-                    rotor += .5 * this.propeller + .05, // this.propeller or masses[1].motor
+                    rotor += 0.5 * this.propeller + .1, // this.propeller or masses[1].motor
                     rotor > 6.2831 && (rotor -= 6.2831),
                     this.rotor = rotor;
 
