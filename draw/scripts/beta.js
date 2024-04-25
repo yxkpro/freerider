@@ -13312,7 +13312,7 @@
                   r = new X(new t.Z(e.x + -21, e.y + 3), this);
                 i.init(new t.Z(e.x, e.y - 36), this),
                   (i.drive = this.createRagdoll.bind(this)),
-                  (r.radius = 0), // wheel size factor wsr * 0.5
+                  (r.radius = 11.7), // wheel size factor wsr * 0.5
                   (n.radius = 11.7),
                   (i.radius = 14),
                   i.vel.equ(s),
