@@ -1504,7 +1504,8 @@
                         frameColor2: GameSettings.frameColor2,
                         wheelColor: GameSettings.wheelColor,
                         windspeed: GameSettings.windspeed,
-                        balloonpower: GameSettings.balloonpower
+                        balloonpower: GameSettings.balloonpower,
+                        propeller:  GameSettings.propeller
                     }
                 },
                 closeDialog: function () {
@@ -1558,6 +1559,11 @@
                 changeBalloonpower: function (e) {
                     var balloonpower = e.target.value;
                     GameSettings.balloonpower = balloonpower;
+                    "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1);
+                },
+                changePropeller: function (e) {
+                    var propeller = e.target.value;
+                    GameSettings.propeller = propeller;
                     "undefined" != typeof GameManager && GameManager.command("bikeSettings", !1);
                 },
                 renderFrameSizeSelect: function () {
@@ -1660,6 +1666,14 @@
                         onChange: this.changeBalloonpower
                     });
                 },
+                renderPropellerInput: function () {
+                    var e = GameSettings.propeller;
+                    return React.createElement("input", {
+                        type: "text",
+                        defaultValue: e,
+                        onChange: this.changePropeller
+                    });
+                },
                 render: function () {
                     var e = GameSettings,
                         fs = e.frameSize,
@@ -1671,7 +1685,8 @@
                         fc2 = e.frameColor2,
                         wC = e.wheelColor,
                         windspeed = e.windspeed,
-                        balloonpower = e.balloonpower;
+                        balloonpower = e.balloonpower,
+                        propeller = e.propeller;
                     return e,
                         n.createElement("div", {
                             className: "editorDialog-bike"
@@ -1725,6 +1740,11 @@
                         n.createElement("span", { className: "name" }, "balloonpower")
                     ),
                     n.createElement("td", { className: "settingInput" }, this.renderBalloonpowerInput())
+                ), n.createElement("tr", null,
+                n.createElement("td", { className: "settingTitle" },
+                    n.createElement("span", { className: "name" }, "propeller")
+                ),
+                n.createElement("td", { className: "settingInput" }, this.renderPropellerInput())
                 ), n.createElement("tr", null,
                             n.createElement("td", { colSpan: "2" },
                                 n.createElement("button", {

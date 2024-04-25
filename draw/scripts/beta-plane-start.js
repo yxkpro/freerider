@@ -13302,8 +13302,7 @@
                 this.createSprings(),
                 this.updateCameraFocalPoint(),
                 this.stopSounds(),
-                -1 === s && this.swap(),
-                this.propeller = 0;
+                -1 === s && this.swap()
             }
             createMasses(e, s) {
                 this.masses = [];
@@ -13312,7 +13311,7 @@
                   r = new X(new t.Z(e.x + -21, e.y + 3), this);
                 i.init(new t.Z(e.x, e.y - 36), this),
                   (i.drive = this.createRagdoll.bind(this)),
-                  (r.radius = 11.7), // wheel size factor wsr * 0.5
+                  (r.radius = 11.7),
                   (n.radius = 11.7),
                   (i.radius = 14),
                   i.vel.equ(s),
@@ -13321,9 +13320,7 @@
                   this.masses.push(i, r, n),
                   (this.head = i),
                   (this.frontWheel = n),
-                  (this.rearWheel = r),
-
-                  this.rotor = 0;
+                  (this.rearWheel = r);
               }
               createSprings() {
                 this.springs = [];
@@ -13467,44 +13464,12 @@
                   i = t.isButtonDown("left"),
                   n = t.isButtonDown("right"),
                   r = t.isButtonDown("z"),
-                  x = t.isButtonDown("x"),
                   o = e ? 1 : 0,
                   a = this.rearWheel;
-
-                const oo = this.masses
-                  , aa = this.springs;
-
-                let angle = this.frontWheel.pos.sub(this.rearWheel.pos);
-                let angleX = angle.x / angle.len();
-                let angleY = angle.y / angle.len();
-                  
-                this.propeller = x ? GameSettings.propeller : 0; // 0.5 for glide, 1 for propeller
-
-                oo[0].pos.x += this.propeller * 0.5 * angleX;
-                oo[0].pos.y += this.propeller * 0.5 * angleY;
-                oo[2].pos.x += this.propeller * angleX;
-                oo[2].pos.y += this.propeller * angleY;
-
-
-                /*
-                oo[0].pos.y += .3; // wind
-                */
-                
-                /*
-                const l = e ? 1 : 0;
-                oo[1].motor += (l - oo[1].motor) / 10;
-                */
-
-                
-                
                 (a.motor += (o - a.motor) / 10),
                   r && !this.swapped && (this.swap(), (this.swapped = !0)),
                   r || (this.swapped = !1),
-
-                  
-                  e && (this.pedala += this.rearWheel.speed / 5), 
-                
-                
+                  e && (this.pedala += this.rearWheel.speed / 5),
                   (a.brake = s),
                   s && this.frontSpring.contract(-10, 10),
                   (1 === this.dir && n && s) || (-1 === this.dir && i && s)
@@ -13520,7 +13485,6 @@
                     (this.rearSpring.contract(-7, 5),
                     this.frontSpring.contract(7, 5));
               }
-
               draw() {
                 if (this.explosion) this.explosion.draw();
                 else {
@@ -13532,9 +13496,6 @@
                     this.settings.developerMode)
                   )
                     for (const t of this.masses) t.draw();
-
-                   // this.drawPlane();
-                    
                   this.drawBikeFrame();
                 }
               }
@@ -13561,18 +13522,8 @@
                   m = this.dir,
                   v = e.camera.zoom,
                   y = e.game.canvas.getContext("2d"),
-                  w = 3.5,
-                  x = 10;
-
-                  const masses = this.masses;
-                  const nn = this.dir;
-                  let rotor = this.rotor;
-                  let dd = masses[1].pos.add(masses[2].pos).factor(.5);
-                      dd =  masses[0].pos.sub(dd).factor(v);
-  
-                  let pp = new t.Z(-dd.y * nn,dd.x * nn);
-                  
-
+                  w = s ? 3.5 : 3,
+                  x = s ? 10 : 10.5;
                 (y.globalAlpha = c),
                   (y.strokeStyle = "rgba(0,0,0,1)"),
                   (y.lineWidth = w * v),
@@ -13581,8 +13532,8 @@
                   (y.fillStyle = "rgba(200,200, 200, 0.2)"),
                   y.beginPath(),
                   y.arc(h.x, h.y, x * v, 0, 2 * Math.PI, !1),
-                  y.moveTo(a.x + x * v, a.y), // rear wheel size wsr
-                  y.arc(a.x, a.y, x * v, 0, 2 * Math.PI, !1), // rear wheel size wsr
+                  y.moveTo(a.x + x * v, a.y),
+                  y.arc(a.x, a.y, x * v, 0, 2 * Math.PI, !1),
                   s || y.fill(),
                   y.stroke();
                 const b = p.transform(0.3, 0.25),
@@ -13593,43 +13544,6 @@
                   S = _.add(k),
                   A = _.sub(k);
                 d = l.sub(a.add(u.factor(0.5)));
-
-                const ff = masses[2].pos.toScreen(e);
-                    rotor += .5 * this.propeller + .05, // this.propeller or masses[1].motor
-                    rotor > 6.2831 && (rotor -= 6.2831),
-                    this.rotor = rotor;
-
-                
-                const gg = new W(ff,pp,dd); // propeller intersector
-                    /*
-                    y.strokeStyle = "#000000",
-                    y.lineWidth = 3 * v,
-                    y.lineJoin = y.lineCap = "round",
-                    y.beginPath(),
-                    y.moveTo(...gg.transform(0, .5).toArray()),
-                    y.lineTo(...gg.transform(0, 1).toArray()),
-                    y.stroke(),
-                    */
-                    y.beginPath();
-                
-
-                const aa = new W(ff,pp,dd); // seat
-                    /*
-                    y.strokeStyle = "#000000",
-                    y.lineWidth = 3 * v,
-                    y.lineJoin = y.lineCap = "round",
-                    y.beginPath(),
-                    y.moveTo(...aa.transform(-1, .5).toArray()),
-                    y.lineTo(...aa.transform(-1, 1).toArray()),
-                    y.stroke(),
-                    */
-                    y.beginPath();    
-
-                const mm = (.25) * Math.cos(rotor); // propeller
-                    y.moveTo(...gg.transform(0.5, .5 + mm).toArray()),
-                    y.lineTo(...gg.transform(0.5, 0.5 + -mm).toArray());    
-                    y.stroke();
-
                 const P = new W(b, u, d),
                   M = P.transform(-0.1, 0.3);
                 let I = S.sub(M),
@@ -13779,125 +13693,6 @@
                   y.globalAlpha = 1;
                 }
               }
-              drawPlane() {
-                if (this.explosion)
-                    this.explosion.draw(1);
-                else {
-                    const e = this.scene.game.mod.getVar("crHeli")
-                      , s = this.scene.game.canvas.getContext("2d");
-                    s.imageSmoothingEnabled = !0,
-                    s.webkitImageSmoothingEnabled = !0,
-                    s.mozImageSmoothingEnabled = !0,
-                    s.globalAlpha = this.player._opacity;
-                    const i = this.masses
-                      , n = this.dir;
-                    let r = this.rotor // top rotor
-                      , o = this.rotor2;
-                    const a = this.scene
-                      , h = a.camera.zoom
-                      , l = i[1].pos.toScreen(a)
-                      , c = i[2].pos.toScreen(a)
-                      , u = i[3].pos.toScreen(a);
-                    let d = i[1].pos.add(i[2].pos).factor(.5);
-                    d = i[0].pos.sub(d).factor(h);
-                    let p = new t.Z(-d.y * n,d.x * n);
-                    //propeller
-                    const f = i[0].pos.toScreen(a);
-                    r += .5 * i[0].motor + .05,
-                    r > 6.2831 && (r -= 6.2831),
-                    o += .5,
-                    o > 6.2831 && (o -= 6.2831),
-                    this.rotor = r,
-                    this.rotor2 = o;
-                    const g = new W(f,p,d);
-                    s.strokeStyle = "#000000",
-                    s.lineWidth = 5 * h,
-                    s.lineJoin = s.lineCap = "round",
-                    s.beginPath(),
-                    s.moveTo(...g.transform(0, .5).toArray()),
-                    s.lineTo(...g.transform(0, 1).toArray()), // length of propeller intersector
-                    s.stroke(),
-                    s.lineWidth = 3 * h,
-                    s.beginPath();
-                    const m = (e ? .7 : .9) * Math.cos(r);
-                    s.moveTo(...g.transform(m, .9).toArray()),
-                    s.lineTo(...g.transform(-m, .9).toArray()),
-                    s.stroke(),
-                    s.lineWidth = 4 * h,
-                    s.strokeStyle = e ? "#666666" : "#000",
-                    s.lineWidth = 4 * h,
-                    s.beginPath(),
-                    s.moveTo(...g.transform(-.2, -.1, l).toArray()),
-                    s.lineTo(...g.transform(0, -.25, l).toArray()),
-                    s.lineTo(...g.transform(0, -.25, c).toArray()),
-                    s.lineTo(...g.transform(.2, -.1, c).toArray()),
-                    s.stroke(),
-                    s.lineWidth = 3 * h,
-                    s.beginPath(),
-                    s.moveTo(...g.transform(0, -.2, l).toArray()),
-                    s.lineTo(f.x, f.y),
-                    s.lineTo(...g.transform(0, -.2, c).toArray()),
-                    s.stroke(),
-                    s.lineWidth = 6 * h,
-                    s.strokeStyle = "#000000",
-                    s.beginPath(),
-                    s.moveTo(f.x, f.y),
-                    s.lineTo(u.x, u.y),
-                    s.lineTo(...g.transform(0, -.3).toArray()),
-                    s.stroke(),
-                    s.lineWidth = 2 * h,
-                    s.beginPath();
-                    const v = 7 * h
-                      , y = new t.Z(v * Math.sin(-o),v * Math.cos(-o));
-                    if (s.moveTo(u.x + y.x, u.y + y.y),
-                    s.lineTo(u.x - y.x, u.y - y.y),
-                    s.moveTo(u.x - y.y, u.y + y.x),
-                    s.lineTo(u.x + y.y, u.y - y.x),
-                    s.stroke(),
-                    s.beginPath(),
-                    e && (s.strokeStyle = "#aaaaaa"),
-                    s.lineWidth = 2 * h,
-                    s.arc(u.x, u.y, i[3].radius * h, 0, 2 * Math.PI, !1),
-                    s.stroke(),
-                    e) {
-                        const t = i[0].radius * h;
-                        s.beginPath(),
-                        s.arc(f.x, f.y, t, 0, 2 * Math.PI),
-                        s.fillStyle = "#000",
-                        s.fill(),
-                        s.beginPath(),
-                        s.arc(...g.transform(.2, .05, f).toArray(), 8.5 * h, 0, 2 * Math.PI),
-                        s.fillStyle = "#777777",
-                        s.fill()
-                    } else {
-                        p = f.sub(u),
-                        p.factorSelf(h / p.len()),
-                        d = new t.Z(-p.y,p.x);
-                        const e = p.factor(5).add(d.factor(2 * this.dir))
-                          , i = p.factor(5).add(d.factor(-5 * this.dir));
-                        this.drawCockpit();
-                        const r = this.canvasCockpit
-                          , o = r.width
-                          , a = r.height
-                          , l = f.x + e.x
-                          , c = f.y + e.y
-                          , g = -o / 2
-                          , m = -a / 2
-                          , v = -1 === n
-                          , y = GameInventoryManager.getItem(this.cosmetics.head)
-                          , w = this.cockpitAngle;
-                        y.draw(s, l + i.x, c + i.y, w, .7 * h, n),
-                        s.translate(l, c),
-                        s.rotate(w),
-                        v && s.scale(1, -1),
-                        s.drawImage(r, g, m, o, a),
-                        v && s.scale(1, -1),
-                        s.rotate(-w),
-                        s.translate(-l, -c),
-                        s.globalAlpha = 1
-                    }
-                }
-            }
               clone() {
                 const e = new ht(this.player, new t.Z(0, 0), 1, new t.Z(0, 0));
                 return (
@@ -20138,14 +19933,14 @@
                     t.hit && !t.remove && (t.hit = !1,
                     t.sector.powerupCanvasDrawn = !1)
             }
-            
+            /*
             addDefaultLine() {
                 const t = this.defaultLine
                 , e = t.p1
                 , s = t.p2;
               this.addPhysicsLine(e.x, e.y, s.x, s.y)
-            }
-            /*addDefaultLine() {
+            }*/
+            addDefaultLine() {
                 fetch(GameSettings.defaultTrack)
                 .then(response => response.text())
                 .then(text => {
@@ -20170,7 +19965,7 @@
                 .catch(error => {
                     console.error("Error loading text from file:", error);
                 });
-        }*/
+        }
             addDefaultTrack(){}
             erase(t, s, i) {
                 this.dirty = !0;
