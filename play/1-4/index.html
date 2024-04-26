@@ -29,21 +29,18 @@
 </head>
 
 <body>
-    <div class="container-fluid">
-        <p>
-            <a href="/" id=home class="">freerider.app</a>
-            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png" width="24" height="16"></a>
-        </p>
-
+    <div class="container-fluid" id="container-fluid">
         <style>
             canvas {
-                position: absolute;
+                position: fixed;
+                z-index: 3;
                 top: 50%;
                 left: 50%;
-                transform: translate(-50%, -40px);
+                transform: translate(-50%, -50%);
                 border: black;
-                border-width: 1px;
+                border-width: 2px;
                 border-style: solid;
+                margin: 0;
             }
 
             body {
@@ -51,42 +48,49 @@
                 margin-left: auto;
                 margin-right: auto;
             }
+
+            .hidden {
+                display: none;
+            }
         </style>
 
-        <script>
-            GameSettings.trackPage = true;
-            GameSettings.cameraStartZoom = 0.8;
+<script>
+    GameSettings.trackPage = true;
+    GameSettings.cameraStartZoom = 0.8;
 
-            GameSettings.cameraMovementHorizontal = true;
-            GameSettings.cameraMovementVertical = false;
+    GameSettings.cameraMovementHorizontal = true;
+    GameSettings.cameraMovementVertical = false;
 
-            GameSettings.hatColor = "#e4000f"
-            GameSettings.startVehicle = "MTB";
-        </script>
+    GameSettings.hatColor = "#e4000f"
+    GameSettings.startVehicle = "MTB";
+</script>
 
-        <script>
-            function addTextFromFileToHTML() {
-                var xhr = new XMLHttpRequest();
-                xhr.open('GET', 'track.txt', true);
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === 4 && xhr.status === 200) {
-                        var text = xhr.responseText
-                        var authorMatch = text.match(/"author":"(.+?)"/)
-                        var descrMatch = text.match(/"descr":"(.+?)"/)
-                        var author = authorMatch[1]
-                        var descr = descrMatch[1];
+<script>
+    function addTextFromFileToHTML() {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', 'track.txt', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                var text = xhr.responseText
+                var authorMatch = text.match(/"author":"(.+?)"/)
+                var descrMatch = text.match(/"descr":"(.+?)"/)
+                var author = authorMatch[1]
+                var descr = descrMatch[1];
 
-                        document.getElementById("author").innerText = author;
-                        document.getElementById("descr").innerText = descr;
-                    }
-                };
-                xhr.send();
+                document.getElementById("author").innerText = author;
+                document.getElementById("descr").innerText = descr;
             }
-            addTextFromFileToHTML();
-        </script>
+        };
+        xhr.send();
+    }
+    addTextFromFileToHTML();
+</script>
 
-        <a id="title" href="https://freeriderhd.com/t/955926">1-4</a> <a id="author" href="https://freeriderhd.com/u/Seasnails">Seasnails</a>
-
+<span id="info"><a href="/" id=home class="">freerider.app</a>
+    <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png"
+            width="24" height="16"></a><br>
+<a id="title" href="https://freeriderhd.com/t/955926">1-4</a> <a id="author" href="https://freeriderhd.com/u/Seasnails">Seasnails</a>
+</span>
     </div>
 </body>
 
