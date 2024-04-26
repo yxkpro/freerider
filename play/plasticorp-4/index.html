@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+
+<div id="game-container" style="position: relative; z-index: 0;"></div>
+
+<html>
+
+<head>
+    <meta name="generator" content="Hugo 0.68.3" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/stylesheet.css">
+    <link rel="icon" type="image/png" href="assets/favicon.ico">
+
+    <script src="manifest.js"></script>
+    <script src="/scripts/settings-track.js"></script>
+    <script src="/scripts/offlineeditor.js"></script>
+
+    <script>
+        function openBikeSettingsDialog() {
+            if (typeof GameManager !== 'undefined') {
+                GameManager.command('dialog', 'bikesettings');
+            }
+        }
+    </script>
+
+    <title>freerider.app</title>
+</head>
+
+<body>
+    <div class="container-fluid" id="container-fluid">
+
+        <style>
+            canvas {
+                position: fixed;
+                z-index: 3;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                border: black;
+                border-width: 2px;
+                border-style: solid;
+                margin: 0;
+            }
+
+            body {
+                margin-top: 40px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hidden {
+                display: none;
+            }
+        </style>
+
+        <script>
+            GameSettings.trackPage = true;
+            GameSettings.cameraStartZoom = 0.5;
+            GameSettings.cameraMovementHorizontal = true;
+            GameSettings.cameraMovementVertical = true;
+            GameSettings.visibleUI = true;
+
+            GameSettings.startVehicle = "PLANE";
+        </script>
+
+        <script>
+            function addTextFromFileToHTML() {
+                var xhr = new XMLHttpRequest();
+                xhr.open('GET', 'track.txt', true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var text = xhr.responseText
+                        var authorMatch = text.match(/"author":"(.+?)"/)
+                        var descrMatch = text.match(/"descr":"(.+?)"/)
+                        var author = authorMatch[1]
+                        var descr = descrMatch[1];
+
+                        document.getElementById("author").innerText = author;
+                        document.getElementById("descr").innerText = descr;
+                    }
+                };
+                xhr.send();
+            }
+            addTextFromFileToHTML();
+
+            var container = document.getElementById('container-fluid');
+            var isHidden = false;
+
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'f') {
+                    if (isHidden) {
+                        container.style.display = 'block'; // or 'flex', 'grid', etc. depending on your layout
+                    } else {
+                        container.style.display = 'none';
+                    }
+                    isHidden = !isHidden;
+                }
+            });
+        </script>
+
+<span id="info"><a href="/" id=home class="">freerider.app</a>
+    <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png"
+            width="24" height="16"></a><br>
+
+    <a id="title" href="https://freeriderhd.com/t/66857">plasticorp 4</a> <a id="author"
+        href="https://freeriderhd.com/u/Ness">ness</a> <a id="author"
+        href="https://freeriderhd.com/u/plasticpineapple">plastic</a>
+</span>
+
+    </div>
+</body>
+
+</html>
