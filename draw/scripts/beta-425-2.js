@@ -4336,7 +4336,7 @@
                     function T(t) {
                         return Mt[t]
                     }
-                    var C, k = 32, S = 64, A = 128, P = 256, M = 200, I = "Expected a function", B = "__lodash_placeholder__", D = "[object Arguments]", E = "[object Array]", L = "[object Boolean]", z = "[object Date]", O = "[object Error]", F = "[object Function]", j = "[object Number]", R = "[object Object]", W = "[object RegExp]", V = "[object String]", H = "[object ArrayBuffer]", N = "[object Float32Array]", Z = "[object Float64Array]", U = "[object Int8Array]", q = "[object Int16Array]", G = "[object Int32Array]", Y = "[object Uint8Array]", X = "[object Uint8ClampedArray]", K = "[object Uint16Array]", J = "[object Uint32Array]", $ = /\b__p\+='';/g, Q = /\b(__p\+=)''\+/g, tt = /(__e\(.*?\)|\b__t\))\+'';/g, et = /&(?:amp|lt|gt|quot|#39|#96);/g, st = /[&<>"'`]/g, it = RegExp(et.source), nt = RegExp(st.source), rt = /<%-([\s\S]+?)%>/g, ot = /<%([\s\S]+?)%>/g, at = /<%=([\s\S]+?)%>/g, ht = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\n\\]|\\.)*?\1)\]/, lt = /^\w*$/, ct = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\n\\]|\\.)*?)\2)\]/g, ut = /^[:!,]|[\\^$.*+?()[\]{}|\/]|(^[0-9a-fA-Fnrtuvx])|([\n\r\u2028\u2029])/g, dt = RegExp(ut.source), pt = /[\u0300-\u036f\ufe20-\ufe23]/g, ft = /\\(\\)?/g, gt = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g, mt = /\w*$/, vt = /^0[xX]/, yt = /^\[object .+?Constructor\]$/, wt = /^\d+$/, xt = /[\xc0-\xd6\xd8-\xde\xdf-\xf6\xf8-\xff]/g, bt = /($^)/, _t = /['\n\r\u2028\u2029\\]/g, Tt = RegExp("[A-Z\\xc0-\\xd6\\xd8-\\xde]+(?=[A-Z\\xc0-\\xd6\\xd8-\\xde][a-z\\xdf-\\xf6\\xf8-\\xff]+)|[A-Z\\xc0-\\xd6\\xd8-\\xde]?[a-z\\xdf-\\xf6\\xf8-\\xff]+|[A-Z\\xc0-\\xd6\\xd8-\\xde]+|[0-9]+", "g"), Ct = "Array ArrayBuffer Date Error Float32Array Float64Array Function Int8Array Int16Array Int32Array Math Number Object RegExp Set String _ clearTimeout isFinite parseFloat parseInt setTimeout TypeError Uint8Array Uint8ClampedArray Uint16Array Uint32Array WeakMap".split(" "), kt = {};
+                    var C, k = 32, S = 64, A = 128, P = 256, M = 200, I = "Expected a function", B = "__lodash_placeholder__", D = "[object Arguments]", E = "[object Array]", L = "[object Boolean]", z = "[object Date]", O = "[object Error]", F = "[object Function]", j = "[object Number]", R = "[object Object]", W = "[object RegExp]", V = "[object String]", H = "[object ArrayBuffer]", N = "[object Float32Array]", Z = "[object Float64Array]", U = "[object Int8Array]", q = "[object Int16Array]", G = "[object Int32Array]", Y = "[object Uint8Array]", X = "[object Uint8ClampedArray]", K = "[object Uint16Array]", J = "[object Uint32Array]", $ = /\b__p\+='';/g, Q = /\b(__p\+=)''\+/g, tt = /(__e\(.*?\)|\b__t\))\+'';/g, et = /&(?:amp|lt|gt|quot|#39|#96);/g, st = /[&<>"'`]/g, it = RegExp(et.source), nt = RegExp(st.source), rt = /<%-([\s\S]+?)%>/g, ot = /<%([\s\S]+?)%>/g, at = /<%=([\s\S]+?)%>/g, ht = /\.|\[(?:[^[\]]*|(["'])(?:(?!\1)[^\n\\]|\\.)*?\1)\]/, lt = /^\w*$/, ct = /[^.[\]]+|\[(?:(-?\d+(?:\.\d+)?)|(["'])((?:(?!\2)[^\n\\]|\\.)*?)\2)\]/g, ut = /^[:!,]|[\\^$.*+?()[\]{}|\/]|(^[0-9a-fA-Fnrtuvx])|([\n\r\u2028\u2029])/g, dt = RegExp(ut.source), pt = /[\u0300-\u036f\ufe20-\ufe23]/g, ft = /\\(\\)?/g, gt = /\$\{([^\\}]*(?:\\.[^\\}]*)*)\}/g, mt = /\w*$/, planevt = /^0[xX]/, planeyt = /^\[object .+?Constructor\]$/, wt = /^\d+$/, planext = /[\xc0-\xd6\xd8-\xde\xdf-\xf6\xf8-\xff]/g, bt = /($^)/, _t = /['\n\r\u2028\u2029\\]/g, Tt = RegExp("[A-Z\\xc0-\\xd6\\xd8-\\xde]+(?=[A-Z\\xc0-\\xd6\\xd8-\\xde][a-z\\xdf-\\xf6\\xf8-\\xff]+)|[A-Z\\xc0-\\xd6\\xd8-\\xde]?[a-z\\xdf-\\xf6\\xf8-\\xff]+|[A-Z\\xc0-\\xd6\\xd8-\\xde]+|[0-9]+", "g"), Ct = "Array ArrayBuffer Date Error Float32Array Float64Array Function Int8Array Int16Array Int32Array Math Number Object RegExp Set String _ clearTimeout isFinite parseFloat parseInt setTimeout TypeError Uint8Array Uint8ClampedArray Uint16Array Uint32Array WeakMap".split(" "), kt = {};
                     kt[N] = kt[Z] = kt[U] = kt[q] = kt[G] = kt[Y] = kt[X] = kt[K] = kt[J] = !0,
                     kt[D] = kt[E] = kt[H] = kt[L] = kt[z] = kt[O] = kt[F] = kt["[object Map]"] = kt[j] = kt[R] = kt[W] = kt["[object Set]"] = kt[V] = kt["[object WeakMap]"] = !1;
                     var St = {};
@@ -9342,6 +9342,8 @@
             const a = o
         }
         ,
+
+        //select
         580: (t,e,s)=>{
             var i = s(430).Z
               , n = s(348).Z
@@ -9515,9 +9517,9 @@
                 this.radius,
                 t.save(),
                 t.fillStyle = "#000000",
-                t.font = 12 * s + "pt arial",
+                t.font = 0 * s + "pt arial",
                 t.fillText(e, 10 * s, 20 * s),
-                t.font = 8 * s + "pt arial"
+                t.font = 0 * s + "pt arial"
             }
             ,
             d.close = function() {
@@ -9802,7 +9804,7 @@
                 if (!1 !== e && 0 >= e && (t = !1),
                 this.scene.state.paused && (s = !1,
                 i = !1,
-                t = this.scene.settings.mobile ? "Paused" : ""),
+                t = this.scene.settings.mobile ? "Paused" : "Paused - Press Spacebar to Continue"),
                 !1 === s && (s = "#333333"),
                 t) {
                     var n = this.scene.game
@@ -10008,7 +10010,7 @@
                   , e = t.game.pixelRatio
                   , s = t.settings
                   , i = new createjs.Container
-                  , n = "Courier New"
+                  , n = "helsinki"
                   , r = new createjs.Text("00:00.00","40px " + n,"#000000")
                   , o = new createjs.Text("TIME:","20px " + n,"#999999")
                   , a = this.get_timer_sprite()
@@ -10018,31 +10020,27 @@
                   , u = new createjs.Bitmap(t.assets.getResult("targets_icon"))
                   , d = e / 2.5;
                 s.mobile && (d = e / 2.5),
-                r.y = 25,
-                r.x = 200,
-                o.y = -100,
-                o.x = -100,
-                a.y = -100,
-                a.x = -100,
-                c.x = 80,
-                c.y = 25,
-                u.x = 10,
-                u.y = 10,
-                h.y = -100,
-                h.x = -100,
-                l.y = -100,
-                l.x = -100,
-                
+                r.y = 18,
+                r.x = 62,
+                o.y = 3,
+                o.x = 59,
+                a.y = 0,
+                a.x = 0,
+                c.x = 305,
+                c.y = 21,
+                u.x = 240,
+                u.y = 3,
+                h.y = 15,
+                h.x = 460,
+                l.y = 0,
+                l.x = 400,
+                i.addChild(r),
                 //i.addChild(o),
-                i.addChild(a);
+                i.addChild(a),
                 //i.addChild(h),
                 //i.addChild(l),
-
-                if (s.visibleUI) {
-                i.addChild(r),
                 i.addChild(c),
-                i.addChild(u);}
-
+                i.addChild(u),
                 i.scaleX = i.scaleY = d,
                 i.y = (10 + this.offset.y) * d,
                 i.x = 10 * d,
@@ -10445,12 +10443,12 @@
                 var t = this.scene.game.pixelRatio
                   , e = new createjs.Container
                   , s = new createjs.Shape;
-                s.graphics.setStrokeStyle(0, "round").beginStroke("rgba(0,0,0,0)").beginFill("rgba(0,0,0,0)").drawRoundRect(0, 0, 0, 0, 0);
-                var i = new createjs.Text("","35px helsinki","#000000");
+                s.graphics.setStrokeStyle(5, "round").beginStroke("rgba(242,144,66,1)").beginFill("rgba(242,144,66,0.5)").drawRoundRect(0, 0, 200, 60, 25);
+                var i = new createjs.Text("00:00","35px helsinki","#000000");
                 i.textAlign = "center",
                 i.textBaseline = "middle",
-                i.x = -400,
-                i.y = -400,
+                i.x = 100,
+                i.y = 30,
                 e.addChild(s),
                 e.addChild(i),
                 e.visible = !1,
@@ -10950,30 +10948,9 @@
                     const t = this.playerFocus.getActiveVehicle().focalPoint
                       , e = this.position
                       , v = this.scene;
-                    let s = this.settings.scrollRatio;
-                    
+                    let s = 3;
 
-                    if (this.settings.cameraMovementPage && !this.settings.cameraMovementVertical && !this.settings.cameraMovementDM) {
-                        e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s;
-                        e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;
-                        window.scrollTo((t.pos.x - e.x) / s, window.scrollY);
-                    }
-
-                    else if (this.settings.cameraMovementPage && this.settings.cameraMovementVertical && !this.settings.cameraMovementDM) {
-                            e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s;
-                            e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;
-                            window.scrollTo(window.scrollX, (t.pos.y - e.y) / s);
-                    }
-
-                    else if (this.settings.cameraMovementDM) {
-                        const nearestX = Math.round(t.pos.x / 2000) * 2000;
-                        const nearestY = Math.round(t.pos.y / 2000) * 2000;
-
-                        e.x = nearestX;
-                        e.y = nearestY;
-                    }
-
-                    else {
+                    f(g(t.pos.x - e.x, 2) + g(t.pos.y - e.y, 2)) > 1500 && (s = 1);
 
                     if (this.settings.cameraMovementHorizontal) {
                         e.x += (t.pos.x - e.x) / s;
@@ -10986,7 +10963,7 @@
                     } else {
                         e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;
                     }
-                }
+
                     
                     
                 }
@@ -11717,13 +11694,14 @@
                 this.init(t, e),
                 this.motor = 0,
                 this.brake = !1,
+                this.planebrake = !1,
                 this.angle = 0,
                 this.speed = 0,
                 this.rotationSpeed = 0
             }
             drive(t, e) {
                 const s = this.pos
-                  , i = this.motor * this.parent.dir
+                  , i = this.motor * this.parent.dir // speed of bike
                   , n = i * t
                   , r = i * e;
                 if (s.x += n,
@@ -11735,6 +11713,13 @@
                     s.x += n,
                     s.y += r
                 }
+                if (this.planebrake) {
+                        const i = 0.05 * (1 / GameSettings.propeller) * -(t * this.vel.x + e * this.vel.y)
+                          , n = t * i
+                          , r = e * i;
+                        s.x += n,
+                        s.y += r
+                    }
                 this.speed = (t * this.vel.x + e * this.vel.y) / this.radius,
                 this.rotationSpeed = this.speed,
                 this.angle += this.speed,
@@ -11887,112 +11872,73 @@
             }
             draw() {
                 this.hat && this.hat.draw();
-                const hangman = GameSettings.hangman;
-                const e = this.parent.scene.game.mod.getVar("crRagdoll");
-                const s = this.parent.scene.game.mod.getVar("crHead");
-                const f = this.parent.scene;
-                const g = f.camera.zoom;
-                const m = f.game.canvas.getContext("2d");
-            
-                const n = this.head;
-                const r = this.waist;
-                const o = this.lElbow;
-                const a = this.rElbow;
-                const h = this.rHand;
-                const l = this.lHand;
-                const c = this.lKnee;
-                const u = this.rKnee;
-                const d = this.lFoot;
-                const p = this.rFoot;
-            
-                const y = n.pos.toScreen(f);
-                const w = r.pos.toScreen(f);
-                const x = a.pos.toScreen(f);
-                const b = h.pos.toScreen(f);
-                const _ = u.pos.toScreen(f);
-                const T = p.pos.toScreen(f);
-                const C = o.pos.toScreen(f);
-                const k = l.pos.toScreen(f);
-                const S = c.pos.toScreen(f);
-                const A = d.pos.toScreen(f);
-            
-                // Draw shin 1
-                m.strokeStyle = `rgba(0,0,0,${hangman < 7 ? 1 : 0})`;
+                const e = this.parent.scene.game.mod.getVar("crRagdoll")
+                  , s = this.parent.scene.game.mod.getVar("crHead")
+                  , i = this.parent.scene.game.mod.getVar("customColors")
+                  , n = this.head
+                  , r = this.waist
+                  , o = this.lElbow
+                  , a = this.rElbow
+                  , h = this.rHand
+                  , l = this.lHand
+                  , c = this.lKnee
+                  , u = this.rKnee
+                  , d = this.lFoot
+                  , p = this.rFoot
+                  , f = this.parent.scene
+                  , g = f.camera.zoom
+                  , m = f.game.canvas.getContext("2d")
+                  , v = e ? 1 : 2
+                  , y = n.pos.toScreen(f)
+                  , w = r.pos.toScreen(f)
+                  , x = a.pos.toScreen(f)
+                  , b = h.pos.toScreen(f)
+                  , _ = u.pos.toScreen(f)
+                  , T = p.pos.toScreen(f)
+                  , C = o.pos.toScreen(f)
+                  , k = l.pos.toScreen(f)
+                  , S = c.pos.toScreen(f)
+                  , A = d.pos.toScreen(f);
+                if (m.strokeStyle = "rgba(0,0,0," + .5 * v + ")",
+                m.beginPath(),
+                m.moveTo(y.x, y.y),
+                m.lineTo(x.x, x.y),
+                m.lineTo(b.x, b.y),
+                m.strokeStyle = i ? tt([...f.game.mod.getVar("riderColor"), .5 * v]) : "rgba(0,0,0," + .5 * v + ")",
+                m.lineWidth = 5 * g,
+                m.moveTo(w.x, w.y),
+                m.lineTo(_.x, _.y),
+                m.lineTo(T.x, T.y),
+                !e) {
+                    let t = u.pos.sub(r.pos).normalize();
+                    t = t.factor(4).add(p.pos);
+                    const e = t.toScreen(f);
+                    m.lineTo(e.x, e.y)
+                }
+                if (m.stroke(),
                 m.lineWidth = 5 * g,
                 m.lineCap = "round",
                 m.lineJoin = "round",
-                m.beginPath();
-                m.moveTo(S.x, S.y);
-                m.lineTo(A.x, A.y);
-                m.stroke();
-            
-                // Draw shin 2
-                m.strokeStyle = `rgba(0,0,0,${hangman < 6 ? 1 : 0})`;
-                m.beginPath();
-                m.moveTo(_.x, _.y);
-                m.lineTo(T.x, T.y);
-                m.stroke();
-            
-                // Draw thigh 1
-                m.strokeStyle = `rgba(0,0,0,${hangman < 7 ? 1 : 0})`;
-                m.beginPath();
-                m.moveTo(w.x, w.y);
-                m.lineTo(S.x, S.y);
-                m.lineTo(A.x, A.y);
-                m.stroke();
-            
-                // Draw thigh 2
-                m.strokeStyle = `rgba(0,0,0,${hangman < 6 ? 1 : 0})`;
-                m.beginPath();
-                m.moveTo(w.x, w.y);
-                m.lineTo(_.x, _.y);
-                m.lineTo(T.x, T.y);
-                m.stroke();
-            
-                // Draw hands 1
-                m.strokeStyle = `rgba(0,0,0,${hangman < 5 ? 1 : 0})`;
-                m.beginPath();
-                m.moveTo(C.x, C.y);
-                m.lineTo(k.x, k.y);
-                m.stroke();
-            
-                // Draw hands 2
-                m.strokeStyle = `rgba(0,0,0,${hangman < 4 ? 1 : 0})`;
-                m.beginPath();
-                m.moveTo(x.x, x.y);
-                m.lineTo(b.x, b.y);
-                m.stroke();
-            
-                // Draw elbows 1
-                m.strokeStyle = `rgba(0,0,0,${hangman < 5 ? 1 : 0})`;
-                m.beginPath();
-                m.moveTo(y.x, y.y);
-                m.lineTo(C.x, C.y);
-                m.lineTo(k.x, k.y);
-                m.stroke();
-            
-                // Draw elbows 2
-                m.strokeStyle = `rgba(0,0,0,${hangman < 4 ? 1 : 0})`;
-                m.beginPath();
-                m.moveTo(y.x, y.y);
-                m.lineTo(x.x, x.y);
-                m.lineTo(b.x, b.y);
-                m.stroke();
-            
-                // Draw waist
-                m.strokeStyle = `rgba(0,0,0,${hangman < 3 ? 1 : 0})`;
-                m.beginPath();
-                m.moveTo(y.x, y.y);
-                m.lineTo(w.x, w.y);
+                m.strokeStyle = i ? tt([...f.game.mod.getVar("riderColor"), v]) : "rgba(0,0,0," + v + ")",
+                m.beginPath(),
+                m.moveTo(y.x, y.y),
+                m.lineTo(C.x, C.y),
+                m.lineTo(k.x, k.y),
+                m.lineWidth = 5 * g,
+                m.moveTo(w.x, w.y),
+                m.lineTo(S.x, S.y),
+                m.lineTo(A.x, A.y),
+                !e) {
+                    let t = c.pos.sub(r.pos).normalize();
+                    t = t.factor(4).add(d.pos);
+                    const e = t.toScreen(f);
+                    m.lineTo(e.x, e.y)
+                }
+                if (m.stroke(),
                 m.lineWidth = 8 * g,
-                m.stroke();
-            
-                // Draw head
-                if (m.strokeStyle = `rgba(0,0,0,${hangman < 2 ? 1 : 0})`,
                 m.beginPath(),
                 m.moveTo(y.x, y.y),
                 m.lineTo(w.x, w.y),
-                
                 m.stroke(),
                 y.inc(y.sub(w).factor(.25)),
                 s || this.hat)
@@ -12008,17 +11954,16 @@
                           , n = y.add(s.factor(-.35 * this.dir)).add(e.factor(.15));
                         m.beginPath(),
                         m.arc(y.x, y.y, 5 * g, 0, 1.99999 * Math.PI, !1),
-                        m.lineWidth = 2 * g,
-                        m.stroke()
-                        m.strokeStyle = `rgba(0,0,0,${hangman < 1 ? 1 : 0})`,
-                m.beginPath(),
                         m.moveTo(i.x, i.y),
                         m.lineTo(n.x, n.y),
                         m.lineWidth = 2 * g,
                         m.stroke()
                     }
-                
-                
+                else {
+                    const t = GameInventoryManager.getItem(this.parent.cosmetics.head)
+                      , e = this.drawHeadAngle;
+                    t.draw(m, y.x, y.y, e, g, this.dir, 1)
+                }
             }
             update() {
                 for (let t = this.springs.length - 1; t >= 0; t--)
@@ -12042,6 +11987,8 @@
           , rt = Math.floor
           , ot = Math.random
           , at = Math.min;
+
+          // bmx vehicle plane vehicle
           class ht extends q {
             constructor(t, e, s, i) {
                 super(),
@@ -12265,31 +12212,17 @@
                 this.frontSpring.contract(-25, -20))
             }
             draw() {
-                const hangman = GameSettings.hangman;
-                const ctx = this.scene.game.canvas.getContext("2d");
-            
-                ctx.imageSmoothingEnabled = true;
-                ctx.webkitImageSmoothingEnabled = true;
-                ctx.mozImageSmoothingEnabled = true;
-            
-                // Draw the bike frame only if hangman is 0
-                if (hangman === 0) {
-                    if (this.explosion) {
-                        this.explosion.draw();
-                    } else {
-                        if (this.settings.developerMode) {
-                            for (const mass of this.masses) {
-                                mass.draw();
-                            }
-                        }
-                        this.drawBikeFrame();
-                    }
-                } else {
-                    // Draw the ragdoll if hangman is not 0
-                    if (!this.ragdoll) {
-                        this.createRagdoll();
-                    }
-                    this.ragdoll.draw();
+                if (this.explosion)
+                    this.explosion.draw();
+                else {
+                    const t = this.scene.game.canvas.getContext("2d");
+                    if (t.imageSmoothingEnabled = !0,
+                    t.webkitImageSmoothingEnabled = !0,
+                    t.mozImageSmoothingEnabled = !0,
+                    this.settings.developerMode)
+                        for (const t of this.masses)
+                            t.draw();
+                    this.drawBikeFrame()
                 }
             }
             updateDrawHeadAngle() {
@@ -12298,7 +12231,7 @@
             }
             drawBikeFrame() {
                   const e = this.scene;
-                  const hangman = GameSettings.hangman
+
                   const wheelSizefront = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
                   , wheelSizerear = {"mini": 0.6, "small": 0.8, "medium": 1, "large": 1.2}
                   , frameSize = {"mini": 0.7, "small": 0.85, "medium": 1}
@@ -12513,6 +12446,7 @@
                   y.moveTo(h.x, h.y);
                   y.lineTo(l.x, l.y);
                   y.stroke();
+                  
                 if (this.dir < 0 ) {
                   y.beginPath();
                   y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI + 8 * Math.PI / 180 + Math.PI, xx - 8 * Math.PI / 180 + Math.PI);;
@@ -12583,11 +12517,12 @@
         ct.ragdoll = null;
         const ut = ht;
 
-        class uni extends q {
-            vehicleName = "UNI";
+        class plane extends q {
+            vehicleName = "PLANE";
             constructor(t, e, s, i) {
                 super(),
                 super.init(t),
+                this.settings = GameSettings;
                 this.createMasses(e, i),
                 this.createSprings(),
                 this.updateCameraFocalPoint(),
@@ -12597,12 +12532,12 @@
             createMasses(e, s) {
                 this.masses = [];
                 const i = new A
-                  , n = new X(new t.Z(e.x + 0,e.y + 3),this)
-                  , r = new X(new t.Z(e.x + 0,e.y + 3),this);
+                  , n = new X(new t.Z(e.x + 12.6,e.y + 3),this)
+                  , r = new X(new t.Z(e.x + -16.8,e.y + 3),this);
                 i.init(new t.Z(e.x,e.y - 36), this),
                 i.drive = this.createRagdoll.bind(this),
-                r.radius = 11.7,
-                n.radius = 11.7,
+                r.radius = 7,
+                n.radius = 9.4,
                 i.radius = 14,
                 i.vel.equ(s),
                 r.vel.equ(s),
@@ -12610,7 +12545,9 @@
                 this.masses.push(i, r, n),
                 this.head = i,
                 this.frontWheel = n,
-                this.rearWheel = n
+                this.rearWheel = r,
+                this.rotor = 0,
+                this.rotor2 = 0
             }
             createSprings() {
                 this.springs = [];
@@ -12738,29 +12675,36 @@
             }
             control() {
                 const t = this.gamepad
-                  , e = t.isButtonDown("left")
-                  , s = t.isButtonDown("down")
-                  , i = t.isButtonDown("up")
-                  , ee = t.isButtonDown("right")
-                  , r = t.isButtonDown("z")
-                  , x = t.isButtonDown("x")
-                  , o = e ? 1 : 0
-                  , a = this.rearWheel
-                    a.motor = 0;
-                  if (ee) {
-                    a.motor = -0.5;
-                } else if (e) {
-                    a.motor = 0.5;
-                }
-
+                , e = t.isButtonDown("up")
+                , s = t.isButtonDown("down")
+                , i = t.isButtonDown("left")
+                , n = t.isButtonDown("right")
+                , r = t.isButtonDown("z")
+                , x = t.isButtonDown("x")
+                , o = e ? 0 : 0
+                , a = this.rearWheel
+                , b = this.frontWheel
+                , head = this.head
+                , masses = this.masses
+                , springs = this.springs;
+                a.motor += (o - a.motor) / 10,
                 r && !this.swapped && (this.swap(),
                 this.swapped = !0),
                 r || (this.swapped = !1),
+                //e && (this.pedala += this.rearWheel.speed / 5),
+                a.brake = s
+                s && this.frontSpring.contract(-10, 10),
+                1 === this.dir && n && s || -1 === this.dir && i && s ? this.frontWheel.brake = !0 : this.frontWheel.brake = !1;
+                let c = i ? 1 : 0;
+                c += n ? -1 : 0,
+                //this is the left and right rotation ability, 4-6 are playable
+                this.rearSpring.contract(5 * c * this.dir, 5),
+                this.frontSpring.contract(5 * -c * this.dir, 5),
+                this.chasse.rotate(c / 6),
+                !c && !x && e && (this.rearSpring.contract(-7, 5),
+                this.frontSpring.contract(7, 5)),
                 x && (this.rearSpring.contract(-25, -20),
-                this.frontSpring.contract(-25, -20)),
-                !x && (this.rearSpring = (0,0), this.frontSpring = (0,0))
-                // x && (this.rearSpring.contract(-30, -20),
-                //this.frontSpring.contract(-30 * h * this.dir, -20))
+                this.frontSpring.contract(-25, -20))
             }
             draw() {
                 if (this.explosion)
@@ -12782,192 +12726,184 @@
             }
             drawBikeFrame() {
                 const e = this.scene
-                  , s = e.game.mod.getVar("crBmx")
-                  , i = e.game.mod.getVar("crHead")
-                  , n = e.game.mod.getVar("customColors")
-                  , hc = GameSettings.hatColor // Use hatColor from GameSettings
-                  , bc = GameSettings.bikeColor
-                  , r = n ? Q(e.game.mod.getVar("vehicleColor")) : "#000"
-                  , o = e.game.mod.getVar("blackHat")
-                  , a = this.rearWheel.pos.toScreen(e)
-                  , h = this.frontWheel.pos.toScreen(e)
-                  , l = this.head.pos.toScreen(e)
-                  , c = this.player._opacity;
+                    , s = e.game.mod.getVar("crBmx")
+                    , i = e.game.mod.getVar("crHead")
+                    , n = e.game.mod.getVar("customColors")
+                    , r = n ? Q(e.game.mod.getVar("vehicleColor")) : "#000"
+                    , o = e.game.mod.getVar("blackHat")
+                    , a = this.rearWheel.pos.toScreen(e)
+                    , h = this.frontWheel.pos.toScreen(e)
+                    , l = this.head.pos.toScreen(e)
+                    , c = this.player._opacity;
                 let u = h.sub(a)
-                  , d = new t.Z(u.y * this.dir,-u.x * this.dir);
-                const p = new W(a,u,d)
-                  , f = this.pedala
-                  , g = Math.atan2(u.y, u.x)
-                  , m = this.dir
-                  , v = e.camera.zoom
-                  , y = e.game.canvas.getContext("2d")
-                  , w = s ? 3.5 : 3
-                  , x = s ? 10 : 10.5;
+                    , d = new t.Z(u.y * this.dir, -u.x * this.dir);
+                const p = new W(a, u, d)
+                    , f = this.pedala
+                    , g = Math.atan2(u.y, u.x)
+                    , m = this.dir
+                    , v = e.camera.zoom
+                    , y = e.game.canvas.getContext("2d")
+                    , w = 3
+                    , xr = 6
+                    , xf = 8
                 y.globalAlpha = c,
-                y.strokeStyle = "rgba(0,0,0,1)",
-                y.lineWidth = w * v,
-                y.lineCap = "round",
-                y.lineJoin = "round",
-                y.fillStyle = "rgba(200,200, 200, 0.2)",
-                y.beginPath(),
-                y.arc(h.x, h.y, x * v, 0, 2 * Math.PI, !1),
-                y.moveTo(a.x + x * v, a.y),
-                y.arc(a.x, a.y, x * v, 0, 2 * Math.PI, !1),
-                s || y.fill(),
-                y.stroke();
+                    y.strokeStyle = "rgba(0,0,0,1)",
+                    y.lineWidth = w * v,
+                    y.lineCap = "round",
+                    y.lineJoin = "round",
+                    y.fillStyle = "rgba(200,200, 200, 0.2)",
+                    y.beginPath(),
+                    y.arc(h.x, h.y, xf * v, 0, 2 * Math.PI, !1),
+                    y.moveTo(a.x + xr * v, a.y),
+                    y.arc(a.x, a.y, xr * v, 0, 2 * Math.PI, !1),
+                    s || y.fill(),
+                    y.stroke();
                 const b = p.transform(.3, .25)
-                  , _ = p.transform(.4, .05)
-                  , T = p.transform(.84, .42)
-                  , C = p.transform(.84, .37)
-                  , k = new t.Z(6 * Math.cos(f + g) * v,6 * Math.sin(f + g) * v)
-                  , S = _.add(k)
-                  , A = _.sub(k);
+                    , _ = p.transform(.4, .05)
+                    , T = p.transform(.84, .42)
+                    , C = p.transform(.84, .37)
+                    , k = new t.Z(6 * Math.cos(f + g) * v, 6 * Math.sin(f + g) * v)
+                    , S = _.add(k)
+                    , A = _.sub(k);
                 d = l.sub(a.add(u.factor(.5)));
-                const P = new W(b,u,d)
-                  , M = P.transform(-.1, .3);
+                const P = new W(b, u, d)
+                    , M = P.transform(-.1, .3);
                 let I = S.sub(M)
-                  , B = new t.Z(I.y * m,-I.x * m);
+                    , B = new t.Z(I.y * m, -I.x * m);
                 B = B.factor(v * v);
                 const D = M.add(I.factor(.5)).add(B.factor(200 / I.lenSqr()))
-                  , E = S.add(I.factor(.12)).add(B.factor(50 / I.lenSqr()));
+                    , E = S.add(I.factor(.12)).add(B.factor(50 / I.lenSqr()));
                 I = A.sub(M),
-                B = new t.Z(I.y * m,-I.x * m),
-                B = B.factor(v * v);
+                    B = new t.Z(I.y * m, -I.x * m),
+                    B = B.factor(v * v);
                 const L = M.add(I.factor(.5)).add(B.factor(200 / I.lenSqr()))
-                  , z = A.add(I.factor(.12)).add(B.factor(50 / I.lenSqr()));
-                this.crashed || (y.strokeStyle = n ? tt([...e.game.mod.getVar("riderColor"), .5]) : "rgba(0,0,0,0.5)",
-                y.lineWidth = 6 * v,
-                y.beginPath(),
-                y.moveTo(A.x, A.y),
-                y.lineTo(L.x, L.y),
-                y.lineTo(M.x, M.y),
-                y.stroke(),
-                s || (y.lineWidth = 4 * v,
-                y.beginPath(),
-                y.moveTo(A.x, A.y),
-                y.lineTo(z.x, z.y),
-                y.stroke())),
-                y.beginPath(),
-                y.strokeStyle = r || "#000000",
-                y.lineWidth = 3 * v,
-                y.moveTo(T.x, T.y),
-                y.lineTo(b.x, b.y),
-                y.lineTo(a.x, a.y),
-                y.lineTo(_.x, _.y),
-                y.lineTo(C.x, C.y),
-                y.stroke(),
-                s || (y.beginPath(),
-                y.lineWidth = Math.max(1 * v, .5),
-                y.arc(_.x, _.y, 3 * v, 0, 2 * Math.PI, !1),
-                y.stroke()),
-                y.beginPath(),
-                y.lineWidth = s ? 3 * v : Math.max(1 * v, .5),
-                y.moveTo(S.x, S.y),
-                y.lineTo(A.x, A.y),
-                y.stroke();
+                    , z = A.add(I.factor(.12)).add(B.factor(50 / I.lenSqr()));
+                this.crashed || (y.strokeStyle = "rgba(0,0,0,0.5)",
+                    y.lineWidth = 6 * v,
+                    y.beginPath(),
+                    y.moveTo(A.x, A.y),
+                    y.lineTo(L.x, L.y),
+                    y.lineTo(M.x, M.y),
+                    y.stroke(),
+                    s || (y.lineWidth = 4 * v,
+                        y.beginPath(),
+                        y.moveTo(A.x, A.y),
+                        y.lineTo(z.x, z.y),
+                        y.stroke())),
+                    y.beginPath(),
+                    y.strokeStyle = r || "#000000",
+                    y.lineWidth = 3 * v,
+                    y.moveTo(T.x, T.y),
+                    y.lineTo(b.x, b.y),
+                    y.lineTo(a.x, a.y), //FRAME LINES
+                    y.lineTo(_.x, _.y),
+                    y.lineTo(C.x, C.y),
+                    y.stroke(),
+                    s || (y.beginPath(),
+                        y.lineWidth = Math.max(1 * v, .5),
+                        y.arc(_.x, _.y, 3 * v, 0, 2 * Math.PI, !1),
+                        y.stroke()),
+                    y.beginPath(),
+                    y.lineWidth = s ? 3 * v : Math.max(1 * v, .5),
+                    y.moveTo(S.x, S.y),
+                    y.lineTo(A.x, A.y),
+                    y.stroke();
                 const O = p.transform(.25, .4)
-                  , F = p.transform(.17, .38)
-                  , j = p.transform(.3, .45)
-                  , R = p.transform(.97, 0)
-                  , V = p.transform(.8, .48)
-                  , H = p.transform(.86, .5)
-                  , N = p.transform(.82, .65)
-                  , Z = p.transform(.78, .67);
+                    , F = p.transform(.17, .38)
+                    , j = p.transform(.3, .45)
+                    , R = p.transform(.97, 0)
+                    , V = p.transform(.8, .48)
+                    , H = p.transform(.86, .5)
+                    , N = p.transform(.82, .65)
+                    , Z = p.transform(.78, .67);
                 if (y.beginPath(),
-                y.lineWidth = 3 * v,
-                y.moveTo(F.x, F.y),
-                y.lineTo(j.x, j.y),
-                y.moveTo(_.x, _.y),
-                y.lineTo(O.x, O.y),
-                y.moveTo(h.x, h.y),
-                y.lineTo(R.x, R.y),
-                y.lineTo(V.x, V.y),
-                y.lineTo(H.x, H.y),
-                y.lineTo(N.x, N.y),
-                y.lineTo(Z.x, Z.y),
-                y.stroke(),
-                this.crashed && this.ragdoll)
+                    y.lineWidth = 3 * v,
+                    y.moveTo(F.x, F.y),
+                    y.lineTo(j.x, j.y),
+                    y.moveTo(_.x, _.y),
+                    y.lineTo(O.x, O.y),
+                    y.moveTo(h.x, h.y),
+                    y.lineTo(R.x, R.y),
+                    y.lineTo(V.x, V.y),
+                    y.lineTo(H.x, H.y),
+                    y.lineTo(N.x, N.y),
+                    y.lineTo(Z.x, Z.y),
+                    y.stroke(),
+                    this.crashed && this.ragdoll)
                     this.ragdoll.draw();
                 else {
                     y.lineWidth = 6 * v,
-                    y.strokeStyle = n ? Q(e.game.mod.getVar("riderColor")) : "#000",
-                    y.beginPath(),
-                    y.moveTo(S.x, S.y),
-                    y.lineTo(D.x, D.y),
-                    y.lineTo(M.x, M.y),
-                    y.stroke(),
-                    s || (y.beginPath(),
-                    y.moveTo(S.x, S.y),
-                    y.lineTo(E.x, E.y),
-                    y.stroke());
+                        y.strokeStyle = n ? Q(e.game.mod.getVar("riderColor")) : "#000",
+                        y.beginPath(),
+                        y.moveTo(S.x, S.y),
+                        y.lineTo(D.x, D.y),
+                        y.lineTo(M.x, M.y),
+                        y.stroke(),
+                        s || (y.beginPath(),
+                            y.moveTo(S.x, S.y),
+                            y.lineTo(E.x, E.y),
+                            y.stroke());
                     const r = P.transform(.05, .9);
                     y.lineWidth = 8 * v,
-                    y.beginPath(),
-                    y.moveTo(M.x, M.y),
-                    y.lineTo(r.x, r.y),
-                    y.stroke();
+                        y.beginPath(),
+                        y.moveTo(M.x, M.y),
+                        y.lineTo(r.x, r.y),
+                        y.stroke();
                     const a = P.transform(.15, 1.05)
-                      , h = P.transform(.4, 1.1)
-                      , l = P.transform(.05, 1.05);
+                        , h = P.transform(.4, 1.1)
+                        , l = P.transform(.05, 1.05);
                     u = r.sub(Z),
-                    d = new t.Z(u.y * m,-u.x * m),
-                    d = d.factor(v * v);
+                        d = new t.Z(u.y * m, -u.x * m),
+                        d = d.factor(v * v);
                     const c = Z.add(u.factor(.4)).add(d.factor(130 / u.lenSqr()));
                     if (y.lineWidth = 5 * v,
-                    y.beginPath(),
-                    y.moveTo(r.x, r.y),
-                    y.lineTo(c.x, c.y),
-                    y.lineTo(Z.x, Z.y),
-                    y.stroke(),
-                    i || o)
-                    if(o){const t=P.transform(.35,1.15),e=P.transform(-.05,1.1),s=P.transform(.25,1.13),i=P.transform(.05,1.11),n=P.transform(.25,1.35),r=P.transform(-.03,1.3), xx = this.drawHeadAngle, qq = this.dir, tt = this.waist;y.strokeStyle = "#000000";
-                    y.fillStyle = "rgba(0,0,0,0)";
-                    y.lineWidth = 2 * v;
-                    y.beginPath();
-                  y.moveTo(a.x + 5 * v, a.y);
-                  y.arc(a.x, a.y, 5 * v, 0, 2 * Math.PI);
-                  y.stroke();
-                  y.closePath();
-                
-                  y.beginPath();
-                  y.moveTo(h.x, h.y);
-                  y.lineTo(l.x, l.y);
-                  y.stroke();
-                if (this.dir < 0 ) {
-                  y.beginPath();
-                  y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI + 8 * Math.PI / 180 + Math.PI, xx - 8 * Math.PI / 180 + Math.PI);;
-                  y.fill();}
-                
-                  else {y.beginPath();
-                  y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI - 8 * Math.PI / 180, xx - 24 * Math.PI / 180);
-                  y.fill();}}
-                  else
-                  {const t=P.transform(.35,1.15),e=P.transform(-.05,1.1),s=P.transform(.25,1.13),i=P.transform(.05,1.11),n=P.transform(.25,1.35),r=P.transform(-.03,1.3), xx = this.drawHeadAngle, qq = this.dir, tt = this.waist;y.strokeStyle = "#000000";
-                  y.fillStyle = "#e4000f";
-                  y.lineWidth = 2 * v;
-                  y.beginPath();
-                y.moveTo(a.x + 5 * v, a.y);
-                y.arc(a.x, a.y, 5 * v, 0, 2 * Math.PI);
-                y.stroke();
-                y.closePath();
-              
-                y.beginPath();
-                y.moveTo(h.x, h.y);
-                y.lineTo(l.x, l.y);
-                y.stroke();
-              if (this.dir < 0 ) {
-                y.beginPath();
-                y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI + 8 * Math.PI / 180 + Math.PI, xx - 8 * Math.PI / 180 + Math.PI);;
-                y.fill();}
-              
-                else {y.beginPath();
-                y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI - 8 * Math.PI / 180, xx - 24 * Math.PI / 180);
-                y.fill();
-                y.globalCompositeOperation = "source-over"}}
+                        y.beginPath(),
+                        y.moveTo(r.x, r.y),
+                        y.lineTo(c.x, c.y),
+                        y.lineTo(Z.x, Z.y),
+                        y.stroke(),
+                        i || o)
+                        if (o) {
+                            const t = P.transform(.35, 1.15), e = P.transform(-.05, 1.1), s = P.transform(.25, 1.13), i = P.transform(.05, 1.11), n = P.transform(.25, 1.35), r = P.transform(-.03, 1.3), xx = this.drawHeadAngle, qq = this.dir, tt = this.waist; y.strokeStyle = "#000000";
+                            y.fillStyle = "#e4000f";
+                            y.lineWidth = 2 * v;
+                            y.beginPath();
+                            y.moveTo(a.x + 5 * v, a.y);
+                            y.arc(a.x, a.y, 5 * v, 0, 2 * Math.PI);
+                            y.stroke();
+                            y.closePath();
+
+                            y.beginPath();
+                            y.moveTo(h.x, h.y);
+                            y.lineTo(l.x, l.y);
+                            y.stroke();
+                            if (this.dir < 0) {
+                                y.beginPath();
+                                y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI + 8 * Math.PI / 180 + Math.PI, xx - 8 * Math.PI / 180 + Math.PI);;
+                                y.fill();
+                            }
+
+                            else {
+                                y.beginPath();
+                                y.arc(a.x, a.y, 4 * v, xx + 1.1 * Math.PI - 8 * Math.PI / 180, xx - 24 * Math.PI / 180);
+                                y.fill();
+                            }
+                        }
+                        else
+                            y.beginPath(),
+                                y.moveTo(a.x + 5 * v, a.y),
+                                y.arc(a.x, a.y, 5 * v, 0, 2 * Math.PI),
+                                y.moveTo(h.x, h.y),
+                                y.lineTo(l.x, l.y),
+                                y.lineWidth = 2 * v,
+                                y.stroke();
+                    else
+                        GameInventoryManager.getItem(this.cosmetics.head).draw(y, a.x, a.y, this.drawHeadAngle, v, this.dir);
+                    y.globalAlpha = 1
                 }
             }
             clone() {
-                const e = new uni(this.player,new t.Z(0,0),1,new t.Z(0,0));
+                const e = new ht(this.player,new t.Z(0,0),1,new t.Z(0,0));
                 return e.frontWheel.pos.equ(this.frontWheel.pos),
                 e.frontWheel.vel.equ(this.frontWheel.vel),
                 e.frontWheel.old.equ(this.frontWheel.old),
@@ -12981,26 +12917,26 @@
                 e
             }
         }
-        const unilt = {
+        const planelt = {
             BIKE_GROUND: "bike_ground",
             BIKE_AIR: "bike_air",
             BIKE_FALL_1: "bike_fall_1",
             BIKE_FALL_2: "bike_fall_2",
             BIKE_FALL_3: "bike_fall_3"
         }
-          , unict = uni.prototype;
-        unict.vehicleName = "UNI",
-        unict.masses = null,
-        unict.springs = null,
-        unict.cosmetics = null,
-        unict.slow = !1,
-        unict.pedala = 0,
-        unict.cosmeticHead = null,
-        unict.cosmeticRearWheel = null,
-        unict.cosmeticFrontWheel = null,
-        unict.swapped = !1,
-        unict.ragdoll = null;
-        const uniut = uni;
+          , planect = plane.prototype;
+        planect.vehicleName = "PLANE",
+        planect.masses = null,
+        planect.springs = null,
+        planect.cosmetics = null,
+        planect.slow = !1,
+        planect.pedala = 0,
+        planect.cosmeticHead = null,
+        planect.cosmeticRearWheel = null,
+        planect.cosmeticFrontWheel = null,
+        planect.swapped = !1,
+        planect.ragdoll = null;
+        const planeut = plane;
 
         class dt extends A {
             constructor(e, s) {
@@ -13211,6 +13147,8 @@
                 o[0].angle.equ(h);
                 const l = e ? 1 : 0;
                 o[0].motor += (l - o[0].motor) / 10;
+
+                
                 let c = i ? 1 : 0;
                 c += n ? -1 : 0,
                 a[2].rotate(c / 6),
@@ -13238,7 +13176,7 @@
                     s.globalAlpha = this.player._opacity;
                     const i = this.masses
                       , n = this.dir;
-                    let r = this.rotor
+                    let r = this.rotor // top rotor
                       , o = this.rotor2;
                     const a = this.scene
                       , h = a.camera.zoom
@@ -13248,6 +13186,7 @@
                     let d = i[1].pos.add(i[2].pos).factor(.5);
                     d = i[0].pos.sub(d).factor(h);
                     let p = new t.Z(-d.y * n,d.x * n);
+                    //propeller
                     const f = i[0].pos.toScreen(a);
                     r += .5 * i[0].motor + .05,
                     r > 6.2831 && (r -= 6.2831),
@@ -13261,13 +13200,13 @@
                     s.lineJoin = s.lineCap = "round",
                     s.beginPath(),
                     s.moveTo(...g.transform(0, .5).toArray()),
-                    s.lineTo(...g.transform(0, e ? 1 : .8).toArray()),
+                    s.lineTo(...g.transform(0, 1).toArray()), // length of propeller intersector
                     s.stroke(),
                     s.lineWidth = 3 * h,
                     s.beginPath();
                     const m = (e ? .7 : .9) * Math.cos(r);
-                    s.moveTo(...g.transform(m, e ? .9 : .8).toArray()),
-                    s.lineTo(...g.transform(-m, e ? .9 : .8).toArray()),
+                    s.moveTo(...g.transform(m, .9).toArray()),
+                    s.lineTo(...g.transform(-m, .9).toArray()),
                     s.stroke(),
                     s.lineWidth = 4 * h,
                     s.strokeStyle = e ? "#666666" : "#000",
@@ -13359,6 +13298,611 @@
           , _t = Math.min
           , Tt = Math.sqrt
           , Ct = Math.pow;
+
+          //plane vehicle
+
+          class planevt extends q {
+            constructor(t, e, s, i) {
+                super(),
+                super.init(t),
+                this.settings = GameSettings;
+                this.createMasses(e, i),
+                this.createSprings(),
+                this.updateCameraFocalPoint(),
+                this.stopSounds(),
+                -1 === s && this.swap(),
+                this.propeller = 0;
+                this.windspeed = 0;
+                this.flaps = 0;
+            }
+            createMasses(e, s) {
+                const wheelSizefront = {"mini": 0.4, "small": 0.8, "medium": 1, "large": 1.2}
+                  , wheelSizerear = {"mini": 0.4, "small": 0.8, "medium": 1, "large": 1.2}
+                  , wsr = wheelSizerear[GameSettings.wheelSizerear]
+                  , wsf = wheelSizefront[GameSettings.wheelSizefront]
+
+                this.masses = [];
+                const i = new A(),
+                  n = new X(new t.Z(e.x + 21, e.y + 3), this),
+                  r = new X(new t.Z(e.x + -26, e.y - 9), this); // r = new X(new t.Z(e.x + -21, e.y + 3), this);
+                i.init(new t.Z(e.x, e.y - 36), this),
+                  (i.drive = this.createRagdoll.bind(this)),
+                  (r.radius = 11.7 * wsr), // wheel size factor rear wsr * 0.4
+                  (n.radius = 11.7 * wsf), // wheel size factor front wsf * 0.8
+                  (i.radius = 14),
+                  i.vel.equ(s),
+                  r.vel.equ(s),
+                  n.vel.equ(s),
+                  this.masses.push(i, r, n),
+                  (this.head = i),
+                  (this.frontWheel = n),
+                  (this.rearWheel = r),
+
+                  n.friction = .1,
+                  r.friction = .1,
+                  this.rotor = 0;
+              }
+              createSprings() {
+                this.springs = [];
+                const t = new N(this.head, this.rearWheel, this),
+                  e = new N(this.rearWheel, this.frontWheel, this),
+                  s = new N(this.frontWheel, this.head, this);
+                  (e.lrest = 42), // (e.lrest = 42), (e.leff = 42), (e.springConstant = 0.35), (e.dampConstant = 0.3),
+                  (e.leff = 48),
+                  (e.springConstant = 0.45),
+                  (e.dampConstant = 0.3),
+                  (t.lrest = 38), // (t.lrest = 45), (t.leff = 45),(t.springConstant = 0.35), (t.dampConstant = 0.3)
+                  (t.leff = 44),
+                  (t.springConstant = 0.38),
+                  (t.dampConstant = 0.3),
+                  (s.lrest = 45),
+                  (s.leff = 45),
+                  (s.springConstant = 0.35),
+                  (s.dampConstant = 0.3),
+                  this.springs.push(t, e, s),
+                  (this.rearSpring = t),
+                  (this.chasse = e),
+                  (this.frontSpring = s);
+              }
+              createRagdoll() {
+                (this.ragdoll = new it(this.getStickMan(), this)),
+                  this.ragdoll.zero(this.head.vel, this.rearWheel.vel),
+                  (this.ragdoll.dir = this.dir),
+                  (this.rearWheel.motor = 0),
+                  (this.rearWheel.brake = !1),
+                  (this.frontWheel.brake = !1),
+                  (this.head.collide = !1),
+                  this.updateCameraFocalPoint(),
+                  this.player.isInFocus() && !this.ignore && this.playBailSound(),
+                  this.dead();
+              }
+              stopSounds() {
+                const t = this.scene.sound;
+                t.stop(lt.BIKE_AIR), t.stop(lt.BIKE_GROUND);
+              }
+              playBailSound() {
+                const t = this.scene.sound,
+                  e = at(this.speed / 50, 1);
+                switch (rt(3 * ot()) + 1) {
+                  case 1:
+                    t.play(lt.BIKE_FALL_1, e);
+                    break;
+                  case 2:
+                    t.play(lt.BIKE_FALL_2, e);
+                    break;
+                  case 3:
+                    t.play(lt.BIKE_FALL_3, e);
+                }
+              }
+              updateCameraFocalPoint() {
+                this.focalPoint = this.ragdoll ? this.ragdoll.head : this.head;
+              }
+              getStickMan() {
+                const e = this.dir,
+                  s = this.head,
+                  i = this.frontWheel,
+                  n = this.rearWheel,
+                  r = this.pedala,
+                  o = i.pos.sub(n.pos),
+                  a = s.pos.sub(i.pos.add(n.pos).factor(0.5)),
+                  h = new t.Z(o.y * e, -o.x * e),
+                  l = {};
+                (l.head = n.pos.add(o.factor(0.35)).add(a.factor(1.2))),
+                  (l.lHand = l.rHand = n.pos.add(o.factor(0.8)).add(h.factor(0.68)));
+                let c = l.head.sub(l.lHand);
+                (c = new t.Z(c.y * e, -c.x * e)),
+                  (l.lElbow = l.rElbow =
+                    l.head
+                      .add(l.lHand)
+                      .factor(0.5)
+                      .add(c.factor(130 / c.lenSqr()))),
+                  (l.waist = n.pos.add(o.factor(0.2)).add(h.factor(0.5)));
+                const u = new t.Z(6 * Math.cos(r), 6 * Math.sin(r));
+                l.lFoot = n.pos.add(o.factor(0.4)).add(h.factor(0.05)).add(u);
+                let d = l.waist.sub(l.lFoot);
+                return (
+                  (d = new t.Z(-d.y * e, d.x * e)),
+                  (l.lKnee = l.waist
+                    .add(l.lFoot)
+                    .factor(0.5)
+                    .add(d.factor(160 / d.lenSqr()))),
+                  (l.rFoot = n.pos.add(o.factor(0.4)).add(h.factor(0.05)).sub(u)),
+                  (d = l.waist.sub(l.rFoot)),
+                  (d = new t.Z(-d.y * e, d.x * e)),
+                  (l.rKnee = l.waist
+                    .add(l.rFoot)
+                    .factor(0.5)
+                    .add(d.factor(160 / d.lenSqr()))),
+                  l
+                );
+              }
+              update() {
+                if (
+                  (this.crashed || (this.updateSound(), this.control()),
+                  this.explosion)
+                )
+                  this.explosion.update();
+                else {
+                  const t = this.springs,
+                    e = this.masses;
+                  for (let e = t.length - 1; e >= 0; e--) t[e].update();
+                  for (let t = e.length - 1; t >= 0; t--) e[t].update();
+                  if (
+                    (this.rearWheel.contact &&
+                      this.frontWheel.contact &&
+                      (this.slow = !1),
+                    !this.slow)
+                  ) {
+                    this.crashed || this.control();
+                    for (let e = t.length - 1; e >= 0; e--) t[e].update();
+                    for (let t = e.length - 1; t >= 0; t--) e[t].update();
+                  }
+                  this.ragdoll ? this.ragdoll.update() : this.updateDrawHeadAngle();
+                }
+                this.updateCameraFocalPoint();
+              }
+              updateSound() {
+                if (this.player.isInFocus() && !this.ignore) {
+                  this.updateSpeed();
+                  const t = at(this.speed / 50, 1),
+                    e = this.scene.sound;
+                  this.rearWheel.contact || this.frontWheel.contact
+                    ? (e.play(lt.BIKE_GROUND, t), e.stop(lt.BIKE_AIR))
+                    : (e.play(lt.BIKE_AIR, t), e.stop(lt.BIKE_GROUND));
+                }
+              }
+              swap() {
+                (this.dir *= -1), this.chasse.swap();
+                const t = this.rearSpring.leff;
+                (this.rearSpring.leff = this.frontSpring.leff),
+                  (this.frontSpring.leff = t);
+              }
+              control() {
+                const t = this.gamepad,
+                  e = t.isButtonDown("up"),
+                  s = t.isButtonDown("down"),
+                  i = t.isButtonDown("left"),
+                  n = t.isButtonDown("right"),
+                  r = t.isButtonDown("z"),
+                  x = t.isButtonDown("x"),
+                  o = e ? 1 : 0,
+                  a = this.rearWheel;
+
+                  const wheelSizefront = {"mini": 0.4, "small": 0.8, "medium": 1, "large": 1.2}
+                  , wheelSizerear = {"mini": 0.4, "small": 0.8, "medium": 1, "large": 1.2}
+                  , wsr = wheelSizerear[GameSettings.wheelSizerear]
+                  , wsf = wheelSizefront[GameSettings.wheelSizefront]
+
+                  let angle = this.frontWheel.pos.sub(this.rearWheel.pos);
+                  let angleX = angle.x / angle.len();
+                  let angleY = angle.y / angle.len();
+
+                  this.propeller = e ? GameSettings.propeller : 0; // 0.5 for glide, 1 for propeller
+                  this.windspeed = GameSettings.windspeed;
+                  this.flaps = s ? GameSettings.flaps : 0;
+
+                  this.head.pos.x += this.propeller * 0.3 * angleX; // thrust
+                  this.head.pos.y += this.propeller * 0.3 * angleY;
+                  this.rearWheel.pos.x += this.propeller * 0.6 * angleX;
+                  this.rearWheel.pos.y += this.propeller * 0.6 * angleY;
+
+                  this.head.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01; // wind
+                  this.frontWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01;
+                  this.rearWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01;
+
+                
+                if (s && this.head.vel.y >= 0.5) { // flaps
+                        this.chasse.rotate(this.dir * 0.05)
+                        this.head.vel.y -= this.flaps * 0.3;
+                    
+                }
+                
+
+                
+                /*
+                if (x && this.head.vel.y >= 0.5) { // flaps
+                    this.chasse.rotate(this.dir * 0.05)
+                    this.head.vel.y -= this.flaps * 0.3;
+                    
+                    this.head.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.02;
+                    this.frontWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.02;
+                    this.rearWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.02;
+                }*/
+                                   
+                /*(a.motor += (o - a.motor) / 10), // bike acceleration
+                */
+
+                r && !this.swapped && (this.swap(), (this.swapped = !0)),
+                r || (this.swapped = !1),
+
+                e && (this.pedala += this.rearWheel.speed * wsr * this.propeller / 5), //this.rearWheel.speed or this.dir * this.propeller
+
+                (a.planebrake = s), //planebrake for reduced brake power
+                  s && this.frontSpring.contract(-10, 10),
+                  s ? (this.frontWheel.planebrake = !0) : (this.frontWheel.planebrake = !1);
+
+                let h = i ? 1 : 0;
+                (h += n ? -1 : 0),
+                  this.rearSpring.contract(1 * h * this.dir, 5),
+                  this.frontSpring.contract(1 * -h * this.dir, 5),
+                  this.chasse.rotate(h / 6);
+
+                x && (this.rearSpring.contract(-10, -20), // crouch
+                  this.frontSpring.contract(-10, -20));
+
+                
+                !h && !x && e && // movement on acceleration
+                (this.rearSpring.contract(2, 5),
+                this.frontSpring.contract(-2, 5))
+                
+                
+          }
+
+              draw() {
+                if (this.explosion) this.explosion.draw();
+                else {
+                  const t = this.scene.game.canvas.getContext("2d");
+                  if (
+                    ((t.imageSmoothingEnabled = !0),
+                    (t.webkitImageSmoothingEnabled = !0),
+                    (t.mozImageSmoothingEnabled = !0),
+                    this.settings.developerMode)
+                  )
+                    for (const t of this.masses) t.draw();
+
+                   // this.drawPlane();
+                    
+                  this.drawBikeFrame();
+                }
+              }
+              updateDrawHeadAngle() {
+                const t = this.frontWheel.pos.sub(this.rearWheel.pos);
+                this.drawHeadAngle = -(nt(t.x, t.y) - Math.PI / 2);
+              }
+              drawBikeFrame() {
+                const wheelSizefront = {"mini": 0.4, "small": 0.8, "medium": 1, "large": 1.2}
+                  , wheelSizerear = {"mini": 0.4, "small": 0.8, "medium": 1, "large": 1.2}
+                  , wsr = wheelSizerear[GameSettings.wheelSizerear]
+                  , wsf = wheelSizefront[GameSettings.wheelSizefront]
+                
+                const e = this.scene,
+                  s = e.game.mod.getVar("crBmx"),
+                  i = e.game.mod.getVar("crHead"),
+                  n = e.game.mod.getVar("customColors"),
+                  r = n ? Q(e.game.mod.getVar("vehicleColor")) : "#000",
+                  o = e.game.mod.getVar("blackHat"),
+                  a = this.rearWheel.pos.toScreen(e),
+                  h = this.frontWheel.pos.toScreen(e),
+                  l = this.head.pos.toScreen(e),
+                  c = this.player._opacity;
+                let u = h.sub(a),
+                  d = new t.Z(u.y * this.dir, -u.x * this.dir);
+                const p = new W(a, u, d),
+                  f = this.pedala,
+                  g = Math.atan2(u.y, u.x),
+                  m = this.dir,
+                  v = e.camera.zoom,
+                  y = e.game.canvas.getContext("2d"),
+                  w = 3.5,
+                  x = 10;
+
+                  const masses = this.masses;
+                  const nn = this.dir;
+                  let rotor = this.rotor;
+                  let dd = masses[1].pos.add(masses[2].pos).factor(.5);
+                      dd =  masses[0].pos.sub(dd).factor(v);
+  
+                  let pp = new t.Z(-dd.y * nn,dd.x * nn);
+                  
+
+                (y.globalAlpha = c),
+                  (y.strokeStyle = "rgba(0,0,0,1)"),
+                  (y.lineWidth = w * v),
+                  (y.lineCap = "round"),
+                  (y.lineJoin = "round"),
+                  (y.fillStyle = "rgba(200,200, 200, 0.2)"),
+                  y.beginPath(),
+                  y.arc(h.x, h.y, x * wsf * v, 0, 2 * Math.PI, !1), // front wheel size wsf * .8
+                  y.moveTo(a.x + x * wsr * v, a.y), // rear wheel size wsr * 0.4
+                  y.arc(a.x, a.y, x * wsr * v, 0, 2 * Math.PI, !1), // rear wheel size wsr
+                  s || y.fill(),
+                  y.stroke();
+                const b = p.transform(0.3, 0.3), // rear wheel frame 
+                  _ = p.transform(0.4, 0.05),
+                  T = p.transform(0.84, 0.42),
+                  C = p.transform(0.84, 0.37),
+                  k = new t.Z(6 * Math.cos(f + g) * v, 6 * Math.sin(f + g) * v),
+                  S = _.add(k),
+                  A = _.sub(k);
+                d = l.sub(a.add(u.factor(0.5)));
+
+                const ff = masses[2].pos.toScreen(e);
+                    rotor += 0.5 * this.propeller + .1, // this.propeller or masses[1].motor
+                    rotor > 6.2831 && (rotor -= 6.2831),
+                    this.rotor = rotor;
+
+                
+                const gg = new W(ff,pp,dd); // propeller intersector
+                    /*
+                    y.strokeStyle = "#000000",
+                    y.lineWidth = 3 * v,
+                    y.lineJoin = y.lineCap = "round",
+                    y.beginPath(),
+                    y.moveTo(...gg.transform(0, .5).toArray()),
+                    y.lineTo(...gg.transform(0, 1).toArray()),
+                    y.stroke(),
+                    */
+                    y.beginPath();
+                
+
+                 
+
+                const mm = (.25) * Math.cos(rotor); // propeller
+                    y.moveTo(...gg.transform(0.7, 0.65 + mm).toArray()),
+                    y.lineTo(...gg.transform(0.7, 0.65 + -mm).toArray());    
+                    y.stroke();
+
+                    y.beginPath();    
+
+                const P = new W(b, u, d),
+                  M = P.transform(-0.1, 0.1); // waist position
+                let I = S.sub(M),
+                  B = new t.Z(I.y * m, -I.x * m);
+                B = B.factor(v * v);
+                const D = M.add(I.factor(0.5)).add(B.factor(200 / I.lenSqr())),
+                  E = S.add(I.factor(0.12)).add(B.factor(50 / I.lenSqr()));
+                (I = A.sub(M)),
+                  (B = new t.Z(I.y * m, -I.x * m)),
+                  (B = B.factor(v * v));
+                const L = M.add(I.factor(0.5)).add(B.factor(200 / I.lenSqr())),
+                  z = A.add(I.factor(0.12)).add(B.factor(50 / I.lenSqr()));
+                this.crashed ||
+                  ((y.strokeStyle = n
+                    ? tt([...e.game.mod.getVar("riderColor"), 0.5])
+                    : "rgba(0,0,0,0.5)"),
+                  (y.lineWidth = 6 * v),
+                  y.beginPath(),
+                  /*
+                  y.moveTo(A.x, A.y), // back legs
+                  y.lineTo(L.x, L.y),
+                  
+                  y.lineTo(M.x, M.y),
+                  */
+                  y.stroke(),
+                  s ||
+                    ((y.lineWidth = 4 * v),
+                    y.beginPath(),
+                    y.moveTo(A.x, A.y),
+                    /*
+                    y.lineTo(z.x, z.y),
+                    */
+                    y.stroke())),
+                  y.beginPath(),
+                  (y.strokeStyle = "black"),
+                  (y.lineWidth = 3 * v),
+                  y.moveTo(T.x, T.y),
+                  
+                  /*y.lineTo(b.x, b.y),*/
+
+                  y.moveTo(a.x, a.y),
+                  /*
+                  y.lineTo(_.x, _.y),*/
+                  y.lineTo(b.x, b.y), // rear wheel tire frame
+                  
+                  y.stroke(),
+                  s ||
+                    (y.beginPath(),
+                    (y.lineWidth = Math.max(1 * v, 0.5)),
+                    y.arc(_.x, _.y, 3 * v, 0, 2 * Math.PI, !1),
+                    y.stroke()),
+                  y.beginPath(),
+                  (y.lineWidth = s ? 3 * v : Math.max(1 * v, 0.5)),
+                  /*
+                  y.moveTo(S.x, S.y), // pedals
+                  y.lineTo(A.x, A.y),
+                  */
+                  y.stroke();
+                const O = p.transform(0.25, 0.4),
+                  F = p.transform(0.17, 0.38),
+                  j = p.transform(0.3, 0.45),
+                  R = p.transform(0.97, 0),
+                  V = p.transform(0.8, 0.48),
+                  H = p.transform(0.86, 0.5),
+                  N = p.transform(0.82, 0.65),
+                  Z = p.transform(0.78, 0.67);
+                if (
+                  (y.beginPath(),
+                  (y.lineWidth = 3 * v),
+                  /*
+                  y.moveTo(F.x, F.y),
+                  y.lineTo(j.x, j.y),
+                  y.moveTo(_.x, _.y),
+                  y.lineTo(O.x, O.y),
+                  */
+                  y.moveTo(h.x, h.y),
+                  y.lineTo(R.x, R.y),
+                  y.lineTo(V.x, V.y),
+                  y.lineTo(H.x, H.y),
+                  y.lineTo(N.x, N.y),
+                  y.lineTo(Z.x, Z.y),
+                  
+                  y.stroke(),
+                  this.crashed && this.ragdoll)
+                )
+                  this.ragdoll.draw();
+                else {
+                  (y.lineWidth = 6 * v),
+                    (y.strokeStyle = n ? Q(e.game.mod.getVar("riderColor")) : "#000"),
+                    y.beginPath(),
+                    /*
+                    y.moveTo(S.x, S.y), // front leg
+                    y.lineTo(D.x, D.y),
+                    y.lineTo(M.x, M.y),
+                    */
+                    y.stroke(),
+                    s ||
+                      (y.beginPath(),
+                      y.moveTo(S.x, S.y),
+                      y.lineTo(E.x, E.y),
+                      y.stroke());
+                  const r = P.transform(0.05, 0.85);
+                  (y.lineWidth = 8 * v), // spine back
+                    y.beginPath(),
+                    y.moveTo(M.x, M.y),
+                    y.lineTo(r.x, r.y),
+                    y.stroke();
+                  const a = P.transform(0.15, 1.05),
+                    h = P.transform(0.4, 1.1),
+                    l = P.transform(0.05, 1.05);
+                  (u = r.sub(Z)),
+                    (d = new t.Z(u.y * m, -u.x * m)),
+                    (d = d.factor(v * v));
+                  const c = Z.add(u.factor(0.4)).add(d.factor(130 / u.lenSqr()));
+                  if (
+                    ((y.lineWidth = 5 * v), // arm
+                    y.beginPath(),
+                    y.moveTo(r.x, r.y),
+                    y.lineTo(c.x, c.y),
+                    y.lineTo(Z.x, Z.y),
+                    y.stroke(),
+                    i || o)
+                  )
+                    if (o) {
+                      const t = P.transform(0.35, 1.15),
+                        e = P.transform(-0.05, 1.1),
+                        s = P.transform(0.25, 1.13),
+                        i = P.transform(0.05, 1.11),
+                        n = P.transform(0.25, 1.35),
+                        r = P.transform(-0.03, 1.3);
+                      y.beginPath(),
+                        y.moveTo(a.x + 5 * v, a.y),
+                        y.arc(a.x, a.y, 5 * v, 0, 2 * Math.PI),
+                        (y.lineWidth = 2 * v),
+                        y.stroke(),
+                        y.beginPath(),
+                        y.moveTo(t.x, t.y),
+                        y.lineTo(s.x, s.y),
+                        y.lineTo(n.x, n.y),
+                        y.lineTo(r.x, r.y),
+                        y.lineTo(i.x, i.y),
+                        y.lineTo(e.x, e.y),
+                        (y.fillStyle = y.strokeStyle),
+                        y.stroke(),
+                        y.fill();
+                    } else
+                      y.beginPath(),
+                        y.moveTo(a.x + 5 * v, a.y),
+                        y.arc(a.x, a.y, 5 * v, 0, 2 * Math.PI),
+                        y.moveTo(h.x, h.y),
+                        y.lineTo(l.x, l.y),
+                        (y.lineWidth = 2 * v),
+                        y.stroke();
+                  else
+                    GameInventoryManager.getItem(this.cosmetics.head).draw(
+                      y,
+                      a.x,
+                      a.y,
+                      this.drawHeadAngle,
+                      v,
+                      this.dir
+                    );
+                  y.globalAlpha = 1;
+                }
+
+                const aa = new W(ff,pp,dd); // plane body
+                    
+                  y.strokeStyle = "#000000";
+                  y.fillStyle = "grey";  // Set the fill color
+                  y.lineWidth = 3 * v;
+                  y.lineJoin = y.lineCap = "round";
+
+                  y.beginPath();
+                  y.moveTo(...aa.transform(-1.8, 0.7).toArray());
+                  y.lineTo(...aa.transform(-1.8, 1.1).toArray());
+                  y.lineTo(...aa.transform(-1.6, 1.1).toArray());
+                  y.lineTo(...aa.transform(-1.5, 0.85).toArray());
+                  y.lineTo(...aa.transform(0.6, 0.75).toArray());
+                  y.lineTo(...aa.transform(0.6, 0.55).toArray());
+
+                  y.lineTo(...aa.transform(0.4, 0.35).toArray());
+
+                  y.lineTo(...aa.transform(-1.8, 0.7).toArray());
+                  y.closePath();
+                  y.fill();
+                  y.stroke();
+                  y.beginPath();
+                  
+                  y.fillStyle = "black";
+                  y.moveTo(...aa.transform(-1.8, 0.7).toArray());
+                  y.lineTo(...aa.transform(-1.5, 0.85).toArray());
+                  y.fill();
+                  y.closePath();
+                  y.stroke();
+                  
+              }
+              
+              clone() {
+                const e = new ht(this.player, new t.Z(0, 0), 1, new t.Z(0, 0));
+                return (
+                  e.frontWheel.pos.equ(this.frontWheel.pos),
+                  e.frontWheel.vel.equ(this.frontWheel.vel),
+                  e.frontWheel.old.equ(this.frontWheel.old),
+                  e.rearWheel.pos.equ(this.rearWheel.pos),
+                  e.rearWheel.vel.equ(this.rearWheel.vel),
+                  e.rearWheel.old.equ(this.rearWheel.old),
+                  e.head.pos.equ(this.head.pos),
+                  e.head.vel.equ(this.head.vel),
+                  e.head.old.equ(this.head.old),
+                  (e.masses = [e.head, e.rearWheel, e.frontWheel]),
+                  e
+                )}
+        }
+        
+        const planeyt = planevt.prototype;
+        planeyt.vehicleName = "PLANE",
+        planeyt.masses = null,
+        planeyt.springs = null,
+        planeyt.slow = !1,
+        planeyt.swapped = !1;
+
+        planeyt.cosmetics = null,
+        planeyt.pedala = 0,
+        planeyt.cosmeticHead = null,
+        planeyt.cosmeticRearWheel = null,
+        planeyt.cosmeticFrontWheel = null,
+        planeyt.ragdoll = null;
+        const planewt = {
+            PLANE: "plane"
+        }
+          , planext = planevt
+          , planebt = Math.atan2
+          , plane_t = Math.min
+          , planeTt = Math.sqrt
+          , planeCt = Math.pow;
+
+          //end plane vehicle
+
+          //truck vehicle
         class kt extends q {
             constructor(t, e, s) {
                 super(),
@@ -13557,9 +14101,11 @@
                 t.lineTo(h.x + .5 * c + .2 * d, h.y + .5 * u + .2 * p),
                 t.lineTo(h.x + .5 * c - .1 * d, h.y + .5 * u - .1 * p),
                 t.stroke(),
+
                 this.tire(t, a.x, a.y, 10 * s, s, this.rearWheel.angle),
                 this.tire(t, o.x, o.y, 10 * s, s, this.frontWheel.angle)
             }
+            
             tire(t, e, s, i, n, r) {
                 t.beginPath(),
                 t.arc(e, s, 10 * n, 0, 2 * Math.PI, !1),
@@ -13958,20 +14504,22 @@
 
             
                 
-                s ? (u.fillStyle = "black",
-                u.globalCompositeOperation = "destination-over",
+                s ? (u.fillStyle = "grey",
                 u.beginPath(),
                 u.arc(h.x, h.y, 5 * c, 0, 2 * Math.PI),
                 u.moveTo(a.x, a.y),
                 u.arc(a.x, a.y, 4 * c, 0, 2 * Math.PI),
-                u.fill(),
+                u.fill())
+
+                /*
                 u.beginPath(),    
-                u.fillStyle = fc2,
+                u.fillStyle = "grey",
                 u.arc(h.x, h.y, 4 * c, 0, 2 * Math.PI),
                 u.moveTo(a.x, a.y),
                 u.arc(a.x, a.y, 3 * c, 0, 2 * Math.PI),
-                u.globalCompositeOperation = "source-over",
-                u.fill()) : (u.strokeStyle = "rgba(153, 153, 153,1)",
+                u.fill()) */
+                
+                : (u.strokeStyle = "rgba(153, 153, 153,1)",
                 u.fillStyle = "rgba(204, 204, 204,1)",
                 u.lineWidth = 1,
                 u.beginPath(),
@@ -14251,6 +14799,7 @@
                 s.y = e.y
             }
         }
+        
         ;
         class jt extends q {
             constructor(t, e) {
@@ -14568,8 +15117,8 @@
           , Xt = {};
         Xt.BMX = ut,
         Xt.MTB = Ot,
-        Xt.UNI = uniut,
         Xt.HELI = xt,
+        Xt.PLANE = planext,
         Xt.TRUCK = Pt,
         Xt.HELI = xt,
         Xt.BALLOON = Vt,
@@ -14659,7 +15208,7 @@
                               , e = t.settings
                               , s = t.message;
                             t.state.playerAlive = this.isAlive(),
-                            this._checkpoints.length > 0 ? e.mobile ? s.show("", !1, "#000000", "#FFFFFF") : s.show("", !1, "#000000", "#FFFFFF") : e.mobile ? s.show("Tap to Restart!", !1, "#000000", "#FFFFFF") : s.show("", !1, "#000000", "#FFFFFF")
+                            this._checkpoints.length > 0 ? e.mobile ? s.show("Tap to go to checkpoint!", !1, "#000000", "#FFFFFF") : s.show("Press Enter For Checkpoint", !1, "#000000", "#FFFFFF") : e.mobile ? s.show("Tap to Restart!", !1, "#000000", "#FFFFFF") : s.show("Press Enter To Restart", !1, "#000000", "#FFFFFF")
                         }
                     }
                     setAsGhost() {
@@ -14877,7 +15426,7 @@
                             !t) {
                                 const t = e.settings;
                                 e.state.playerAlive = this.isAlive(),
-                                e.settings.mobile ? e.message.show("", 5, "#826cdc", "#FFFFFF") : e.message.show("", 5, "#826cdc", "#FFFFFF"),
+                                e.settings.mobile ? e.message.show("Tap to resume", 5, "#826cdc", "#FFFFFF") : e.message.show("Press Backspace To Go Back Further", 5, "#826cdc", "#FFFFFF"),
                                 e.track.updatePowerupState(this),
                                 t.waitAtCheckpoints && (e.state.playing = !1),
                                 e.camera.focusOnMainPlayer()
@@ -15186,7 +15735,7 @@
                         s.isGhost() || (this.hit = !0,
                         this.sector.powerupCanvasDrawn = !1,
                         r.sound.play("goal_sound"),
-                        r.message.show("", 50, "#FAE335", "#666666")),
+                        r.message.show(t + " of " + e + " Stars", 50, "#FAE335", "#666666")),
                         t >= e && (s.complete = !0)
                     }
                 }
@@ -15226,6 +15775,7 @@
                 this.gamepad = e.playerManager.firstPlayer.getGamepad(),
                 this.tools = {},
                 this.options = e.settings.toolHandler,
+                this.settings = GameSettings;
                 this.snapPoint = new t.Z,
                 this.snapPoint.equ(this.scene.track.defaultLine.p2),
                 this.gridCache = !1,
@@ -15522,7 +16072,7 @@
                 o.width = e,
                 o.height = i;
                 let a = o.getContext("2d");
-                a.fillStyle = this.options.gridMinorLineColor;
+                a.fillStyle = this.options.gridMajorLineColor;
                 for (let width = Math.floor(e / r), l = 0; width >= l; l++)
                     for (let height = Math.floor(i / r), b = 0; height >= b; b += .5) {
                         a.beginPath();
@@ -16655,7 +17205,7 @@
                   , s = e.player;
                 He(t.pos.x - this.x, 2) + He(t.pos.y - this.y, 2) < 1e3 && e.alive && (e.gravity.x = this.directionX,
                 e.gravity.y = this.directionY,
-                s.isGhost() || e.ignore || (this.scene.message.show("", 50, "#1F80C3", "#FFFFFF"),
+                s.isGhost() || e.ignore || (this.scene.message.show("Gravity Changed", 50, "#1F80C3", "#FFFFFF"),
                 this.scene.sound.play("gravity_down_sound")))
             }
         }
@@ -16912,7 +17462,7 @@
                         t.pos.x += r,
                         t.pos.y += o;
                     s.isGhost() || e.ignore || (this.scene.sound.play("boost_sound"),
-                    this.scene.message.show("", 50, "#8ac832"))
+                    this.scene.message.show("Boost Engaged", 50, "#8ac832"))
                 }
             }
         }
@@ -16965,7 +17515,7 @@
                   , i = ms(vs(t.pos.x - this.x, 2) + vs(t.pos.y - this.y, 2));
                 !this.hit && i < 26 && e.alive && (e.slow = !0,
                 s.isGhost() || e.ignore || (this.scene.sound.play("slowmo_sound"),
-                this.scene.message.show("", 50, "#FFFFFF", "#000000")))
+                this.scene.message.show("Slow Motion", 50, "#FFFFFF", "#000000")))
             }
             drawPowerup(t, e) {
                 (e.save(),
@@ -17117,7 +17667,7 @@
                     s.setCheckpointOnUpdate(),
                     s.isGhost() || (this.hit = !0,
                     this.sector.powerupCanvasDrawn = !1,
-                    this.scene.message.show("", 50, "#826cdc", "#FFFFFF"),
+                    this.scene.message.show("Checkpoint Saved", 50, "#826cdc", "#FFFFFF"),
                     this.scene.sound.play("checkpoint_sound")))
                 }
             }
@@ -17396,7 +17946,7 @@
                 const e = t.parent
                   , s = e.player;
                 js(t.pos.x - this.x, 2) + js(t.pos.y - this.y, 2) < 1e3 && e.alive && (s.isGhost() || e.ignore || (0 === e.gravity.x && 0 === e.gravity.y || this.scene.sound.play("antigravity_sound", .3),
-                this.scene.message.show("", 50, "#08faf3")),
+                this.scene.message.show("Antigravity Engaged", 50, "#08faf3")),
                 e.gravity.x = 0,
                 e.gravity.y = 0)
             }
@@ -17648,7 +18198,7 @@
                     this.sector.powerupCanvasDrawn = !1,
                     this.otherPortal.sector.powerupCanvasDrawn = !1,
                     this.scene.sound.play("teleport_sound", .3),
-                    this.scene.message.show("", 50, "#8ac832")))
+                    this.scene.message.show("Teleport Engaged", 50, "#8ac832")))
                 }
             }
         }
@@ -17798,7 +18348,7 @@
                 t.isButtonDown("opt7") && (e.selected = "antigravity",
                 t.setButtonUp("opt7"),
                 this.scene.stateChanged()),
-                t.isButtonDown("opt8") && Application.User.get("classic") && (e.selected = "teleport",
+                t.isButtonDown("opt8") && (e.selected = "teleport",
                 t.setButtonUp("opt8"),
                 this.scene.stateChanged()),
                 super.update()
@@ -17921,7 +18471,7 @@
                     r.vehicleTimer.playerAddedTime(s)),
                     s.isGhost() || (this.hit = !0,
                     this.sector.powerupCanvasDrawn = !1,
-                    this.scene.message.show("", 50, "#F2902E", !1)))
+                    this.scene.message.show("Helicopter Powerup!", 50, "#F2902E", !1)))
                 }
             }
         }
@@ -17965,6 +18515,134 @@
           , pi = Math.random
           , fi = Math.pow
           , gi = Math.sqrt;
+
+        
+          //plane class
+
+          class planeoi extends ne {
+            constructor(t, e, s, i) {
+                super(),
+                this.x = t,
+                this.y = e,
+                this.time = s,
+                this.id = ii().toString(36).substr(2),
+                this.hit = !1,
+                this.init(i)
+            }
+            getCode() {
+                return "V " + this.x.toString(32) + " " + this.y.toString(32) + " 5 " + this.time.toString(32)
+            }
+            drawPowerup(t, e) {
+                t *= 1,
+                e.lineCap = "butt",
+                e.lineJoin = "miter",
+                e.miterLimit = 4 * t,
+                e.fillStyle = "#000000",
+                e.beginPath(),
+                e.moveTo(15 * t, 4.5 * t),
+                e.lineTo(15 * t, 2.5 * t),
+                e.bezierCurveTo(15 * t, 1.4 * t, 14.1 * t, .5 * t, 13 * t, .5 * t),
+                e.bezierCurveTo(11.9 * t, .5 * t, 11 * t, 1.4 * t, 11 * t, 2.5 * t),
+                e.lineTo(11 * t, 4.5 * t),
+                e.bezierCurveTo(11 * t, 5.6 * t, 11.9 * t, 6.5 * t, 13 * t, 6.5 * t),
+                e.bezierCurveTo(14.1 * t, 6.5 * t, 15 * t, 5.6 * t, 15 * t, 4.5 * t),
+                e.lineTo(15 * t, 4.5 * t),
+                e.closePath(),
+                e.fill(),
+                e.beginPath(),
+                e.lineCap = "round",
+                e.lineWidth = 2 * t,
+                e.moveTo(1 * t, 3 * t),
+                e.lineTo(25 * t, 3 * t),
+                e.stroke(),
+                e.lineCap = "butt",
+                e.lineWidth = 1 * t,
+                e.beginPath(),
+                e.moveTo(6.1 * t, 26.9 * t),
+                e.lineTo(4.1 * t, 31.9 * t),
+                e.bezierCurveTo(3.8 * t, 32.7 * t, 4.2 * t, 33.6 * t, 4.9 * t, 33.9 * t),
+                e.bezierCurveTo(5.7 * t, 34.2 * t, 6.6 * t, 33.8 * t, 6.9 * t, 33 * t),
+                e.lineTo(8.9 * t, 28 * t),
+                e.bezierCurveTo(9.2 * t, 27.3 * t, 8.8 * t, 26.4 * t, 8 * t, 26.1 * t),
+                e.bezierCurveTo(7.3 * t, 25.8 * t, 6.4 * t, 26.1 * t, 6.1 * t, 26.9 * t),
+                e.lineTo(6.1 * t, 26.9 * t),
+                e.closePath(),
+                e.fill(),
+                e.stroke(),
+                e.beginPath(),
+                e.moveTo(17 * t, 28 * t),
+                e.lineTo(19 * t, 33 * t),
+                e.bezierCurveTo(19.4 * t, 33.8 * t, 20.3 * t, 34.2 * t, 21 * t, 33.9 * t),
+                e.bezierCurveTo(21.8 * t, 33.6 * t, 22.2 * t, 32.7 * t, 21.9 * t, 31.9 * t),
+                e.lineTo(19.9 * t, 26.9 * t),
+                e.bezierCurveTo(19.6 * t, 26.2 * t, 18.7 * t, 25.8 * t, 17.9 * t, 26.1 * t),
+                e.bezierCurveTo(17.2 * t, 26.4 * t, 16.8 * t, 27.3 * t, 17.1 * t, 28 * t),
+                e.lineTo(17 * t, 28 * t),
+                e.closePath(),
+                e.fill(),
+                e.stroke(),
+                e.fillStyle = "green",
+                e.strokeStyle = "#000000",
+                e.lineWidth = 2 * t,
+                e.beginPath(),
+                e.arc(13 * t, 17 * t, 11 * t, 0 * t, 2 * Math.PI, !0),
+                e.closePath(),
+                e.fill(),
+                e.stroke(),
+                e.fillStyle = "#000000",
+                e.beginPath(),
+                e.moveTo(21 * t, 17 * t),
+                e.bezierCurveTo(21 * t, 12.6 * t, 17.4 * t, 9 * t, 13 * t, 9 * t),
+                e.bezierCurveTo(8.6 * t, 9 * t, 5 * t, 12.6 * t, 5 * t, 17 * t),
+                e.lineTo(21 * t, 17 * t),
+                e.closePath(),
+                e.fill()
+            }
+            collide(t) {
+                const e = t.parent
+                  , s = e.player;
+                if (!e.ignore) {
+                    const i = ri(ni(t.pos.x - this.x, 2) + ni(t.pos.y - this.y, 2))
+                      , n = s._powerupsConsumed.misc
+                      , r = this.scene;
+                    i < 30 && e.alive && !n.includes(this.id) && (n.push(this.id),
+                    s.setTempVehicle("PLANE", this.time * r.settings.drawFPS, {
+                        x: this.x,
+                        y: this.y
+                    }, e.dir),
+                    r.camera.playerFocus === s && (r.camera.focusOnPlayer(),
+                    r.vehicleTimer.playerAddedTime(s)),
+                    s.isGhost() || (this.hit = !0,
+                    this.sector.powerupCanvasDrawn = !1,
+                    this.scene.message.show("Plane Powerup!", 50, "#F2902E", !1)))
+                }
+            }
+        }
+        planeoi.drawData = {
+            canvas: document.createElement("canvas"),
+            dirty: !0,
+            width: 26,
+            height: 35
+        };
+        const planeai = planeoi.prototype;
+        planeai.x = 0,
+        planeai.y = 0,
+        planeai.name = "plane";
+        
+        const planehi = planeoi;
+        class planeui extends ci {
+            constructor(t, e) {
+                super(t, e, planehi),
+                this.powerup = new planehi(0,0,0,e.scene.track)
+            }
+        }
+        planeui.prototype.name = "plane";
+        const planedi = planeui
+          , planepi = Math.random
+          , planefi = Math.pow
+          , planegi = Math.sqrt;
+
+        //end plane class
         class mi extends ne {
             constructor(t, e, s, i) {
                 super(),
@@ -18158,7 +18836,7 @@
                     r.vehicleTimer.playerAddedTime(s)),
                     s.isGhost() || (this.hit = !0,
                     this.sector.powerupCanvasDrawn = !1,
-                    this.scene.message.show("", 50, "#94d44e", !1)))
+                    this.scene.message.show("Truck Powerup!", 50, "#94d44e", !1)))
                 }
             }
         }
@@ -18316,7 +18994,7 @@
                     r.vehicleTimer.playerAddedTime(s)),
                     s.isGhost() || (this.hit = !0,
                     this.sector.powerupCanvasDrawn = !1,
-                    this.scene.message.show("", 50, "#f02728", !1)))
+                    this.scene.message.show("Balloon Powerup!", 50, "#f02728", !1)))
                 }
             }
         }
@@ -18388,7 +19066,7 @@
                     r.vehicleTimer.playerAddedTime(s)),
                     s.isGhost() || (this.hit = !0,
                     this.sector.powerupCanvasDrawn = !1,
-                    this.scene.message.show("", 50, "#A784C5", !1)))
+                    this.scene.message.show("Blob Powerup!", 50, "#A784C5", !1)))
                 }
             }
         }
@@ -18422,6 +19100,7 @@
             }
             registerPowerupTools() {
                 this.registerTool(new di(this,this.toolHandler)),
+                this.registerTool(new planedi(this,this.toolHandler)),
                 this.registerTool(new xi(this,this.toolHandler)),
                 this.registerTool(new Pi(this,this.toolHandler)),
                 this.registerTool(new Oi(this,this.toolHandler))
@@ -18542,6 +19221,7 @@
                     antigravitys: [],
                     teleports: [],
                     helicopters: [],
+                    planes: [],
                     trucks: [],
                     balloons: [],
                     blobs: []
@@ -18594,6 +19274,9 @@
                     break;
                 case "helicopter":
                     s = e.helicopters;
+                    break;
+                case "plane":
+                    s = e.planes;
                     break;
                 case "truck":
                     s = e.trucks;
@@ -18735,7 +19418,7 @@
                       , s = this.powerupCanvasOffset
                       , i = this.canvasPool.getCanvas()
                       , n = i.getContext("2d")
-                      , r = ["slowmos", "checkpoints", "boosts", "gravitys", "bombs", "goals", "antigravitys", "teleports", "helicopters", "trucks", "balloons", "blobs"];
+                      , r = ["slowmos", "checkpoints", "boosts", "gravitys", "bombs", "goals", "antigravitys", "teleports", "helicopters", "trucks", "balloons", "blobs", "planes"];
                     i.width = e + s * t,
                     i.height = e + s * t,
                     n.clearRect(0, 0, i.width, i.height);
@@ -19015,7 +19698,7 @@
                 this.sceneryLines = [],
                 this.foregroundLines = [],
                 this.targets = [],
-                this.allowedVehicles = ["MTB", "BMX"],
+                this.allowedVehicles = ["MTB", "BMX", "PLANE"],
                 //this.allowedVehicles = ["Pete", "Maxime", "Char"],
                 this.canvasPool = new $i(t),
                 this.needsCleaning = !1,
@@ -19134,6 +19817,9 @@
                                 case 4:
                                     n = new Li(e,i,r,this);
                                     break;
+                                case 5:
+                                        n = new planehi(e,i,r,this);
+                                        break;
                                 default:
                                     continue
                                 }
@@ -19415,7 +20101,13 @@
                     t.hit && !t.remove && (t.hit = !1,
                     t.sector.powerupCanvasDrawn = !1)
             }
-            //notee
+            
+            /*addDefaultLine() {
+                const t = this.defaultLine
+                , e = t.p1
+                , s = t.p2;
+              this.addPhysicsLine(e.x, e.y, s.x, s.y)
+            }*/
             addDefaultLine() {
                 fetch(GameSettings.defaultTrack)
                 .then(response => response.text())
@@ -19552,10 +20244,8 @@
             }
         }
         an.prototype.defaultLine = {
-            p1: new t.Z(-93,50),
-            p2: new t.Z(91,50),
-            p3: new t.Z(91,103),
-            p4: new t.Z(-93,103)
+            p1: new t.Z(-40,50),
+            p2: new t.Z(40,50)
         },
         an.prototype.defaultTrack = {}
         an.prototype.game = null,
@@ -19602,8 +20292,8 @@
                 this.controlData = {
                     "pause_btn-hover": {
                         key: "pause",
-                        top: -100,
-                        right: -100
+                        top: 60,
+                        right: 70
                     }
                 },
                 this.initialize(t)
@@ -19653,13 +20343,13 @@
         bn.controlData = {
             redo: {
                 keys: ["ctrl", "y"],
-                top: -100,
-                right: -100
+                top: 60,
+                right: 160
             },
             undo: {
                 keys: ["ctrl", "z"],
-                top: -100,
-                right: -100
+                top: 60,
+                right: 240
             }
         };
         const _n = xn;
@@ -19874,9 +20564,6 @@
                 case "bikesettings": // New case for bikesettings
                     this.command("dialog", "bikesettings");
                     break;
-                case "trackFullscreen":
-                    this.toggleTrackFullscreen();
-                    break;
                 case "fullscreen":
                     this.toggleFullscreen(),
                     this.stateChanged()
@@ -19889,9 +20576,6 @@
                     window.open(e)
                 } else
                     this.settings.fullscreenAvailable && (this.settings.fullscreen = this.state.fullscreen = !this.settings.fullscreen)
-            }
-            toggleTrackFullscreen() {
-                this.settings.trackFullscreen = !this.settings.trackFullscreen;
             }
             updatePlayers() {
                 this.playerManager.update()
@@ -19955,7 +20639,6 @@
                 t.dialogOptions = !1,
                 t.preloading = !1,
                 t.fullscreen = this.settings.fullscreen,
-                t.trackFullscreen = !this.settings.trackFullscreen,
                 t.inFocus = !0,
                 this.controls && (t.hideMenus = this.controls.isVisible()),
                 t
@@ -20031,7 +20714,6 @@
                     break;
                 case "fullscreen":
                     this.settings.fullscreen = this.state.fullscreen = !this.settings.fullscreen;
-                    this.redraw();
                     break;
                 case "grid":
                     this.toolHandler.toggleGrid();
@@ -20416,7 +21098,7 @@
                 this.raceTimes.update()
             }
             restart() {
-                this.settings.mobile ? this.message.show("", 1, "#333333") : this.message.show("", 1, "#333333", "#FFFFFF"),
+                this.settings.mobile ? this.message.show("Press Any Button To Start", 1, "#333333") : this.message.show("Press Any Key To Start", 1, "#333333", "#FFFFFF"),
                 this.track.resetPowerups(),
                 this.restartTrack = !1,
                 this.state.paused = !1,
@@ -21689,8 +22371,6 @@
                 this.setSize(),
                 this.switchScene(t),
                 this.setSize(),
-                this.onTrackFullscreenChange = this.updateCanvasSize.bind(this);
-                this.addTrackFullscreenListener();
                 this.startTicker()
             }
             initCanvas() {
@@ -21715,51 +22395,26 @@
                 this.stage = t
             }
             setSize() {
-                let t = this.settings.height
-                    , e = this.settings.width;
-                if (this.settings.trackPage && !this.settings.trackFullscreen) {
+                let t = window.innerHeight
+                  , e = window.innerWidth;
+                if (!this.settings.fullscreen && !this.settings.isStandalone) {
                     const s = this.gameContainer;
-                    t = window.innerHeight * 0.6
-                    e = window.innerWidth * 0.6
+                    t = s.clientHeight,
+                    e = s.clientWidth
                 }
-
-                else if (this.settings.trackPage && this.settings.trackFullscreen) {
-                    t = window.innerHeight
-                    e = window.innerWidth
-                }
-
-                if (!this.settings.trackPage) {
-                    this.currentScene && (t -= this.currentScene.getCanvasOffset().height);
-                }
+                this.currentScene && (t -= this.currentScene.getCanvasOffset().height);
                 let s = window.devicePixelRatio || 1;
                 this.settings.lowQualityMode && (s = 1);
                 const i = e * s
-                    , n = t * s;
+                  , n = t * s;
                 i === this.width && n === this.height || (this.width = i,
-                    this.height = n,
-                    this.canvas.width = i,
-                    this.canvas.height = n),
-                    this.pixelRatio = s,
-                    this.canvas.style.width = e + "px",
-                    this.canvas.style.height = t + "px",
-                    this.currentScene && this.currentScene.command("resize")
-            }
-            updateCanvasSize() {
-                if (this.settings.trackPage && this.settings.trackFullscreen) {
-                    this.setSize();
-                }
-                else {this.setSize();}
-            }
-            addTrackFullscreenListener() {
-                Object.defineProperty(this.settings, 'trackFullscreen', {
-                    configurable: true,
-                    enumerable: true,
-                    get: () => this._trackFullscreen,
-                    set: (value) => {
-                        this._trackFullscreen = value;
-                        this.onTrackFullscreenChange();
-                    },
-                });
+                this.height = n,
+                this.canvas.width = i,
+                this.canvas.height = n),
+                this.pixelRatio = s,
+                this.canvas.style.width = e + "px",
+                this.canvas.style.height = t + "px",
+                this.currentScene && this.currentScene.command("resize")
             }
             startTicker() {
                 createjs.Ticker.timingMode = createjs.Ticker.RAF_SYNCHED,
@@ -21822,3 +22477,1276 @@
   }
   )();
   //# sourceMappingURL=game.js.map
+
+  function load() {
+    // this is more hacky than i'd like it to be but it works
+    let zv = GameManager.game.currentScene.camera.position.factor(0),
+        vector = (x = 0, y = 0) => {return zv.factor(0).add({x, y})},
+        hovered,
+        selected,
+        hoverList,
+        selectList,
+        // used for recreating parts of the selectList when playing
+        // will be done in the sector the player's in and nearby sectors, and just left until movement starts again
+        hoverPhysicsList = {},
+        selectPhysicsList = {},
+        selectOffset = vector(),
+        // since this is used to track, not render, we can get away with only having one of these
+        pointOffset = vector(),
+        isHoverList = false,
+        isSelectList = false,
+        hoverPoint,
+        selectPoint,
+        connected,
+        connectedPoint,
+        isSelectedUpdated = true,
+        // used to temporarily recreate the selected line while you're playing the track (so it feels nicer)
+        isSelectIntangible = true,
+        tempSelect;
+    // for debugging
+    let frameMinDist,
+        frameBestLine;
+    // render info
+    let powerups = {
+        // the colors for these are the last 2 arguments, and go normal color, nostalgia mode
+        "bomb": [20, '#d12929', '#f00'],
+        "boost": [Math.sqrt(1000), '#8ac932', '#ff0'],
+        "checkpoint": [26, '#826cdc', '#00f'],
+        "gravity": [Math.sqrt(1000), '#376eb7', '#0f0'],
+        "slowmo": [26, '#733', '#733'],
+        "goal": [26, '#fae335', '#ff0'],
+        "teleport": [Math.sqrt(1000), '#dd45ec', '#f0f'],
+        "antigravity": [Math.sqrt(1000), '#09faf3', '#0ff'],
+        "blob": [30, '#a784c5', '#cdbade'],
+        "balloon": [30, '#f02728', '#f57070'],
+        "helicopter": [30, '#f2902e', '#f6b36f'],
+        "plane": [30, 'green', 'blue'],
+        "truck": [30, '#94d44e', '#b9e38c'],
+    },
+        polyMod = GameManager.game?.mod;
+    window.selected = selected;
+    window.hovered = hovered;
+    const HOVER_DIST = 10;
+    // old line - used to work until mysterious unannounced chrome changes killed it
+    //class P extends GameManager.game.currentScene.toolHandler.tools.straightline.__proto__.__proto__.constructor {
+    class SelectTool {
+        constructor(s) {
+            // new line - since i can't seem to use super anymore, i can accomplish the same thing with a temporary variable
+            let supa = Object.create(GameManager.game.currentScene.toolHandler.tools.straightline.__proto__.__proto__);
+            for (let i in supa) {
+                if (!this[i])
+                    this.__proto__[i] = supa[i];
+            }
+            if (polyMod) {
+                for (let i of Object.getOwnPropertyNames(supa.__proto__)) {
+                    if (!this[i])
+                        this.__proto__[i] = supa[i];
+                }
+            }
+            this.supa = supa;
+            this.toolUpdate = supa.update;
+            console.log(supa, this);
+            supa.init.apply(this, [s]);
+            this.toolHandler = s;
+            this.p1 = undefined;
+            this.p2 = undefined;
+            this.dashOffset = 0;
+            this.name = 'select';
+            this.down = false;
+            this.center = null;
+            // make a copy
+            this.oldMouse = this.mouse.touch.real.factor(1);
+            document.addEventListener('keydown', this.keydown.bind(this));
+        }
+
+        get selected() {
+            return isSelectList ? selectList : selected ? [selected] : [];
+        }
+
+        get hovered() {
+            return isHoverList ? hoverList : hovered ? [hovered] : [];
+        }
+
+        keydown(event) {
+            if (event.key.toLowerCase() === 'r') {
+                const degrees = event.shiftKey ? -1 * GameSettings.rotateFactor : GameSettings.rotateFactor;
+                this.rotateSelected(degrees);
+            }
+            if (event.key.toLowerCase() === 's') {
+                const scale = event.shiftKey ? 1 / GameSettings.scaleFactor : GameSettings.scaleFactor;
+                this.scaleSelected(scale);
+            }
+            if (event.key.toLowerCase() === 'f') {
+                const flipVertically = event.shiftKey;
+                this.flipSelected(flipVertically);
+            }
+        }
+
+        //note
+
+        findCenter() {
+            if (!this.center) {
+                const flatX = [];
+                const flatY = [];
+        
+                this.selected.forEach(line => {
+                    flatX.push(line.p1.x, line.p2.x);
+                    flatY.push(line.p1.y, line.p2.y);
+                });
+        
+                const minX = Math.min(...flatX);
+                const maxX = Math.max(...flatX);
+                const minY = Math.min(...flatY);
+                const maxY = Math.max(...flatY);
+        
+                const width = maxX - minX;
+                const height = maxY - minY;
+        
+                const centerX = minX + width / 2;
+                const centerY = minY + height / 2;
+        
+                this.center = { centerX, centerY, width, height };
+                console.log('Center info:', this.center);
+            }
+        
+            return this.center;
+        }
+        
+        resetCenter() {
+            this.center = null;
+        }
+
+        rotateSelected(degrees) {
+            const { centerX, centerY } = this.findCenter();
+            const radians = degrees * Math.PI / 180;
+
+            this.selected.forEach(line => {
+                [line.p1, line.p2].forEach(point => {
+                    const rotatedPoint = this.rotatePoint(point, centerX, centerY, radians);
+                    point.x = rotatedPoint.x;
+                    point.y = rotatedPoint.y;
+                });
+            });
+
+            const action = {
+                type: 'rotate',
+                objects: this.selected,
+                angle: degrees,
+                center: { x: centerX, y: centerY },
+                applied: true
+            };
+        
+            console.log('Adding to timeline:', action);
+            this.toolHandler.addActionToTimeline(action);
+        }
+        
+        rotatePoint(point, centerX, centerY, radians) {
+            const x = point.x - centerX;
+            const y = point.y - centerY;
+        
+            return {
+                x: centerX + (x * Math.cos(radians) - y * Math.sin(radians)),
+                y: centerY + (x * Math.sin(radians) + y * Math.cos(radians))
+            };
+        }
+        
+        scaleSelected(scaleFactor) {
+            const { centerX, centerY } = this.findCenter();
+            let scalable = true;
+        
+            this.selected.forEach(line => {
+                const newP1x = centerX + (line.p1.x - centerX) * scaleFactor;
+                const newP1y = centerY + (line.p1.y - centerY) * scaleFactor;
+                const newP2x = centerX + (line.p2.x - centerX) * scaleFactor;
+                const newP2y = centerY + (line.p2.y - centerY) * scaleFactor;
+        
+                const newLength = Math.hypot(newP2x - newP1x, newP2y - newP1y);
+                if (newLength < 2 && GameSettings.scaleLock) {
+            scalable = false;
+        }
+            });
+        
+            if (scalable) {
+            this.selected.forEach(line => {
+                [line.p1, line.p2].forEach(point => {
+                    point.x = centerX + (point.x - centerX) * scaleFactor;
+                    point.y = centerY + (point.y - centerY) * scaleFactor;
+                });
+            });
+
+            const action = {
+                type: 'scale',
+                objects: this.selected,
+                scaleFactor: scaleFactor,
+                center: { x: centerX, y: centerY },
+                applied: true
+            };
+
+            console.log('Adding to timeline:', action);
+            this.toolHandler.addActionToTimeline(action);
+            } else {
+                console.log('scaling would cause undefined lines (too short)');
+            }
+        }
+        
+        
+        
+        flipSelected(flipVertically) {
+            const { centerX, centerY } = this.findCenter();
+        
+            this.selected.forEach(line => {
+                [line.p1, line.p2].forEach(point => {
+                    if (flipVertically) {
+                        point.y = centerY * 2 - point.y;
+                    } else {
+                        point.x = centerX * 2 - point.x;
+                    }
+                });
+            });
+        
+            const action = {
+                type: 'flip',
+                objects: this.selected,
+                flipVertically: flipVertically,
+                flipHorizontally: flipHorizontally,
+                applied: true
+            };
+        
+            console.log('Adding to timeline:', action);
+            this.toolHandler.addActionToTimeline(action);
+        }
+        
+        press() {
+            this.down = true;
+            if (hovered && hovered === tempSelect?.[0]) {
+                hovered = selected;
+                console.log('clicked on temp :P');
+                if (selectPoint && selected) {
+                    if (selectPoint.x == selected.p1.x && selectPoint.y == selected.p1.y) {
+                        selectPoint = selected.p1;
+                    } else if (selectPoint.x == selected.p2.x && selectPoint.y == selected.p2.y) {
+                        selectPoint = selected.p2;
+                    }
+                }
+            }
+            if (selected && selected != hovered) {
+                let a = [recreate(selected)];
+                if (selectPoint && connected) {
+                    remove(connected);
+                    a = [a[0], recreate(connected)];
+                    connected = connected.newVersion;
+                }
+                if (selectOffset.x || selectOffset.y) {
+                    let {x, y} = selectOffset;
+                    this.scene.toolHandler.addActionToTimeline({
+                        objects: a,
+                        type: 'transform',
+                        move: {x, y},
+                        applied: true,
+                    });
+                    // idk man this is wack
+                    if (selected.p1) {
+                        selected.p1.inc(selectOffset);
+                        selected.p2.inc(selectOffset);
+                    }
+                    selectOffset = vector();
+                } else if (pointOffset.x || pointOffset.y) {
+                    let pointName = (selectPoint.x == selected.p1.x && selectPoint.y == selected.p1.y) ? 'p1' : 'p2',
+                        points = [pointName],
+                        objects = [selected],
+                        {x, y} = pointOffset;
+                    if (connected) {
+                        points.push(connectedPoint);
+                        objects.push(connected);
+                    }
+                    this.scene.toolHandler.addActionToTimeline({
+                        objects,
+                        points,
+                        type: 'transform',
+                        move: {x, y},
+                        applied: true,
+                    });
+                    pointOffset = vector();
+                }
+                connected = undefined;
+                console.log('recreated', a);
+            }
+            if (isSelectList && (hovered || !pointrect(this.mouse.touch.real, this.p1, this.p2))) {
+                for (let i of selectList) {
+                    remove(connected);
+                }
+                let a = selectList.map(s => recreate(s));
+                if (selectOffset.x || selectOffset.y) {
+                    let {x, y} = selectOffset;
+                    this.scene.toolHandler.addActionToTimeline({
+                        objects: a,
+                        type: 'transform',
+                        move: {x, y},
+                        applied: true,
+                    });
+                }
+                console.log('recreated', a);
+            }
+            if (hovered) {
+                // TO-DO: find a better place to put / store this
+                let oldConnected = [connected, connectedPoint];
+                if (hovered != selected)
+                    selectOffset = vector();
+                else {
+                    tempSelect?.forEach(i=>remove(i));
+                    tempSelect = undefined;
+                    isSelectIntangible = true;
+                    if (selectPoint && connected) {
+                        remove(connected);
+                        recreate(connected);
+                        connected = undefined;
+                    }
+                }
+                selected = hovered;
+                isHoverList = false;
+                window.selected = hovered;
+                if (selected) {
+                    console.log('selected', selected);
+                    remove(selected);
+                    let minDist = HOVER_DIST / this.scene.camera.zoom,
+                        minPoint = undefined;
+                    if (selected.p1) {
+                        for (let i of [selected.p1, selected.p2]) {
+                            let dist = pointsdf(this.mouse.touch.real, i.add(selectOffset));
+                            if (dist < minDist) {
+                                minDist = dist;
+                                minPoint = i;
+                            }
+                        }
+                        if (minPoint) {
+                            let size = this.scene.track.settings.drawSectorSize,
+                                sectors = this.scene.track.sectors.drawSectors,
+                                sectorPos = minPoint.factor(1 / size),
+                                sector = sectors[Math.floor(sectorPos.x)]?.[Math.floor(sectorPos.y)],
+                                lines = sector?.['highlight' in selected ? "physicsLines" : "sceneryLines"] || [];
+                            if (connected && !connected.newVersion) {
+                                remove(connected);
+                                recreate(connected);
+                            }
+                            connected = undefined;
+                            for (let i of lines) {
+                                if (!i.remove && i.p1.x == minPoint.x && i.p1.y == minPoint.y) {
+                                    connected = i;
+                                    connectedPoint = 'p1';
+                                    break;
+                                } else if (!i.remove && i.p2.x == minPoint.x && i.p2.y == minPoint.y) {
+                                    connected = i;
+                                    connectedPoint = 'p2';
+                                    break;
+                                }
+                            }
+                            if (connected) {
+                                remove(connected);
+                                console.log('connected to', connected);
+                            }
+                        }
+                    }
+                    if (selectPoint != minPoint) {
+                        if (selectPoint == undefined && (selectOffset.x || selectOffset.y)) {
+                            let {x, y} = selectOffset;
+                            this.scene.toolHandler.addActionToTimeline({
+                                objects: [selected],
+                                type: 'transform',
+                                move: {x, y},
+                                applied: true,
+                            });
+                            selected.p1.inc(selectOffset);
+                            selected.p2.inc(selectOffset);
+                            selectOffset = vector();
+                        } else if (pointOffset.x || pointOffset.y) {
+                            let pointName = (selectPoint.x == selected.p1.x && selectPoint.y == selected.p1.y) ? 'p1' : 'p2',
+                                points = [pointName],
+                                objects = [selected],
+                                {x, y} = pointOffset;
+                            if (oldConnected[0]) {
+                                points.push(oldConnected[1]);
+                                objects.push(oldConnected[0]);
+                            }
+                            this.scene.toolHandler.addActionToTimeline({
+                                objects,
+                                points,
+                                type: 'transform',
+                                move: {x, y},
+                                applied: true,
+                            });
+                            pointOffset = vector();
+                        }
+                    }
+                    selectPoint = minPoint;
+                }
+                isSelectList = false;
+                selectList = selectPhysicsList = undefined;
+            } else if (this.p1 && pointrect(this.mouse.touch.real, this.p1, this.p2)) {
+                selected = undefined;
+                console.log('in rect!');
+            } else {
+                isSelectedUpdated = false;
+                isHoverList = true;
+                hoverList = [];
+                this.p1 = this.mouse.touch.real.factor(1);
+                this.p2 = this.mouse.touch.real.factor(1);
+            }
+        }
+
+        hold() {
+            if (isHoverList) {
+                this.p2 = this.mouse.touch.real.factor(1);
+            }
+        }
+
+        update(force = false) {
+            const mousePos = this.mouse.touch.real;
+            shouldUpdate: if (force || !(mousePos.x == this.oldMouse.x && mousePos.y == this.oldMouse.y)) {
+                if (isHoverList)
+                    this.p2 = mousePos.factor(1);
+                // this is my current best guess for if there exists something to move and we should move it
+                if (this.down && this.selected.length && isSelectedUpdated) {
+                    // remove the line if it's been temporarily recreated
+                    if (!isSelectIntangible) {
+                        isSelectIntangible = true;
+                        tempSelect?.forEach?.(i=>remove(i));
+                        tempSelect = undefined;
+                        remove(connected);
+                    }
+                    if (tempSelect && tempSelect.length) {
+                        for (let i of tempSelect) {
+                            remove(i);
+                        }
+                        for (let x in selectPhysicsList) {
+                            let row = selectPhysicsList[x];
+                            for (let y in row) {
+                                let cell = row[y];
+                                if (cell.mark) {
+                                    cell.mark = false;
+                                    for (let line of cell) {
+                                        line.temp = false;
+                                    }
+                                }
+                            }
+                        }
+                        isSelectIntangible = true;
+                        tempSelect = undefined;
+                    }
+                    let dMouse = mousePos.sub(this.oldMouse);
+                    dMouse.x = Math.round(dMouse.x);
+                    dMouse.y = Math.round(dMouse.y);
+                    if (this.scene.toolHandler.options.grid) {
+                        let gridSize = this.scene.toolHandler.options.gridSize;
+                        dMouse.x = Math.round(dMouse.x / gridSize) * gridSize;
+                        dMouse.y = Math.round(dMouse.y / gridSize) * gridSize;
+                    }
+                    // points get moved seperately (since it's only one point moving rather than a whole line or group of objects)
+                    if (selectPoint) {
+                        selectPoint.inc(dMouse);
+                        selected.pp = selected.p2.sub(selected.p1);
+                        selected.len = selected.pp.len();
+                        if (connected) {
+                            connected[connectedPoint].inc(dMouse);
+                            connected.pp = connected.p2.sub(connected.p1);
+                            connected.len = connected.pp.len();
+                        }
+                        pointOffset = dMouse.add(pointOffset);
+                    } else {
+                        // by switching to the selectOffset for everything, this is a lot simpler :)
+                        selectOffset = dMouse.add(selectOffset);
+                        if (isSelectList) {
+                            this.p1.inc(dMouse);
+                            this.p2.inc(dMouse);
+                        }
+                    }
+                    break shouldUpdate;
+                }
+
+                if (isHoverList) {
+                    this.multiHover();
+                }
+            }
+            if (force) return;
+            this.oldMouse = this.mouse.touch.real.factor(1);
+            this.toolUpdate();
+        }
+
+        
+
+        multiHover() {
+            // this logic is very simple: decide which sectors to add, then add everything necessary from them
+            let sectorSize = this.scene.settings.drawSectorSize,
+                minVec = {x: Math.min(this.p1.x, this.p2.x), y: Math.min(this.p1.y, this.p2.y)},
+                maxVec = {x: Math.max(this.p1.x, this.p2.x), y: Math.max(this.p1.y, this.p2.y)},
+                lines = [];
+            hoverPhysicsList = {};
+            for (let x = Math.floor(minVec.x / sectorSize); x <= Math.ceil(maxVec.x / sectorSize); x++) {
+                let row = this.scene.track.sectors.drawSectors[x];
+                if (!row) continue;
+                hoverPhysicsList[x] = {};
+                for (let y = Math.floor(minVec.y / sectorSize); y <= Math.ceil(maxVec.y / sectorSize); y++) {
+                    hoverPhysicsList[x][y] = [];
+                    lines.push(...this.testSectorMulti({x, y}, minVec, maxVec).filter(i => !lines.includes(i) && !i.remove));
+                }
+            }
+            hoverList = lines;
+        }
+
+        release() {
+            this.down = false;
+            isSelectedUpdated = true;
+            if (isHoverList) {
+                selected = undefined;
+                isSelectList = true;
+                selectList = [...hoverList];
+                selectPhysicsList = hoverPhysicsList;
+                hoverList = [];
+                isHoverList = false;
+                selectOffset = vector();
+                if (this.scene.settings.copy == true) {
+                    for (let i of selectList) {
+                        recreate(i);
+                    }
+                }
+                for (let i of selectList) {
+                    remove(i);
+                }
+                console.log('selected!', selectList);
+                this.findCenter();
+                this.resetCenter();
+            }
+        }
+
+        draw() {
+            let ctx = this.game.canvas.getContext('2d');
+            // debug (draw info about the best line
+            /*//
+            if (frameBestLine) {
+                if (frameBestLine.rp1) {
+                let rp1 = frameBestLine.p1.toScreen(this.scene),
+                    rp2 = frameBestLine.p2.toScreen(this.scene),
+                    rpp = frameBestLine.pp;
+                ctx.strokeStyle = '#ff0000';
+                ctx.beginPath();
+                ctx.moveTo(rp1.x, rp1.y);
+                ctx.moveTo(rp2.x, rp2.y);
+                ctx.stroke();
+                ctx.fillText(frameMinDist, rp1.x - rpp.x * Math.sign(rpp.x) / 2, rp1.y - rpp.y * Math.sign(rpp.y) / 2);
+                } else {
+                    let pos = scene.camera.position.factor(0).add(frameBestLine).toScreen(scene)
+                    ctx.fillText(frameMinDist, pos.x + 10, pos.y + 10);
+                }
+            }
+            //*/
+            if (!isHoverList && !isSelectList) return;
+            let rp1 = this.p1.toScreen(this.scene),
+                rp2 = this.p2.toScreen(this.scene),
+                w = rp2.x - rp1.x,
+                h = rp2.y - rp1.y;
+            ctx.save();
+            if (ctx.setLineDash)
+                ctx.setLineDash([6]);
+            ctx.lineDashOffset = this.dashOffset++;
+            ctx.beginPath();
+            ctx.rect(rp1.x, rp1.y, w, h);
+            ctx.fillStyle = "rgba(24, 132, 207, 0.3)";
+            isHoverList && ctx.fill();
+            ctx.strokeStyle = "rgba(24, 132, 207, 0.7)";
+            ctx.lineWidth = 2;
+            ctx.stroke();
+            ctx.restore();
+            this.dashOffset %= 23;
+        }
+
+        testSectorSingle(sectorPos) {
+            let mousePos = this.mouse.touch.real,
+                sector = this.scene.track.sectors.drawSectors?.[sectorPos.x]?.[sectorPos.y],
+                minDist = 1000,
+                bestLine = undefined;
+            if (sector == undefined) {
+                return [minDist, bestLine];
+            }
+            for (let i of sector.physicsLines) {
+                if (i.remove)
+                    continue;
+                let dist = linesdf(mousePos, i);
+                if (dist < minDist && i != tempSelect) {
+                    minDist = dist;
+                    bestLine = i;
+                }
+            }
+            for (let i of sector.sceneryLines) {
+                if (i.remove)
+                    continue;
+                let dist = linesdf(mousePos, i);
+                if (dist < minDist) {
+                    minDist = dist;
+                    bestLine = i;
+                }
+            }
+            for (let i of sector.powerups.all) {
+                if (i.remove)
+                    continue;
+                let dist = pointsdf(mousePos, i);
+                if (dist < minDist) {
+                    minDist = dist;
+                    bestLine = i;
+                }
+            }
+            return [minDist, bestLine];
+        }
+
+        testSectorMulti(sectorPos, minVec, maxVec) {
+            let sectorSize = this.scene.settings.drawSectorSize,
+                sectorTrackPos = {x: sectorPos.x * sectorSize, y: sectorPos.y * sectorSize},
+                sector = this.scene.track.sectors.drawSectors?.[sectorPos.x]?.[sectorPos.y];
+            if (sector == undefined)
+                return [];
+            // see if we can just return the whole sector
+            if (minVec.x <= sectorTrackPos.x &&
+                minVec.y <= sectorTrackPos.y &&
+                maxVec.x >= sectorTrackPos.x + sectorSize &&
+                maxVec.y >= sectorTrackPos.y + sectorSize) {
+                hoverPhysicsList[sectorPos.x][sectorPos.y] = sector.physicsLines.filter(i => !i.remove)
+                    .concat(sector.powerups.all.filter(i => !i.remove));
+                return hoverPhysicsList[sectorPos.x][sectorPos.y]
+                    .concat(sector.sceneryLines.filter(i => !i.remove));
+            }
+            let toReturn = [];
+            for (let i of sector.physicsLines) {
+                if (i.remove)
+                    continue;
+                if (rectcollide(i.p1, i.p2, minVec, maxVec))
+                    toReturn.push(i);
+            }
+            for (let i of sector.powerups.all) {
+                if (i.remove)
+                    continue;
+                if (pointrect(i, minVec, maxVec))
+                    toReturn.push(i);
+            }
+            hoverPhysicsList[sectorPos.x][sectorPos.y] = [...toReturn];
+            for (let i of sector.sceneryLines) {
+                if (i.remove)
+                    continue;
+                if (rectcollide(i.p1, i.p2, minVec, maxVec))
+                    toReturn.push(i);
+            }
+            return toReturn;
+        }
+    }
+
+    let game = GameManager.game,
+        scene = game.currentScene,
+        active = false;
+
+    scene.toolHandler.registerTool(SelectTool);
+    let selectTool = scene.toolHandler.tools.select;
+
+    // fix undo / redo for moved objects
+    // this is a little bit weird but it seems to work:
+    /* - if anything in toRevert has been removed and not recreated, we assume it's been selected and cancel the action
+     * (still debating how to actually undo the lines (i.e. whether to use the same lines or recreate them every time))
+     */
+    scene.toolHandler.revertAction = (old => () => {
+        let oldPointer = scene.toolHandler.actionTimelinePointer;
+        old.apply(scene.toolHandler);
+        if (oldPointer == scene.toolHandler.actionTimelinePointer) return;
+    
+        let toRevert = scene.toolHandler.actionTimeline[scene.toolHandler.actionTimelinePointer];
+        if (toRevert) toRevert.objects = toRevert.objects.map(i => {while (i.newVersion) i = i.newVersion; return i;});
+    
+        if (toRevert && toRevert.applied) {
+            if (toRevert.objects.some(i => i.remove)) {
+                scene.toolHandler.actionTimelinePointer = oldPointer;
+                return;
+            }
+            if (GameSettings.copy) {
+                toRevert.objects = toRevert.objects.map(i => {
+                    if (i.remove) {
+                        while (i.newVersion)
+                            i = i.newVersion;
+                    }
+                    remove(i);
+                    return i;
+                });
+            } else if (!GameSettings.copy) {
+            switch (toRevert.type) {
+                case 'transform':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, { x: -toRevert.move.x, y: -toRevert.move.y });
+                    });
+                    break;
+                case 'rotate':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, { angle: -toRevert.angle, center: toRevert.center });
+                    });
+                    break;
+                case 'scale':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, {
+                            scaleFactor: 1 / toRevert.scaleFactor,
+                            center: toRevert.center
+                        });
+                    });
+                    break;
+                case 'flip':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, {
+                            flipVertically: toRevert.flipVertically,
+                            flipHorizontally: toRevert.flipHorizontally,
+                            center: toRevert.center
+                        });
+                    });
+                    break;
+            }
+            toRevert.applied = false;
+        }
+    }
+    })(scene.toolHandler.revertAction);
+
+    scene.toolHandler.applyAction = (old => () => {
+        let oldPointer = scene.toolHandler.actionTimelinePointer;
+        old.apply(scene.toolHandler);
+        if (oldPointer == scene.toolHandler.actionTimelinePointer) return;
+        let toRevert = scene.toolHandler.actionTimeline[scene.toolHandler.actionTimelinePointer - 1];
+        if (toRevert) toRevert.objects = toRevert.objects.map(i => {while (i.newVersion) i = i.newVersion; return i});
+        if (toRevert && !toRevert.applied) {
+            if (toRevert.objects.some(i => i.remove)) {
+                scene.toolHandler.actionTimelinePointer = oldPointer;
+                return;
+            }
+            switch (toRevert.type) {
+                case 'transform':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, { x: toRevert.move.x, y: toRevert.move.y });
+                    });
+                    break;
+                case 'rotate':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, { angle: toRevert.angle, center: toRevert.center });
+                    });
+                    break;
+                case 'scale':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, {
+                            scaleFactor: toRevert.scaleFactor,
+                            center: toRevert.center
+                        });
+                    });
+                    break;
+                case 'flip':
+                    toRevert.objects = toRevert.objects.map(i => {
+                        if (i.remove) {
+                            while (i.newVersion) i = i.newVersion;
+                        }
+                        remove(i);
+                        return recreate(i, {
+                            flipVertically: toRevert.flipVertically,
+                            flipHorizontally: toRevert.flipHorizontally,
+                            center: toRevert.center
+                        });
+                    });
+                    break;
+            }
+            toRevert.applied = false;
+        }
+    })(scene.toolHandler.applyAction);
+
+    // also patch removeObjects and addObjects just for fun
+    scene.toolHandler.removeObjects = (old => (t) => {
+        for (let i in t)
+            while (t[i].newVersion)
+                t[i] = t[i].newVersion;
+        //t = t.map(i => {while (i.newVersion) i = i.newVersion; return i;});
+        old.apply(scene.toolHandler, [t]);
+    })(scene.toolHandler.removeObjects);
+
+    scene.toolHandler.addObjects = (old => (t) => {
+        for (let i in t)
+            while (t[i].newVersion)
+                t[i] = t[i].newVersion;
+        //t = t.map(i => {while (i.newVersion) i = i.newVersion; return i;});
+        old.apply(scene.toolHandler, [t]);
+    })(scene.toolHandler.addObjects);
+
+    
+    let moveSpeed = 0.3,
+        moveAccumulator = 1;
+
+    createjs.Ticker.addEventListener('tick', () => {
+        if (selected && isSelectIntangible && !tempSelect?.length) {
+            tempSelect = [recreate(selected)];
+            console.log('temporary', tempSelect);
+            isSelectIntangible = false;
+            if (connected) {
+                connected.remove = 0;
+                scene.track.addPhysicsLineToTrack(connected);
+            }
+        }
+        /* if (!scene.state.paused && isSelectList) {
+            tempSelect = tempSelect || [];
+            let sectorSize = scene.settings.drawSectorSize,
+                vehicle = scene.playerManager.firstPlayer._tempVehicle || scene.playerManager.firstPlayer._baseVehicle,
+                pos = vehicle.masses[0].pos,
+                sector = pos.factor(1 / sectorSize);
+            sector.x = Math.floor(sector.x);
+            sector.y = Math.floor(sector.y);
+            for (let x = -1; x < 2; x++) {
+                if (!selectPhysicsList[x]) continue;
+                for (let y = -1; y < 2; y++) {
+                    let cell = selectPhysicsList[x][y];
+                    if (!cell || !cell.length || cell.mark) continue;
+                    for (let i of cell) {
+                        if (i.temp) continue;
+                        let line = recreate(i);
+                        tempSelect.push(line);
+                        i.temp = true;
+                    }
+                    cell.mark = true;
+                }
+            }
+        }*/
+        // allow moving the currently selected object with movement keys when paused
+        if (selectTool.selected.length && !tempSelect?.length) {
+            let tdb = scene.playerManager.firstPlayer._gamepad.getDownButtons(),
+                dir = vector();
+            for (let button of tdb) {
+                switch (button) {
+                    case "up":
+                        dir.y--;
+                        break;
+                    case "down":
+                        dir.y++;
+                        break;
+                    case "right":
+                        dir.x++;
+                        break;
+                    case "left":
+                        dir.x--;
+                        break;
+                    case "46":
+                        var objects = [...selectTool.selected];
+                        if (connected)
+                            objects.push(connected);
+                        scene.toolHandler.addActionToTimeline({
+                            objects,
+                            type: 'remove',
+                        });
+                        selected = undefined;
+                        selectPoint = undefined;
+                        isSelectList = false;
+                        selectOffset = vector();
+                        break;
+                }
+            }
+            if (selected) {
+                let dirLen = Math.sqrt(dir.x ** 2 + dir.y ** 2);
+                if (dirLen > 0) {
+                    dir.x = dir.x * moveAccumulator / dirLen | 0;
+                    dir.y = dir.y * moveAccumulator / dirLen | 0;
+                    if (selectPoint) {
+                        selectPoint.inc(dir);
+                        if (connected) {
+                            connected[connectedPoint].inc(dir);
+                        }
+                        pointOffset.inc(dir);
+                    } else {
+                        selectOffset.inc(dir);
+                    }
+                    moveSpeed *= 1.02;
+                    moveAccumulator %= 1;
+                    moveAccumulator += moveSpeed;
+                    if (!isSelectIntangible) {
+                        isSelectIntangible = true;
+                        tempSelect?.forEach?.(i=>remove(i));
+                        tempSelect = undefined;
+                        remove(connected);
+                    }
+                } else {
+                    moveSpeed = 0.3;
+                    moveAccumulator = 1;
+                }
+            }
+        }
+        let ctx = game.canvas.getContext('2d'),
+            zoom = scene.camera.zoom;
+        ctx.lineCap = "round";
+        // render selected
+        if (selectTool.selected.length) {
+            // the actual line
+            for (let selected of selectTool.selected) {
+                if (selected.p1) {
+                    let rp1 = selected.p1.add(selectOffset).toScreen(scene),
+                        rp2 = selected.p2.add(selectOffset).toScreen(scene);
+                    if (isSelectIntangible) {
+                        ctx.lineWidth = Math.max(2 * zoom, 0.5);
+                        ctx.strokeStyle = 'highlight' in selected ? '#000000' : '#AAAAAA';
+                        ctx.beginPath();
+                        ctx.moveTo(rp1.x, rp1.y);
+                        ctx.lineTo(rp2.x, rp2.y);
+                        ctx.stroke();
+                    }
+                    // the highlight on the line
+                    ctx.lineWidth = Math.max(2 * zoom, 1);
+                    ctx.strokeStyle = selectPoint ? '#1884cf' : '#1884cf';
+                    ctx.beginPath();
+                    ctx.moveTo(rp1.x, rp1.y);
+                    ctx.lineTo(rp2.x, rp2.y);
+                    ctx.stroke();
+                } else {
+                    let data = powerups[selected.name];
+                    if (!data) continue;
+                    let camera = scene.camera,
+                        pos = camera.position.factor(0).add(selected).add(selectOffset).toScreen(scene),
+                        size = data[0] / zoom;
+                    ctx.globalAlpha = 0.3;
+                    ctx.fillStyle = data[1 + !!polyMod?.getVar("crPowerups")];
+                    ctx.beginPath();
+                    ctx.arc(pos.x, pos.y, Math.max(data[0] * zoom / 1.5, 1), 0, Math.PI * 2);
+                    ctx.fill();
+                    ctx.globalAlpha = 1;
+                }
+            }
+            // handles
+            if (!isSelectList && selected.p1) {
+                let rp1 = selected.p1.add(selectOffset).toScreen(scene),
+                    rp2 = selected.p2.add(selectOffset).toScreen(scene);
+                for (let i of [rp1, rp2]) {
+                    ctx.beginPath();
+                    ctx.strokeStyle = '#1884cf';
+                    ctx.fillStyle = '#1884cf';
+                    ctx.rect(i.x - zoom * 2, i.y - zoom * 2, zoom * 4, zoom * 4);
+                    ctx.fill();
+                    ctx.stroke();
+                }
+                if (selectPoint) {
+                    if (connected) {
+                        let rp1 = connected.p1.add(selectOffset).toScreen(scene),
+                            rp2 = connected.p2.add(selectOffset).toScreen(scene);
+                        ctx.lineWidth = Math.max(2 * zoom, 0.5);
+                        ctx.strokeStyle = 'highlight' in connected ? '#000000' : '#AAAAAA';
+                        ctx.beginPath();
+                        ctx.moveTo(rp1.x, rp1.y);
+                        ctx.lineTo(rp2.x, rp2.y);
+                        ctx.stroke();
+                        // the highlight on the line
+                        ctx.lineWidth = Math.max(zoom, 1);
+                        ctx.strokeStyle = selectPoint ? '#1884cf' : '#1884cf';
+                        ctx.beginPath();
+                        ctx.moveTo(rp1.x, rp1.y);
+                        ctx.lineTo(rp2.x, rp2.y);
+                        ctx.stroke();
+                        // the other handle
+                        let rsp = connected[connectedPoint == 'p1' ? 'p2' : 'p1'].add(selectOffset).toScreen(scene);
+                        ctx.beginPath();
+                        ctx.strokeStyle = '#1884cf';
+                        ctx.fillStyle = '#1884cf';
+                        ctx.rect(rsp.x - zoom * 2, rsp.y - zoom * 2, zoom * 4, zoom * 4);
+                        ctx.fill();
+                        ctx.stroke();
+                    }
+                    let rsp = selectPoint.add(selectOffset).toScreen(scene);
+                    ctx.beginPath();
+                    ctx.strokeStyle = '#1884cf';
+                    ctx.fillStyle = '#1884cf';
+                    ctx.rect(rsp.x - zoom * 2, rsp.y - zoom * 2, zoom * 4, zoom * 4);
+                    ctx.fill();
+                    ctx.stroke();
+                }
+            }
+        }
+        // render hovered
+        if (selectTool.hovered.length) {
+            if (hoverPoint) {
+                let isSelect = hovered == selected,
+                    rsp = hoverPoint.add(isSelect ? selectOffset : vector()).toScreen(scene);
+                ctx.beginPath();
+                ctx.strokeStyle = '#1884cf';
+                ctx.fillStyle = '#1884cf';
+                ctx.rect(rsp.x - zoom * 3, rsp.y - zoom * 3, zoom * 6, zoom * 6);
+                ctx.fill();
+                ctx.stroke();
+            } else {
+                for (let hovered of selectTool.hovered) {
+                    if (hovered.p1) {
+                        ctx.lineWidth = Math.max(2 * zoom, 1);
+                        ctx.strokeStyle = '#1884cf';
+                        ctx.beginPath();
+                        let isSelect = hovered == selected,
+                            rp1 = hovered.p1.add(isSelect ? selectOffset : vector()).toScreen(scene),
+                            rp2 = hovered.p2.add(isSelect ? selectOffset : vector()).toScreen(scene);
+                        ctx.moveTo(rp1.x, rp1.y);
+                        ctx.lineTo(rp2.x, rp2.y);
+                        ctx.stroke();
+                    } else {
+                        let data = powerups[hovered.name];
+                        if (!data) continue;
+                        let isSelect = hovered == selected,
+                            camera = scene.camera,
+                            pos = camera.position.factor(0).add(hovered).add(isSelect ? selectOffset : vector()).toScreen(scene),
+                            size = data[0] / zoom;
+                        ctx.globalAlpha = 0.5;
+                        ctx.fillStyle = data[1 + !!polyMod?.getVar("crPowerups")];
+                        ctx.beginPath();
+                        ctx.arc(pos.x, pos.y, Math.max(data[0] * zoom / 1.2, 1), 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.globalAlpha = 1;
+                    }
+                }
+                if (!isHoverList && hovered.p1) {
+                    let isSelect = hovered == selected,
+                        rp1 = hovered.p1.add(isSelect ? selectOffset : vector()).toScreen(scene),
+                        rp2 = hovered.p2.add(isSelect ? selectOffset : vector()).toScreen(scene);
+                    //handles
+                    for (let i of [rp1, rp2]) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = '#1884cf';
+                        ctx.fillStyle = '#1884cf';
+                        // Calculate the radius based on the zoom level
+                        const radius = zoom * 3;
+                        // Draw the circle
+                        ctx.arc(i.x, i.y, radius, 0, Math.PI * 2);
+                        ctx.fill();
+                        ctx.stroke();
+                    }
+                }
+            }
+            // i tried to make it so the cursor would be a pointer, but it didn't really work out
+            /*if (game.canvas.style.cursor != 'pointer')
+                game.canvas.style.cursor = 'pointer';
+        } else {
+            game.canvas.style.cursor = 'auto';*/
+        }
+        let currentTool = scene.toolHandler.currentTool;
+        if (active && currentTool != 'select') {
+            active = false;
+        } else if (!active && currentTool == 'select') {
+            active = true;
+        }
+    });
+
+    function remove(object) {
+        if (!object) return;
+        object.remove = true;
+        if (polyMod) {
+            object.redrawSectors();
+        } else {
+            object.removeAllReferences();
+        }
+    }
+
+    function recreate(object, transformation = {}) {
+        if (!object) return;
+    
+        let offsetX = transformation.x !== undefined ? transformation.x : selectOffset.x;
+        let offsetY = transformation.y !== undefined ? transformation.y : selectOffset.y;
+        let angle = transformation.angle || 0;
+        let scale = transformation.scaleFactor || 1;
+        let centerX = transformation.center?.x || 0;
+        let centerY = transformation.center?.y || 0;
+        let flipHorizontally = transformation.flipHorizontally || false;
+        let flipVertically = transformation.flipVertically || false;
+    
+        let newObject;
+        if ('highlight' in object || object.p1) {
+            let startX = object.p1.x + offsetX;
+            let startY = object.p1.y + offsetY;
+            let endX = object.p2.x + offsetX;
+            let endY = object.p2.y + offsetY;
+    
+            if (angle !== 0 || scale !== 1) {
+                [startX, startY] = rotateAndScale(startX, startY, centerX, centerY, angle, scale);
+                [endX, endY] = rotateAndScale(endX, endY, centerX, centerY, angle, scale);
+            }
+    
+            if (flipHorizontally) {
+                let midX = (startX + endX) / 2;
+                startX = midX + (midX - startX);
+                endX = midX + (midX - endX);
+            }
+    
+            if (flipVertically) {
+                let midY = (startY + endY) / 2;
+                startY = midY + (midY - startY);
+                endY = midY + (midY - endY);
+            }
+    
+            if ('highlight' in object) {
+                newObject = scene.track.addPhysicsLine(startX, startY, endX, endY);
+            } else {
+                newObject = scene.track.addSceneryLine(startX, startY, endX, endY);
+            }
+        } else {
+            //object.x += offset.x;
+            //object.y += offset.y;
+            object.remove = 0;
+            object.name == 'goal' && scene.track.addTarget(object);
+            scene.track.addPowerup(object);
+            return object
+        }
+    
+        object.newVersion = newObject;
+        return newObject;
+    }
+    
+    function rotateAndScale(x, y, centerX, centerY, angle, scale) {
+        let translatedX = x - centerX;
+        let translatedY = y - centerY;
+    
+        translatedX *= scale;
+        translatedY *= scale;
+    
+        const radians = angle * Math.PI / 180;
+        let rotatedX = translatedX * Math.cos(radians) - translatedY * Math.sin(radians);
+        let rotatedY = translatedX * Math.sin(radians) + translatedY * Math.cos(radians);
+    
+        return [rotatedX + centerX, rotatedY + centerY];
+    }
+}
+
+function linesdf(p, line) {
+    // len has to be length squared for algorithm reasons
+    let len = line.len * line.len,
+        t = (((p.x - line.p1.x) * line.pp.x) + ((p.y - line.p1.y) * line.pp.y)) / len;
+    t = Math.max(0, Math.min(1, t));
+    return Math.hypot((p.x - (line.p1.x + (t * line.pp.x))), (p.y - (line.p1.y + (t * line.pp.y))));
+}
+
+function pointsdf(p, point) {
+    return Math.hypot(p.x - point.x, p.y - point.y);
+}
+
+function linecollide(a1, b1, a2, b2) {
+    let d = (((b2.y - a2.y) * (b1.x - a1.x)) - ((b2.x - a2.x) * (b1.y - a1.y))),
+        uA = (((b2.x - a2.x) * (a1.y - a2.y)) - ((b2.y - a2.y) * (a1.x - a2.x))) / d,
+        uB = (((b1.x - a1.x) * (a1.y - a2.y)) - ((b1.y - a1.y) * (a1.x - a2.x))) / d;
+    return uA >= 0 && uA <= 1 && uB >= 0 && uB <= 1;
+}
+
+function rectcollide(l1, l2, ul, lr) {
+    // we will always give the points as ul, lr
+    /*let ul = {x: Math.min(r1.x, r2.x), y: Math.min(r1.y, r2.y)},
+        lr = {x: Math.max(r1.x, r2.x), y: Math.max(r1.y, r2.y)};*/
+    // if the line is completely within the rectangle
+    if (l1.x >= ul.x && l2.x >= ul.x && l1.x <= lr.x && l2.x <= lr.x &&
+        l1.y >= ul.y && l2.y >= ul.y && l1.y <= lr.y && l2.y <= lr.y)
+        return true;
+
+    // otherwise, check for collisions with the rectangle line segments
+    if (linecollide(l1, l2, ul, {x: ul.x, y: lr.y}) ||
+        linecollide(l1, l2, ul, {x: lr.x, y: ul.y}) ||
+        linecollide(l1, l2, {x: ul.x, y: lr.y}, lr) ||
+        linecollide(l1, l2, {x: lr.x, y: ul.y}, lr))
+        return true;
+    return false;
+}
+
+function pointrect(p, r1, r2) {
+    let ul = {x: Math.min(r1.x, r2.x), y: Math.min(r1.y, r2.y)},
+        lr = {x: Math.max(r1.x, r2.x), y: Math.max(r1.y, r2.y)};
+    return p.x >= ul.x && p.x <= lr.x && p.y >= ul.y && p.y <= lr.y;
+}
+
+/**
+ * Easy one-stop function to create and set up an element or even trees of elements.
+ * @param {String} tag The type of element to create
+ * @param {HTMLElement} [parent] (optional) Parent element to add this one to
+ * @param {Object} [properties={}] Properties (e.g. innerHTML) to set on the element
+ * @param {Array<Object|HTMLElement>} [properties.children] Optional short-circuit to create nested element, but prevents returning them
+ * @param {String} properties.children[].tag Tag for the child
+ * @param {Object} properties.children[].* Properties for the child
+ * @param {Function} [properties.oncreate] Optional function to run once the element has been fully created
+ * @param {Array<String>} [properties.classes] Classes to add to the created object
+ * @returns {HTMLElement} The created element
+ */
+function createElement(tag, parent, properties = {}) {
+    let element = document.createElement(tag),
+        oncreate;
+    if (parent) {
+        parent.append(element);
+    }
+    for (let i in properties) {
+        switch (i) {
+            case 'children':
+                for (let child of properties.children) {
+                    if (child instanceof HTMLElement) {
+                        element.append(child);
+                    } else {
+                        let properties = child,
+                            tag = child.tag;
+                        delete properties.tag;
+                        createElement(tag, element, properties || {});
+                    }
+                }
+                break;
+                // delay running the oncreate function until all properties have been initialized
+            case 'oncreate':
+                oncreate = properties.oncreate;
+                break;
+            case 'classes':
+                element.classList.add(...properties[i]);
+                break;
+            case 'data':
+                for (let data in properties[i]) {
+                    element.dataset[data] = properties[i][data];
+                }
+            default:
+                element[i] = properties[i];
+        }
+    }
+    if (oncreate) {
+        oncreate(element);
+    }
+    return element;
+}
+
+function doAMario(selector) {
+    return new Promise((resolve, reject) => {
+        let interval = setInterval(() => {
+            let found = document.querySelector(selector);
+            if (found) {
+                resolve(found);
+                clearInterval(interval);
+            }
+        }, 250);
+    });
+}
+
+function rInterval() {
+    window.clearInterval(v)
+}
+var v = window.setInterval(function() {
+    if (GameManager != undefined && GameManager.game != undefined) {
+        rInterval();
+        load();
+    }
+}, 250)

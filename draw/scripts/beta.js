@@ -13471,31 +13471,21 @@
                   o = e ? 1 : 0,
                   a = this.rearWheel;
 
-                const oo = this.masses
-                  , aa = this.springs;
+                  let angle = this.frontWheel.pos.sub(this.rearWheel.pos);
+                  let angleX = angle.x / angle.len();
+                  let angleY = angle.y / angle.len();
 
-                let angle = this.frontWheel.pos.sub(this.rearWheel.pos);
-                let angleX = angle.x / angle.len();
-                let angleY = angle.y / angle.len();
-                  
-                this.propeller = x ? GameSettings.propeller : 0; // 0.5 for glide, 1 for propeller
+                  this.propeller = x ? GameSettings.propeller : 0; // 0.5 for glide, 1 for propeller
+                  this.windspeed = x ? GameSettings.windspeed : 0;
 
-                oo[0].pos.x += this.propeller * 0.5 * angleX;
-                oo[0].pos.y += this.propeller * 0.5 * angleY;
-                oo[2].pos.x += this.propeller * angleX;
-                oo[2].pos.y += this.propeller * angleY;
+                  this.head.pos.x += this.propeller * 0.4 * angleX; // thrust
+                  this.head.pos.y += this.propeller * 0.4 * angleY;
+                  this.rearWheel.pos.x += this.propeller * 0.8 * angleX;
+                  this.rearWheel.pos.y += this.propeller * 0.8 * angleY;
 
-
-                /*
-                oo[0].pos.y += .3; // wind
-                */
-                
-                /*
-                const l = e ? 1 : 0;
-                oo[1].motor += (l - oo[1].motor) / 10;
-                */
-
-                
+                  this.head.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01; // wind
+                  this.frontWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01;
+                  this.rearWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01;                
                 
                 (a.motor += (o - a.motor) / 10),
                   r && !this.swapped && (this.swap(), (this.swapped = !0)),
