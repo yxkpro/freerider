@@ -10954,13 +10954,13 @@
                     let s = this.settings.scrollRatio;
                     
 
-                    if (this.settings.cameraMovementPage && !this.settings.cameraMovementVertical && !this.settings.cameraMovementDM && !this.settings.cameraMovementDGS) {
+                    if (this.settings.cameraMovementPage && !this.settings.cameraMovementVertical && !this.settings.cameraMovementDM && !this.settings.cameraMovementDGS && !this.settings.cameraMovementGallery) {
                         e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s;
                         e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;
                         window.scrollTo((t.pos.x - e.x) / s, window.scrollY);
                     }
 
-                    else if (this.settings.cameraMovementPage && this.settings.cameraMovementVertical && !this.settings.cameraMovementDM && !this.settings.cameraMovementDGS) {
+                    else if (this.settings.cameraMovementPage && this.settings.cameraMovementVertical && !this.settings.cameraMovementDM && !this.settings.cameraMovementDGS && !this.settings.cameraMovementGallery) {
                             e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s;
                             e.y = ((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s;
                             window.scrollTo(window.scrollX, (t.pos.y - e.y) / s);
@@ -10977,6 +10977,12 @@
                     else if (this.settings.cameraMovementDGS) {
                         e.x += ((t.pos.x - e.x) / s);
                         e.y = -500;
+                    }
+
+                    else if (this.settings.cameraMovementGallery) {
+                        e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s;
+                        e.y = (((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s) + (this.settings.offset * 2);
+                        window.scrollTo(window.scrollX, ((t.pos.y - e.y) / s) + this.settings.offset);
                     }
 
                     else {

@@ -25,10 +25,19 @@
             }
         }
     </script>
+    <script>
+    GameSettings.height = 2000; //if height -2000, offset -500, canvas top -1000
+    GameSettings.offset = 250;
+    GameSettings.scrollRatio = 2;
+    GameSettings.cameraMovementGallery = true;
+    </script>
 
 <style>
+    canvas {
+        top: -634px; 
+        right: -1522px;
+    }
     body {
-        overflow-y: visible;
         width: 885px;
         text-transform: none;
     }
