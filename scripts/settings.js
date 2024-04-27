@@ -33,7 +33,7 @@ var GameSettings = {
     "cameraMovementHorizontal": false,
     "cameraMovementDM" : false,
     "cameraMovementGallery" : false,
-    "offset" : 750,
+    "offset" : 610,
     "lowQualityMode": false,
     "device": "desktop",
     "mobile": false,

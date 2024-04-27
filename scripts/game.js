@@ -14001,7 +14001,7 @@
         }
         
         const planeyt = planevt.prototype;
-        planeyt.vehicleName = "plane",
+        planeyt.vehicleName = "PLANE",
         planeyt.masses = null,
         planeyt.springs = null,
         planeyt.slow = !1,
