@@ -1,0 +1,15 @@
+/************************************************************************\
+ *
+ * VaultWiki
+ * Version 4.0.5
+ *
+ * Copyright ©2008-2015 Cracked Egg Studios, LLC. All Rights Reserved.
+ * This file may not be redistributed in whole or significant part.
+ * 
+ * VAULTWIKI IS NOT FREE SOFTWARE
+ * https://www.vaultwiki.org/
+ * https://www.vaultwiki.org/pages/Info:License-Agreement
+ *
+\************************************************************************/
+
+vw_BBCode_Handle.prototype.parent_join=vw_BBCode_Handle.prototype.join;vw_BBCode_Handle.prototype.join=function(a,b){return this.parent_join(a,b).replace(/\-/g,"_")};

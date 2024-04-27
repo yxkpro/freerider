@@ -1,0 +1,15 @@
+/************************************************************************\
+ *
+ * VaultWiki
+ * Version 4.0.5
+ *
+ * Copyright ©2008-2015 Cracked Egg Studios, LLC. All Rights Reserved.
+ * This file may not be redistributed in whole or significant part.
+ * 
+ * VAULTWIKI IS NOT FREE SOFTWARE
+ * https://www.vaultwiki.org/
+ * https://www.vaultwiki.org/pages/Info:License-Agreement
+ *
+\************************************************************************/
+
+function vw_bbcode_init(){vw_BBCode.init()}function vw_BBCode_Handle(){this.registry=null;this.processed=this.inited=!1;this._css={};this._cssPath=""}vw_BBCode_Handle.prototype.css=function(a){this._css[a]=1};vw_BBCode_Handle.prototype.css_path=function(a){this._cssPath=a};vw_BBCode_Handle.prototype.init=function(){this.inited||(this.inited=!0);!this.processed&&this.registry&&this.process()};vw_BBCode_Handle.prototype.spawn=function(a){this.registry=a;!this.processed&&this.inited&&this.process()}; vw_BBCode_Handle.prototype.process=function(){if(!this.processed){this.processed=!0;please_load=[];for(var a in this.registry)if(Y.Node.one("."+a))for(i in this.registry[a])please_load[please_load.length]=VW_RESOURCE_PATH+"/"+this.registry[a][i];please_load.length&&vw_Hard_Core.cue(please_load)}if(this._cssPath){var c=this,d=[];Y.Node.all("div.vw-require").each(function(){for(var a=this.getAttribute("data-css").split(","),b=0;b<a.length;b++)"undefined"==typeof c._css[a[b]+".css"]&&(d[d.length]=a[b], c.css(a[b]+".css"));this.remove(!0)});d.length&&vw_Hard_Core.cue(this._cssPath.replace("{1}",encodeURIComponent(this.join(d,","))))}};vw_BBCode_Handle.prototype.load_css=function(a){"undefined"==typeof this._css[a+".css"]&&(this.css(a+".css"),vw_Hard_Core.cue(this._cssPath.replace("{1}",encodeURIComponent(a))))};vw_BBCode_Handle.prototype.join=function(a,c){return a.join(c)};var vw_BBCode=new vw_BBCode_Handle;Y.use("node-base",vw_bbcode_init);

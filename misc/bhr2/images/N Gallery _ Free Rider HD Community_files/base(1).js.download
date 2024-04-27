@@ -1,0 +1,15 @@
+/************************************************************************\
+ *
+ * VaultWiki
+ * Version 4.0.5
+ *
+ * Copyright ©2008-2015 Cracked Egg Studios, LLC. All Rights Reserved.
+ * This file may not be redistributed in whole or significant part.
+ * 
+ * VAULTWIKI IS NOT FREE SOFTWARE
+ * https://www.vaultwiki.org/
+ * https://www.vaultwiki.org/pages/Info:License-Agreement
+ *
+\************************************************************************/
+
+vw_Hard_Core.bind("get_cookies",function(a){return jQuery.getCookie(a)});vw_Hard_Core.bind("set_cookie",function(a,d,b){if(null===d)jQuery.deleteCookie(a);else{b||(b=1);var c=new Date;c.setTime(c.getTime()+86400*b);jQuery.setCookie(a,d,c)}});vw_Hard_Core.bind("check_security",function(){this.set("securitytoken",XenForo._csrfToken)}); vw_Hard_Core.kindle("init",function(){vw_Hard_Core.set("securitytoken_field","_xfToken");vw_Hard_Core.set("ajax_script","index.php?"+VW_WIKI_PATH+"-ajax/");vw_Hard_Core.set("panel_script","admin.php?wiki/")});

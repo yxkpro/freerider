@@ -713,3 +713,8 @@ input,textarea#color {
 #author:hover {
     background-color: #1884cf;
 }
+
+details {
+    position: relative;
+    z-index: 2;
+}
