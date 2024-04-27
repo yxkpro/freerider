@@ -13385,6 +13385,645 @@
           , _t = Math.min
           , Tt = Math.sqrt
           , Ct = Math.pow;
+
+          //plane vehicle
+
+          class planevt extends q {
+            constructor(t, e, s, i) {
+                super(),
+                super.init(t),
+                this.settings = GameSettings;
+                this.createMasses(e, i),
+                this.createSprings(),
+                this.updateCameraFocalPoint(),
+                this.stopSounds(),
+                -1 === s && this.swap(),
+                this.propeller = 0;
+            }
+            createMasses(e, s) {
+                this.masses = [];
+                const i = new A(),
+                  n = new X(new t.Z(e.x + 21, e.y + 3), this),
+                  r = new X(new t.Z(e.x + -21, e.y + 3), this);
+                i.init(new t.Z(e.x, e.y - 36), this),
+                  (i.drive = this.createRagdoll.bind(this)),
+                  (r.radius = 11.7), // wheel size factor wsr * 0.5
+                  (n.radius = 11.7),
+                  (i.radius = 14),
+                  i.vel.equ(s),
+                  r.vel.equ(s),
+                  n.vel.equ(s),
+                  this.masses.push(i, r, n),
+                  (this.head = i),
+                  (this.frontWheel = n),
+                  (this.rearWheel = r),
+
+                  this.rotor = 0;
+              }
+              createSprings() {
+                this.springs = [];
+                const t = new N(this.head, this.rearWheel, this),
+                  e = new N(this.rearWheel, this.frontWheel, this),
+                  s = new N(this.frontWheel, this.head, this);
+                (e.lrest = 42),
+                  (e.leff = 42),
+                  (e.springConstant = 0.35),
+                  (e.dampConstant = 0.3),
+                  (t.lrest = 45),
+                  (t.leff = 45),
+                  (t.springConstant = 0.35),
+                  (t.dampConstant = 0.3),
+                  (s.lrest = 45),
+                  (s.leff = 45),
+                  (s.springConstant = 0.35),
+                  (s.dampConstant = 0.3),
+                  this.springs.push(t, e, s),
+                  (this.rearSpring = t),
+                  (this.chasse = e),
+                  (this.frontSpring = s);
+              }
+              createRagdoll() {
+                (this.ragdoll = new it(this.getStickMan(), this)),
+                  this.ragdoll.zero(this.head.vel, this.rearWheel.vel),
+                  (this.ragdoll.dir = this.dir),
+                  (this.rearWheel.motor = 0),
+                  (this.rearWheel.brake = !1),
+                  (this.frontWheel.brake = !1),
+                  (this.head.collide = !1),
+                  this.updateCameraFocalPoint(),
+                  this.player.isInFocus() && !this.ignore && this.playBailSound(),
+                  this.dead();
+              }
+              stopSounds() {
+                const t = this.scene.sound;
+                t.stop(lt.BIKE_AIR), t.stop(lt.BIKE_GROUND);
+              }
+              playBailSound() {
+                const t = this.scene.sound,
+                  e = at(this.speed / 50, 1);
+                switch (rt(3 * ot()) + 1) {
+                  case 1:
+                    t.play(lt.BIKE_FALL_1, e);
+                    break;
+                  case 2:
+                    t.play(lt.BIKE_FALL_2, e);
+                    break;
+                  case 3:
+                    t.play(lt.BIKE_FALL_3, e);
+                }
+              }
+              updateCameraFocalPoint() {
+                this.focalPoint = this.ragdoll ? this.ragdoll.head : this.head;
+              }
+              getStickMan() {
+                const e = this.dir,
+                  s = this.head,
+                  i = this.frontWheel,
+                  n = this.rearWheel,
+                  r = this.pedala,
+                  o = i.pos.sub(n.pos),
+                  a = s.pos.sub(i.pos.add(n.pos).factor(0.5)),
+                  h = new t.Z(o.y * e, -o.x * e),
+                  l = {};
+                (l.head = n.pos.add(o.factor(0.35)).add(a.factor(1.2))),
+                  (l.lHand = l.rHand = n.pos.add(o.factor(0.8)).add(h.factor(0.68)));
+                let c = l.head.sub(l.lHand);
+                (c = new t.Z(c.y * e, -c.x * e)),
+                  (l.lElbow = l.rElbow =
+                    l.head
+                      .add(l.lHand)
+                      .factor(0.5)
+                      .add(c.factor(130 / c.lenSqr()))),
+                  (l.waist = n.pos.add(o.factor(0.2)).add(h.factor(0.5)));
+                const u = new t.Z(6 * Math.cos(r), 6 * Math.sin(r));
+                l.lFoot = n.pos.add(o.factor(0.4)).add(h.factor(0.05)).add(u);
+                let d = l.waist.sub(l.lFoot);
+                return (
+                  (d = new t.Z(-d.y * e, d.x * e)),
+                  (l.lKnee = l.waist
+                    .add(l.lFoot)
+                    .factor(0.5)
+                    .add(d.factor(160 / d.lenSqr()))),
+                  (l.rFoot = n.pos.add(o.factor(0.4)).add(h.factor(0.05)).sub(u)),
+                  (d = l.waist.sub(l.rFoot)),
+                  (d = new t.Z(-d.y * e, d.x * e)),
+                  (l.rKnee = l.waist
+                    .add(l.rFoot)
+                    .factor(0.5)
+                    .add(d.factor(160 / d.lenSqr()))),
+                  l
+                );
+              }
+              update() {
+                if (
+                  (this.crashed || (this.updateSound(), this.control()),
+                  this.explosion)
+                )
+                  this.explosion.update();
+                else {
+                  const t = this.springs,
+                    e = this.masses;
+                  for (let e = t.length - 1; e >= 0; e--) t[e].update();
+                  for (let t = e.length - 1; t >= 0; t--) e[t].update();
+                  if (
+                    (this.rearWheel.contact &&
+                      this.frontWheel.contact &&
+                      (this.slow = !1),
+                    !this.slow)
+                  ) {
+                    this.crashed || this.control();
+                    for (let e = t.length - 1; e >= 0; e--) t[e].update();
+                    for (let t = e.length - 1; t >= 0; t--) e[t].update();
+                  }
+                  this.ragdoll ? this.ragdoll.update() : this.updateDrawHeadAngle();
+                }
+                this.updateCameraFocalPoint();
+              }
+              updateSound() {
+                if (this.player.isInFocus() && !this.ignore) {
+                  this.updateSpeed();
+                  const t = at(this.speed / 50, 1),
+                    e = this.scene.sound;
+                  this.rearWheel.contact || this.frontWheel.contact
+                    ? (e.play(lt.BIKE_GROUND, t), e.stop(lt.BIKE_AIR))
+                    : (e.play(lt.BIKE_AIR, t), e.stop(lt.BIKE_GROUND));
+                }
+              }
+              swap() {
+                (this.dir *= -1), this.chasse.swap();
+                const t = this.rearSpring.leff;
+                (this.rearSpring.leff = this.frontSpring.leff),
+                  (this.frontSpring.leff = t);
+              }
+              control() {
+                const t = this.gamepad,
+                  e = t.isButtonDown("up"),
+                  s = t.isButtonDown("down"),
+                  i = t.isButtonDown("left"),
+                  n = t.isButtonDown("right"),
+                  r = t.isButtonDown("z"),
+                  x = t.isButtonDown("x"),
+                  o = e ? 1 : 0,
+                  a = this.rearWheel;
+
+                  let angle = this.frontWheel.pos.sub(this.rearWheel.pos);
+                  let angleX = angle.x / angle.len();
+                  let angleY = angle.y / angle.len();
+
+                  this.propeller = x ? GameSettings.propeller : 0; // 0.5 for glide, 1 for propeller
+                  this.windspeed = x ? GameSettings.windspeed : 0;
+
+                  this.head.pos.x += this.propeller * 0.4 * angleX; // thrust
+                  this.head.pos.y += this.propeller * 0.4 * angleY;
+                  this.rearWheel.pos.x += this.propeller * 0.8 * angleX;
+                  this.rearWheel.pos.y += this.propeller * 0.8 * angleY;
+
+                  this.head.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01; // wind
+                  this.frontWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01;
+                  this.rearWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01;                
+                
+                (a.motor += (o - a.motor) / 10),
+                  r && !this.swapped && (this.swap(), (this.swapped = !0)),
+                  r || (this.swapped = !1),
+
+                  
+                  e && (this.pedala += this.rearWheel.speed / 5), 
+                
+                
+                  (a.brake = s),
+                  s && this.frontSpring.contract(-10, 10),
+                  (1 === this.dir && n && s) || (-1 === this.dir && i && s)
+                    ? (this.frontWheel.brake = !0)
+                    : (this.frontWheel.brake = !1);
+                let h = i ? 1 : 0;
+                (h += n ? -1 : 0),
+                  this.rearSpring.contract(5 * h * this.dir, 5),
+                  this.frontSpring.contract(5 * -h * this.dir, 5),
+                  this.chasse.rotate(h / 6),
+                  !h &&
+                    e &&
+                    (this.rearSpring.contract(-7, 5),
+                    this.frontSpring.contract(7, 5));
+              }
+
+              draw() {
+                if (this.explosion) this.explosion.draw();
+                else {
+                  const t = this.scene.game.canvas.getContext("2d");
+                  if (
+                    ((t.imageSmoothingEnabled = !0),
+                    (t.webkitImageSmoothingEnabled = !0),
+                    (t.mozImageSmoothingEnabled = !0),
+                    this.settings.developerMode)
+                  )
+                    for (const t of this.masses) t.draw();
+
+                   // this.drawPlane();
+                    
+                  this.drawBikeFrame();
+                }
+              }
+              updateDrawHeadAngle() {
+                const t = this.frontWheel.pos.sub(this.rearWheel.pos);
+                this.drawHeadAngle = -(nt(t.x, t.y) - Math.PI / 2);
+              }
+              drawBikeFrame() {
+                const e = this.scene,
+                  s = e.game.mod.getVar("crBmx"),
+                  i = e.game.mod.getVar("crHead"),
+                  n = e.game.mod.getVar("customColors"),
+                  r = n ? Q(e.game.mod.getVar("vehicleColor")) : "#000",
+                  o = e.game.mod.getVar("blackHat"),
+                  a = this.rearWheel.pos.toScreen(e),
+                  h = this.frontWheel.pos.toScreen(e),
+                  l = this.head.pos.toScreen(e),
+                  c = this.player._opacity;
+                let u = h.sub(a),
+                  d = new t.Z(u.y * this.dir, -u.x * this.dir);
+                const p = new W(a, u, d),
+                  f = this.pedala,
+                  g = Math.atan2(u.y, u.x),
+                  m = this.dir,
+                  v = e.camera.zoom,
+                  y = e.game.canvas.getContext("2d"),
+                  w = 3.5,
+                  x = 10;
+
+                  const masses = this.masses;
+                  const nn = this.dir;
+                  let rotor = this.rotor;
+                  let dd = masses[1].pos.add(masses[2].pos).factor(.5);
+                      dd =  masses[0].pos.sub(dd).factor(v);
+  
+                  let pp = new t.Z(-dd.y * nn,dd.x * nn);
+                  
+
+                (y.globalAlpha = c),
+                  (y.strokeStyle = "rgba(0,0,0,1)"),
+                  (y.lineWidth = w * v),
+                  (y.lineCap = "round"),
+                  (y.lineJoin = "round"),
+                  (y.fillStyle = "rgba(200,200, 200, 0.2)"),
+                  y.beginPath(),
+                  y.arc(h.x, h.y, x * v, 0, 2 * Math.PI, !1),
+                  y.moveTo(a.x + x * v, a.y), // rear wheel size wsr
+                  y.arc(a.x, a.y, x * v, 0, 2 * Math.PI, !1), // rear wheel size wsr
+                  s || y.fill(),
+                  y.stroke();
+                const b = p.transform(0.3, 0.25),
+                  _ = p.transform(0.4, 0.05),
+                  T = p.transform(0.84, 0.42),
+                  C = p.transform(0.84, 0.37),
+                  k = new t.Z(6 * Math.cos(f + g) * v, 6 * Math.sin(f + g) * v),
+                  S = _.add(k),
+                  A = _.sub(k);
+                d = l.sub(a.add(u.factor(0.5)));
+
+                const ff = masses[2].pos.toScreen(e);
+                    rotor += 0.5 * this.propeller + .1, // this.propeller or masses[1].motor
+                    rotor > 6.2831 && (rotor -= 6.2831),
+                    this.rotor = rotor;
+
+                
+                const gg = new W(ff,pp,dd); // propeller intersector
+                    /*
+                    y.strokeStyle = "#000000",
+                    y.lineWidth = 3 * v,
+                    y.lineJoin = y.lineCap = "round",
+                    y.beginPath(),
+                    y.moveTo(...gg.transform(0, .5).toArray()),
+                    y.lineTo(...gg.transform(0, 1).toArray()),
+                    y.stroke(),
+                    */
+                    y.beginPath();
+                
+
+                const aa = new W(ff,pp,dd); // seat
+                    /*
+                    y.strokeStyle = "#000000",
+                    y.lineWidth = 3 * v,
+                    y.lineJoin = y.lineCap = "round",
+                    y.beginPath(),
+                    y.moveTo(...aa.transform(-1, .5).toArray()),
+                    y.lineTo(...aa.transform(-1, 1).toArray()),
+                    y.stroke(),
+                    */
+                    y.beginPath();    
+
+                const mm = (.25) * Math.cos(rotor); // propeller
+                    y.moveTo(...gg.transform(0.5, .5 + mm).toArray()),
+                    y.lineTo(...gg.transform(0.5, 0.5 + -mm).toArray());    
+                    y.stroke();
+
+                const P = new W(b, u, d),
+                  M = P.transform(-0.1, 0.3);
+                let I = S.sub(M),
+                  B = new t.Z(I.y * m, -I.x * m);
+                B = B.factor(v * v);
+                const D = M.add(I.factor(0.5)).add(B.factor(200 / I.lenSqr())),
+                  E = S.add(I.factor(0.12)).add(B.factor(50 / I.lenSqr()));
+                (I = A.sub(M)),
+                  (B = new t.Z(I.y * m, -I.x * m)),
+                  (B = B.factor(v * v));
+                const L = M.add(I.factor(0.5)).add(B.factor(200 / I.lenSqr())),
+                  z = A.add(I.factor(0.12)).add(B.factor(50 / I.lenSqr()));
+                this.crashed ||
+                  ((y.strokeStyle = n
+                    ? tt([...e.game.mod.getVar("riderColor"), 0.5])
+                    : "rgba(0,0,0,0.5)"),
+                  (y.lineWidth = 6 * v),
+                  y.beginPath(),
+                  y.moveTo(A.x, A.y),
+                  y.lineTo(L.x, L.y),
+                  y.lineTo(M.x, M.y),
+                  y.stroke(),
+                  s ||
+                    ((y.lineWidth = 4 * v),
+                    y.beginPath(),
+                    y.moveTo(A.x, A.y),
+                    y.lineTo(z.x, z.y),
+                    y.stroke())),
+                  y.beginPath(),
+                  (y.strokeStyle = r || "#000000"),
+                  (y.lineWidth = 3 * v),
+                  y.moveTo(T.x, T.y),
+                  y.lineTo(b.x, b.y),
+                  y.lineTo(a.x, a.y),
+                  y.lineTo(_.x, _.y),
+                  y.lineTo(C.x, C.y),
+                  y.stroke(),
+                  s ||
+                    (y.beginPath(),
+                    (y.lineWidth = Math.max(1 * v, 0.5)),
+                    y.arc(_.x, _.y, 3 * v, 0, 2 * Math.PI, !1),
+                    y.stroke()),
+                  y.beginPath(),
+                  (y.lineWidth = s ? 3 * v : Math.max(1 * v, 0.5)),
+                  y.moveTo(S.x, S.y),
+                  y.lineTo(A.x, A.y),
+                  y.stroke();
+                const O = p.transform(0.25, 0.4),
+                  F = p.transform(0.17, 0.38),
+                  j = p.transform(0.3, 0.45),
+                  R = p.transform(0.97, 0),
+                  V = p.transform(0.8, 0.48),
+                  H = p.transform(0.86, 0.5),
+                  N = p.transform(0.82, 0.65),
+                  Z = p.transform(0.78, 0.67);
+                if (
+                  (y.beginPath(),
+                  (y.lineWidth = 3 * v),
+                  y.moveTo(F.x, F.y),
+                  y.lineTo(j.x, j.y),
+                  y.moveTo(_.x, _.y),
+                  y.lineTo(O.x, O.y),
+                  y.moveTo(h.x, h.y),
+                  y.lineTo(R.x, R.y),
+                  y.lineTo(V.x, V.y),
+                  y.lineTo(H.x, H.y),
+                  y.lineTo(N.x, N.y),
+                  y.lineTo(Z.x, Z.y),
+                  y.stroke(),
+                  this.crashed && this.ragdoll)
+                )
+                  this.ragdoll.draw();
+                else {
+                  (y.lineWidth = 6 * v),
+                    (y.strokeStyle = n ? Q(e.game.mod.getVar("riderColor")) : "#000"),
+                    y.beginPath(),
+                    y.moveTo(S.x, S.y),
+                    y.lineTo(D.x, D.y),
+                    y.lineTo(M.x, M.y),
+                    y.stroke(),
+                    s ||
+                      (y.beginPath(),
+                      y.moveTo(S.x, S.y),
+                      y.lineTo(E.x, E.y),
+                      y.stroke());
+                  const r = P.transform(0.05, 0.9);
+                  (y.lineWidth = 8 * v),
+                    y.beginPath(),
+                    y.moveTo(M.x, M.y),
+                    y.lineTo(r.x, r.y),
+                    y.stroke();
+                  const a = P.transform(0.15, 1.05),
+                    h = P.transform(0.4, 1.1),
+                    l = P.transform(0.05, 1.05);
+                  (u = r.sub(Z)),
+                    (d = new t.Z(u.y * m, -u.x * m)),
+                    (d = d.factor(v * v));
+                  const c = Z.add(u.factor(0.4)).add(d.factor(130 / u.lenSqr()));
+                  if (
+                    ((y.lineWidth = 5 * v),
+                    y.beginPath(),
+                    y.moveTo(r.x, r.y),
+                    y.lineTo(c.x, c.y),
+                    y.lineTo(Z.x, Z.y),
+                    y.stroke(),
+                    i || o)
+                  )
+                    if (o) {
+                      const t = P.transform(0.35, 1.15),
+                        e = P.transform(-0.05, 1.1),
+                        s = P.transform(0.25, 1.13),
+                        i = P.transform(0.05, 1.11),
+                        n = P.transform(0.25, 1.35),
+                        r = P.transform(-0.03, 1.3);
+                      y.beginPath(),
+                        y.moveTo(a.x + 5 * v, a.y),
+                        y.arc(a.x, a.y, 5 * v, 0, 2 * Math.PI),
+                        (y.lineWidth = 2 * v),
+                        y.stroke(),
+                        y.beginPath(),
+                        y.moveTo(t.x, t.y),
+                        y.lineTo(s.x, s.y),
+                        y.lineTo(n.x, n.y),
+                        y.lineTo(r.x, r.y),
+                        y.lineTo(i.x, i.y),
+                        y.lineTo(e.x, e.y),
+                        (y.fillStyle = y.strokeStyle),
+                        y.stroke(),
+                        y.fill();
+                    } else
+                      y.beginPath(),
+                        y.moveTo(a.x + 5 * v, a.y),
+                        y.arc(a.x, a.y, 5 * v, 0, 2 * Math.PI),
+                        y.moveTo(h.x, h.y),
+                        y.lineTo(l.x, l.y),
+                        (y.lineWidth = 2 * v),
+                        y.stroke();
+                  else
+                    GameInventoryManager.getItem(this.cosmetics.head).draw(
+                      y,
+                      a.x,
+                      a.y,
+                      this.drawHeadAngle,
+                      v,
+                      this.dir
+                    );
+                  y.globalAlpha = 1;
+                }
+              }
+              drawPlane() {
+                if (this.explosion)
+                    this.explosion.draw(1);
+                else {
+                    const e = this.scene.game.mod.getVar("crHeli")
+                      , s = this.scene.game.canvas.getContext("2d");
+                    s.imageSmoothingEnabled = !0,
+                    s.webkitImageSmoothingEnabled = !0,
+                    s.mozImageSmoothingEnabled = !0,
+                    s.globalAlpha = this.player._opacity;
+                    const i = this.masses
+                      , n = this.dir;
+                    let r = this.rotor // top rotor
+                      , o = this.rotor2;
+                    const a = this.scene
+                      , h = a.camera.zoom
+                      , l = i[1].pos.toScreen(a)
+                      , c = i[2].pos.toScreen(a)
+                      , u = i[3].pos.toScreen(a);
+                    let d = i[1].pos.add(i[2].pos).factor(.5);
+                    d = i[0].pos.sub(d).factor(h);
+                    let p = new t.Z(-d.y * n,d.x * n);
+                    //propeller
+                    const f = i[0].pos.toScreen(a);
+                    r += .5 * i[0].motor + .05,
+                    r > 6.2831 && (r -= 6.2831),
+                    o += .5,
+                    o > 6.2831 && (o -= 6.2831),
+                    this.rotor = r,
+                    this.rotor2 = o;
+                    const g = new W(f,p,d);
+                    s.strokeStyle = "#000000",
+                    s.lineWidth = 5 * h,
+                    s.lineJoin = s.lineCap = "round",
+                    s.beginPath(),
+                    s.moveTo(...g.transform(0, .5).toArray()),
+                    s.lineTo(...g.transform(0, 1).toArray()), // length of propeller intersector
+                    s.stroke(),
+                    s.lineWidth = 3 * h,
+                    s.beginPath();
+                    const m = (e ? .7 : .9) * Math.cos(r);
+                    s.moveTo(...g.transform(m, .9).toArray()),
+                    s.lineTo(...g.transform(-m, .9).toArray()),
+                    s.stroke(),
+                    s.lineWidth = 4 * h,
+                    s.strokeStyle = e ? "#666666" : "#000",
+                    s.lineWidth = 4 * h,
+                    s.beginPath(),
+                    s.moveTo(...g.transform(-.2, -.1, l).toArray()),
+                    s.lineTo(...g.transform(0, -.25, l).toArray()),
+                    s.lineTo(...g.transform(0, -.25, c).toArray()),
+                    s.lineTo(...g.transform(.2, -.1, c).toArray()),
+                    s.stroke(),
+                    s.lineWidth = 3 * h,
+                    s.beginPath(),
+                    s.moveTo(...g.transform(0, -.2, l).toArray()),
+                    s.lineTo(f.x, f.y),
+                    s.lineTo(...g.transform(0, -.2, c).toArray()),
+                    s.stroke(),
+                    s.lineWidth = 6 * h,
+                    s.strokeStyle = "#000000",
+                    s.beginPath(),
+                    s.moveTo(f.x, f.y),
+                    s.lineTo(u.x, u.y),
+                    s.lineTo(...g.transform(0, -.3).toArray()),
+                    s.stroke(),
+                    s.lineWidth = 2 * h,
+                    s.beginPath();
+                    const v = 7 * h
+                      , y = new t.Z(v * Math.sin(-o),v * Math.cos(-o));
+                    if (s.moveTo(u.x + y.x, u.y + y.y),
+                    s.lineTo(u.x - y.x, u.y - y.y),
+                    s.moveTo(u.x - y.y, u.y + y.x),
+                    s.lineTo(u.x + y.y, u.y - y.x),
+                    s.stroke(),
+                    s.beginPath(),
+                    e && (s.strokeStyle = "#aaaaaa"),
+                    s.lineWidth = 2 * h,
+                    s.arc(u.x, u.y, i[3].radius * h, 0, 2 * Math.PI, !1),
+                    s.stroke(),
+                    e) {
+                        const t = i[0].radius * h;
+                        s.beginPath(),
+                        s.arc(f.x, f.y, t, 0, 2 * Math.PI),
+                        s.fillStyle = "#000",
+                        s.fill(),
+                        s.beginPath(),
+                        s.arc(...g.transform(.2, .05, f).toArray(), 8.5 * h, 0, 2 * Math.PI),
+                        s.fillStyle = "#777777",
+                        s.fill()
+                    } else {
+                        p = f.sub(u),
+                        p.factorSelf(h / p.len()),
+                        d = new t.Z(-p.y,p.x);
+                        const e = p.factor(5).add(d.factor(2 * this.dir))
+                          , i = p.factor(5).add(d.factor(-5 * this.dir));
+                        this.drawCockpit();
+                        const r = this.canvasCockpit
+                          , o = r.width
+                          , a = r.height
+                          , l = f.x + e.x
+                          , c = f.y + e.y
+                          , g = -o / 2
+                          , m = -a / 2
+                          , v = -1 === n
+                          , y = GameInventoryManager.getItem(this.cosmetics.head)
+                          , w = this.cockpitAngle;
+                        y.draw(s, l + i.x, c + i.y, w, .7 * h, n),
+                        s.translate(l, c),
+                        s.rotate(w),
+                        v && s.scale(1, -1),
+                        s.drawImage(r, g, m, o, a),
+                        v && s.scale(1, -1),
+                        s.rotate(-w),
+                        s.translate(-l, -c),
+                        s.globalAlpha = 1
+                    }
+                }
+            }
+              clone() {
+                const e = new ht(this.player, new t.Z(0, 0), 1, new t.Z(0, 0));
+                return (
+                  e.frontWheel.pos.equ(this.frontWheel.pos),
+                  e.frontWheel.vel.equ(this.frontWheel.vel),
+                  e.frontWheel.old.equ(this.frontWheel.old),
+                  e.rearWheel.pos.equ(this.rearWheel.pos),
+                  e.rearWheel.vel.equ(this.rearWheel.vel),
+                  e.rearWheel.old.equ(this.rearWheel.old),
+                  e.head.pos.equ(this.head.pos),
+                  e.head.vel.equ(this.head.vel),
+                  e.head.old.equ(this.head.old),
+                  (e.masses = [e.head, e.rearWheel, e.frontWheel]),
+                  e
+                )}
+        }
+        
+        const planeyt = planevt.prototype;
+        planeyt.vehicleName = "plane",
+        planeyt.masses = null,
+        planeyt.springs = null,
+        planeyt.slow = !1,
+        planeyt.swapped = !1;
+
+        planeyt.cosmetics = null,
+        planeyt.pedala = 0,
+        planeyt.cosmeticHead = null,
+        planeyt.cosmeticRearWheel = null,
+        planeyt.cosmeticFrontWheel = null,
+        planeyt.ragdoll = null;
+        const planewt = {
+            PLANE: "PLANE"
+        }
+          , planext = planevt
+          , planebt = Math.atan2
+          , plane_t = Math.min
+          , planeTt = Math.sqrt
+          , planeCt = Math.pow;
+
+          //end plane vehicle
+
         class kt extends q {
             constructor(t, e, s) {
                 super(),
@@ -14595,6 +15234,7 @@
         Xt.BMX = ut,
         Xt.MTB = Ot,
         Xt.UNI = uniut,
+        Xt.PLANE = planext,
         Xt.HELI = xt,
         Xt.TRUCK = Pt,
         Xt.HELI = xt,
@@ -19037,7 +19677,7 @@
                 this.sceneryLines = [],
                 this.foregroundLines = [],
                 this.targets = [],
-                this.allowedVehicles = ["MTB", "BMX"],
+                this.allowedVehicles = ["MTB", "BMX", "PLANE"],
                 //this.allowedVehicles = ["Pete", "Maxime", "Char"],
                 this.canvasPool = new $i(t),
                 this.needsCleaning = !1,
