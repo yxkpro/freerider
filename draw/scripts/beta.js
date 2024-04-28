@@ -13587,7 +13587,7 @@
                 d = l.sub(a.add(u.factor(0.5)));
 
                 const ff = masses[2].pos.toScreen(e);
-                    rotor += 0.5 * this.propeller + .1, // this.propeller or masses[1].motor
+                    rotor += 2 * this.propeller + .1, // this.propeller or masses[1].motor
                     rotor > 6.2831 && (rotor -= 6.2831),
                     this.rotor = rotor;
 
@@ -13908,7 +13908,7 @@
         }
         
         const planeyt = planevt.prototype;
-        planeyt.vehicleName = "Plane",
+        planeyt.vehicleName = "FLYBIKE", //appended to end of code
         planeyt.masses = null,
         planeyt.springs = null,
         planeyt.slow = !1,
@@ -13921,7 +13921,7 @@
         planeyt.cosmeticFrontWheel = null,
         planeyt.ragdoll = null;
         const planewt = {
-            PLANE: "plane"
+            FLYBIKE: "FLYBIKE"
         }
           , planext = planevt
           , planebt = Math.atan2
@@ -15147,7 +15147,7 @@
         Xt.BMX = ut,
         Xt.MTB = Ot,
         Xt.HELI = xt,
-        Xt.PLANE = planext,
+        Xt.FLYBIKE = planext,
         Xt.TRUCK = Pt,
         Xt.HELI = xt,
         Xt.BALLOON = Vt,
@@ -19727,7 +19727,7 @@
                 this.sceneryLines = [],
                 this.foregroundLines = [],
                 this.targets = [],
-                this.allowedVehicles = ["MTB", "BMX", "PLANE"],
+                this.allowedVehicles = ["MTB", "BMX", "FLYBIKE"],
                 //this.allowedVehicles = ["Pete", "Maxime", "Char"],
                 this.canvasPool = new $i(t),
                 this.needsCleaning = !1,

@@ -13570,17 +13570,19 @@
                   let angleX = angle.x / angle.len();
                   let angleY = angle.y / angle.len();
 
-                  this.propeller = x ? GameSettings.propeller : 0; // 0.5 for glide, 1 for propeller
+                  this.propeller = x ? GameSettings.propeller * 0.3 : 0; // 0.3 allows GameSettings.propeller = 1 to be equal to gravity forces
                   this.windspeed = x ? GameSettings.windspeed : 0;
+                  
+                  let wind = 0.01 / GameSettings.propeller; // 0.01 allows wind lift to be equal to gravity forces at max velocity.x
 
-                  this.head.pos.x += this.propeller * 0.4 * angleX; // thrust
-                  this.head.pos.y += this.propeller * 0.4 * angleY;
-                  this.rearWheel.pos.x += this.propeller * 0.8 * angleX;
-                  this.rearWheel.pos.y += this.propeller * 0.8 * angleY;
+                  this.head.pos.x += this.propeller * angleX; // thrust
+                  this.head.pos.y += this.propeller * angleY;
+                  this.rearWheel.pos.x += this.propeller * 2 * angleX;
+                  this.rearWheel.pos.y += this.propeller * 2 * angleY;
 
-                  this.head.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01; // wind
-                  this.frontWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01;
-                  this.rearWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01;                
+                  this.head.pos.y -= this.windspeed * this.head.vel.x * angleX * wind; // wind
+                  this.frontWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * wind;
+                  this.rearWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * wind;                
                 
                 (a.motor += (o - a.motor) / 10),
                   r && !this.swapped && (this.swap(), (this.swapped = !0)),
@@ -13680,7 +13682,7 @@
                 d = l.sub(a.add(u.factor(0.5)));
 
                 const ff = masses[2].pos.toScreen(e);
-                    rotor += 0.5 * this.propeller + .1, // this.propeller or masses[1].motor
+                    rotor += 2 * this.propeller + .1, // this.propeller or masses[1].motor
                     rotor > 6.2831 && (rotor -= 6.2831),
                     this.rotor = rotor;
 
@@ -14001,7 +14003,7 @@
         }
         
         const planeyt = planevt.prototype;
-        planeyt.vehicleName = "PLANE",
+        planeyt.vehicleName = "FLYBIKE",
         planeyt.masses = null,
         planeyt.springs = null,
         planeyt.slow = !1,
@@ -14014,7 +14016,7 @@
         planeyt.cosmeticFrontWheel = null,
         planeyt.ragdoll = null;
         const planewt = {
-            PLANE: "PLANE"
+            FLYBIKE: "FLYBIKE"
         }
           , planext = planevt
           , planebt = Math.atan2
@@ -15234,7 +15236,7 @@
         Xt.BMX = ut,
         Xt.MTB = Ot,
         Xt.UNI = uniut,
-        Xt.PLANE = planext,
+        Xt.FLYBIKE = planext,
         Xt.HELI = xt,
         Xt.TRUCK = Pt,
         Xt.HELI = xt,
@@ -19677,7 +19679,7 @@
                 this.sceneryLines = [],
                 this.foregroundLines = [],
                 this.targets = [],
-                this.allowedVehicles = ["MTB", "BMX", "PLANE"],
+                this.allowedVehicles = ["MTB", "BMX", "FLYBIKE"],
                 //this.allowedVehicles = ["Pete", "Maxime", "Char"],
                 this.canvasPool = new $i(t),
                 this.needsCleaning = !1,
