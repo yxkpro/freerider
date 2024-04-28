@@ -10982,7 +10982,7 @@
                     else if (this.settings.cameraMovementGallery) {
                         e.x = ((this.scene.screen.width / 2) - (this.scene.screen.width / 2) * (this.zoom / this.desiredZoom)) / s;
                         e.y = (((this.scene.screen.height / 2) - (this.scene.screen.height / 2) * (this.zoom / this.desiredZoom)) / s) + (this.settings.offset * 2);
-                        window.scrollTo(window.scrollX, ((t.pos.y - e.y) / s) + this.settings.offset);
+                        window.scrollTo(window.scrollX, ((t.pos.y - e.y) / s) + this.settings.offset - 25); // - 25 is how far down bike can go before scrolling
                     }
 
                     else {

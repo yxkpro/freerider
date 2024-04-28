@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 
-<div id="game-container" style="position: relative; z-index: 0;"></div>
+<div id="game-container" style="position: relative; z-index: 0"></div>
 
 <html>
 
 <head>
     <meta name="generator" content="Hugo 0.68.3" />
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/stylesheet.css">
-    <link rel="icon" type="image/png" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/stylesheet.css" />
+
+    <link rel="icon" type="image/png" href="/favicon.ico" />
 
     <script src="/scripts/manifest.js"></script>
     <script src="/scripts/settings.js"></script>
@@ -19,11 +20,64 @@
 
     <script>
         function openBikeSettingsDialog() {
-            if (typeof GameManager !== 'undefined') {
-                GameManager.command('dialog', 'bikesettings');
+            if (typeof GameManager !== "undefined") {
+                GameManager.command("dialog", "bikesettings");
             }
         }
     </script>
+    <script>
+    GameSettings.height = 2000; //if height -2000, offset -500, canvas top -1000
+    GameSettings.offset = 0;
+    GameSettings.scrollRatio = 2;
+    GameSettings.cameraMovementGallery = true;
+    </script>
+
+<style>
+    canvas {
+        top: -744px; 
+        right: -1522px;
+    }
+    body {
+        width: 886px;
+        text-transform: none;
+    }
+
+    blockquote {
+        font-style: normal;
+    }
+
+    p {
+        margin-bottom: 7px;
+    }
+
+    .gallery {
+        border: none;
+        border-top: 1px solid #aaa;
+        margin-top: 20px;
+    }
+
+    .avatar {
+        display: inline-block;
+        vertical-align: middle;
+        margin-top: 15px;
+    }
+
+    #avatar {
+        border: 1px solid black;
+    }
+
+    .username {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 25px;
+        padding-left: 15px;
+        margin-top: 15px;
+    }
+
+    .container-fluid {
+        padding-left: 0px;
+    }
+</style>
 
     <title>freerider.app</title>
 </head>
@@ -31,16 +85,10 @@
 <body>
     <div class="container-fluid">
         <p>
-            <a href="/" id=home class="">freerider.app</a>
-            <a href="#" id=home class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png" width="24" height="16"></a>
+            <a href="/" id="home" class="">freerider.app</a>
+            <a href="#" id="home" class="" onclick="openBikeSettingsDialog()"><img id="bike" src="/assets/favicon.png"
+                    width="24" height="16" /></a>
         </p>
-
-        <style>
-            /*canvas {
-                top: -1270px;
-                right: -470px;
-            }*/
-        </style>
 
         <p>
             <a href="/">home</a> /
@@ -50,11 +98,13 @@
             <a href="/misc">misc</a>
         </p>
 
+        <div class="gallery">
+
         <p>
             freerider.app is a collaborative project.<br>
             on any page, press "-" to import a code, and "+" to export. have fun!
         </p>
-
+    </div>
     </div>
 </body>
 

@@ -13475,17 +13475,19 @@
                   let angleX = angle.x / angle.len();
                   let angleY = angle.y / angle.len();
 
-                  this.propeller = x ? GameSettings.propeller : 0; // 0.5 for glide, 1 for propeller
+                  this.propeller = x ? GameSettings.propeller * 0.3 : 0; // 0.3 allows GameSettings.propeller = 1 to be equal to gravity forces
                   this.windspeed = x ? GameSettings.windspeed : 0;
+                  
+                  let wind = 0.01 / GameSettings.propeller; // 0.01 allows wind lift to be equal to gravity forces at max velocity.x
 
-                  this.head.pos.x += this.propeller * 0.4 * angleX; // thrust
-                  this.head.pos.y += this.propeller * 0.4 * angleY;
-                  this.rearWheel.pos.x += this.propeller * 0.8 * angleX;
-                  this.rearWheel.pos.y += this.propeller * 0.8 * angleY;
+                  this.head.pos.x += this.propeller * angleX; // thrust
+                  this.head.pos.y += this.propeller * angleY;
+                  this.rearWheel.pos.x += this.propeller * 2 * angleX;
+                  this.rearWheel.pos.y += this.propeller * 2 * angleY;
 
-                  this.head.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01; // wind
-                  this.frontWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01;
-                  this.rearWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * 0.01;                
+                  this.head.pos.y -= this.windspeed * this.head.vel.x * angleX * wind; // wind
+                  this.frontWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * wind;
+                  this.rearWheel.pos.y -= this.windspeed * this.head.vel.x * angleX * wind;                
                 
                 (a.motor += (o - a.motor) / 10),
                   r && !this.swapped && (this.swap(), (this.swapped = !0)),
