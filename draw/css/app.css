@@ -1146,7 +1146,7 @@ html.fullscreen #main_page {
     vertical-align: middle;
     overflow: hidden;
     background-repeat: no-repeat;
-    background-image: url(/draw/assets/images/editor/gui/editorgui_icons_v6.png);
+    background-image: url(/draw/assets/images/editor/gui/editorgui_icons_v7.png);
     background-size: 512px 164px
 }
 
@@ -1745,13 +1745,14 @@ html.fullscreen #main_page {
 }
 
 .bottomToolOptions {
-    float: left
+    float: left;
+    margin-left: 40px;
 }
 
 .bottomToolOptions-toolTitle {
     display: inline-block;
     float: left;
-    margin-right: 25px
+    margin-right: 25px;
 }
 
 .bottomToolOptions-toolTitle .toolName {
@@ -1811,7 +1812,7 @@ html.fullscreen #main_page {
 
 .editorDialog {
     width: 100%;
-    height: 100%;
+    height: 90%;
     position: absolute;
     top: 5%;
     background: rgba(0,0,0,0);
@@ -2440,7 +2441,7 @@ html.fullscreen #main_page {
 }
 
 #header .chromeapp_icons {
-    display: inline-block;
+    display: none;
     vertical-align: middle
 }
 
