@@ -902,9 +902,10 @@
             renderGridTypeSelect: function() {
               var f = GameSettings.toolHandler.isometricGrid,
                   u = ["STANDARD", "ISOMETRIC"];
+              var gridType = f ? "ISOMETRIC" : "STANDARD";
               return n.createElement("select", {
                   ref: "gridType",
-                  defaultValue: f ? "Isometric" : "Standard",
+                  defaultValue: gridType,
                   onChange: this.changeGridType,
                   onClick: this.stopClickPropagation
               }, u.map(function(f) {
