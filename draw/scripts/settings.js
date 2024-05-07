@@ -15,7 +15,7 @@ var GameSettings = {
     "width": 900,
     "height": 500,
     "fullscreen": false,
-    "drawSectorSize": 1000,
+    "drawSectorSize": 100,
     "physicsSectorSize": 100,
     "startVehicle": "BMX",
     "startTool": "straightline",
@@ -163,7 +163,7 @@ var GameSettings = {
         "zoom_decrease": 189,
         "zoom_100": 48,
         "bikesettings": 191,
-        "select" : 68,
+        //"select" : 68,
         "circle" : 84
     },
     "keysToRecord": ["up", "down", "left", "right", "enter", "backspace", "z"],
