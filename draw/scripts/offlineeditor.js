@@ -2344,6 +2344,7 @@
                             t = e.toolHandler,
                             r = t.visibleGrid,
                             o = t.rightClickMove,
+                            z = e.switchHotkeys,
                             isometricGrid = t.isometricGrid,
                             scaleLock = e.scaleLock; // Added isometricGrid variable
 
@@ -2409,6 +2410,19 @@
                                 onChange: this.toggleRightClickMove
                             }))),
 
+                            n.createElement("tr", null, n.createElement("td", {
+                              className: "settingTitle"
+                          }, n.createElement("span", {
+                              className: "name"
+                          }, "Player Hotkeys")), n.createElement("td", {
+                              className: "settingInput"
+                          }, n.createElement("input", {
+                              type: "checkbox",
+                              ref: "switchHotkeys",
+                              defaultChecked: z,
+                              onChange: this.toggleSwitchHotkeys
+                          }))),
+
                             /* n.createElement("tr", null, n.createElement("td", {
                                 className: "settingTitle"
                             }, n.createElement("span", {
@@ -2467,6 +2481,10 @@
                         var e = this.refs.rightClickMove.getDOMNode().checked;
                         GameSettings.toolHandler.rightClickMove = e
                     },
+                    toggleSwitchHotkeys: function () {
+                      var e = this.refs.switchHotkeys.getDOMNode().checked;
+                      GameSettings.switchHotkeys = e
+                  },
                     gotoAdvancedSettings: function () {
                         this.setState({
                             advancedSettings: !0

@@ -20933,6 +20933,7 @@
             (this.playerManager = new $t(this)),
             (this.vehicleTimer = new (te())(this)),
             (this.score = new (dn())(this)),
+            this.updateMainPlayerHotkeys(),
             this.createMainPlayer(),
             this.createControls(),
             this.registerTools(),
@@ -20962,15 +20963,25 @@
           (this.analytics = { deaths: 0, mouseEvents: 0 }),
             this.trackAction("editor-open", "open");
         }
+        updateMainPlayerHotkeys() {
+    const t = this.playerManager.firstPlayer;
+    if (t) {
+      const e = t.getGamepad();
+      const hotkeys = GameSettings.switchHotkeys ? this.settings.playHotkeys : this.settings.editorHotkeys;
+      e.setKeyMap(hotkeys);
+    }
+  }
         createMainPlayer() {
           const t = this.playerManager.createPlayer(this, this.settings.user),
-            e = t.getGamepad();
-          e.setKeyMap(this.settings.editorHotkeys),
+            e = t.getGamepad(),
+            hotkeys = GameSettings.switchHotkeys ? this.settings.playHotkeys : this.settings.editorHotkeys;
+          e.setKeyMap(hotkeys),
             (e.onButtonDown = this.buttonDown.bind(this)),
             e.listen(),
             (this.playerManager.firstPlayer = t),
             this.playerManager.addPlayer(t);
         }
+        
         createControls() {
           "tablet" === this.settings.controls &&
             ((this.controls = new (fn())(this)), this.controls.hide()),
@@ -21054,7 +21065,8 @@
             this.stage.clear(),
             this.draw(),
             this.stage.update(),
-            this.camera.updateZoom();
+            this.camera.updateZoom(),
+            this.updateMainPlayerHotkeys();
         }
         isStateDirty() {
           const t = this.oldState,
